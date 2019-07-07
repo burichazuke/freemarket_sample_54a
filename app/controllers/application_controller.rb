@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # 本番環境で使います（Basic認証）
   # before_action :basic_auth
 
   # private
