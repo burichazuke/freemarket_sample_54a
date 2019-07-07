@@ -1,0 +1,62 @@
+.top-main-visual{
+  height: 390px;
+  background: url(../images/main_bg_pc.jpg);
+  background-size: cover;
+  & h2{
+    font-size: 60px;
+    line-height: 1.2;
+    font-weight: bold;
+  }
+  & p{
+    margin: 16px 0 0;
+    font-size: 18px;
+    line-height: 1.77778;
+  }
+  & .phone-img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: auto;
+  }
+  &__wrapper{
+    max-width: 860px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+  }
+  &__content{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    display: block;
+    z-index: 2;
+  }
+  &__store{
+    margin: 24px 0 0;
+    line-height: 0;
+    display: flex;
+    width: 480px;
+    height: 50px;
+    & img{
+      width: 170px;
+      height: 50px;
+      margin-right: 8px;
+    }
+  }
+}
+
+.pickup-container{
+  width: 100%;
+  height: auto;
+  background: #f5f5f5;
+}
+
+.item-container{
+  width: 700px;
+  height: 50px;
+  margin: 0 auto;
+  background: yellow;
+}

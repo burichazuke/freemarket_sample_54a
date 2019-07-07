@@ -1,2 +1,19 @@
-%h1 Items#index
-%p Find me in app/views/items/index.html.haml
+%main{class: 'white'}
+
+  .top-main-visual
+    .top-main-visual__wrapper
+      .top-main-visual__content
+        %h2
+          スマホでかんたん
+          %br フリマアプリ
+        %p
+          メルカリはスマホカメラからすぐ出品できる
+          %br 購入時も安心な独自システムのアプリです
+        .top-main-visual__store
+          %a(href="https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8"){class: "pull-left",target: "_blank"}
+            %img(src="../images/app-store.svg" alt="app-store")
+          %a(href="https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja"){class: "pull-left",target: "_blank"}
+            %img(src="../images/google-play.svg" alt="google-play")
+      %img(src="../images/main_content_pc.png" alt="main-content"){class: "phone-img"}
+  .pickup-container
+    .item-container
