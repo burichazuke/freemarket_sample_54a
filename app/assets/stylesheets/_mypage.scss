@@ -1,0 +1,110 @@
+.mypage-container {
+  display: flex;//フレックスボックスレイアウト親要素に指定すると子要素は自動的にフレックスアイテムになる
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin: 0 auto;//画面中央にくるように
+  // background-color: white;
+  background-color: rgb(227, 227, 227);
+}
+
+.mypage-user-icon {
+  position: relative;//相対位置への配置
+  height: 200px;
+  text-align: center;
+  width: 500px;
+  padding-top: 20px;//上のスペース
+  background-color: yellow;
+}
+
+.mypage-content {
+  max-width: 700px;
+  margin: 0 auto;
+  &__tabs {
+    display: flex;
+    width: 100%;
+    background-color: white;
+    & a {
+      position: relative;
+      display: block;
+      color: black;
+      font-size: 16px;
+      line-height: 72px;
+    }
+  }
+}
+
+.mypage-content__tab-content{
+  padding-top:40px;
+}
+
+.mypage-content__tab-content__item-list{
+  background-color: white;
+}
+
+.mypage-content__tab-container-notification-todo{
+  text-align: center;
+}
+.mypage-content__tabs--active {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid red;
+  width: 50%;
+  font-weight:bold;
+}
+.mypage-content__tabs--non-active{
+  font-size:14px;
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  font-weight:bold;
+}
+
+.mypage-content__tab-content__item-list__index {
+  padding: 16px;
+    & a {
+      display: block;
+      height: 56px;
+      line-height: 56px;
+      text-align: center;
+      color: black;
+      background-color:rgb(227, 227, 227);
+    }
+  }
+
+
+.mypage-content__tab-container {
+  margin: 40px 0 0;
+}
+.mypage-content__tabs{
+  display: flex;
+  width: 100%;
+}
+
+.mypage-content__tabs--active{
+  background-color: white;
+}
+.mypage-content__tabs__head {
+    padding: 0 16px;
+    font-size: 16px;
+    line-height: 72px;
+    
+  }
+
+.mypage-content__tabs--non-active{
+  background-color: rgb(227, 227, 227)
+}
+
+.mypage-content__tab-content__not-found {
+    padding: 160px 0 60px;
+    background-position: center 40px;
+    background-size: 100px;
+    background-repeat: no-repeat;
+    font-size: 16px;
+    color:rgb(227, 227, 227);
+    text-align: center;
+  }
+
+.mypage-content__tab-content {
+  background-color: white;
+}

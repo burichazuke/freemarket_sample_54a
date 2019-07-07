@@ -1,2 +1,77 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+%main.mypage-container
+  .mypage-content
+    %section.mypage-user-icon
+      = link_to user_path(current_user) do
+        %figure
+          = image_tag("", size: "60x60")
+        %h2.mypage-user-icon__name.bold
+          testman
+        .mypage-user-icon__number
+          .mypage-user-icon__number--evaluation
+            評価
+            %span.bold
+              0
+          .mypage-user-icon__number--exhibition
+            出品数
+            %span.bold
+              0
+
+
+
+    %section.mypage-content__tab-container-notification-todo
+      %ul.mypage-content__tabs
+        %li.mypage-content__tabs--active
+          %h3.mypage-content__tabs__head
+            = link_to user_path(current_user) do
+              お知らせ
+        %li.mypage-content__tabs--non-active
+          %h3
+            = link_to user_path(current_user), class:"mypage-content__" do
+              やることリスト
+
+
+
+
+      .mypage-content__tab-content
+        %ul.mypage-content__tab-content__item-list
+          %li
+            = link_to user_path(current_user), class: "mypage-content__tab-content__item-list__link" do
+              %figure
+                -# = image_tag("mercari_profile.png", size: "48x48")
+              .mypage-content__tab-content__item-list__body
+                .mypage-content__tab-content__item-list__body-text
+                  事務局からメッセージ！
+                %time
+                  icon
+                  %span 1日前
+              icon
+
+              .mypage-content__tab-content__item-list__body
+                .mypage-content__tab-content__item-list__body-text
+                  事務局からメッセージ(2)！
+                %time
+                  icon
+                  %span 1日前
+              icon 
+          %li.mypage-content__tab-content__item-list__index
+            = link_to user_path(current_user) do
+              一覧を見る
+
+
+    %section.mypage-content__tab-container
+      %h2.mypage-content__head.bold 購入した商品
+      %ul.mypage-content__tabs
+        %li.mypage-content__tabs--active
+          %h3.mypage-content__tabs__head
+            = link_to user_path(current_user) do
+              取引中
+        %li.mypage-content__tabs--non-active
+          %h3.mypage-content__tabs__head
+            = link_to user_path(current_user) do
+              過去の取引
+      .mypage-content__tab-content
+        %ul.mypage-content__tab-content-active
+          %li.mypage-content__tab-content__not-found.bold
+            取引中の商品がありません
+                
+            
