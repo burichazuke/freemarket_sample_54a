@@ -60,7 +60,6 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-#本番環境用
 group :production do
   gem 'unicorn', '5.4.1'
 end
