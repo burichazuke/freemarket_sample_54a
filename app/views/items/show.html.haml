@@ -7,7 +7,8 @@
         .owl-carousel
           .owl-stage-outer
             .owl-stage
-              .owl-item
+              .owl-item-inner
+                %img(src="../images/noImage1.jpg" alt="")
           .owl-nav
             .owl-prev
             .owl-next
@@ -73,11 +74,11 @@
         %button.item-button.item-button-like
           =fa_icon "heart-o"
           %span いいね!
-        %button.item-button.item-button-like
+        %button.item-button.item-button-report
           =fa_icon "flag-o"
-          %span
-            %a(href="/")不適切な商品の報告
-        %button.item-button
+          %span 不適切な商品の報告
+      .item-button-right
+        %a(href="/")
           =fa_icon "lock"
           %span あんしん・あんぜんへの取り組み
 
@@ -85,33 +86,37 @@
     .message-container
       .message-content
         %form.message-form{action: "https://www.mercari.com/jp/comment/add/", method:"POST"}
-          %input{name: "__csrf_value", type: "hidden", value: ""}/
           %p
             相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
           .textarea-default
+            %textarea{comment: ""}
+          
           %button.message-submit.btn-default.btn-gray{:type => "submit"}
             %span コメントする
 
   %ul.nav-item-link-prev-next
     %li.nav-item-link-prev
-      %a
+      %a(href="/")
         =fa_icon "angle-left"
         花柄ワンピース
     %li.nav-item-link-next
-      %a
-        =fa_icon "angle-right"
+      %a(href="/")
         レインコート
+        =fa_icon "angle-right"
   
   .item-social-media-box
     .text-center
-    %ul.social-media-box
-      %li
-        %a
-        
-      %li
-        %a
-      %li.social-hidden-item
-
+      %ul.social-media-box
+        %li
+          =link_to "http://www.facebook.com" do
+            =fa_icon "facebook-square", class:"icon-facebook"
+        %li
+          =link_to "http://www.twitter.com" do
+            =fa_icon "twitter-square", class:"icon-twitter"
+        %li
+          =link_to "http://www.pinterest.com" do
+            =fa_icon "pinterest-square", class:"icon-pinterest"
+  
 
 
 
