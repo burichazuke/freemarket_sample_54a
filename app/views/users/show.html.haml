@@ -1,77 +1,88 @@
-%main.mypage-container
-  .mypage-content
-    %section.mypage-user-icon
-      = link_to user_path(current_user) do
-        %figure
-          = image_tag("", size: "60x60")
-        %h2.mypage-user-icon__name.bold
-          testman
-        .mypage-user-icon__number
-          .mypage-user-icon__number--evaluation
-            評価
-            %span.bold
-              0
-          .mypage-user-icon__number--exhibition
-            出品数
-            %span.bold
-              0
+// 全体
+%main.mypage__container
+  .mypage__contents
+    .mypage__content
+      .mypage__content__head
+        %section.mypage__user-icon
+          = link_to user_path(current_user) do
+            %figure
+              = image_tag "", size: "60x60"
+            %h2.mypage__user-icon__name.bold
+              testman
+            .mypage__user-icon__number
+              .mypage__user-icon__number--rate
+                評価
+                %span.bold
+                  0
+              .mypage__user-icon__number--display
+                出品数
+                %span.bold
+                  0
 
 
-
-    %section.mypage-content__tab-container-notification-todo
-      %ul.mypage-content__tabs
-        %li.mypage-content__tabs--active
-          %h3.mypage-content__tabs__head
-            = link_to user_path(current_user) do
-              お知らせ
-        %li.mypage-content__tabs--non-active
-          %h3
-            = link_to user_path(current_user), class:"mypage-content__" do
-              やることリスト
-
-
-
-
-      .mypage-content__tab-content
-        %ul.mypage-content__tab-content__item-list
+      %section.mypage__content__tab-container
+        %ul.mypage__content__tabs
+          %li.active
+            %h3.mypage__content__tabs__head
+              = link_to user_path(current_user) do
+                お知らせ
+                
           %li
-            = link_to user_path(current_user), class: "mypage-content__tab-content__item-list__link" do
-              %figure
-                -# = image_tag("mercari_profile.png", size: "48x48")
-              .mypage-content__tab-content__item-list__body
-                .mypage-content__tab-content__item-list__body-text
-                  事務局からメッセージ！
-                %time
-                  icon
-                  %span 1日前
-              icon
-
-              .mypage-content__tab-content__item-list__body
-                .mypage-content__tab-content__item-list__body-text
-                  事務局からメッセージ(2)！
-                %time
-                  icon
-                  %span 1日前
-              icon 
-          %li.mypage-content__tab-content__item-list__index
-            = link_to user_path(current_user) do
-              一覧を見る
+            %h3.mypage__content__tabs__head
+              = link_to user_path(current_user), class:"mypage__content__" do
+                やることリスト
 
 
-    %section.mypage-content__tab-container
-      %h2.mypage-content__head.bold 購入した商品
-      %ul.mypage-content__tabs
-        %li.mypage-content__tabs--active
-          %h3.mypage-content__tabs__head
-            = link_to user_path(current_user) do
-              取引中
-        %li.mypage-content__tabs--non-active
-          %h3.mypage-content__tabs__head
-            = link_to user_path(current_user) do
-              過去の取引
-      .mypage-content__tab-content
-        %ul.mypage-content__tab-content-active
-          %li.mypage-content__tab-content__not-found.bold
-            取引中の商品がありません
+        .mypage__content__tab-content
+          %ul.mypage__content__tab-content__item-list
+            %li
+              = link_to user_path(current_user), class: "mypage__content__tab-content__item-list__link" do
+                .mypage__content__tab-content__item-list__link--icon
+                  = image_tag "", size: "48x48"
+
+              .mypage__content__tab-content__item-list__body
+                .mypage__content__tab-content__item-list__body--text
+                  【ニュース】事務局からメッセージ！
+                .mypage__content__tab-content__item-list__body--icon-time        
+                  %span 1分前
+                .mypage__content__tab-content__item-list__body--icon
+                  = image_tag "", size: "48x48"
+                
+            %li
+              = link_to user_path(current_user), class: "mypage__content__tab-content__item-list__link" do
+                .mypage__content__tab-content__item-list__link--icon
+                  = image_tag "", size: "48x48"
+
+                .mypage__content__tab-content__item-list__body
+                  .mypage__content__tab-content__item-list__body--text
+                    【ニュース】事務局からメッセージ！
+                  %time
+                    %span 1分前
+                .mypage__content__tab-content__item-list__body--icon
+                  = image_tag "", size: "48x48"
+
+            %li.mypage__content__tab-content__item-list--index
+              = link_to user_path(current_user) do
+                一覧を見る
+
+
+
+    .mypage__content
+      %h2.mypage__content__head.bold
+        購入した商品
+      %section.mypage__content__tab-container
+        %ul.mypage__content__tabs
+          %li.active
+            %h3.mypage__content__tabs__head
+              = link_to user_path(current_user) do
+                取引中
+          %li
+            %h3.mypage__content__tabs__head
+              = link_to user_path(current_user) do
+                過去の取引
+        .mypage__content__tab-content
+          %ul.mypage__content__tab-content__item-list
+            %li.mypage__content__tab-content__not-found.bold
+              取引中の商品がありません
                 
             
