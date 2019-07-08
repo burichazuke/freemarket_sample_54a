@@ -1,2 +1,117 @@
-%h1 Items#show
-%p Find me in app/views/items/show.html.haml
+.show-container
+  
+  .item-box-container
+    %h1.item-name 【アダムエロペ】花柄ショートパンツ
+    .item-main-content
+      .item-photo
+        .owl-carousel
+          .owl-stage-outer
+            .owl-stage
+              .owl-item
+          .owl-nav
+            .owl-prev
+            .owl-next
+          .owl-dots
+          
+      %table.item-detail-table
+        %tboby
+          %tr
+            %th 出品者
+            %td
+              %a(href="/")めるこ
+          %tr
+            %th カテゴリー
+            %td
+              %a(href="/")レディース
+          %tr
+            %th ブランド
+            %td 
+              %a(href="/")エルメス
+          %tr
+            %th 商品のサイズ
+            %td M
+          %tr
+            %th 商品の状態
+            %td 新品、未使用
+          %tr
+            %th 配送料の負担
+            %td 送料込み(出品者負担)
+          %tr
+            %th 配送の方法
+            %td らくらくメルカリ便
+          %tr
+            %th 配送元地域
+            %td
+              %a(href="/")神奈川県
+          %tr
+            %th 配達日の目安
+            %td 1~2日で発送
+
+    .item-price-box
+      %span.item-price
+        ¥450
+      %span.item-tax
+        (税込)
+      %span.item-shipping-fee
+        送料込み
+    %a(href="/"){class:"item-buy-btn"}
+      購入画面に進む
+  
+    %section.item-description-14f
+      %p.item-description-innner
+        アダムエロペ
+        %br
+        花柄ショートパンツ（ネイビー×ブルー×ホワイト）
+        %br
+        サイズ36 
+        %br
+        Sサイズで選択してとりますが、当方は158センチ46キロで、普段Mサイズを履いており、こちらも問題なく履けました
+        簡易包装で発送予定です
+
+    .item-button-container
+      .item-button-left
+        %button.item-button.item-button-like
+          =fa_icon "heart-o"
+          %span いいね!
+        %button.item-button.item-button-like
+          =fa_icon "flag-o"
+          %span
+            %a(href="/")不適切な商品の報告
+        %button.item-button
+          =fa_icon "lock"
+          %span あんしん・あんぜんへの取り組み
+
+  .item-detail-message
+    .message-container
+      .message-content
+        %form.message-form{action: "https://www.mercari.com/jp/comment/add/", method:"POST"}
+          %input{name: "__csrf_value", type: "hidden", value: ""}/
+          %p
+            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          .textarea-default
+          %button.message-submit.btn-default.btn-gray{:type => "submit"}
+            %span コメントする
+
+  %ul.nav-item-link-prev-next
+    %li.nav-item-link-prev
+      %a
+        =fa_icon "angle-left"
+        花柄ワンピース
+    %li.nav-item-link-next
+      %a
+        =fa_icon "angle-right"
+        レインコート
+  
+  .item-social-media-box
+    .text-center
+    %ul.social-media-box
+      %li
+        %a
+        
+      %li
+        %a
+      %li.social-hidden-item
+
+
+
+
