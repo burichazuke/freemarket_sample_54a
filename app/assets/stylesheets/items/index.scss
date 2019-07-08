@@ -65,18 +65,19 @@ a{
   }
 }
 
-.pickup__container{
+.pickup{
   width: 100%;
   height: auto;
   background: #f5f5f5;
   padding: 40px 0;
+  &__head{
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+  }
 }
 
-.pickup-head{
-  text-align: center;
-  font-size: 28px;
-  font-weight: bold;
-}
+
 
 .items-box__container{
   width: 940px;
@@ -88,7 +89,7 @@ a{
     font-weight: bold;
     & a{
       text-decoration: none;
-      color: $blue
+      color:#0099e8;
     }
   }
   .items-box__content{
@@ -110,24 +111,24 @@ a{
       }
       &__body{
         padding: 16px;
-      }
-      &__name{
-        overflow: hidden;
-        position: relative;
-        font-weight: 400;
-        height: 3em;
-        line-height: 1.5;
-        word-break: break-word;
-        white-space: normal;
-      }
-      &__num{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 8px 0 0;
-      }
-      &__price{
-        font-size: 14px;
+        &__name{
+          overflow: hidden;
+          position: relative;
+          font-weight: 400;
+          height: 3em;
+          line-height: 1.5;
+          word-break: break-word;
+          white-space: normal;
+        }
+        &__num{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 8px 0 0;
+          &__price{
+            font-size: 14px;
+          }
+        }
       }
     }
   }
