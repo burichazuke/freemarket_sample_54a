@@ -1,7 +1,7 @@
 a{
   color: #1499E8;
   text-decoration: none;
-  transition: 2s;
+  transition: 4;
 }
 a:hover{
   text-decoration: underline solid #1499E8;
@@ -24,17 +24,17 @@ a:hover{
   height: 390px;
   background: url(main_bg_pc.jpg);
   background-size: cover;
-  & h2{
+  h2{
     font-size: 60px;
     line-height: 1.2;
     font-weight: bold;
   }
-  & p{
+  p{
     margin: 16px 0 0;
     font-size: 18px;
     line-height: 1.77778;
   }
-  & .phone-img{
+  .phone-img{
     position: absolute;
     top: 0;
     right: 0;
@@ -60,7 +60,7 @@ a:hover{
         display: flex;
         width: 480px;
         height: 50px;
-        & img{
+        img{
           width: 170px;
           height: 50px;
           margin-right: 8px;
@@ -93,10 +93,6 @@ a:hover{
     margin: 0 11px 26px;
     font-size: 22px;
     font-weight: bold;
-    // & a{
-    //   text-decoration: none;
-    //   color:#0099e8;
-    // }
   }
   .items-box__content{
     width: auto;
@@ -109,7 +105,7 @@ a:hover{
       height: 330px;
       background-color: #fff;
       margin-bottom: 20px;
-      & a{
+      a{
         text-decoration: none;
       }
       &__photo img{
@@ -163,7 +159,7 @@ a:hover{
   position: fixed;
   bottom: 32px;
   right: 32px;
-  & div{
+  &__word{
     margin-top:28px; 
   }
   .fa-camera{
