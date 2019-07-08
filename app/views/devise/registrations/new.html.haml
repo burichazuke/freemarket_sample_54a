@@ -1,4 +1,4 @@
-// 正規
+// sign_upページ
 .account__page
   %header.account__page__header
     //メルカリのロゴの写真
@@ -6,110 +6,22 @@
       = link_to "/" do
         ロゴ
       // = image_tag "", size: "185x50", alt: "mercari"
-    %nav.sign-up__bar
-      %ol.sign-up__bar__menus
-        %li.active
-          会員情報
-          .progress-status
-        %li
-          電話番号認証
-          .progress-status
-        %li
-          お届け先住所入力
-          .progress-status
-        %li
-          支払い方法
-          .progress-status
-        %li
-          完了
-          .progress-status
-
   %main.account__page__main
     .account__container
       %h2.account__head
-        会員情報入力（今はメルアドとパスワードのみ入力して）
-      = form_for resource, as: resource_name, url: registration_path(resource_name), html: {class: "account__form"} do |f|
-        -# = render "devise/shared/error_messages", resource: resource
-        = devise_error_messages!
+        新規会員登録
+      .account__form
         .account__field
-          .account__field__label
-            = label :devise, :nickname, "ニックネーム"
-            %span.account__field__require 必須
-          .account__field__input
-            = text_field :devise, :nickname, autofocus: true, placeholder: "例)メルカリ太郎"
-
-        .account__field
-          .account__field__label
-            = f.label :email, "メールアドレス"
-            %span.account__field__require 必須
-          .account__field__input
-            = f.text_field :email, placeholder: "PC・携帯どちらでも可"
-
-        .account__field
-          .account__field__label
-            = f.label :password, "パスワード"
-            %span.account__field__require 必須
-          .account__field__input
-            = f.password_field :password, autocomplete: "off", placeholder: "6文字以上"
-
-        .account__field
-          .account__field__label
-            = f.label :password_confirmation, "パスワード(確認)"
-            %span.account__field__require 必須
-          .account__field__input
-            = f.password_field :password_confirmation, autocomplete: "off", placeholder: "6文字以上"
-
-        .account__field
-          %h3 本人確認
-          %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
-
-        .account__field
-          .account__field__label
-            = label :devise, :last_name, "姓(全角)"
-            %span.account__field__require 必須
-          .account__field__input
-            = text_field :devise, :last_name, placeholder: "例)山田"
-
-        .account__field
-          .account__field__label
-            = label :devise, :first_name, "名(全角)"
-            %span.account__field__require 必須
-          .account__field__input
-            = text_field :devise, :first_name, placeholder: "例)彩"
-
-        .account__field
-          .account__field__label
-            = label :devise, :last_name_kana, "姓カナ(全角)"
-            %span.account__field__require 必須
-          .account__field__input
-            = text_field :devise, :last_name_kana, placeholder: "例)ヤマダ"
-            
-        .account__field
-          .account__field__label
-            = label :devise, :first_name_kana, "名カナ(全角)"
-            %span.account__field__require 必須
-          .account__field__input
-            = text_field :devise, :first_name_kana, placeholder: "例)アヤ"
-
-        .account__field
-          .account__field__label
-            = label :devise, :birthday, "生年月日"
-            %span.account__field__require 必須
-          .account__field__input
-            // To Do raw sprintfとdate_separatorで年月日の文字を表示する
-            = date_select :devise, :birthday, use_month_numbers: true, start_year: 1900, end_year: (Time.now.year)
-            
-        %p.account__field__text
-          ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-        .account__field
-          .robot-check
-            = check_box :devise, :robot
-            私はロボットではありません。
-        .account__field
-          %p.account__field__text.account__field__text--center
-            「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします
-        = f.submit "次へ進む", class: "account__form__send-btn"
-
+          = link_to "/", class: "login-btn login-btn--mail", id: "mail-login" do
+            = fa_icon "envelope lg", class: "login-icon login-icon--mail"
+            メールアドレスで登録
+          = link_to "/", class: "login-btn login-btn--facebook", id: "facebook-login" do
+            = fa_icon "facebook-square 2x", class: "login-icon login-icon--facebook"
+            Facebookで登録
+          -# googleはアイコンなしでできる方法あり
+          = link_to "/", class: "login-btn login-btn--google", id: "google-login" do
+            = fa_icon "google lg", class: "login-icon login-icon--goolge"
+            Googleで登録
   %footer.account__page__footer
     %nav
       = link_to "プライバシーポリシー", "/"
@@ -120,5 +32,3 @@
       -# = image_tag "logo.png", size: "100x50", alt: "mercari"
     %p
       %small © 2019 Mercari
-
-

@@ -1,9 +1,3 @@
-// 削除予定
-.delete__content {
-  margin: 50px;
-  background-color: $red;
-}
-
 // color定義→あとでcolor.scssに移動
 $dark-red: #ea352d;
 
@@ -185,3 +179,41 @@ $dark-red: #ea352d;
     font-size: 13px;
   }
 }
+
+
+// signUpページのbtn
+.login-btn {
+  display: block;
+  height: 50px;
+  width: 345px;
+  border: 1px solid transparent;
+  margin-top: 20px;
+  text-align: center;
+  color: black;
+  line-height: 50px;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
+  &--mail {
+    background-color: $gray;
+  }
+  &--facebook {
+    background-color: #385185;
+    color: white;
+  }
+  &--google {
+    border: 1px solid #979797;
+  }
+  .login-icon {
+    // font-size: 16px;
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translate(0, -50%);
+    &--mail {
+      color: #cccccc;
+    }
+  }
+}
+
+
