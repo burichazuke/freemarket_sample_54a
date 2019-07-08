@@ -8,4 +8,48 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+
+    %header
+      .header-inner
+
+        .header-top
+          .header-top__img
+            = link_to '/',class: 'header-logo-link' do
+              = image_tag 'mercari_logo.png', alt: 'mercari', height: '36', width: '134', class: 'header-logo'
+          
+          = form_with class:'header-form' do
+            -# = label_tag 'header-search', class:'header-search'
+            = text_field_tag type:'search', placeholder:'何かお探しですか？', class:'search-txt-field' do
+              =fa_icon 'fa-search', class:'search-icon'
+                
+        .header-bottom
+          .header-nav
+
+            .b-left
+              %h2
+                = link_to '/', class:'header-category' do
+                  = fa_icon 'fa-list'
+                  %span カテゴリーから探す  
+              %h2
+                = link_to '/',class:'header-brand' do
+                  =fa_icon 'fa-tag',class:'search-icon'
+                  %span ブランドから探す
+                  
+            .b-right
+              %ul.header-user-nav
+                %li.user-nav-notice
+                  = link_to '/', class:'header-menu-link' do
+                    = fa_icon 'fa-bell',class:'header-menu-link__icon'
+                    %span お知らせ
+
+                %li.header-user-nav
+                  = link_to '/',class:'header-menu-link' do
+                    = fa_icon 'fa-check',class:'header-menu-link__icon'
+                    %span やることリスト
+
+                %li.header-user-nav
+                  = link_to '/',class:'header-menu-link' do
+                    %figure
+                      = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-icon'
+                    %span マイページ
     = yield
