@@ -1,5 +1,5 @@
 a{
-  color: $blue;
+  color: #1499E8;
   text-decoration: none;
 }
 
@@ -42,25 +42,25 @@ a{
     margin: 0 auto;
     position: relative;
     display: flex;
-  }
-  &__content{
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(0, -50%);
-    display: block;
-    z-index: 2;
-  }
-  &__store{
-    margin: 24px 0 0;
-    line-height: 0;
-    display: flex;
-    width: 480px;
-    height: 50px;
-    & img{
-      width: 170px;
-      height: 50px;
-      margin-right: 8px;
+    &__content{
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(0, -50%);
+      display: block;
+      z-index: 2;
+      &__store{
+        margin: 24px 0 0;
+        line-height: 0;
+        display: flex;
+        width: 480px;
+        height: 50px;
+        & img{
+          width: 170px;
+          height: 50px;
+          margin-right: 8px;
+        }
+      }
     }
   }
 }
@@ -136,5 +136,29 @@ a{
     width: 99.5%;
     padding: 20px 0 30px;
     font-size: 14px;
+  }
+}
+
+
+
+
+.footer-sell-btn{
+  width: 160px;
+  height: 160px;
+  background: #EA352D;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+  font-size: 22px;
+  z-index: 1000;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  & div{
+    margin-top:28px; 
+  }
+  .fa-camera{
+    margin-top: 5px;
+    font-size: 57px;
   }
 }
