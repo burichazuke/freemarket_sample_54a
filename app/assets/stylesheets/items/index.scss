@@ -1,3 +1,20 @@
+a{
+  color: $blue;
+  text-decoration: none;
+}
+
+.font-2{
+  font-size: 16px;
+  font-weight: 400;
+  color: #333;
+}
+
+.font-5{
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
 .top-main-visual{
   height: 390px;
   background: url(../images/main_bg_pc.jpg);
@@ -68,6 +85,7 @@
     text-align: center;
     margin: 26px 11px;
     font-size: 22px;
+    font-weight: bold;
     & a{
       text-decoration: none;
       color: $blue
@@ -77,35 +95,46 @@
     width: auto;
     margin: 0 auto;
     display: flex;
-  }
-  .items-box{
-    margin-left:20px;
-    width: 213px;
-    height: 330px;
-    background-color: #fff;
-    &__photo img{
+    .items-box{
+      margin-left:20px;
       width: 213px;
-      height: 213px;
-      object-fit: cover;
+      height: 330px;
+      background-color: #fff;
+      & a{
+        text-decoration: none;
+      }
+      &__photo img{
+        width: 213px;
+        height: 213px;
+        object-fit: cover;
+      }
+      &__body{
+        padding: 16px;
+      }
+      &__name{
+        overflow: hidden;
+        position: relative;
+        font-weight: 400;
+        height: 3em;
+        line-height: 1.5;
+        word-break: break-word;
+        white-space: normal;
+      }
+      &__num{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 8px 0 0;
+      }
+      &__price{
+        font-size: 14px;
+      }
     }
-    &__body{
-      padding: 16px;
-    }
-    &__name{
-      overflow: hidden;
-      position: relative;
-      font-weight: 400;
-      height: 3em;
-      line-height: 1.5;
-      word-break: break-word;
-      white-space: normal;
-    }
-    &__num{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 8px 0 0;
-    }
-
+  }
+  .view-all{
+    text-align: right;
+    width: 99.5%;
+    padding: 20px 0 30px;
+    font-size: 14px;
   }
 }
