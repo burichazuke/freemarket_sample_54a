@@ -1,13 +1,13 @@
 - 4.times do
   %section{class: "items-box__container"}
-    %h3{class: "text-center"}
-      %a(href="/") レディース新着アイテム
+    %h3{class: "text-center"} 
+      = link_to "レディース新着アイテム", root_path
     .items-box__content
       - 4.times do
         %section{class: "items-box"}
-          %a(href="/")
+          = link_to root_path do
             .items-box__photo
-              %img(src="../images/noImage.jpg" alt="")
+              =image_tag "/images/noImage.jpg"
             .items-box__body
               %h3{class: "items-box__body__name font-2"}
                 ビーズネックレス
@@ -18,5 +18,4 @@
                   =fa_icon "heart-o" 
 
     .view-all
-      %a(href="/")
-        すべての商品を見る  
+      = link_to "すべての商品を見る", root_path

@@ -1,8 +1,8 @@
 - 10.times do
   %section{class: "items-box"}
-    %a(href="/")
+    = link_to root_path do
       .items-box__photo
-        %img(src="../images/noImage.jpg" alt="")
+        =image_tag "/images/noImage.jpg" 
       .items-box__body
         %h3{class: "items-box__body__name font-2"}
           ビーズネックレス
