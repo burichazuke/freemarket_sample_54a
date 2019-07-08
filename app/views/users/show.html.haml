@@ -29,7 +29,7 @@
                 
           %li
             %h3.mypage__content__tabs__head
-              = link_to user_path(current_user), class:"mypage__content__" do
+              = link_to user_path(current_user) do
                 やることリスト
 
 
@@ -38,28 +38,26 @@
             %li
               = link_to user_path(current_user), class: "mypage__content__tab-content__item-list__link" do
                 .mypage__content__tab-content__item-list__link--icon
-                  = image_tag "", size: "48x48"
-
-              .mypage__content__tab-content__item-list__body
-                .mypage__content__tab-content__item-list__body--text
-                  【ニュース】事務局からメッセージ！
-                .mypage__content__tab-content__item-list__body--icon-time        
-                  %span 1分前
-                .mypage__content__tab-content__item-list__body--icon
-                  = image_tag "", size: "48x48"
+                  = image_tag "mercari_icon.png", size: "48x48"
+                .mypage__content__tab-content__item-list__body
+                  .mypage__content__tab-content__item-list__body--text
+                    【ニュース】事務局からメッセージ！
+                  .mypage__content__tab-content__item-list__body--icon-time
+                    %span 1分前
+                .mypage__content__tab-content__item-list__icon--right
+                  = image_tag "", size: "20x20"
                 
             %li
               = link_to user_path(current_user), class: "mypage__content__tab-content__item-list__link" do
                 .mypage__content__tab-content__item-list__link--icon
-                  = image_tag "", size: "48x48"
-
+                  = image_tag "mercari_icon.png", size: "48x48"
                 .mypage__content__tab-content__item-list__body
                   .mypage__content__tab-content__item-list__body--text
                     【ニュース】事務局からメッセージ！
-                  %time
+                  .mypage__content__tab-content__item-list__body--icon-time
                     %span 1分前
-                .mypage__content__tab-content__item-list__body--icon
-                  = image_tag "", size: "48x48"
+                .mypage__content__tab-content__item-list__icon--right
+                  = image_tag "", size: "20x20"
 
             %li.mypage__content__tab-content__item-list--index
               = link_to user_path(current_user) do
