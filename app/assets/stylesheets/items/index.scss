@@ -1,6 +1,11 @@
 a{
   color: #1499E8;
   text-decoration: none;
+  transition: 2s;
+}
+a:hover{
+  text-decoration: underline solid #1499E8;
+  opacity: 0.8;
 }
 
 .font-2{
@@ -17,7 +22,7 @@ a{
 
 .top-main-visual{
   height: 390px;
-  background: url(../images/main_bg_pc.jpg);
+  background: url(main_bg_pc.jpg);
   background-size: cover;
   & h2{
     font-size: 60px;
@@ -74,6 +79,7 @@ a{
     text-align: center;
     font-size: 28px;
     font-weight: bold;
+    margin-bottom: 26px;
   }
 }
 
@@ -84,23 +90,25 @@ a{
   margin: 0 auto;
   .text-center{
     text-align: center;
-    margin: 26px 11px;
+    margin: 0 11px 26px;
     font-size: 22px;
     font-weight: bold;
-    & a{
-      text-decoration: none;
-      color:#0099e8;
-    }
+    // & a{
+    //   text-decoration: none;
+    //   color:#0099e8;
+    // }
   }
   .items-box__content{
     width: auto;
     margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
     .items-box{
       margin-left:20px;
       width: 213px;
       height: 330px;
       background-color: #fff;
+      margin-bottom: 20px;
       & a{
         text-decoration: none;
       }
@@ -135,7 +143,7 @@ a{
   .view-all{
     text-align: right;
     width: 99.5%;
-    padding: 20px 0 30px;
+    padding: 0 0 30px;
     font-size: 14px;
   }
 }

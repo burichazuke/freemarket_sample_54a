@@ -1,0 +1,22 @@
+- 4.times do
+  %section{class: "items-box__container"}
+    %h3{class: "text-center"}
+      %a(href="/") レディース新着アイテム
+    .items-box__content
+      - 4.times do
+        %section{class: "items-box"}
+          %a(href="/")
+            .items-box__photo
+              %img(src="../images/noImage.jpg" alt="")
+            .items-box__body
+              %h3{class: "items-box__body__name font-2"}
+                ビーズネックレス
+              .items-box__body__num
+                .items-box__body__num__price.font-5
+                  ¥ 1400円
+                .items-box__body__num__like.font-2
+                  =fa_icon "heart-o" 
+
+    .view-all
+      %a(href="/")
+        すべての商品を見る  
