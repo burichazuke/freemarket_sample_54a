@@ -8,6 +8,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    = yield
-    = render "shared/sell-btn" 
-    = render "shared/footer"
+    .single__page
+      = render "shared/single-header"
+      = yield
+      = render "shared/single-footer"

@@ -1,0 +1,18 @@
+// sign_upページ
+%main.single__page__main
+  .single__page__main__container
+    %h2.single__page__main__head
+      新規会員登録
+    .single__form
+      .single__field
+        = link_to user_registration_path, class: "sign-up__btn sign-up__btn--mail", id: "mail-sign-up" do
+          = fa_icon "envelope lg", class: "sign-up__icon sign-up__icon--mail"
+          メールアドレスで登録
+        = link_to "/", class: "sign-up__btn sign-up__btn--facebook", id: "facebook-sign-up" do
+          = fa_icon "facebook-square 2x", class: "sign-up__icon sign-up__icon--facebook"
+          Facebookで登録
+        -# googleはアイコンなしでできる方法あり
+        = link_to "/", class: "sign-up__btn sign-up__btn--google", id: "google-sign-up" do
+          = fa_icon "google lg", class: "sign-up__icon sign-up__icon--goolge"
+          Googleで登録
+
