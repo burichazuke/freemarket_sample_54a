@@ -1,14 +1,8 @@
 Rails.application.routes.draw do
   root to: "items#index"
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users,  only: [:index, :create, :show, :edit, :update] 
   resources :mypage, only: [:index] do
-    # resource :listings do
-    #   collection do
-    #     get "listing", "in_progress", "completed"
-    #   end
-    # end
     collection do
       get "notification", "todo", "purchase", "purchased", "news", "support", "profile", "deliver_address",
       "card", "email_password", "identification", "sms_confirmation", "help_center"
