@@ -1,20 +1,28 @@
+:ruby
+  announces =[{
+    Name:"コメントがつきました", url:"#"
+  },{
+    Name:"いいね！がつきました", url:"#"
+  },{
+    Name:"事務局からメッセージ！コメントがつきました！いいねがつきました！確認してください！", url:"#"
+  }]
 // 全体
 %main.mypage__container
   .mypage__contents
     .mypage__content
-      .mypage__content__head
-        %section.mypage__user-icon
+      .mypage__content__head.mypage__content__head--image
+        %section.mypage__content__head__user-icon
           = link_to user_path(current_user) do
             %figure
-              = image_tag "", size: "60x60"
-            %h2.mypage__user-icon__name.bold
+              = image_tag "mypage_icon.png", size: "60x60"
+            %h2.mypage__content__head__user-icon__name.bold
               testman
-            .mypage__user-icon__number
-              .mypage__user-icon__number--rate
+            .mypage__content__head__user-icon__number
+              .mypage__content__head__user-icon__number--rate
                 評価
                 %span.bold
                   0
-              .mypage__user-icon__number--display
+              .mypage__content__head__user-icon__number--display
                 出品数
                 %span.bold
                   0
@@ -33,31 +41,24 @@
                 やることリスト
 
 
+
+
         .mypage__content__tab-content
           %ul.mypage__content__tab-content__item-list
-            %li
-              = link_to user_path(current_user), class: "mypage__content__tab-content__item-list__link" do
-                .mypage__content__tab-content__item-list__link--icon
-                  = image_tag "mercari_icon.png", size: "48x48"
-                .mypage__content__tab-content__item-list__body
-                  .mypage__content__tab-content__item-list__body--text
-                    【ニュース】事務局からメッセージ！
-                  .mypage__content__tab-content__item-list__body--icon-time
+            - announces.each do |announce|
+              %li
+                = link_to user_path(current_user), class: "mypage__content__tab-content__item-list__link" do
+                  .mypage__content__tab-content__item-list__link--icon
+                    = image_tag "mercari_icon.png", size: "48x48"
+                  .mypage__content__tab-content__item-list__body
+                    .mypage__content__tab-content__item-list__body--text #{announce[:Name]}
+                    .mypage__content__tab-content__item-list__body--icon-time
+                      = fa_icon 'twitter', class: 'icon'
                     %span 1分前
-                .mypage__content__tab-content__item-list__icon--right
-                  = image_tag "", size: "20x20"
+
+                  .mypage__content__tab-content__item-list__icon--right
+                    =fa_icon "angle-right", class: 'icon-chek'
                 
-            %li
-              = link_to user_path(current_user), class: "mypage__content__tab-content__item-list__link" do
-                .mypage__content__tab-content__item-list__link--icon
-                  = image_tag "mercari_icon.png", size: "48x48"
-                .mypage__content__tab-content__item-list__body
-                  .mypage__content__tab-content__item-list__body--text
-                    【ニュース】事務局からメッセージ！
-                  .mypage__content__tab-content__item-list__body--icon-time
-                    %span 1分前
-                .mypage__content__tab-content__item-list__icon--right
-                  = image_tag "", size: "20x20"
 
             %li.mypage__content__tab-content__item-list--index
               = link_to user_path(current_user) do
@@ -66,7 +67,7 @@
 
 
     .mypage__content
-      %h2.mypage__content__head.bold
+      .mypage__content__head.mypage__content__head--text
         購入した商品
       %section.mypage__content__tab-container
         %ul.mypage__content__tabs
