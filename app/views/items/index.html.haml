@@ -1,2 +1,44 @@
-%h1 Items#index
-%p Find me in app/views/items/index.html.haml
+%main{class: 'white'}
+
+  .top-main-visual
+    .top-main-visual__wrapper
+      .top-main-visual__wrapper__content
+        %h2
+          スマホでかんたん
+          %br フリマアプリ
+        %p
+          メルカリはスマホカメラからすぐ出品できる
+          %br 購入時も安心な独自システムのアプリです
+        .top-main-visual__wrapper__content__store
+          =link_to "https://itunes.apple.com/jp/app/id667861049?l=ja&mt=8", class: "pull-left", target: "_blank" do         
+            = image_tag 'app-store.svg'
+          =link_to "https://play.google.com/store/apps/details?id=com.kouzoh.mercari&hl=ja", class:"pull-left", target: "_blank" do
+            = image_tag 'google-play.svg'
+      = image_tag 'main_content_pc.png', alt: "main-content", class: "phone-img"
+ 
+  -# 商品一覧仮置きです。カテゴリ追加次第切り替え
+  %section.pickup
+    %h2{class: "pickup__head"}
+      商品一覧
+    %section{class: "items-box__container"}
+      .items-box__content
+        = render "items"
+
+
+
+  -# カテゴリ追加次第こちらに切り替え
+  %section.pickup
+    %h2{class: "pickup__head"}
+      ピックアップカテゴリー
+    = render "items2"
+
+  %section.pickup
+    %h2{class: "pickup__head"}
+      ピックアップブランド
+    = render "items2"
+
+
+
+
+
+
