@@ -1,12 +1,13 @@
-.item-detail-message
+.item__detail-message
   .message-container
-    .message-content
-      %form.message-form{action: "https://www.mercari.com/jp/comment/add/", method:"POST"}
+    .message-content 
+      -# あとでform_forに変更する
+      %form.message-form{action: "", method:""} 
         %p
           相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
         .textarea-default
           %textarea{comment: ""}
         
-        %button.message-submit.btn-default.btn-gray{:type => "submit"}
+        %button.message-submit.btn-default.btn-gray{type: "submit"}
           %span コメントする
           

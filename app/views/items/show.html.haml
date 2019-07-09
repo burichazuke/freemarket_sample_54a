@@ -1,14 +1,14 @@
 .show-container
   
-  .item-box-container
-    %h1.item-name 【アダムエロペ】花柄ショートパンツ
-    .item-main-content
-      .item-photo
-        .owl-carousel
-          .owl-item-inner
+  .item__box-container
+    %h1.item__name 【アダムエロペ】花柄ショートパンツ
+    .item__main-content
+      .item__photo
+        .owl__carousel
+          .owl__item__inner
             %img(src="../images/noImage1.jpg" alt="")
          
-      %table.item-detail-table
+      %table.item__detail-table
         %tboby
           %tr
             %th 出品者
@@ -46,18 +46,18 @@
             %th 配達日の目安
             %td 1~2日で発送
 
-    .item-price-box
-      %span.item-price
+    .item__price-box
+      %span.item__price-box__price
         ¥450
-      %span.item-tax
+      %span.item__price-box__tax
         (税込)
-      %span.item-shipping-fee
+      %span.item__price-box__shipping-fee
         送料込み
-    =link_to root_path, class: "item-buy-btn" do
+    =link_to root_path, class: "item__buy-btn" do
       購入画面に進む
   
-    %section.item-description-14f
-      %p.item-description-innner
+    %section.item__description
+      %p.item__description__innner
         アダムエロペ
         %br
         花柄ショートパンツ（ネイビー×ブルー×ホワイト）
@@ -67,15 +67,15 @@
         Sサイズで選択してとりますが、当方は158センチ46キロで、普段Mサイズを履いており、こちらも問題なく履けました
         簡易包装で発送予定です
 
-    .item-button-container
-      .item-button-left
-        %button.item-button.item-button-like
+    .item__button-container
+      .item__button__left
+        %button.item__button.item__button__like
           =fa_icon "heart-o"
           %span いいね!
-        %button.item-button.item-button-report
+        %button.item__button.item__button__report
           =fa_icon "flag-o"
           %span 不適切な商品の報告
-      .item-button-right
+      .item__button__right
         =link_to "https://www.mercari.com/jp/safe/description/" do
           =fa_icon "lock"
           %span あんしん・あんぜんへの取り組み
@@ -83,28 +83,27 @@
 
   =render "comment" #コメント欄部分テンプレート
 
-  %ul.nav-item-link-prev-next
-    %li.nav-item-link-prev
+  %ul.nav-item__link-prev-next
+    %li.nav-item__link-prev
       =link_to root_path do
         =fa_icon "angle-left"
         花柄ワンピース
-    %li.nav-item-link-next
+    %li.nav-item__link-next
       =link_to root_path do
         レインコート
         =fa_icon "angle-right"
   
-  .item-social-media-box
-    .text-center
-      %ul.social-media-box
-        %li
-          =link_to "http://www.facebook.com" do
-            =fa_icon "facebook-square", class:"icon-facebook"
-        %li
-          =link_to "http://www.twitter.com" do
-            =fa_icon "twitter-square", class:"icon-twitter"
-        %li
-          =link_to "http://www.pinterest.com" do
-            =fa_icon "pinterest-square", class:"icon-pinterest"
+  .item__social-media-box
+    %ul.item__social-media-box__links
+      %li
+        =link_to "http://www.facebook.com" do
+          =fa_icon "facebook-square", class:"icon-facebook"
+      %li
+        =link_to "http://www.twitter.com" do
+          =fa_icon "twitter-square", class:"icon-twitter"
+      %li
+        =link_to "http://www.pinterest.com" do
+          =fa_icon "pinterest-square", class:"icon-pinterest"
   
 
 
