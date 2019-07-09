@@ -27,8 +27,43 @@
     %h3
       = link_to '/' do
         %span.parent-span メンズ
-  %li.header-nav-parent
+    %ul.header-nav-child-wrap
+      %li.header-nav-child
+        = link_to '/' do
+          %span スーツ
+        %ul.header-nav-grand-child-wrap
+          %li.header-nav-grand-child
+            =link_to '/' do
+              %span ネクタイ
+          %li.header-nav-grand-child
+            =link_to '/' do
+              %span ベルト
+      %li.header-nav-child
+        = link_to '/' do
+          %span 海パン
+      %li.header-nav-child
+        = link_to '/' do
+          %span 帽子
+
+  %li.header-nav-parent#header-nav-parent
     %h3
       = link_to '/' do
         %span.parent-span ベビー・キッズ
+    %ul.header-nav-child-wrap
+      %li.header-nav-child#headeer-nav-child
+        = link_to '/' do
+          %span おもちゃ
+        %ul.header-nav-grand-child-wrap
+          %li.header-nav-grand-child
+            =link_to '/' do
+              %span くるま
+          %li.header-nav-grand-child
+            =link_to '/' do
+              %span あやかすときに使うアレ
+      %li.header-nav-child
+        = link_to '/' do
+          %span ベビーかー
+      %li.header-nav-child
+        = link_to '/' do
+          %span 洋服
   
