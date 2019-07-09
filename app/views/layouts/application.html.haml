@@ -29,11 +29,11 @@
               %h2
                 = link_to '/', class:'header-category' do
                   = fa_icon 'list',class:'header-icon'
-                  %span カテゴリーから探す  
+                  %span.b-left__span カテゴリーから探す  
               %h2
                 = link_to '/',class:'header-brand' do
                   =fa_icon 'tag',class:'header-icon'
-                  %span ブランドから探す
+                  %span.b-left__span ブランドから探す 
                   
             .b-right
               %ul.header-nav
@@ -52,6 +52,6 @@
                 %li.header-user-nav
                   %h2
                     = link_to '/',class:'header-menu-link' do
-                      = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-icon'
+                      = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-img'
                       %span マイページ
     = yield
