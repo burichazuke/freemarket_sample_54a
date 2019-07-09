@@ -17,11 +17,7 @@ Rails.application.routes.draw do
   end
   
   root 'items#index'
-  resources :users
-  namespace :mypage do
-    get :info
-  end
-  # resources :users,  only: [:index, :show]
+  resources :users,  only: [:index, :show]
   resources :items
     resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
