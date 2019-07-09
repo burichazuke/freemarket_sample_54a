@@ -1,7 +1,7 @@
 // 1つ目のページ
 %main.single__page__main
-  .single__container
-    %h2.single__head
+  .single__page__main__container
+    %h2.single__page__main__head
       会員情報入力（今はメルアドとパスワードのみ入力して）
     = form_for resource, url: create_user_registration_path, html: {method: :post, class: "single__form"} do |f|
       = devise_error_messages!
