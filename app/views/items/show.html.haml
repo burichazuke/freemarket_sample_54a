@@ -1,2 +1,110 @@
-%h1 Items#show
-%p Find me in app/views/items/show.html.haml
+.show-container
+  
+  .item__box-container
+    %h1.item__name 【アダムエロペ】花柄ショートパンツ
+    .item__main-content
+      .item__photo
+        .owl__carousel
+          .owl__item__inner
+            %img(src="../images/noImage1.jpg" alt="")
+         
+      %table.item__detail-table
+        %tboby
+          %tr
+            %th 出品者
+            %td
+              =link_to root_path do
+                めるこ
+          %tr
+            %th カテゴリー
+            %td
+              =link_to root_path do
+                レディース
+          %tr
+            %th ブランド
+            %td
+              =link_to root_path do
+                エルメス
+          %tr
+            %th 商品のサイズ
+            %td M
+          %tr
+            %th 商品の状態
+            %td 新品、未使用
+          %tr
+            %th 配送料の負担
+            %td 送料込み(出品者負担)
+          %tr
+            %th 配送の方法
+            %td らくらくメルカリ便
+          %tr
+            %th 配送元地域
+            %td
+              =link_to root_path do
+                神奈川県
+          %tr
+            %th 配達日の目安
+            %td 1~2日で発送
+
+    .item__price-box
+      %span.item__price-box__price
+        ¥450
+      %span.item__price-box__tax
+        (税込)
+      %span.item__price-box__shipping-fee
+        送料込み
+    =link_to root_path, class: "item__buy-btn" do
+      購入画面に進む
+  
+    %section.item__description
+      %p.item__description__innner
+        アダムエロペ
+        %br
+        花柄ショートパンツ（ネイビー×ブルー×ホワイト）
+        %br
+        サイズ36 
+        %br
+        Sサイズで選択してとりますが、当方は158センチ46キロで、普段Mサイズを履いており、こちらも問題なく履けました
+        簡易包装で発送予定です
+
+    .item__button-container
+      .item__button__left
+        %button.item__button.item__button__like
+          =fa_icon "heart-o"
+          %span いいね!
+        %button.item__button.item__button__report
+          =fa_icon "flag-o"
+          %span 不適切な商品の報告
+      .item__button__right
+        =link_to "https://www.mercari.com/jp/safe/description/" do
+          =fa_icon "lock"
+          %span あんしん・あんぜんへの取り組み
+
+
+  =render "comment" #コメント欄部分テンプレート
+
+  %ul.nav-item__link-prev-next
+    %li.nav-item__link-prev
+      =link_to root_path do
+        =fa_icon "angle-left"
+        花柄ワンピース
+    %li.nav-item__link-next
+      =link_to root_path do
+        レインコート
+        =fa_icon "angle-right"
+  
+  .item__social-media-box
+    %ul.item__social-media-box__links
+      %li
+        =link_to "http://www.facebook.com" do
+          =fa_icon "facebook-square", class:"icon-facebook"
+      %li
+        =link_to "http://www.twitter.com" do
+          =fa_icon "twitter-square", class:"icon-twitter"
+      %li
+        =link_to "http://www.pinterest.com" do
+          =fa_icon "pinterest-square", class:"icon-pinterest"
+  
+
+
+
