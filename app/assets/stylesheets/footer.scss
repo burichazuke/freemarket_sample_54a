@@ -3,6 +3,56 @@
   &__banner{
     width: 100%;
     height: 260px;
-    background-image: image-url()
+    background-image: image-url("footer_bg_pc.jpg");
+    &__pc{
+      width: 750px;
+      height: 100%;
+      margin: 0 auto;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      &__inner{
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        h2{
+          font-size: 24px;
+          color:#fff;
+          font-weight: bold;
+        }
+        p{
+          font-size: 35px;
+          margin-top: 10px;
+          color: #fff;
+        }
+        &__icons{
+          margin-top: 20px;
+          &__mercari{
+            height: 68px;
+            width: 68px;
+          }
+          &__svg{
+            height: 40px;
+            width: 133px;
+            margin-left: 20px;
+            cursor: pointer;
+          }
+        }
+      }
+      &__img{
+        height: 260px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        img{
+          height: 260px;
+        }
+      }
+    }
+  }
+  &__global{
+    width: 100%;
+    height:400px;
+    background: #212121;
   }
 }
