@@ -5,15 +5,9 @@
     .item-main-content
       .item-photo
         .owl-carousel
-          .owl-stage-outer
-            .owl-stage
-              .owl-item-inner
-                %img(src="../images/noImage1.jpg" alt="")
-          .owl-nav
-            .owl-prev
-            .owl-next
-          .owl-dots
-          
+          .owl-item-inner
+            %img(src="../images/noImage1.jpg" alt="")
+         
       %table.item-detail-table
         %tboby
           %tr
@@ -86,17 +80,8 @@
           =fa_icon "lock"
           %span あんしん・あんぜんへの取り組み
 
-  .item-detail-message
-    .message-container
-      .message-content
-        %form.message-form{action: "https://www.mercari.com/jp/comment/add/", method:"POST"}
-          %p
-            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          .textarea-default
-            %textarea{comment: ""}
-          
-          %button.message-submit.btn-default.btn-gray{:type => "submit"}
-            %span コメントする
+
+  =render "comment" #コメント欄部分テンプレート
 
   %ul.nav-item-link-prev-next
     %li.nav-item-link-prev
