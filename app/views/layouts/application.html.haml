@@ -28,28 +28,30 @@
             .b-left
               %h2
                 = link_to '/', class:'header-category' do
-                  = fa_icon 'list'
+                  = fa_icon 'list',class:'header-icon'
                   %span カテゴリーから探す  
               %h2
                 = link_to '/',class:'header-brand' do
-                  =fa_icon 'tag',class:'search-icon'
+                  =fa_icon 'tag',class:'header-icon'
                   %span ブランドから探す
                   
             .b-right
-              %ul.header-user-nav
+              %ul.header-nav
                 %li.header-user-nav
-                  = link_to '/', class:'header-menu-link' do
-                    = fa_icon 'bell',class:'header-menu-link__icon'
-                    %span お知らせ
+                  %h2
+                    = link_to '/', class:'header-menu-link' do
+                      = fa_icon 'bell-o',class:'header-user-icon'
+                      %span お知らせ
 
                 %li.header-user-nav
-                  = link_to '/',class:'header-menu-link' do
-                    = fa_icon 'check',class:'header-menu-link__icon'
-                    %span やることリスト
+                  %h2
+                    = link_to '/',class:'header-menu-link' do
+                      = fa_icon 'check',class:'header-user-icon'
+                      %span やることリスト
 
                 %li.header-user-nav
-                  = link_to '/',class:'header-menu-link' do
-                    %figure
+                  %h2
+                    = link_to '/',class:'header-menu-link' do
                       = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-icon'
-                    %span マイページ
+                      %span マイページ
     = yield
