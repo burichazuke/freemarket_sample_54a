@@ -33,13 +33,12 @@ Rails.application.routes.draw do
     get "mypage/review/history", to: "mypage#review"
   end
 
-  resources :items, except: :new do
-
-  end
+  
   as :items do
     get "transaction/buy/:id", to: "items#buy", as: :items_buy
-    get "items/sell", to: "items#sell", as: :items_sell
+    get "items/sell", to: "items#new", as: :items_sell
   end
+  resources :items, except: :new 
 
     resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
