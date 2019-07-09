@@ -8,54 +8,5 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-
-    %header
-      .header-inner
-        .header-top
-          .header-top__img
-            = link_to '/',class: 'header-logo-link' do
-              = image_tag 'mercari_logo.png', alt: 'mercari', height: '36', width: '134', class: 'header-logo'
-          
-          = form_with class:'header-form' do
-            = text_field_tag :search,'', type:'search', placeholder:'何かお探しですか？', class:'search-txt-field' 
-            .search-icon
-              =fa_icon 'search'
-                
-        .header-bottom
-          .header-nav
-            %ul.header-nav__left
-              %li
-                %h2
-                  = link_to '/', class:'header-nav__left__category' do
-                    = fa_icon 'list',class:'header-nav__left__icon'
-                    %span.header-nav__left__category__span カテゴリーから探す
-                = render '/layouts/category-nav'
-
-              %li
-                %h2
-                  = link_to '/',class:'header-nav__left__brand' do
-                    =fa_icon 'tag',class:'header-nav__left__icon'
-                    %span.b-left__span ブランドから探す 
-                  
-            .header-nav__right
-              %ul.header-nav
-                %li.header-nav__user
-                  %h2
-                    = link_to '/', class:'header-nav__user__link' do
-                      = fa_icon 'bell-o',class:'header-user-icon'
-                      %span お知らせ
-
-                %li.header-nav__user
-                  %h2
-                    = link_to '/',class:'header-nav__user__link' do
-                      = fa_icon 'check',class:'header-user-icon'
-                      %span やることリスト
-
-                %li.header-nav__user
-                  %h2
-                    = link_to '/',class:'header-nav__user__link' do
-                      = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-img'
-                      %span マイページ
-
-    = render "/layouts/header-nav"
+    = render '/shared/header'
     = yield

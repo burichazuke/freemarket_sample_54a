@@ -6,13 +6,15 @@
   float:left;
 
   .header-nav-parent{
+    //display: none;
     width:224px;
     height:44px;
     line-height: 44px;
 
-    &:hover {
+    &:hover{
       width:224px;
       background-color:#EA352E;
+      color:white;
      
     }
     
