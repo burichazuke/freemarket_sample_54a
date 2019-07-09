@@ -4,4 +4,8 @@ class ItemsController < ApplicationController
 
   def show
   end
+
+  def buy
+    render layout: "single"
+  end
 end
