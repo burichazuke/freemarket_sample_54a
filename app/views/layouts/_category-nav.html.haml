@@ -1,0 +1,32 @@
+%ul.header-nav-parent-wrap
+  %li.header-nav-parent
+    %h3
+      = link_to '/' do
+        %span レディース
+    %ul.header-nav-child-wrap
+      %li.header-nav-child
+        = link_to '/' do
+          %span トップス
+        %ul.header-nav-grand-child-wrap
+          %li.header-nav-grand-child
+            =link_to '/' do
+              %span Tシャツ/カットソー（半袖なし/袖なし）
+          %li.header-nav-grand-child
+            =link_to '/' do
+              %span Tシャツ/カットソー（七分/長袖)
+      %li.header-nav-child
+        = link_to '/' do
+          %span ジャケット
+      %li.header-nav-child
+        = link_to '/' do
+          %span パンツ
+
+  %li.header-nav-parent
+    %h3
+      = link_to '/' do
+        %span メンズ
+  %li.header-nav-parent
+    %h3
+      = link_to '/' do
+        %span ベビー・キッズ
+  

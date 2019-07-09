@@ -23,15 +23,19 @@
                 
         .header-bottom
           .header-nav
-            .header-nav__left
-              %h2
-                = link_to '/', class:'header-nav__left__category' do
-                  = fa_icon 'list',class:'header-nav__left__icon'
-                  %span.header-nav__left__category__span カテゴリーから探す  
-              %h2
-                = link_to '/',class:'header-nav__left__brand' do
-                  =fa_icon 'tag',class:'header-nav__left__icon'
-                  %span.b-left__span ブランドから探す 
+            %ul.header-nav__left
+              %li
+                %h2
+                  = link_to '/', class:'header-nav__left__category' do
+                    = fa_icon 'list',class:'header-nav__left__icon'
+                    %span.header-nav__left__category__span カテゴリーから探す
+                = render '/layouts/category-nav'
+
+              %li
+                %h2
+                  = link_to '/',class:'header-nav__left__brand' do
+                    =fa_icon 'tag',class:'header-nav__left__icon'
+                    %span.b-left__span ブランドから探す 
                   
             .header-nav__right
               %ul.header-nav
