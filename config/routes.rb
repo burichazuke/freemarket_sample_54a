@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   end
 
   root to: "items#index"
-  devise_for :users
   resources :users,  only: [:show]
   resources :mypage, only: [:index] do
     collection do
