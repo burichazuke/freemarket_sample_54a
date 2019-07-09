@@ -1,9 +1,11 @@
-$(function(){
-  
+$(document).ready(function(){
+  //console.log(this)
   $('#header-category').hover(
-    
     function(){
-      $('.header-nav-parent-wrap').show();
+      $('.header-nav-parent').show();
+    },
+    function(){
+      $('.header-nav-parent').hide();
     }
   );
 });
