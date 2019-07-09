@@ -11,7 +11,6 @@
 
     %header
       .header-inner
-
         .header-top
           .header-top__img
             = link_to '/',class: 'header-logo-link' do
@@ -24,34 +23,35 @@
                 
         .header-bottom
           .header-nav
-
-            .b-left
+            .header-nav__left
               %h2
-                = link_to '/', class:'header-category' do
-                  = fa_icon 'list',class:'header-icon'
-                  %span.b-left__span カテゴリーから探す  
+                = link_to '/', class:'header-nav__left__category' do
+                  = fa_icon 'list',class:'header-nav__left__icon'
+                  %span.header-nav__left__category__span カテゴリーから探す  
               %h2
-                = link_to '/',class:'header-brand' do
-                  =fa_icon 'tag',class:'header-icon'
+                = link_to '/',class:'header-nav__left__brand' do
+                  =fa_icon 'tag',class:'header-nav__left__icon'
                   %span.b-left__span ブランドから探す 
                   
-            .b-right
+            .header-nav__right
               %ul.header-nav
-                %li.header-user-nav
+                %li.header-nav__user
                   %h2
-                    = link_to '/', class:'header-menu-link' do
+                    = link_to '/', class:'header-nav__user__link' do
                       = fa_icon 'bell-o',class:'header-user-icon'
                       %span お知らせ
 
-                %li.header-user-nav
+                %li.header-nav__user
                   %h2
-                    = link_to '/',class:'header-menu-link' do
+                    = link_to '/',class:'header-nav__user__link' do
                       = fa_icon 'check',class:'header-user-icon'
                       %span やることリスト
 
-                %li.header-user-nav
+                %li.header-nav__user
                   %h2
-                    = link_to '/',class:'header-menu-link' do
+                    = link_to '/',class:'header-nav__user__link' do
                       = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-img'
                       %span マイページ
+
+    = render "/layouts/header-nav"
     = yield
