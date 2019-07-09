@@ -4,4 +4,10 @@ class ItemsController < ApplicationController
 
   def show
   end
+
+  def new
+    @item = ""
+    render layout: "single"
+  end
+  
 end

@@ -1,0 +1,90 @@
+%main.single__page__main
+  .single__page__main__container
+    %h2.single__page__main__head
+      商品の情報を入力
+    = form_for @item, url: "/items", html: {method: :post, class: "single__form__i"} do |f|
+      .sell-upload-box
+        .single__field__photo
+          .single__field__photo__label
+            = label :devise, :nickname, "出品画像"
+            %span.single__field__require 必須
+          %p 最大10枚までアップロードできます
+          .single__field__input__photo
+            = text_field :devise, :nickname, autofocus: true, placeholder: ""
+      
+      .sell-content
+        .single__field
+          .single__field__label
+            = f.label :item_name, "商品名"
+            %span.single__field__require 必須
+          .single__field__input
+            = f.text_field :item_name, placeholder: "商品名（必須40文字まで）"
+        .single__field
+          .single__field__label
+            = f.label :item_description, "商品の説明"
+            %span.single__field__require 必須
+          .single__field__input
+            = f.text_field :item_description, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+
+      .sell-content
+        %h3 商品の詳細
+        .single__field
+          .single__field__label
+            = f.label :item_description, "カテゴリー"
+            %span.single__field__require 必須
+          .single__field__input
+            = f.text_field :item_description, placeholder: "---"
+
+        .single__field
+          .single__field__label
+            = f.label :item_description, "商品の状態"
+            %span.single__field__require 必須
+          .single__field__input
+            = f.text_field :item_description, placeholder: "---"
+
+      .sell-content
+        .single__field
+          .single__field__label
+            = f.label :item_description, "配送料の負担"
+            %span.single__field__require 必須
+          .single__field__input
+            = f.text_field :item_description, placeholder: "---"
+
+        .single__field
+          .single__field__label
+            = f.label :item_description, "発送元の地域"
+            %span.single__field__require 必須
+          .single__field__input
+            = f.text_field :item_description, placeholder: "---"
+
+        .single__field
+          .single__field__label
+            = f.label :item_description, "発送までの日数"
+            %span.single__field__require 必須
+          .single__field__input
+            = f.text_field :item_description, placeholder: "---"
+
+      .sell-content
+        .single__field
+          .single__field__label
+            = f.label :item_description, "価格"
+            %span.single__field__require 必須
+          .single__field__input
+            = f.text_field :item_description, placeholder: "---"
+
+      -# .sell-content__last
+      -# %p.single__field__text
+      -#   禁止されている出品、行為を必ずご確認ください。
+      -#   %br またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
+      -#   %br また、出品をもちまして加盟店規約に同意したことになります。
+      
+      .single__field
+        %p.single__field__text.single__field__text--center
+      
+      = f.submit "出品する", class: "single__form__send-btn" 
+
+      .single__field
+        %p.single__field__text.single__field__text--center
+      
+      = f.submit "もどる", class: "single__form__send-btn" 
+
