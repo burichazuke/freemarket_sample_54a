@@ -3,6 +3,9 @@
     background-color: white;
     width: 700px;
     margin: 0 auto;
+    &--small {
+      width: 450px;
+    }
   }
   &__head {
     font-size: 22px;
@@ -12,6 +15,14 @@
     margin: 0 auto;
     text-align: center;
     border-bottom: 1px solid $gray;
+    &--sign-up {
+      margin: 0 auto;
+      padding: 20px 0;
+      text-align: center;
+      border-bottom: 1px solid $gray;
+      height: 100px;
+      width: 350px;
+    }
   }  
 }
 
@@ -26,11 +37,15 @@
     text-align: center;
     color: white;
     margin-top: 20px;
+    font-size: 14px;
+  }
+  &--inner {
+    margin-bottom: 40px; 
   }
 }
 
 .single__field {
-  margin-top: 20px;
+  margin: 20px auto 0;
   &__label {
     font-size: 14px;
     font-weight: bold;
@@ -43,12 +58,16 @@
     padding: 2px 4px;
     margin-left: 8px;
     font-weight: normal;
+    &--option {
+      background-color: #aaaaaa;
+    }
   }
   &__input {
+    padding-top: 8px;
     input {
-      width: 100%;
+      width: calc(100% - 32px);
       padding: 10px 16px;
-      border: 1px solid $gray;
+      border: 1px solid #aaaaaa;
       border-radius: 5px;
     }
   }
@@ -61,10 +80,19 @@
   &__text {
     margin-top: 10px;
     font-size: 14px;
-    color: #888888;
+    color: black;
+    &--gray {
+      color: #888888;
+    }
     &--center {
-      color: black;
       text-align: center;
+    }
+    &__link {
+      color: #1499E8;
+      display: block;
+      &--right {
+        text-align: right;
+      }
     }
   }
   .robot-check {
@@ -78,5 +106,3 @@
     border-radius: 4px;
   }
 }
-
-
