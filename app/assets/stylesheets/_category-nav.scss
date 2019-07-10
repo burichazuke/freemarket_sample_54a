@@ -43,7 +43,8 @@
   background: #fff;
   
   .header-nav-child{
-    display: none;
+    display: block;
+    //display: none;
     width:224px;
     height: 30px;
     line-height: 30px;
@@ -74,7 +75,8 @@
   background: #fff;
 
   .header-nav-grand-child{
-    display: none;
+    display: block;
+    //display: none;
     width:320px;
     height: 30px;
     line-height: 30px;
