@@ -2,7 +2,7 @@
   announces =[{
     Name:"コメントがつきました", url:"#"
   },{
-    Name:"いいね！がつきました", url:"#"
+    Name:"いいね！！！！がつきました", url:"#"
   },{
     Name:"事務局からメッセージ！コメントがつきました！いいねがつきました！確認してください！", url:"#"
   }]
@@ -44,18 +44,8 @@
         .mypage__content__tab-content
           %ul.mypage__content__tab-content__item-list
             - announces.each do |announce|
-              %li
-                = link_to user_path(current_user), class: "mypage__content__tab-content__item-list__link" do
-                  .mypage__content__tab-content__item-list__icon
-                    = image_tag "mercari_icon.png", size: "48x48"
-                  .mypage__content__tab-content__item-list__body
-                    .mypage__content__tab-content__item-list__body--text #{announce[:Name]}
-                    .mypage__content__tab-content__item-list__body--icon-time
-                      = fa_icon 'twitter', class: 'icon'
-                    %span 1分前
-                  .mypage__content__tab-content__item-list__right-icon
-                    =fa_icon "angle-right", class: 'icon-chek'
-                
+              = render partial: "tab-list", locals: { announce: announce }
+              
             %li.mypage__content__tab-content__item-list--index
               = link_to user_path(current_user) do
                 一覧を見る
