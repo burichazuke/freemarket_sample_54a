@@ -1,0 +1,33 @@
+// signUpページのbtn
+.sign-up__btn {
+  display: block;
+  height: 50px;
+  width: 345px;
+  border: 1px solid transparent;
+  margin-top: 20px;
+  text-align: center;
+  color: black;
+  line-height: 50px;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
+  &--mail {
+    background-color: $gray;
+  }
+  &--facebook {
+    background-color: #385185;
+    color: white;
+  }
+  &--google {
+    border: 1px solid #979797;
+  }
+  .sign-up__icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translate(0, -50%);
+    &--mail {
+      color: #cccccc;
+    }
+  }
+}
