@@ -1,0 +1,18 @@
+// 2つ目のページ
+%main.single__page__main
+  .single__page__main__container
+    %h2.single__page__main__head
+      電話番号の確認
+    = form_for resource, url: create_user_registration_path, html: {method: :post, class: "single__form"} do |f|
+      .single__field
+        .single__field__label
+          = label :devise, :phone, "携帯電話の番号"
+        .single__field__input
+          = text_field :devise, :phone, autofocus: true, placeholder: "携帯電話の番号を入力"
+        %p.single__field__text  
+          本人確認のため、携帯電話のSMS（ショートメッセージサービス）を利用して認証を行います。
+      = f.submit "SMSを送信する", class: "single__form__send-btn"
+      %p.single__field__text
+        ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+      .single__field
+        = link_to "電話番号の確認が必要な理由>", "/", class: "single__field__text single__field__text__link--right"
