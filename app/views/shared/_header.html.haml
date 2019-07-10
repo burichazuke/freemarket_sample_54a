@@ -20,11 +20,12 @@
                 %span.header-nav__left__category__span カテゴリーから探す
             = render '/shared/category-nav'
 
-          %li
+          %li#header-brand
             %h2
               = link_to '/',class:'header-nav__left__brand' do
                 =fa_icon 'tag',class:'header-nav__left__icon'
                 %span.b-left__span ブランドから探す 
+              = render '/shared/brand-nav'
               
         .header-nav__right
           %ul.header-nav

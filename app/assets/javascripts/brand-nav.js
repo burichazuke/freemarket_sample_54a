@@ -1,0 +1,11 @@
+$(document).ready(function(){
+  //必ず必要
+  $('#header-brand').hover(
+    function(){
+      $('.header-brand-nav-parent').show();
+    },
+    function(){
+      $('.header-brand-nav-parent').hide();
+    }
+  );
+});

@@ -1,0 +1,34 @@
+.header-nav-parent-wrap{
+  background-color:white;
+  width:auto;
+  position: absolute;
+  float:left;
+
+  .header-brand-nav-parent{
+    display: none;
+    width:224px;
+    height:44px;
+    line-height: 44px;
+
+    &:hover{
+      width:224px;
+      background-color:#EA352E;
+      color:white;
+     
+    }
+    
+    span{
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 14px;
+      padding:8px 16px;
+      text-decoration: none;
+      color:black;
+    }
+    a{
+      text-decoration: none;
+      
+    }
+  }
+}
