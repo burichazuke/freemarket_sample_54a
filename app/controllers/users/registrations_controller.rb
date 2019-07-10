@@ -5,9 +5,29 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
-
+  # 後々、wicked用のクラスを作成してそこに基本メソッド以外のメソッドは移行する予定
   # GET /resource/sign_up
   def register
+  end
+
+  # GET /resource/sign_up/sms_confirmation
+  def sms_confirmation
+    @user = ""
+  end
+
+  # GET /resource/sign_up/address
+  def address
+    @user = ""
+  end
+
+  # GET /resource/sign_up/credit_card
+  def credit_card
+    @user = ""
+  end
+
+  # GET /resource/sign_up/credit_card
+  def finish
+    @user = ""
   end
 
   # GET /resource/sign_up/registration
