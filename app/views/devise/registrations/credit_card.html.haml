@@ -1,0 +1,30 @@
+// 4つ目のページ
+%main.single__page__main
+  .single__page__main__container
+    %h2.single__page__main__head
+      支払い方法
+    = form_for resource, url: create_user_registration_path, html: {method: :post, class: "single__form"} do |f|
+      .single__field
+        .single__field__label
+          = label :credit_card, :number, "カード番号"
+          %span.single__field__require 必須
+        .single__field__input
+          = text_field :credit_card, :number, placeholder: "半角数字のみ"
+      .single__field
+        .single__field__label
+          = label :credit_card, :valid, "カード番号"
+          %span.single__field__require 必須
+        .single__field__select
+          = select :credit_card, :valid_month, placeholder: ""
+          %span 月
+        .single__field__select
+          = select :credit_card, :valid_year,  placeholder: ""
+          %span 年
+      .single__field
+        .single__field__label
+          = label :credit_card, :number, "セキュリティコード"
+          %span.single__field__require 必須
+        .single__field__input
+          = text_field :credit_card, :number, placeholder: "カード背面4桁もしくは3桁の番号"
+        = link_to "カード裏面の番号とは？", "/", class: "single__field__text single__field__text--link"
+      = f.submit "次へ進む", class: "single__form__send-btn"
