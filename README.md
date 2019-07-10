@@ -168,11 +168,6 @@
 - belongs_to_active_hash :brand
 
 
-## Prefecturesテーブル（静的データ）
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|
-
 ## To-dosテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -203,6 +198,14 @@
 ### Association
 - belongs_to :user
 - belongs_to :notification
+
+# その他データ
+## Prefectures（静的データ）
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+### メモ
+- active hash　使用
 
 * Database initialization
 
