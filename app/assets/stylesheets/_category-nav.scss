@@ -1,22 +1,29 @@
-
+//親
+.active{
+  display:block;
+  width:224px;
+  background-color:#EA352E;
+  color:white;
+}
+.active2{
+  display:block;
+  width:224px;
+  background-color:#EA352E;
+  color:white;
+}
 .header-nav-parent-wrap{
+  display: none;
   background-color:white;
   width:auto;
   position: absolute;
   float:left;
 
   .header-nav-parent{
-    display: none;
+    
     width:224px;
     height:44px;
     line-height: 44px;
 
-    &:hover{
-      width:224px;
-      background-color:#EA352E;
-      color:white;
-     
-    }
     
     span{
       overflow: hidden;
@@ -33,7 +40,10 @@
     }
   }
 }
+
+//子
 .header-nav-child-wrap{
+  display: none;
   width:auto;
   position: absolute;
   top:0;
@@ -43,8 +53,6 @@
   background: #fff;
   
   .header-nav-child{
-    display: block;
-    //display: none;
     width:224px;
     height: 30px;
     line-height: 30px;
@@ -65,7 +73,9 @@
   }
 }
 
+//孫
 .header-nav-grand-child-wrap{
+  display: none;
   width:auto;
   position: absolute;
   top:0;
@@ -75,8 +85,6 @@
   background: #fff;
 
   .header-nav-grand-child{
-    display: block;
-    //display: none;
     width:320px;
     height: 30px;
     line-height: 30px;
