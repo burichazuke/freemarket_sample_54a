@@ -173,7 +173,7 @@
 |------|----|-------|
 |name|string|null: false|
 
-## To-dosテーブル（静的データ）
+## To-dosテーブル
 |Column|Type|Options|
 |------|----|-------|
 |content|string|null: false|
@@ -181,13 +181,13 @@
 ### Association
 - belongs_to :user
 
-## Informationsテーブル（静的データ）
+## Informationsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |title|string|null: false|
 |content|string|null: false|
 
-## Notificationsテーブル（静的データ）
+## Notificationsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |content|string|null: false|
@@ -195,7 +195,7 @@
 - has_many :user_notifications
 - has_many :users, through :user_notifications
 
-## User_notificationsテーブル（静的データ）
+## User_notificationsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |notification_id|string|null: false|
