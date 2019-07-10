@@ -20,7 +20,7 @@
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
 |birthday|date|null: false|
-|phone|integer|null: false|
+|phone|string|null: false|
 |wallet|integer|null: false|
 #### 上記に加えてpassword関連も用意。
 ### Association
@@ -42,7 +42,7 @@
 ## addressesテーブル
 |Column|Type|Options|
 |------|-----|-------|
-|postal_code|integer|null: false|
+|postal_code|string|null: false|
 |prefecture|string|null: false|
 |municipalities|string|null: false|
 |address|string|null: false|
@@ -109,7 +109,7 @@
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|image|text|null: false|
+|image|string|null: false|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
