@@ -1,11 +1,11 @@
-.header-nav-parent-wrap{
+.header-nav-parent-wrap2{
   background-color:white;
   width:auto;
   position: absolute;
   float:left;
+  display: none;
 
   .header-brand-nav-parent{
-    display: none;
     width:224px;
     height:44px;
     line-height: 44px;
@@ -24,11 +24,11 @@
       font-size: 14px;
       padding:8px 16px;
       text-decoration: none;
-      color:black;
+      
     }
     a{
       text-decoration: none;
-      
+      color:black;
     }
   }
 }

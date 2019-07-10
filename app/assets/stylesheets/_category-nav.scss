@@ -3,13 +3,14 @@
   display:block;
   width:224px;
   background-color:#EA352E;
-  color:white;
+  span{
+    color:white;
+  }
 }
 .active2{
   display:block;
   width:224px;
   background-color:#EA352E;
-  color:white;
 }
 .header-nav-parent-wrap{
   display: none;
@@ -32,11 +33,12 @@
       font-size: 14px;
       padding:8px 16px;
       text-decoration: none;
-      color:black;
+      //color:black;
     }
     a{
       text-decoration: none;
-      
+      color: black;
+
     }
   }
 }
