@@ -30,11 +30,11 @@ $dark-red: #ea352d;
         font-size: 12px;
       }
     }
-    // あとで綺麗にする必要あり
-    &__logo p{
+    &__logo{
+      display: block;
       margin: 40px auto 0;
     }
-    p small {
+    &__copyright {
       font-size: 13px;
     }
   }
