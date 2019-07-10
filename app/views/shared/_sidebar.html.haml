@@ -1,0 +1,13 @@
+:ruby 
+  sidelists = [{
+    name: "マイページ",
+    url: "/"},{
+      name: "お知らせ",
+      url: "/"
+    }]
+
+.sidebar
+  %ul
+    -sidelists.each do |list|
+      %li
+        =list[:name]
