@@ -20,12 +20,12 @@ $(document).ready(function(){
 
   //孫
   $('.header-nav-child').hover(function(){
-    $(this).addClass('active2')
-    var grandChild = $('.active2').children('.header-nav-grand-child-wrap')
+    $(this).addClass('active-child')
+    var grandChild = $('.active-child').children('.header-nav-grand-child-wrap')
     grandChild.show();
 
   },function(){
-    $(this).removeClass('active2');
+    $(this).removeClass('active-child');
     $(this).children('.header-nav-grand-child-wrap').hide();
   });
 });

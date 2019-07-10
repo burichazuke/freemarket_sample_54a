@@ -1,4 +1,4 @@
-// active,active2はjQueryで使用しています
+// active,active-childはjQueryで使用しています
 .active{
   display:block;
   width:224px;
@@ -7,20 +7,29 @@
     color:white;
   }
 }
-.active2{
-  display:block;
-  width:224px;
-  background-color:#EA352E;
+.active-child{
+  display:block; 
+  background-color: #f5f5f5;
+  span{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+    padding:8px 16px;
+    text-decoration: none;
+    color:black;
+  }
 }
+
 //親
 .header-nav-parent-wrap{
   display: none;
   background-color:white;
   width:auto;
   position: absolute;
+  z-index:1000; //下との重なりを解消しています。
 
   .header-nav-parent{
-    
     width:224px;
     height:44px;
     line-height: 44px;
@@ -90,14 +99,6 @@
     &:hover{
       background-color: #f5f5f5;
     }
-    span{
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      font-size: 14px;
-      padding:8px 16px;
-      text-decoration: none;
-      color:black;
-    }
+    
   }
 }

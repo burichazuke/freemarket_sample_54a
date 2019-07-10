@@ -4,6 +4,7 @@
   position: absolute;
   float:left;
   display: none;
+  z-index:1000; //下との重なりを解消しています。
 
   .header-brand-nav-parent{
     width:224px;
@@ -14,17 +15,13 @@
       width:224px;
       background-color:#EA352E;
       color:white;
-     
     }
-    
     span{
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
       font-size: 14px;
       padding:8px 16px;
-      text-decoration: none;
-      
     }
     a{
       text-decoration: none;
