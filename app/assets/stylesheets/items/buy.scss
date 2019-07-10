@@ -1,0 +1,104 @@
+.purchase-confirmations{
+  &__head{
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    padding: 16px;
+    border-bottom: 1px solid #f5f5f5;
+  }
+  &__container{
+    border-bottom: 1px solid #f5f5f5;
+  }
+  &__item{
+    width: 320px;
+    margin: 0 auto;
+    padding: 24px 0 40px; 
+
+    &__detail{
+      display: flex;
+      &__img{
+        height: 64px;
+        width: 64px;
+        object-fit: cover;
+      }
+      &__name{
+        padding-left: 16px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+    &__price{
+      text-align: center;
+      padding-top: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      span{
+        font-size: 14px;
+        font-weight: normal;
+        margin-left: 8px;
+      }
+    }
+    &__point{
+      font-size: 14px;
+      background: #cccccc;
+      margin-top: 16px; 
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+    }
+    &__pey-price{
+      font-size: 18px;
+      font-weight: bold;
+      margin: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      span{
+        font-size: 22px;
+        line-height: 22px;
+      }
+    }
+  }
+  .buy-user-info{
+    width: 320px;
+    margin: 0 auto;
+    padding: 24px 0 40px; 
+    font-size: 13px;
+    &__address{
+      h3{
+        font-weight: bold;
+      }
+      address{
+        margin-top: 8px;
+      }
+    }
+    &__fix{
+      text-align: right;
+      display: block;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+    &__credit{
+      h3{
+        font-weight: bold;
+      }
+      &__number{
+        margin-top: 8px;
+      }
+      img{
+        width: 34px;
+        height: 20px;
+        background: violet;
+      }
+    }
+  }
+}
+
+.purchase-button{
+  background: #ea352d;
+  width: 320px;
+  height: 50px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}
