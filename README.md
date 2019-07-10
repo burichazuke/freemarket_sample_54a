@@ -72,8 +72,8 @@
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
 - has_many :images
-- belongs_to :category
-- belongs_to :brand
+- belongs_to_active_hash :category
+- belongs_to_active_hash :brand
 - has_many :comments
 - has_many :favorites
 - has_many :users, through: :favorites
@@ -110,7 +110,7 @@
 |item_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
-- belongs_to :blog
+- belongs_to :item
 
 
 ## categoriesテーブル（静的データ）
@@ -118,21 +118,22 @@
 |------|----|-------|
 |name|string|null: false|
 |ancestry|string|null: false|
-
 ### Association
 - has_ancestry
 - has_many :items
+- has_many_active_hash :brands
+### メモ
+- gem 'ancestry'を使用
 
 ## brandsテーブル（静的データ）
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-
+|category_id|integer|null: false|
 ### Association
 - has_many :items
+- belongs_to_active_hash :brand
 
-### メモ
-- gem 'ancestry'を使用
 
 ## prefecturesテーブル（静的データ）
 |Column|Type|Options|
