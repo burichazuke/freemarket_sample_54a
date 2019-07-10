@@ -1,2 +1,26 @@
 %h1 Users#edit
 %p Find me in app/views/users/edit.html.haml
+
+
+
+%main.
+  .mypage-content
+    %section.mypage-content__profile
+      %h2.mypage-content__profile__title
+        プロフィール
+      = fom_for @user, class: "mypage-content__profole__form" do |f|
+        .mypage-cotent__profile__head
+          %figure
+            =image_tag "", size:"60×60"
+          = f.text_field :nickname, class: "input-nickname-default", placeholder: "testman"
+        .mypage-content__profile__text__body
+          = f.text_area :introduction, class: "input-text-default", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます!商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
+
+
+
+
+
+
+
+
+
