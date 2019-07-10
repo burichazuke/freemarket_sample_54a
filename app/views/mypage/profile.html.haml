@@ -1,0 +1,16 @@
+
+
+%main.mypage-container
+  .mypage-content
+    %section.mypage-content__profile
+      %h2.mypage-content__profile__title
+        プロフィール
+      = form_for @user, class: "mypage-content__profole__form" do |f|
+        .mypage-cotent__profile__head
+          %figure
+            =image_tag "", size:"60×60"
+          = text_field "nickname", class: "input-nickname-default", placeholder: "testman"
+        .mypage-content__profile__text__body
+          = text_area "text", class: "input-text-default", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます!商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
+          %button.btn-default.btn-red{:type => "submit"} 変更する
+
