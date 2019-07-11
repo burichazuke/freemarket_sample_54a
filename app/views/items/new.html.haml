@@ -6,12 +6,16 @@
       .sell-content
         .single__field.single__field--large
           .single__field__label
-            = label :devise, :nickname, "出品画像"
+            = label :images, :image, "出品画像"
             %span.single__field__require 必須
           %p 最大10枚までアップロードできます
-          .sell-upload-box
-            .sell-upload-box.have-items
-              %input{ accept: "image/*", type: "file"}/
+          .sell-upload--container
+            = label :images, :image do
+              .sell-upload--box
+                = file_field :images, :image
+                %span.text-mark 
+                  ドラッグアンドドロップ
+                  またはクリックしてファイルをアップロード
 
       .sell-content
         .single__field.single__field--large
