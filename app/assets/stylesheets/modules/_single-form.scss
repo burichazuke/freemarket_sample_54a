@@ -25,15 +25,44 @@
     height: 50px;
     text-align: center;
     color: white;
-    margin-top: 20px;
+    margin: 20px auto 0;
+    display: block;
+    &--gray {
+      background-color: #888888;
+    }
+    &--small {
+      width: 45%;
+    }
   }
 }
 
 .single__field {
   margin-top: 20px;
+  &--large{
+    margin-top: 40px;
+    &:first-child {
+      margin-top: 0px;
+    }
+  }
   &__label {
     font-size: 14px;
     font-weight: bold;
+    display: flex;
+    &__left {
+      width: 50%;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    &__right {
+      width: 50%;
+      text-align: right;
+      display: flex;
+      p{
+        line-height: 46px;
+        margin-right: 8px;
+        font-size: 12px;
+      }
+    }
   }
   &__require {
     background-color: $dark-red;
@@ -43,13 +72,20 @@
     padding: 2px 4px;
     margin-left: 8px;
     font-weight: normal;
+    &--gray {
+      background-color: #888888;
+    }
   }
   &__input {
+    margin-top: 8px;
     input {
       width: calc(100% - 32px);
       padding: 10px 16px;
       border: 1px solid $gray;
       border-radius: 5px;
+    }
+    &--right input::placeholder {
+      text-align: right;
     }
   }
   h3 {

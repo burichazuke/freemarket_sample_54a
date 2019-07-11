@@ -9,11 +9,12 @@
             = label :devise, :nickname, "出品画像"
             %span.single__field__require 必須
           %p 最大10枚までアップロードできます
-          .single__field__input__photo
-            = text_field :devise, :nickname, autofocus: true, placeholder: ""
+          .sell-upload-box.have-items
+            %input{ accept: "image/*", type: "file"}/
+
       
       .sell-content
-        .single__field
+        .single__field.single__field--large
           .single__field__label
             = f.label :item_name, "商品名"
             %span.single__field__require 必須
@@ -27,12 +28,12 @@
             %form.comment-form{action: "", method:""} 
               .textarea-default
                 %textarea{comment: ""}
-                  = text_field :item_description, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+                  = f.text_field :item_description, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
 
       .sell-content.clearfix
         %h3 商品の詳細
         .sell-form-box
-          .single__field
+          .single__field.single__field--large
             .single__field__label
               = f.label :item_description, "カテゴリー"
               %span.single__field__require 必須
@@ -58,39 +59,43 @@
                 %option{value: "3"} シャツ/ブラウス(半袖/袖なし)
                 %option{value: "4"} シャツ/ブラウス(七分/長袖)
             
-            .single__field__second
-              .single__field__label
-                = f.label :item_description, "サイズ"
-                %span.single__field__require 必須
-              .single__field__select
-                %select{required: ""}
-                  %option{hidden: "", value: ""} --- 
-                  %option{value: "1"} XXS以下
-                  %option{value: "2"} XS(SS)
-                  %option{value: "3"} S
-                  %option{value: "4"} M
 
+          .single__field.single__field--large
+            .single__field__label
+              = f.label :item_description, "サイズ"
+              %span.single__field__require 必須
+            .single__field__select
+              %select{required: ""}
+                %option{hidden: "", value: ""} --- 
+                %option{value: "1"} XXS以下
+                %option{value: "2"} XS(SS)
+                %option{value: "3"} S
+                %option{value: "4"} M
+
+          .single__field.single__field--large
             .single__field__label
               = f.label :item_description, "ブランド"
-              %span.single__field__require 必須
+              %span.single__field__require.single__field__require--gray 任意
+            .single__field__input
+              = f.text_field :item_name, placeholder: "例) シャネル"
 
-            .single__field__second
-              .single__field__label
-                = f.label :item_description, "商品の状態"
-                %span.single__field__require 必須
-              .single__field__select
-                %select{required: ""}
-                  %option{hidden: "", value: ""} --- 
-                  %option{value: "1"} 新品/未使用
-                  %option{value: "2"} 未使用に近い
-                  %option{value: "3"} 目立った傷や汚れなし
-                  %option{value: "4"} やや傷や汚れあり
+          .single__field.single__field--large
+            .single__field__label
+              = f.label :item_description, "商品の状態"
+              %span.single__field__require 必須
+            .single__field__select
+              %select{required: ""}
+                %option{hidden: "", value: ""} --- 
+                %option{value: "1"} 新品/未使用
+                %option{value: "2"} 未使用に近い
+                %option{value: "3"} 目立った傷や汚れなし
+                %option{value: "4"} やや傷や汚れあり
          
 
       .sell-content.clearfix
         %h3 配送について
         .sell-form-box
-          .single__field
+          .single__field.single__field--large
             .single__field__label
               = f.label :item_description, "配送料の負担"
               %span.single__field__require 必須
@@ -100,7 +105,7 @@
                 %option{value: "1"} 送料負担(出品者負担)
                 %option{value: "2"} 着払い(購入者負担)
           
-          .single__field__second
+          .single__field.single__field--large
             .single__field__label
               = f.label :item_description, "配送の方法"
               %span.single__field__require 必須
@@ -112,7 +117,7 @@
                 %option{value: "3"} ゆうメール
                 %option{value: "4"} レターパック
 
-          .single__field__second
+          .single__field.single__field--large
             .single__field__label
               = f.label :item_description, "発送元の地域"
               %span.single__field__require 必須
@@ -124,7 +129,7 @@
                 %option{value: "3"} 岩手県
                 %option{value: "4"} 宮城県
 
-          .single__field__second
+          .single__field.single__field--large
             .single__field__label
               = f.label :item_description, "発送までの日数"
               %span.single__field__require 必須
@@ -147,14 +152,15 @@
                     %span.single__field__require 必須
                   .single__field__label__right
                     %p ¥
-                    .single__field__input
-                      = f.text_field :item_name, placeholder: "例) 300"
-                 
-            %li 販売手数料
-            %li 販売利益
-                    
+                    .single__field__input.single__field__input--right
+                      = f.text_field :item_name, placeholder: "1000"  
+            %li.sellfee 
+              .l-left 販売手数料
+              .l-right 100
+            %li.sellprofit 
+              .l-left 販売利益
+              .l-right 900
 
-      
       .sell-content
         .sell--box
           %p 禁止されている出品、行為を必ずご確認ください。
@@ -164,5 +170,5 @@
       
           %p.single__field__text.single__field__text--center
           = f.submit "出品する", class: "single__form__send-btn" 
-          = f.submit "もどる", class: "single__form__send-btn__gray" 
+          = f.submit "もどる", class: "single__form__send-btn single__form__send-btn--gray single__form__send-btn--small" 
 

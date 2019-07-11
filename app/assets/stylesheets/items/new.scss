@@ -5,46 +5,15 @@
 }
 
 
-.single__form {
-  &__send-btn {
-    &__gray {
-      background-color: gray;
-      height: 50px;
-      text-align: center;
-      color: white;
-      margin-top: 20px;
-      width: 45%;
-    }
-  }
-}
-
-
-.sell-upload-box {
-  height: 223px;
-  padding: 40px;
-  .single__field__photo {
-    margin: 16px auto 0;
-    &__label {
-      font-size: 14px;
-      font-weight: bold;
-    }
-  }
-  &__input {
-    input {
-      width: 100%;
-      padding: 10px 16px;
-      border: 1px solid $gray;
-      border-radius: 5px;
-    }
-  }
-}
-
-.sell-content {
-  padding: 40px;
-  border-top: 1px solid #eee;
-}
-
 .single__field__item{
+  margin-top: 40px;
+  &__label {
+  font-weight: bold;
+  }
+  p {
+    font-size: 14px;
+    margin-top: 8px;
+  }
   textarea {
     display: block;
     width: 100%;
@@ -57,118 +26,72 @@
   }
 }
 
-.single__field__label {
-  margin-top: 20px;
-  font-size: 14px;
-  font-weight: bold;
-  display: flex;
-  &__left {
-    width: 50%;
-    font-size: 14px;
-    font-weight: bold;
+
+.sell-upload-box {
+  padding: 40px;
+  .have-items {
+    position: relative;
+    height:80px;
+    background: #f5f5f5;
+    border: 1px dashed #ccc;
+    font-size: 0;
+    text-align: center;
+    margin: 16px auto 0;
   }
-  &__right {
-    width: 50%;
-    text-align: right;
-    display: flex;
-    p{
-      line-height: 46px;
-      margin-right: 8px;
-      font-size: 12px;
-    }
-  }
-}
-  // .single__field {
-  //     margin-top: 20px;
-  //     &__label {
-  //       font-size: 14px;
-  //       font-weight: bold;
-  //     }
-  //     &__require {
-  //       background-color: $dark-red;
-  //       color: white;
-  //       border-radius: 3px;
-  //       font-size: 12px;
-  //       padding: 2px 4px;
-  //       margin-left: 8px;
-  //       font-weight: normal;
-  //     }
-  //     &__input {
-  //       input {
-  //         width: 586px;
-  //         padding: 10px 16px;
-  //         border: 1px solid $gray;
-  //         border-radius: 5px;
-  //       }
-  //     }
-  //   h3 {
-  //     font-weight: bold;
-  //     color:  #888888;
-  //   }
-  //   p {
-  //     font-size: 14px;
-  //   }
-  //   &__text {
-  //     margin-top: 10px;
-  //     font-size: 14px;
-  //     color: #888888;
-  //     &--center {
-  //       color: black;
-  //       text-align: center;
-  //     }
-  //   }
+  // input {
+  //   touch-action: manipulation;
+  //   border: 0;
+  //   outline: 0;
+  //   font-family: inherit;
+  //   -webkit-appearance: none;
   // }
+}
+
+
+.sell-content {
+  padding: 40px;
+  border-top: 1px solid #eee;
+}
+
 
 .sell-content.clearfix {
   width:620px;
   padding: 40px;
   border-top: 1px solid #eee;
   display: flex;
-   h3 {
-     color: #888888;
-     font-weight: bold;
-   }
+  h3 {
+    color: #888888;
+    font-weight: bold;
+  }
 
   .sell-form-box {
     width: 400px;
     margin-left: auto;
     .single__field--2 {
       width: 400px;
-      // margin-top: 20px;
       display: flex;
-      &__label {
-        width: 100%;
-        font-size: 14px;
-        font-weight: bold;
-      }
-      &__require {
-        background-color: $dark-red;
-        color: white;
-        border-radius: 3px;
-        font-size: 12px;
-        padding: 2px 4px;
-        margin-left: 8px;
-        font-weight: normal;
-      }
-      &__input {
-        input {
-          width: 366px;
-          padding: 10px 16px;
-          border: 1px solid ;
-          border-radius: 5px;
-          margin: 8px 0 0;
-        }
-      }
-      &__second {
-        margin: 40px 0 0;
-      }
     }
-    ul {
-      list-style: none;
-    }
+  
     li {
       padding: 0 0 24px;
       border: 0;
+    }
+    .sellfee {
+      font-size: 14px;
+      padding: 24px 0;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+    }
+    .sellprofit {
+      font-size: 16px;
+      font-weight: bold;
+      padding: 24px 0;
+    }
+    .l-left {
+      float: left;
+    }
+    .l-right {
+      float: right;
     }
   }
 }
@@ -179,12 +102,28 @@
   position: relative;
   display: inline-block;
   overflow: hidden;
+  margin-top: 8px;
  
   text-align: center;
   width: calc(100% - 32px);
   padding: 10px 16px;
   border: 1px solid $gray;
   border-radius: 5px;
+  &::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 0px;
+    border-bottom: solid 2px #b4b3b3;
+    border-right: solid 2px #b4b3b3;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin: -6px 10px;
+  }
   select {
     width: 100%;
     cursor: pointer;
@@ -201,20 +140,5 @@
     position: relative;
     z-index: 1;
   }
-}
-.single__field__select::after {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border: 0px;
-  border-bottom: solid 2px #b4b3b3;
-  border-right: solid 2px #b4b3b3;
-  -ms-transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  margin: -6px 10px;
 }
 
