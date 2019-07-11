@@ -2,15 +2,15 @@
 @import './reset';
 @import 'font-awesome';
 
-@import 'header';
+@import './modules/header';
 @import './config/mixin';
-@import 'category-nav';
-@import 'brand-nav';
+@import './modules/category-nav';
+@import './modules/brand-nav';
 @import './users/show'; 
 @import './config/color';
 @import 'font-awesome';
 @import './items/index';
-@import './footer';
+@import './modules/footer';
 @import './items/show';
 @import 'modules/single';
 @import 'modules/single-form';
