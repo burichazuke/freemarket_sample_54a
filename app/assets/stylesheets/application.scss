@@ -1,14 +1,18 @@
-//リセットSCSS
-@import './reset';
-@import './users/show';
+@import 'reset';
 @import './config/color';
+@import 'config/header-parts';
 @import 'font-awesome';
-@import './items/index';
-@import './footer';
-@import './items/show';
+@import 'header';
+@import 'footer';
 @import 'modules/single';
 @import 'modules/single-form';
 @import 'modules/single-btn';
+@import 'category-nav';
+@import 'brand-nav';
+@import 'sidebar';
+@import 'mypage';
+@import 'users/show'; 
+@import 'items/index';
 @import 'items/buy';
-
+@import 'items/show';
 
