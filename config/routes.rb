@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :users,  only: [:show]
   resources :mypage, only: [:index] do
     collection do
-      get "notification", "todo", "purchase", "purchased", "news", "support", "profile", "deliver_address",
+      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "deliver_address",
       "card", "email_password", "identification", "sms_confirmation", "help_center"
     end
 
