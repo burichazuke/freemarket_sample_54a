@@ -146,15 +146,14 @@
         .sell-form-box
           %ul.sell-price
             %li.form-group
-              .clearfix
-                .single__field--2
-                  .single__field__label__left
-                    = f.label :item_description, "価格"
-                    %span.single__field__require 必須
-                  .single__field__label__right
-                    %p ¥
-                    .single__field__input.single__field__input--right
-                      = f.text_field :item_name, placeholder: "1000"  
+              .single__field--2
+                .single__field__label__left
+                  = f.label :item_description, "価格"
+                  %span.single__field__require 必須
+                .single__field__label__right
+                  %p ¥
+                  .single__field__input.single__field__input--right
+                    = f.text_field :item_name, placeholder: "1000"  
             %li.sellfee 
               .l-left 販売手数料
               .l-right 100

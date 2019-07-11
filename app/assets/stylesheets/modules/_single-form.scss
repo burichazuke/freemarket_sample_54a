@@ -88,6 +88,10 @@
       text-align: right;
     }
   }
+  &__textarea {
+    height: 120px;
+    @include textarea-default 
+  }
   h3 {
     font-weight: bold;
   }
@@ -116,3 +120,48 @@
 }
 
 
+
+.single__field__select {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  margin-top: 8px;
+ 
+  text-align: center;
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid $gray;
+  border-radius: 5px;
+  &::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 0px;
+    border-bottom: solid 2px #b4b3b3;
+    border-right: solid 2px #b4b3b3;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin: -6px 10px;
+  }
+  select {
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+    -webkit-appearance: none;
+    font-family: FontAwesome;
+    background-repeat: no-repeat;
+    background-size: 12px 10px;
+    background-position: right 10px center;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    z-index: 1;
+  }
+}
