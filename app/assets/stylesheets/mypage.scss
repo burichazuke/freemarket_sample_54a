@@ -2,64 +2,62 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.mypage-container{
-  display: flex;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin: 0 auto;
-  background-color: #f5f5f5;
-}
-
-
-.mypage-content{
-  width: 700px;
-  margin: 0 auto;
-  text-decoration: none;
-  margin-bottom: 40px;
-}
-
-
-.mypage-content__profile {
+.mypage__content__setting-profile {
   background-color: white;
+  width: 700px;
   &__title {
   font-size: 24px;
   padding: 8px 24px;
   text-align: center;
   line-height: 1.4;
-  font-weight: bolder;
+  font-weight: 600;
   }
   &__form {
     padding: 64px;
-    &__head {
+    &__icon {
       padding: 72px 16px 24px;
       background: image-url("mypage_haikei");
       background-repeat: no-repeat;
       background-size: cover;
       vertical-align: middle;
       text-align: center;
-      background-size: cover;
-      figure {
+      & figure {
         display: inline-block;
         vertical-align: middle;
       }
-      img {
+      & img {
         border-radius: 50%;
       }
-      & .input-nickname-default {
+      & .input-default {
         width: 220px;
-        margin: 0 0 0 8px;
+        padding-left: 10px;
         vertical-align: middle;
-        height:48px;
+        height: 48px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
       }
     }
-    &__text__body {
+    &__content {
     padding: 40px 16px;
-      & .btn-red {
-        margin: 16px 0 0;
-      }
-      & .input-text-default {
+      & .textarea-default {
         width: 100%;
         min-height: 216px;
       }
+    }
+  }
+}
 
-
+.mypage__content__tab-content__item-list--index--red{
+  a {
+    display: block;
+    font-size:14px;
+    text-align: center;
+    color: #fff;
+    background-color:#ea352d;
+    border: 1px solid #ea352d;
+    &:hover{
+      background-color:red;
+      text-decoration: none;
+  }
+}
+}
