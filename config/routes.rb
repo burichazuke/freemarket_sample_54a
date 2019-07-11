@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     get "mypage/listings/in_progress", to: "mypage#in_progress"
     get "mypage/listings/completed", to: "mypage#completed"
     get "mypage/review/history", to: "mypage#review"
+    get "logout", to: "mypage#logout"
   end
 
   

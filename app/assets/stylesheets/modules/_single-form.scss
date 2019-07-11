@@ -1,4 +1,5 @@
 .single__page__main {
+  background-color: #f5f5f5;
   &__container {
     background-color: white;
     width: 700px;
@@ -29,7 +30,7 @@
 .single__form {
   width: 350px;
   margin: 0 auto;
-  padding-bottom: 30px;
+  padding: 30px 0 60px;
   &__send-btn {
     background-color: $dark-red;
     width: 100%;
@@ -47,6 +48,9 @@
     margin:  0 auto;
     padding: 20px 0 60px;
     border-top: 1px solid $gray;
+  }
+  &--big {
+    padding: 64px 15px;
   }
 }
 
