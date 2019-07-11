@@ -9,5 +9,8 @@ class ItemsController < ApplicationController
     @item = ""
     render layout: "single"
   end
-  
+
+  def buy
+    render layout: "single"
+  end
 end

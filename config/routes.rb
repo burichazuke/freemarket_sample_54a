@@ -17,11 +17,10 @@ Rails.application.routes.draw do
   end
 
   root to: "items#index"
- 
   resources :users,  only: [:show]
   resources :mypage, only: [:index] do
     collection do
-      get "notification", "todo", "purchase", "purchased", "news", "support", "profile", "deliver_address",
+      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "deliver_address",
       "card", "email_password", "identification", "sms_confirmation", "help_center"
     end
 
@@ -34,11 +33,12 @@ Rails.application.routes.draw do
     get "mypage/review/history", to: "mypage#review"
   end
 
+  
   as :items do
     get "transaction/buy/:id", to: "items#buy", as: :items_buy
     get "items/sell", to: "items#new", as: :items_sell
   end
-  resources :items, except: :new
+  resources :items, except: :new 
 
     resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
