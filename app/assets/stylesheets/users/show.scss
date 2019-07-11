@@ -20,6 +20,8 @@
 
 .mypage__content {
   margin-bottom: 40px;
+  width: 700px;
+  text-decoration: none;
   &__head {
     background-color: white;
     display: flex;
@@ -149,8 +151,12 @@
         display: block;
         font-size:14px;
         text-align: center;
-        color: black;
-        background-color: #eee;
+      }
+      &--gray{
+        a {
+          color: black;
+          background-color: #eee;
+          border: 1px solid #eee;
         &:hover{
           background-color:#f5f5f5;
           text-decoration: none;
@@ -170,3 +176,4 @@
     color: #ccc;
     font-weight: bold;
   }
+}
