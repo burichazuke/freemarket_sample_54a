@@ -1,0 +1,73 @@
+// active,active-childはjQueryで使用しています
+.active{
+  display:block;
+  width:224px;
+  background-color:#EA352E;
+  span{
+    color:white;
+  }
+}
+.active-child{
+  display:block; 
+  background-color: #f5f5f5;
+  span{
+    @include span;
+  }
+}
+
+//親
+.header-nav-parent-wrap{
+  display: none;
+  background-color:white;
+  width:auto;
+  position: absolute;
+  z-index:900; //下との重なりを解消しています。
+
+  .header-nav-parent{
+    width:224px;
+    height:44px;
+    line-height: 44px;
+    
+    span{
+      @include span;
+    }
+    a{
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
+
+//子
+.header-nav-child-wrap{
+  @include category-wrap;
+  
+  .header-nav-child{
+    width:224px;
+    @include category-mono;
+    &:hover{
+      background-color: #f5f5f5;
+    }
+    span{
+      @include span;
+      color:black;
+    }
+  }
+}
+
+//孫
+.header-nav-grand-child-wrap{
+  @include category-wrap;
+
+  .header-nav-grand-child{
+    width: 320px;
+    @include category-mono;
+    &:hover{
+      background-color: #f5f5f5;
+    }
+    span{
+      @include span;
+    }
+    
+  }
+}

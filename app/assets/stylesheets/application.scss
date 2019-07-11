@@ -1,6 +1,12 @@
 //リセットSCSS
 @import './reset';
 @import './users/show';
+@import 'font-awesome';
+@import 'header';
+@import './config/header-parts';
+@import 'category-nav';
+@import 'brand-nav';
+@import './users/show'; 
 @import './config/color';
 @import 'font-awesome';
 @import './items/index';
@@ -10,3 +16,7 @@
 @import 'modules/single-form';
 @import 'modules/single-btn';
 @import 'items/buy';
+@import 'modules/sign-up';
+@import 'sidebar';
+@import './mypage';
+@import './items/buy.scss';
