@@ -1,0 +1,46 @@
+%main.single__page__main
+  .single__page__main__container
+    .purchase-confirmations
+      %h2.purchase-confirmations__head
+        購入内容の確認
+      .purchase-confirmations__container
+        .purchase-confirmations__item
+          .purchase-confirmations__item__detail
+            =image_tag "/images/noImage.jpg", class: "purchase-confirmations__item__detail__img"
+            %p.purchase-confirmations__item__detail__name
+              マクガレーチュニック
+          %p.purchase-confirmations__item__price
+            ¥ 3,400
+            %span 送料込み
+          %p.purchase-confirmations__item__point
+            ポイントはありません
+          %p.purchase-confirmations__item__pey-price
+            支払い金額
+            %span ¥ 3,400
+          %button.purchase-button{type: "submit"}
+            購入する
+      .purchase-confirmations__container
+        %section.buy-user-info
+          .buy-user-info__address
+            %h3 配送先
+            %address
+              〒000-0000
+              %br 東京都渋谷区道玄坂2-2-2
+              メルカリ 太郎
+            =link_to root_path, class: "buy-user-info__fix" do 
+              %span
+                変更する
+                =fa_icon "angle-right"
+      .purchase-confirmations__container
+        %section.buy-user-info
+          .buy-user-info__credit
+            %h3 支払い方法
+            %p.buy-user-info__credit__number
+              ************0000
+              %br 06/29
+            =image_tag "", class: ".buy-user-info__credit__img", alt: "ロゴ"
+            =link_to root_path, class: "buy-user-info__fix" do 
+              %span
+                変更する
+                =fa_icon "angle-right"
+ 

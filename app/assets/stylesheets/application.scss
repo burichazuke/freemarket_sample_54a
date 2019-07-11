@@ -1,5 +1,11 @@
 //リセットSCSS
 @import './reset';
+@import 'font-awesome';
+
+@import 'header';
+@import './config/header-parts';
+@import 'category-nav';
+@import 'brand-nav';
 @import './users/show'; 
 @import './config/color';
 @import 'font-awesome';
@@ -9,4 +15,5 @@
 @import 'modules/single';
 @import 'modules/single-form';
 @import 'modules/sign-up';
-@import './mypage'
+@import './mypage';
+@import './items/buy.scss';
