@@ -4,31 +4,13 @@
   display: block;
 }
 
-
-.single__field__item{
-  margin-top: 40px;
-  &__label {
-  font-weight: bold;
-  }
-  p {
-    font-size: 14px;
-    margin-top: 8px;
-  }
-  textarea {
-    display: block;
-    width: 100%;
-    height: 120px;
-    margin: 8px 0 0;
-    border: 1px solid #ccc;
-    background: #fff;
-    font-size: 16px;
-    line-height: 1.5;
-  }
+.single__field__textarea {
+  height: 120px;
+  @include textarea-default 
 }
 
 
 .sell-upload-box {
-  padding: 40px;
   .have-items {
     position: relative;
     height:80px;
@@ -37,14 +19,16 @@
     font-size: 0;
     text-align: center;
     margin: 16px auto 0;
+    font-size: 1.3rem;
+    cursor: pointer;
+    input {
+      touch-action: manipulation;
+      border: 0;
+      outline: 0;
+      font-family: inherit;
+      -webkit-appearance: none;
+    }
   }
-  // input {
-  //   touch-action: manipulation;
-  //   border: 0;
-  //   outline: 0;
-  //   font-family: inherit;
-  //   -webkit-appearance: none;
-  // }
 }
 
 
@@ -55,7 +39,7 @@
 
 
 .sell-content.clearfix {
-  width:620px;
+  width:700px;
   padding: 40px;
   border-top: 1px solid #eee;
   display: flex;
@@ -105,7 +89,7 @@
   margin-top: 8px;
  
   text-align: center;
-  width: calc(100% - 32px);
+  width: 100%;
   padding: 10px 16px;
   border: 1px solid $gray;
   border-radius: 5px;

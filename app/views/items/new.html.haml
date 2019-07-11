@@ -3,16 +3,16 @@
     %h2.single__page__main__head
       商品の情報を入力
     = form_for @item, url: "/items", html: {method: :post, class: "single__formsingle__form__items"} do |f|
-      .sell-upload-box
-        .single__field__item
-          .single__field__item__label
+      .sell-content
+        .single__field.single__field--large
+          .single__field__label
             = label :devise, :nickname, "出品画像"
             %span.single__field__require 必須
           %p 最大10枚までアップロードできます
-          .sell-upload-box.have-items
-            %input{ accept: "image/*", type: "file"}/
+          .sell-upload-box
+            .sell-upload-box.have-items
+              %input{ accept: "image/*", type: "file"}/
 
-      
       .sell-content
         .single__field.single__field--large
           .single__field__label
@@ -20,15 +20,12 @@
             %span.single__field__require 必須
           .single__field__input
             = f.text_field :item_name, placeholder: "商品名（必須40文字まで）"
-        .single__field__item
+        .single__field.single__field--large
           .single__field__label
             = f.label :item_description, "商品の説明"
             %span.single__field__require 必須
-          .comment-content 
-            %form.comment-form{action: "", method:""} 
-              .textarea-default
-                %textarea{comment: ""}
-                  = f.text_field :item_description, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          .single__field__textarea
+            %textarea#item_description{placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
 
       .sell-content.clearfix
         %h3 商品の詳細
