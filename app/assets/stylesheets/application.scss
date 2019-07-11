@@ -8,6 +8,7 @@
 @import 'brand-nav';
 @import './users/show'; 
 @import './config/color';
+@import './config/mixin';
 @import 'font-awesome';
 @import './items/index';
 @import './footer';
@@ -15,6 +16,8 @@
 @import 'modules/single';
 @import 'modules/single-form';
 @import 'modules/sign-up';
+@import './items/new';
 @import 'sidebar';
 @import './mypage';
 @import './items/buy.scss';
+
