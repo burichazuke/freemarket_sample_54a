@@ -17,15 +17,11 @@
       color:white;
     }
     span{
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      font-size: 14px;
-      padding:8px 16px;
-    }
-    a{
-      text-decoration: none;
-      color:black;
+      @include span;
+      &:hover{
+        text-decoration: none;
+        color:white;
+      }
     }
   }
 }

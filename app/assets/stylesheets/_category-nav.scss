@@ -11,13 +11,7 @@
   display:block; 
   background-color: #f5f5f5;
   span{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 14px;
-    padding:8px 16px;
-    text-decoration: none;
-    color:black;
+    @include span;
   }
 }
 
@@ -35,12 +29,7 @@
     line-height: 44px;
     
     span{
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      font-size: 14px;
-      padding:8px 16px;
-      text-decoration: none;
+      @include span;
     }
     a{
       text-decoration: none;
@@ -51,31 +40,16 @@
 
 //子
 .header-nav-child-wrap{
-  display: none;
-  width:auto;
-  position: absolute;
-  top:0;
-  left:224px;
-  bottom:0;
-  box-shadow: 1px 0 0 0 #eee inset;
-  background: #fff;
+  @include category-wrap;
   
   .header-nav-child{
     width:224px;
-    height: 30px;
-    line-height: 30px;
-
+    @include category-mono;
     &:hover{
       background-color: #f5f5f5;
     }
-    
     span{
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      font-size: 14px;
-      padding:8px 16px;
-      text-decoration: none;
+      @include span;
       color:black;
     }
   }
@@ -83,21 +57,16 @@
 
 //孫
 .header-nav-grand-child-wrap{
-  display: none;
-  width:auto;
-  position: absolute;
-  top:0;
-  left:224px;
-  bottom:0;
-  box-shadow: 1px 0 0 0 #eee inset;
-  background: #fff;
+  @include category-wrap;
 
   .header-nav-grand-child{
-    width:320px;
-    height: 30px;
-    line-height: 30px;
+    width: 320px;
+    @include category-mono;
     &:hover{
       background-color: #f5f5f5;
+    }
+    span{
+      @include span;
     }
     
   }
