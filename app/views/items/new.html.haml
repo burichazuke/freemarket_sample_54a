@@ -6,11 +6,11 @@
       .sell-content
         .single__field.single__field--large
           .single__field__label
-            = label :images, :image, "出品画像"
+            = f.label :images, :image, value: "出品画像"
             %span.single__field__require 必須
           %p 最大10枚までアップロードできます
           .sell-upload--container
-            = label :images, :image do
+            = f.label :images, :image do
               .sell-upload--box
                 = file_field :images, :image
                 %span.text-mark 
@@ -39,21 +39,21 @@
               = f.label :item_description, "カテゴリー"
               %span.single__field__require 必須
             .single__field__select
-              %select{required: ""}
+              = f.select required: "" do
                 %option{hidden: "", value: ""} --- 
                 %option{value: "1"} レディース
                 %option{value: "2"} メンズ
                 %option{value: "3"} ベビー・キッズ
                 %option{value: "4"} インテリア・住まい・小物
             .single__field__select
-              %select{required: ""}
+              = f.select required: "" do
                 %option{hidden: "", value: ""} --- 
                 %option{value: "1"} トップス
                 %option{value: "2"} ジャケット/アウター
                 %option{value: "3"} パンツ
                 %option{value: "4"} スカート
             .single__field__select
-              %select{required: ""}
+              = f.select required: "" do
                 %option{hidden: "", value: ""} --- 
                 %option{value: "1"} Tシャツ/カットソー(半袖/袖なし)
                 %option{value: "2"} Tシャツ/カットソー(七分/長袖)
@@ -66,7 +66,7 @@
               = f.label :item_description, "サイズ"
               %span.single__field__require 必須
             .single__field__select
-              %select{required: ""}
+              = f.select required: "" do
                 %option{hidden: "", value: ""} --- 
                 %option{value: "1"} XXS以下
                 %option{value: "2"} XS(SS)
@@ -85,7 +85,7 @@
               = f.label :item_description, "商品の状態"
               %span.single__field__require 必須
             .single__field__select
-              %select{required: ""}
+              = f.select required: "" do
                 %option{hidden: "", value: ""} --- 
                 %option{value: "1"} 新品/未使用
                 %option{value: "2"} 未使用に近い
@@ -101,7 +101,7 @@
               = f.label :item_description, "配送料の負担"
               %span.single__field__require 必須
             .single__field__select
-              %select{required: ""}
+              = f.select required: "" do
                 %option{hidden: "", value: ""} --- 
                 %option{value: "1"} 送料負担(出品者負担)
                 %option{value: "2"} 着払い(購入者負担)
@@ -111,7 +111,7 @@
               = f.label :item_description, "配送の方法"
               %span.single__field__require 必須
             .single__field__select
-              %select{required: ""}
+              = f.select required: "" do
                 %option{hidden: "", value: ""} --- 
                 %option{value: "1"} 未定
                 %option{value: "2"} らくらくメルカリ便
@@ -123,7 +123,7 @@
               = f.label :item_description, "発送元の地域"
               %span.single__field__require 必須
             .single__field__select
-              %select{required: ""}
+              = f.select required: "" do
                 %option{hidden: "", value: ""} --- 
                 %option{value: "1"} 北海道県
                 %option{value: "2"} 青森県
@@ -135,7 +135,7 @@
               = f.label :item_description, "発送までの日数"
               %span.single__field__require 必須
             .single__field__select
-              %select{required: ""}
+              = f.select required: "" do
                 %option{hidden: "", value: ""} --- 
                 %option{value: "1"} 1~2日で発送
                 %option{value: "2"} 2~3日で発送
