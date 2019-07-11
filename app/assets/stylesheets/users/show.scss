@@ -1,5 +1,12 @@
+.mypage{
+  background: #f5f5f5;
+}
+
 .mypage__container {
   display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  width: 1020px;
   padding-top: 40px;
   padding-bottom: 40px;
   margin: 0 auto;
@@ -7,7 +14,8 @@
 }
 
 .mypage__contents {
-  margin: 0 auto;
+  width: 700px;
+  text-decoration: none;
 }
 
 .mypage__content {
