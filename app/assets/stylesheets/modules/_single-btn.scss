@@ -25,6 +25,11 @@
     border: 1px solid #0099e8;
     color: white;
   }
+  &--red {
+    background-color: $dark-red;
+    border: 1px solid $dark-red;
+    color: white;
+  }
   .single__icon {
     position: absolute;
     left: 16px;

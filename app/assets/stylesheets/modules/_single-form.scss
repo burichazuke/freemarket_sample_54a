@@ -23,7 +23,7 @@
       height: 100px;
       width: 350px;
     }
-  }  
+  }
 }
 
 .single__form {
@@ -41,6 +41,12 @@
   }
   &--inner {
     margin-bottom: 40px; 
+  }
+  &--box {
+    width: 570px;
+    margin:  0 auto;
+    padding: 20px 0 60px;
+    border-top: 1px solid $gray;
   }
 }
 
@@ -63,7 +69,7 @@
     }
   }
   &__input {
-    padding-top: 8px;
+    margin-top: 8px;
     input {
       width: calc(100% - 32px);
       padding: 10px 16px;
