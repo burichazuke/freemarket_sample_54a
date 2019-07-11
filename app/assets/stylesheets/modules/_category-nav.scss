@@ -1,7 +1,6 @@
 // active,active-childはjQueryで使用しています
 .active{
   display:block;
-  width:224px;
   background-color:#EA352E;
   span{
     color:white;
@@ -11,7 +10,7 @@
   display:block; 
   background-color: #f5f5f5;
   span{
-    @include span;
+    @include category-char;
   }
 }
 
@@ -29,7 +28,7 @@
     line-height: 44px;
     
     span{
-      @include span;
+      @include category-char;
     }
     a{
       text-decoration: none;
@@ -49,7 +48,7 @@
       background-color: #f5f5f5;
     }
     span{
-      @include span;
+      @include category-char;
       color:black;
     }
   }
@@ -66,7 +65,7 @@
       background-color: #f5f5f5;
     }
     span{
-      @include span;
+      @include category-char;
     }
     
   }
