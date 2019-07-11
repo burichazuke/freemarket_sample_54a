@@ -17,7 +17,7 @@
       color:white;
     }
     span{
-      @include span;
+      @include category-char;
       &:hover{
         text-decoration: none;
         color:white;

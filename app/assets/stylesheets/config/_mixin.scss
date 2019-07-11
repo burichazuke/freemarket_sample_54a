@@ -1,11 +1,12 @@
-@mixin span{
+//ヘッダーのmixin一覧
+@mixin category-char{
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   font-size: 14px;
   padding:8px 16px;
   text-decoration: none;
-};
+}
 
 @mixin category-wrap{
   display: none;
@@ -16,9 +17,20 @@
   bottom:0;
   box-shadow: 1px 0 0 0 #eee inset;
   background-color: #fff;
-};
+}
 
 @mixin category-mono{
   height: 30px;
   line-height: 30px;
+}
+
+// items/indexのmixin一覧
+@mixin item-aHover{
+  a{
+    color: #1499E8;
+    &:hover{
+      text-decoration: underline solid #1499E8;
+      opacity: 0.8;
+    }
+  }
 }

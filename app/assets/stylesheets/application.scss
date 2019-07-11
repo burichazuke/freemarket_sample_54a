@@ -6,17 +6,24 @@
 @import './config/header-parts';
 @import 'category-nav';
 @import 'brand-nav';
+@import './modules/header';
+@import './config/mixin';
+@import './modules/category-nav';
+@import './modules/brand-nav';
 @import './users/show'; 
 @import './config/color';
+@import './config/mixin';
 @import 'font-awesome';
 @import './items/index';
-@import './footer';
+@import './modules/footer';
 @import './items/show';
 @import 'modules/single';
 @import 'modules/single-form';
 @import 'modules/single-btn';
 @import 'items/buy';
 @import 'modules/sign-up';
+@import './items/new';
 @import 'sidebar';
 @import './mypage';
 @import './items/buy.scss';
+
