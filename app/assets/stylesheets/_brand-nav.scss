@@ -4,7 +4,7 @@
   position: absolute;
   float:left;
   display: none;
-  z-index:1000; //下との重なりを解消しています。
+  z-index:800; //下との重なりを解消しています。
 
   .header-brand-nav-parent{
     width:224px;

@@ -21,7 +21,7 @@
   background-color:white;
   width:auto;
   position: absolute;
-  z-index:1000; //下との重なりを解消しています。
+  z-index:900; //下との重なりを解消しています。
 
   .header-nav-parent{
     width:224px;
