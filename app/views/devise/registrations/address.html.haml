@@ -31,29 +31,29 @@
           = label :address, :prefecture, "都道府県"
           %span.single__field__require 必須
         .single__field__select
-          = select :address, :prefecture, placeholder: "例) 北海道"
+          = select :address, :prefecture, ["---", "北海道"]
       .single__field
         .single__field__label
-          = label :address, :prefecture, "市区町村"
+          = label :address, :municipalities, "市区町村"
           %span.single__field__require 必須
         .single__field__input
-          = text_field :address, :prefecture, placeholder: "例) 横浜市緑区"
+          = text_field :address, :municipalities, placeholder: "例) 横浜市緑区"
       .single__field
         .single__field__label
-          = label :address, :prefecture, "番地"
+          = label :address, :address, "番地"
           %span.single__field__require 必須
         .single__field__input
-          = text_field :address, :prefecture, placeholder: "例) 青山1-1-1"
+          = text_field :address, :address, placeholder: "例) 青山1-1-1"
       .single__field
         .single__field__label
-          = label :address, :prefecture, "建物名"
+          = label :address, :building, "建物名"
           %span.single__field__require.single__field__require--option 任意
         .single__field__input
-          = text_field :address, :prefecture, placeholder: "例) 柳ビル103"
+          = text_field :address, :building, placeholder: "例) 柳ビル103"
       .single__field
         .single__field__label
-          = label :address, :prefecture, "電話"
+          = label :devise, :phone, "電話"
           %span.single__field__require.single__field__require--option 任意
         .single__field__input
-          = text_field :address, :prefecture, placeholder: "例) 09012345678"          
+          = text_field :devise, :phone, placeholder: "例) 09012345678"          
       = f.submit "次へ進む", class: "single__form__send-btn"
