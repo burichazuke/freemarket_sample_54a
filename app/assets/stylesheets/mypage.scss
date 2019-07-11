@@ -38,7 +38,9 @@
       }
     }
     &__content {
-    padding: 40px 16px;
+    padding-top: 40px;
+    padding-left: 16px;
+    padding-right: 16px;
       & .textarea-default {
         width: 100%;
         min-height: 216px;
@@ -48,6 +50,7 @@
 }
 
 .mypage__content__tab-content__item-list--index--red{
+  padding-bottom: 24px;
   a {
     display: block;
     font-size:14px;
