@@ -20,7 +20,7 @@
       padding: 20px 0;
       text-align: center;
       border-bottom: 1px solid $gray;
-      height: 100px;
+      height: 141px;
       width: 350px;
     }
   }
@@ -52,6 +52,14 @@
 
 .single__field {
   margin: 20px auto 0;
+  &--flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &--large {
+    margin-top: 40px;
+  }
   &__label {
     font-size: 14px;
     font-weight: bold;
