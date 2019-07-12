@@ -1,5 +1,5 @@
 @import 'reset';
-@import './config/color';
+@import 'config/color';
 @import 'config/header-parts';
 @import 'font-awesome';
 @import 'header';
@@ -7,6 +7,7 @@
 @import 'modules/single';
 @import 'modules/single-form';
 @import 'modules/single-btn';
+@import 'modules/single-icon';
 @import 'category-nav';
 @import 'brand-nav';
 @import 'sidebar';
