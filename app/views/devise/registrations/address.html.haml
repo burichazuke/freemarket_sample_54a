@@ -2,8 +2,9 @@
 %main.single__page__main
   .single__page__main__container
     %h2.single__page__main__head
-      住所入力
-    = form_for resource, url: create_user_registration_path, html: {method: :post, class: "single__form"} do |f|
+      お届け先住所入力
+    -# = form_for resource, url: create_user_registration_path, html: {method: :post, class: "single__form"} do |f|
+    = form_for resource, url: credit_card_user_registration_path, html: {method: :get, class: "single__form"} do |f|
       .single__field
         .single__field__label
           = label :devise, :name, "お名前"
