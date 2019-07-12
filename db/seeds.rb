@@ -60,3 +60,8 @@ Item.create([{
   seller_id: 1,
  }
 ])
+
+Image.create(
+  image:open("public/images/m65260678049_1.jpg"),
+  item_id: 1
+)
