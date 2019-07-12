@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.order("created_at desc")
+    @items = Item.includes(:images).order("created_at desc")
     # @image = Image.find_by(item_id: 1)
   end
 
