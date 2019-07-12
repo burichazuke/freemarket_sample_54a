@@ -1,3 +1,4 @@
+//ヘッダー
 %header.header
   .header-inner
     .header-top
@@ -42,7 +43,7 @@
                     %span やることリスト
               %li.header-nav__user
                 %h2
-                  = link_to '/',class:'header-nav__user__link' do
+                  = link_to mypage_index_path,class:'header-nav__user__link' do
                     = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-img'
                     %span マイページ
             - else

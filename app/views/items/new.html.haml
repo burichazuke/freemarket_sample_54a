@@ -169,6 +169,7 @@
 
       
           %p.single__field__text.single__field__text--center
-          = f.submit "出品する", class: "single__form__send-btn" 
-          = f.submit "もどる", class: "single__form__send-btn single__form__send-btn--gray single__form__send-btn--small" 
+          = f.submit "出品する", class: "single__form__send-btn"
+          = link_to root_path do
+            = f.submit "もどる", class: "single__form__send-btn single__form__send-btn--gray single__form__send-btn--small" 
 
