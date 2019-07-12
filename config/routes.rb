@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   as :user do
     get 'users/sign_up/registration', to: 'users/registrations#new', as: :user_registration
     get 'users/sign_up', to: 'users/registrations#register', as: :register_user_registration
+    get 'users/sign_up/sms_confirmation', to: 'users/registrations#sms_confirmation', as: :sms_confirmation_user_registration
+    get 'users/sign_up/address', to: 'users/registrations#address', as: :address_user_registration
+    get 'users/sign_up/credit_card', to: 'users/registrations#credit_card', as: :credit_card_user_registration
+    get 'users/sign_up/finish', to: 'users/registrations#finish', as: :finish_user_registration
     post 'users', to: 'users/registrations#create', as: :create_user_registration
     # ToDo: マイページに応じて、要追加
     # get 'users/edit', to: 'users/registrations#edit', as: :edit_user_registration
