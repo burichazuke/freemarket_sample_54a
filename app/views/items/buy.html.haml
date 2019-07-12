@@ -6,7 +6,7 @@
       .purchase-confirmations__container
         .purchase-confirmations__item
           .purchase-confirmations__item__detail
-            =image_tag "/images/noImage.jpg", class: "purchase-confirmations__item__detail__img"
+            =image_tag "noImage.jpg", class: "purchase-confirmations__item__detail__img"
             %p.purchase-confirmations__item__detail__name
               マクガレーチュニック
           %p.purchase-confirmations__item__price
@@ -38,7 +38,7 @@
             %p.buy-user-info__credit__number
               ************0000
               %br 06/29
-            =image_tag "", class: ".buy-user-info__credit__img", alt: "ロゴ"
+            =image_tag "visa-card.svg", class: "buy-user-info__credit__img single__icon--card", alt: "ロゴ"
             =link_to root_path, class: "buy-user-info__fix" do 
               %span
                 変更する
