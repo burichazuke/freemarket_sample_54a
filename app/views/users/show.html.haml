@@ -42,15 +42,15 @@
             
               - announces.each do |announce|
                 = render partial: "tab-list", locals: { announce: announce }
-
-              %li.mypage__content__tab-content__not-found.bold
-                取引中の商品がありません
-                
-                
               %li.mypage__content__tab-content__item-list--index
                 .mypage__content__tab-content__item-list--index--gray
                   = link_to user_path(current_user) do
                     一覧を見る
+
+
+              %li.mypage__content__tab-content__not-found.bold
+                現在、やることリストはありません
+                
 
 
       .mypage__content
@@ -67,7 +67,12 @@
 
               - announces.each do |announce|
                 = render partial: "tab-list", locals: { announce: announce }
-              
+              %li.mypage__content__tab-content__item-list--index
+                .mypage__content__tab-content__item-list--index--gray
+                  = link_to user_path(current_user) do
+                    一覧を見る
+
+                    
               %li.mypage__content__tab-content__not-found.bold
                 取引中の商品がありません
 
