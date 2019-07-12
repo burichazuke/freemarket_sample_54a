@@ -77,3 +77,5 @@ gem "haml-rails"
 gem "font-awesome-rails"
 gem 'jquery-rails'
 gem 'bxslider-rails'
+gem 'carrierwave'
+gem 'mini_magick'

@@ -1,24 +1,33 @@
+:ruby
+  cardlists = ["visa-card", "mastercard", "saison-card" ,"jcb-card", "american-express-card", "diners-club-International", "discover-card"]
+
+
 // 4つ目のページ
 %main.single__page__main
   .single__page__main__container
     %h2.single__page__main__head
       支払い方法
-    = form_for resource, url: create_user_registration_path, html: {method: :post, class: "single__form"} do |f|
+    -# = form_for resource, url: create_user_registration_path, html: {method: :post, class: "single__form"} do |f|
+    = form_for resource, url: finish_user_registration_path, html: {method: :get, class: "single__form"} do |f|
       .single__field
         .single__field__label
           = label :credit_card, :number, "カード番号"
           %span.single__field__require 必須
         .single__field__input
           = text_field :credit_card, :number, placeholder: "半角数字のみ"
+        - cardlists.each do |card|
+          = image_tag "#{card}", class: "single__icon--card"
       .single__field
         .single__field__label
-          = label :credit_card, :valid, "カード番号"
+          = label :credit_card, :valid, "有効期限"
           %span.single__field__require 必須
-        .single__field__select
-          = select :credit_card, :valid_month, placeholder: ""
+        .single__field--flex
+          .single__field__select.single__field__select--small
+            = select :credit_card, :valid_month, ["--" ,1, 2, 3]
           %span 月
-        .single__field__select
-          = select :credit_card, :valid_year,  placeholder: ""
+        .single__field--flex
+          .single__field__select.single__field__select--small
+            = select :credit_card, :valid_year, ["--", 20, 21, 22]
           %span 年
       .single__field
         .single__field__label
@@ -26,5 +35,5 @@
           %span.single__field__require 必須
         .single__field__input
           = text_field :credit_card, :number, placeholder: "カード背面4桁もしくは3桁の番号"
-        = link_to "カード裏面の番号とは？", "/", class: "single__field__text single__field__text--link"
+        = link_to "カード裏面の番号とは？", "/", class: "single__field__text single__field__text__link single__field__text--right"
       = f.submit "次へ進む", class: "single__form__send-btn"

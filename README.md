@@ -27,16 +27,18 @@
 - has_many :bought_items,, foreign_key: "buyer_id", class_name: "Item"
 - has_many :selling_items, -> { where("buyer_id is NULL") }, foreign_key: "seller_id", class_name: "Item" 
 - has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "seller_id", class_name: "Item"
-- has_one :credit_card, index: { unique: true } ,foreign_key: "credit_card_id"
-- has_one :address, foreign_key: "address_id"
+- has_one :credit_card, index: { unique: true } ,foreign_key: "credit_card_id", dependent: :destroy
+- has_one :address, foreign_key: "address_id", dependent: :destroy
+- has_many :grades, foreign_key: "grades_id", dependent: :destroy
 - has_many :comments
-- has_many :favorites
+- has_many :favorites, dependent: :destroy
 - has_many :favorite_items, through: :favorites, source: :item
 - has_many :user_notifications
-- has_many :users, through :user_notifications
+- has_many :notifications, through :user_notifications
 ### メモ　後々余裕があれば
 - has_many :buy_dealing_items, foreign_key: "buyer_id", class_name: "Item"
 - has_many :sell_dealing_items, foreign_key: "seller_id", class_name: "Item"
+- userが削除されてもcomments自体は残して「このユーザーは退会しました」のメッセージを入れる。
 
 
 ## addressesテーブル
@@ -94,12 +96,12 @@
 ### Association
 - belongs_to :seller, class_name: "User"
 - belongs_to :buyer, class_name: "User"
-- has_many :images
+- has_many :images, dependent: :destroy
 - belongs_to_active_hash :category
 - belongs_to_active_hash :brand
-- has_many :comments
-- has_many :favorites
-- has_many :users, through: :favorites
+- has_many :comments, dependent: :destroy
+- has_many :favorites, dependent: :destroy
+- has_many :users, through: :favorites, dependent: :destroy
 ### メモ
 - validates :name, length: { in: 1..40 }
 - statusはenumを使用。0: selling , 1:dealing, 2: sold_out
@@ -119,7 +121,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |content|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
+|user_id|integer|foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user

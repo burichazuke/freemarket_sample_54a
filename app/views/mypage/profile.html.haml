@@ -1,0 +1,20 @@
+%main.mypage
+
+  %main.mypage__container
+    .mypage__contents
+      .mypage__content
+        %section.mypage__content__setting-profile
+          %h2.mypage__content__setting-profile__title プロフィール
+          = form_for "user", class: "mypage-content__setting-profile__form" do |f|
+            .mypage__content__setting-profile__form__icon
+              %figure
+                = image_tag "mypage_icon.png", size: "60x60"
+              = f.text_field "nickname", class: "input-default", placeholder: "例）testman"
+            .mypage__content__setting-profile__form__content
+              = f.text_area "introduction", class: "textarea-default", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
+            .mypage__content__tab-content__item-list--index
+              .mypage__content__tab-content__item-list--index--red
+                =link_to user_path(current_user) do
+                  変更する
+    .mypage__side
+      =render "shared/sidebar"

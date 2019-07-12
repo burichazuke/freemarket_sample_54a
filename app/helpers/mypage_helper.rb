@@ -1,0 +1,3 @@
+module MypageHelper
+  
+end
