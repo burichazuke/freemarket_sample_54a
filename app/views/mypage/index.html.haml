@@ -15,7 +15,7 @@
       .mypage__content
         .mypage__content__head.mypage__content__head--image
           %section.mypage__content__head__user-icon
-            = link_to user_path(current_user) do
+            = link_to mypage_index_path do
               %figure
                 = image_tag "mypage_icon.png", size: "60x60"
               %h2.mypage__content__head__user-icon__name.bold
@@ -38,13 +38,14 @@
 
 
           .mypage__content__tab-content
+
             %ul.mypage__content__tab-content__item-list
             
               - announces.each do |announce|
                 = render partial: "tab-list", locals: { announce: announce }
               %li.mypage__content__tab-content__item-list--index
                 .mypage__content__tab-content__item-list--index--gray
-                  = link_to user_path(current_user) do
+                  = link_to mypage_index_path do
                     一覧を見る
 
 
@@ -63,13 +64,14 @@
 
 
           .mypage__content__tab-content
+
             %ul.mypage__content__tab-content__item-list
 
               - announces.each do |announce|
                 = render partial: "tab-list", locals: { announce: announce }
               %li.mypage__content__tab-content__item-list--index
                 .mypage__content__tab-content__item-list--index--gray
-                  = link_to user_path(current_user) do
+                  = link_to mypage_index_path do
                     一覧を見る
 
                     
