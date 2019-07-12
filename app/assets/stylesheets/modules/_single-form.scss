@@ -40,6 +40,12 @@
     color: white;
     margin-top: 20px;
     font-size: 14px;
+    &--gray {
+      background-color: #888888;
+    }
+    &--small {
+      width: 45%;
+    }
   }
   &--inner {
     margin-bottom: 40px; 
@@ -50,17 +56,8 @@
     padding: 20px 0 60px;
     border-top: 1px solid $gray;
   }
-  &--gray {
-    background-color: #888888;
-  }    
-  &--small {
-    width: 45%;
-  }
   &--big {
     padding: 64px 15px;
-    margin: 20px auto 0;
-    display: block;
-    margin: 20px auto 0;
     display: block;
   }
 }

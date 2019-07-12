@@ -1,4 +1,10 @@
-%main.single__page__main
-  .single__page__main__container
-    .single__form.single__form--big
-      = link_to "ログアウト", destroy_user_session_path, class: "single__btn single__btn--red"
+%main.mypage
+
+  .mypage__container
+    .mypage__contents
+      .single__page__main
+        .single__page__main__container
+          .single__form.single__form--big
+            = link_to "ログアウト", destroy_user_session_path, class: "single__btn single__btn--red" 
+    .mypage__side
+      =render "shared/sidebar"
