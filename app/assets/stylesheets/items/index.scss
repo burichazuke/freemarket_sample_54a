@@ -81,7 +81,10 @@
     margin: 0 11px 26px;
     font-size: 22px;
     font-weight: bold;
-    @include item-aHover;
+    a{
+      @include item-aHover;
+    }
+    
   }
 
   .items-box__content{
@@ -131,7 +134,9 @@
     width: 99.5%;
     padding: 0 0 30px;
     font-size: 14px;
-    @include item-aHover;
+    a{
+      @include item-aHover;
+    }
   }
 }
 
