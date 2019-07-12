@@ -45,6 +45,8 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
+  gem 'factory_bot_rails'   
 end
 
 group :development do
@@ -56,7 +58,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'pry-rails'
-  gem 'factory_bot_rails'   
 end
 
 group :test do
