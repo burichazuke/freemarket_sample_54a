@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on('turbolinks:load',function(){
   //親
   $('#header-category').hover(function(){
     $('.header-nav-parent-wrap').show();

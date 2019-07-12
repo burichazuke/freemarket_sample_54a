@@ -1,6 +1,6 @@
 
 %section{class: "items-box"}
-  = link_to root_path do
+  = link_to item_path(item.id) do
     .items-box__photo
       =image_tag "/images/noImage.jpg" 
     .items-box__body

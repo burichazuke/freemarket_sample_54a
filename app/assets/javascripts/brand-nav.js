@@ -1,5 +1,4 @@
-$(document).ready(function(){
-  //必ず必要
+$(document).on('turbolinks:load',function(){
   $('#header-brand').hover(function(){
     $('.header-nav-parent-wrap2').show();
   },function(){
@@ -11,5 +10,4 @@ $(document).ready(function(){
   },function(){
     $(this).removeClass('active');
   });
-  
 });
