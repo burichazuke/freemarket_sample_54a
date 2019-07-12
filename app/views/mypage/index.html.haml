@@ -49,7 +49,7 @@
 
             %ul.mypage__content__tab-content__item-list--non
               %li.mypage__content__tab-content__not-found.bold
-                取引中の商品がありません
+                現在やることリストはありません
 
 
 
@@ -63,7 +63,7 @@
 
 
           .mypage__content__tab-content
-          
+
             %ul.mypage__content__tab-content__item-list
               - announces.each do |announce|
                 = render partial: "tab-list", locals: { announce: announce }                

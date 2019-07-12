@@ -167,6 +167,9 @@
 }
 
 
+.mypage__content__tab-content__item-list--non{
+  display: none;
+}
 .mypage__content__tab-content__not-found {
     padding: 160px 0 60px;
     background: image-url("logo-gray");    
@@ -176,6 +179,5 @@
     text-align: center;
     color: #ccc;
     font-weight: bold;
-    display: none;
   }
 }
