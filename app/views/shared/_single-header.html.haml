@@ -1,13 +1,10 @@
 %header.single__page__header
-  //メルカリのロゴの写真
-  .logo
-    = link_to "/" do
-      ロゴ
-    // = image_tag "", size: "185x50", alt: "mercari"
-  - if controller_name == 'registrations' && action_name == 'new'
+  = link_to "/" do
+    = image_tag "mercari_logo.png", size: "185x50", alt: "mercari"
+  - if controller_name == 'registrations' && action_name != 'register'
     %nav.sign-up__bar
       %ol.sign-up__bar__menus
-        %li.active
+        %li.active-single-nav
           会員情報
           .progress-status
         %li

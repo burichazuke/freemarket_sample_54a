@@ -18,7 +18,7 @@ $dark-red: #ea352d;
   &__footer {
     padding: 40px 0;
     width: 460px;
-    height: 140px;
+    height: 220px;
     margin: 0 auto;
     text-align: center;
     nav {
@@ -30,11 +30,11 @@ $dark-red: #ea352d;
         font-size: 12px;
       }
     }
-    // あとで綺麗にする必要あり
-    &__logo p{
+    &__logo{
+      display: block;
       margin: 40px auto 0;
     }
-    p small {
+    &__copyright {
       font-size: 13px;
     }
   }
@@ -75,7 +75,7 @@ $dark-red: #ea352d;
         left: 50%;
       }
     }
-    .active {
+    .active-single-nav {
       font-weight: bold;
       color: $dark-red;
       .progress-status {

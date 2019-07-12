@@ -6,24 +6,25 @@
       .item__photo
         .owl__carousel
           .owl__item__inner
-            %img(src="../images/noImage1.jpg" alt="")
+            = image_tag "noImage1.jpg"
+            -# %img(src="noImage1.jpg" alt="")
          
       %table.item__detail-table
         %tboby
           %tr
             %th 出品者
             %td
-              =link_to root_path do
+              =link_to root_path,class:'aBlue' do
                 めるこ
           %tr
             %th カテゴリー
             %td
-              =link_to root_path do
+              =link_to root_path,class:'aBlue' do
                 レディース
           %tr
             %th ブランド
             %td
-              =link_to root_path do
+              =link_to root_path,class:'aBlue' do
                 エルメス
           %tr
             %th 商品のサイズ
@@ -40,7 +41,7 @@
           %tr
             %th 配送元地域
             %td
-              =link_to root_path do
+              =link_to root_path,class:'aBlue' do
                 神奈川県
           %tr
             %th 配達日の目安
@@ -78,18 +79,18 @@
       .item__button__right
         =link_to "https://www.mercari.com/jp/safe/description/" do
           =fa_icon "lock"
-          %span あんしん・あんぜんへの取り組み
+          %span.aBlue あんしん・あんぜんへの取り組み
 
 
   =render "comment" #コメント欄部分テンプレート
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev
-      =link_to root_path do
+      =link_to root_path,class:'aBlue' do
         =fa_icon "angle-left"
         花柄ワンピース
     %li.nav-item__link-next
-      =link_to root_path do
+      =link_to root_path,class:'aBlue' do
         レインコート
         =fa_icon "angle-right"
   

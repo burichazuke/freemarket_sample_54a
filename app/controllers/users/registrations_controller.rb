@@ -5,9 +5,34 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
-
+  # 後々、wicked用のクラスを作成してそこに基本メソッド以外のメソッドは移行する予定
   # GET /resource/sign_up
   def register
+    # redirect_to :sms_confirmation_user_registration
+  end
+
+  # GET /resource/sign_up/sms_confirmation
+  def sms_confirmation
+    @user = ""
+    # redirect_to :address_user_registration
+  end
+
+  # GET /resource/sign_up/address
+  def address
+    @user = ""
+    # redirect_to :credit_card_user_registration
+  end
+
+  # GET /resource/sign_up/credit_card
+  def credit_card
+    @user = ""
+    # redirect_to :finish_user_registration
+  end
+
+  # GET /resource/sign_up/finish
+  def finish
+    @user = ""
+    # redirect_to :root
   end
 
   # GET /resource/sign_up/registration
@@ -58,9 +83,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    # super(resource)
+    sms_confirmation_user_registration_path
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
