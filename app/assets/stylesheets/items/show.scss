@@ -1,3 +1,8 @@
+a {
+  color: #0099e8;
+  text-decoration: none;
+}
+
 .show-container{
   background: #f5f5f5;
   padding: 24px 40px 40px;
@@ -5,7 +10,7 @@
 }
 
 .item__box-container{
-  width: 620px;
+  width: 700px;
   margin: 0 auto;
   padding: 24px 40px 40px 40px;
   background: #fff;
@@ -141,20 +146,14 @@
     .message-content {
       padding: 24px;
       .message-form {
+        &__textarea {
+          height: 104px;
+          @include textarea-default 
+        }
         p {
           padding: 8px;
           font-size: 14px;
           background: #fff6de;
-        }
-        textarea {
-          display: block;
-          width: 99.8%;
-          min-height: 102px;
-          margin: 8px 0 0;
-          border: 1px solid #ccc;
-          background: #fff;
-          font-size: 16px;
-          line-height: 1.5;
         }
         .message-submit {
           font-size: 14px;
@@ -205,7 +204,7 @@
   margin: 70px auto;
   padding: 32px 0 24px 0;
   width: 700px;
-  height: 82px;;
+  height: 138px;;
   background: #fff;
   text-align: center;
   &__links {
@@ -231,7 +230,3 @@
   }
 }
 
-a {
-  color: #0099e8;
-  text-decoration: none;
-}

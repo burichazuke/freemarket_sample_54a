@@ -1,4 +1,4 @@
-%header
+%header.header
   .header-inner
     .header-top
       .header-top__img
@@ -29,22 +29,28 @@
               
         .header-nav__right
           %ul.header-nav
-            %li.header-nav__user
-              %h2
-                = link_to '/', class:'header-nav__user__link' do
-                  = fa_icon 'bell-o',class:'header-user-icon'
-                  %span お知らせ
-
-            %li.header-nav__user
-              %h2
-                = link_to '/',class:'header-nav__user__link' do
-                  = fa_icon 'check',class:'header-user-icon'
-                  %span やることリスト
-
-            %li.header-nav__user
-              %h2
-                = link_to '/',class:'header-nav__user__link' do
-                  = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-img'
-                  %span マイページ
+            - if user_signed_in?
+              %li.header-nav__user
+                %h2
+                  = link_to '/', class:'header-nav__user__link' do
+                    = fa_icon 'bell-o',class:'header-user-icon'
+                    %span お知らせ
+              %li.header-nav__user
+                %h2
+                  = link_to '/',class:'header-nav__user__link' do
+                    = fa_icon 'check',class:'header-user-icon'
+                    %span やることリスト
+              %li.header-nav__user
+                %h2
+                  = link_to '/',class:'header-nav__user__link' do
+                    = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-img'
+                    %span マイページ
+            - else
+              %ul.header-user-list
+                %li.header-user-list__new
+                  =link_to '新規会員登録',user_registration_path
+                %li.header-user-list__login
+                  =link_to 'ログイン',new_user_session_path
+                
 
 = render "/shared/header-nav"
