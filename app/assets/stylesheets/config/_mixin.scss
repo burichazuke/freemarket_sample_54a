@@ -26,12 +26,10 @@
 
 // items/indexのmixin一覧
 @mixin item-aHover{
-  a{
-    color: #1499E8;
-    &:hover{
-      text-decoration: underline solid #1499E8;
-      opacity: 0.8;
-    }
+  color: #1499E8;
+  &:hover{
+    text-decoration: underline solid #1499E8;
+    opacity: 0.8;
   }
 }
 
