@@ -218,3 +218,39 @@
     z-index: 1;
   }
 }
+
+
+.single__field__date_select {
+  margin-top: 8px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  .date_select {
+    cursor: pointer;
+    width: 25%;
+    background: transparent;
+    -webkit-appearance: none;
+    background-size: 12px 10px;
+    background-position: right 10px center;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
+    z-index: 10;
+    padding: 10px 16px;
+  }
+  &__arrow {
+    position: absolute;
+    color: #cccccc;
+    &--first {
+      left: 65px;
+    }
+    &--second {
+      left: 185px;
+    }
+    &--third {
+      left: 300px;
+    }
+  }
+}
