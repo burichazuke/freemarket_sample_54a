@@ -1,0 +1,20 @@
+- if announces.length == 0
+  %li.mypage__content__tab-content__item-list--none
+    現在やることリストはありません
+- else 
+  - announces.each do |announce|
+    %li
+      = link_to mypage_index_path, class: "mypage__content__tab-content__item-list__link" do
+        .mypage__content__tab-content__item-list__icon
+          = image_tag "mercari_icon.png", size: "48x48"
+        .mypage__content__tab-content__item-list__body
+          .mypage__content__tab-content__item-list__body--text #{announce[:Name]}
+          .mypage__content__tab-content__item-list__body--icon-time
+            = fa_icon 'twitter', class: 'icon'
+          %span 1分前
+        .mypage__content__tab-content__item-list__right-icon
+          =fa_icon "angle-right", class: 'icon-chek'
+  %li.mypage__content__tab-content__item-list--index
+    .mypage__content__tab-content__item-list--index--gray
+      = link_to user_path(current_user) do
+        一覧を見る

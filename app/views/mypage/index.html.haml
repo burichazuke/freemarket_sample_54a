@@ -1,5 +1,6 @@
 :ruby
-  announces =[{
+  titles = ["お知らせ", "やることリスト"]
+  announces = [{
     Name:"コメントがつきました", url:"#"
   },{
     Name:"いいね！！！！がつきました", url:"#"
@@ -10,7 +11,7 @@
 %main.mypage
 
 
-  %main.mypage__container
+  .mypage__container
     .mypage__contents
       .mypage__content
         .mypage__content__head.mypage__content__head--image
@@ -33,48 +34,50 @@
 
         %section.mypage__content__tab-container
           %ul.mypage__content__tabs
-            = render partial: "tab-head-active", locals: { sample: "お知らせ"}
-            = render partial: "tab-head-non", locals: { sample: "やることリスト"}
-
-
+            = render partial: "mypage-tabs", locals: { titles: titles }                
           .mypage__content__tab-content
-
+            %ul.mypage__content__tab-content__item-list.show-mypage-tab
+              = render partial: "mypage-tab-lists", locals: { announces: announces }                
             %ul.mypage__content__tab-content__item-list
-              - announces.each do |announce|
-                = render partial: "tab-list", locals: { announce: announce }                
-              %li.mypage__content__tab-content__item-list--index
-                .mypage__content__tab-content__item-list--index--gray
-                  = link_to user_path(current_user) do
-                    一覧を見る
-
-            %ul.mypage__content__tab-content__item-list--non
-              %li.mypage__content__tab-content__not-found.bold
-                現在やることリストはありません
+              = render partial: "mypage-tab-lists", locals: { announces: [] }                
+          
 
 
 
-      .mypage__content
-        .mypage__content__head.mypage__content__head--text
-          購入した商品
-        %section.mypage__content__tab-container
-          %ul.mypage__content__tabs
-            = render partial: "tab-head-active", locals: { sample: "取引中"}
-            = render partial: "tab-head-non", locals: { sample: "過去の取引"}
 
 
-          .mypage__content__tab-content
 
-            %ul.mypage__content__tab-content__item-list
-              - announces.each do |announce|
-                = render partial: "tab-list", locals: { announce: announce }                
-              %li.mypage__content__tab-content__item-list--index
-                .mypage__content__tab-content__item-list--index--gray
-                  = link_to user_path(current_user) do
-                    一覧を見る
 
-            %ul.mypage__content__tab-content__item-list--non
-              %li.mypage__content__tab-content__not-found.bold
-                取引中の商品がありません
 
-    .mypage__side
-      =render "shared/sidebar"
+
+
+
+
+
+
+
+
+
+
+    -#   .mypage__content
+    -#     .mypage__content__head.mypage__content__head--text
+    -#       購入した商品
+    -#     %section.mypage__content__tab-container
+    -#       %ul.mypage__content__tabs
+    -#         = render partial: "tab-head-active", locals: { sample: "取引中"}
+    -#         = render partial: "tab-head-non", locals: { sample: "過去の取引"}
+    -#       .mypage__content__tab-content
+
+    -#         %ul.mypage__content__tab-content__item-list
+    -#           = render partial: "tab-list", locals: { announces: announces }
+    -#           %li.mypage__content__tab-content__item-list--index
+    -#             .mypage__content__tab-content__item-list--index--gray
+    -#               = link_to user_path(current_user) do
+    -#                 一覧を見る
+
+    -#         %ul.mypage__content__tab-content__item-list--non
+    -#           %li.mypage__content__tab-content__not-found.bold
+    -#             取引中の商品がありません
+
+    -# .mypage__side
+    -#   =render "shared/sidebar"
