@@ -2,24 +2,23 @@
   .single__page__main__container
     %h2.single__page__main__head
       商品の情報を入力
-    = form_for @item, url: "/items", html:{method: :post, class:"single__formsingle__form__items"}, multipart: :true do |f|
+    = form_for @item, url: "/items", html:{method: :post, class:"single__formsingle__form__items"} do |f|
       .sell-content
         .single__field.single__field--large
           .single__field__label
             = f.label :images , "出品画像"
             %span.single__field__require 必須
           %p 最大10枚までアップロードできます
-          -# .sell-upload--container
-          -#   = f.label :images, :image do
-          -#     .sell-upload--box
-          -#       = f.fields_for :images do |image|
-          -#         = image.file_field images_attributes: [:image]
-          -#         %span.text-mark 
-          -#           ドラッグアンドドロップ
-          -#           またはクリックしてファイルをアップロード
-            
-          = f.fields_for :images, multipart: :true do |image|
-            = image.file_field :image
+          .sell-upload--container
+            = f.label :images, :image do
+              .sell-upload--box
+                - 10.times do  
+                  = f.fields_for :images do |image|
+                    = image.file_field :image
+                  %span.text-mark 
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード
+
 
       .sell-content
         .single__field.single__field--large
