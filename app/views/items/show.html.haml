@@ -1,21 +1,21 @@
 .show-container
   
   .item__box-container
-    %h1.item__name 【アダムエロペ】花柄ショートパンツ
+    %h1.item__name
+      = @item.name
     .item__main-content
       .item__photo
         .owl__carousel
           .owl__item__inner
             = image_tag "noImage1.jpg"
             -# %img(src="noImage1.jpg" alt="")
-         
+
       %table.item__detail-table
         %tboby
           %tr
             %th 出品者
             %td
-              =link_to root_path,class:'aBlue' do
-                めるこ
+              = link_to @item.seller.email, item_path, method: :get, class: "user-name-link"
           %tr
             %th カテゴリー
             %td
@@ -28,16 +28,20 @@
                 エルメス
           %tr
             %th 商品のサイズ
-            %td M
+            %td 
+              = @item.size
           %tr
             %th 商品の状態
-            %td 新品、未使用
+            %td 
+              = @item.condition
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %td 
+              = @item.shipping_fee
           %tr
             %th 配送の方法
-            %td らくらくメルカリ便
+            %td
+              = @item.shipping_method
           %tr
             %th 配送元地域
             %td
@@ -45,16 +49,17 @@
                 神奈川県
           %tr
             %th 配達日の目安
-            %td 1~2日で発送
+            %td
+              = @item.shipping_date
 
     .item__price-box
       %span.item__price-box__price
-        ¥450
+        = "¥ #{@item.price}"
       %span.item__price-box__tax
         (税込)
       %span.item__price-box__shipping-fee
         送料込み
-    =link_to root_path, class: "item__buy-btn" do
+    =link_to items_buy_path, class: "item__buy-btn" do
       購入画面に進む
   
     %section.item__description
@@ -65,8 +70,7 @@
         %br
         サイズ36 
         %br
-        Sサイズで選択してとりますが、当方は158センチ46キロで、普段Mサイズを履いており、こちらも問題なく履けました
-        簡易包装で発送予定です
+          = @item.description
 
     .item__button-container
       .item__button__left
