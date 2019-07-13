@@ -123,12 +123,14 @@
               = f.label :item_description, "発送元の地域"
               %span.single__field__require 必須
             .single__field__select
-              %select{required: ""}
+              = f.collection_select :prefecture_id, Prefecture.all, :id, :name, required: '' do
                 %option{hidden: "", value: ""} --- 
-                %option{value: "1"} 北海道県
-                %option{value: "2"} 青森県
-                %option{value: "3"} 岩手県
-                %option{value: "4"} 宮城県
+              -# %select{required: ""}
+                
+              -#   %option{value: "1"} 北海道県
+              -#   %option{value: "2"} 青森県
+              -#   %option{value: "3"} 岩手県
+              -#   %option{value: "4"} 宮城県
 
           .single__field.single__field--large
             .single__field__label
