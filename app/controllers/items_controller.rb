@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
+    @itemimage = Image.where(item_id: @item)
   end
 
   def new
@@ -15,3 +17,9 @@ class ItemsController < ApplicationController
     render layout: "single"
   end
 end
+
+
+private
+  def item_params
+    params.require(:item).permit(:name,:description,:category_id,:size,:brand_id,:condition,:shipping_fee,:shipping_method,:prefecture,:shipping_date,:price,:profit,:status,:seller_id,:buyer_id)
+  end
