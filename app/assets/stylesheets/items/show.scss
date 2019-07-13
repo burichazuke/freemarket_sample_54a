@@ -229,3 +229,31 @@
   }
 }
 
+.user-name-link {
+  @include item-aHover;
+}
+
+
+
+
+
+.item-content__detail-table__face{
+  display: flex;
+  span {
+    color: black;
+    font-size: 0.8rem;
+    vertical-align: middle;
+  }
+  &--good{
+    color: #ef5185;
+    margin: 8px 15px 0 0;
+  }
+  &--normal{
+    color:#fba933;
+    margin: 8px 15px 0 0;
+  }
+  &--bad{
+    color: #6ab5d8;
+    margin: 8px 15px 0 0;
+  }
+}

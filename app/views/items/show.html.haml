@@ -9,6 +9,7 @@
           .owl__item__inner
             = image_tag "noImage1.jpg"
             -# %img(src="noImage1.jpg" alt="")
+            -# image後から入れます
 
       %table.item__detail-table
         %tboby
@@ -16,16 +17,35 @@
             %th 出品者
             %td
               = link_to @item.seller.email, item_path, method: :get, class: "user-name-link"
+
+              .item-content__detail-table__face
+
+                .item-content__detail-table__face--good
+                  = fa_icon "meh-o", class: "good-icon"
+                  %span.item-content__detail-table__face__name
+                    10
+                .item-content__detail-table__face--normal
+                  = fa_icon "meh-o", class: "normal-icon"
+                  %span.item-content__detail-table__face__name
+                    10
+                .item-content__detail-table__face--bad
+                  = fa_icon "meh-o", class: "bad-icon"
+                  %span.item-content__detail-table__face__name
+                    10
+
+
           %tr
             %th カテゴリー
             %td
               =link_to root_path,class:'aBlue' do
                 レディース
+                -# 後から
           %tr
             %th ブランド
             %td
               =link_to root_path,class:'aBlue' do
                 エルメス
+                -# 後から
           %tr
             %th 商品のサイズ
             %td 
@@ -46,7 +66,7 @@
             %th 配送元地域
             %td
               =link_to root_path,class:'aBlue' do
-                神奈川県
+                = @item.prefecture
           %tr
             %th 配達日の目安
             %td
@@ -64,13 +84,7 @@
   
     %section.item__description
       %p.item__description__innner
-        アダムエロペ
-        %br
-        花柄ショートパンツ（ネイビー×ブルー×ホワイト）
-        %br
-        サイズ36 
-        %br
-          = @item.description
+        = @item.description
 
     .item__button-container
       .item__button__left
@@ -87,6 +101,7 @@
 
 
   =render "comment" #コメント欄部分テンプレート
+  -# コメント機能後から
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev
@@ -109,7 +124,8 @@
       %li
         =link_to "http://www.pinterest.com" do
           =fa_icon "pinterest-square", class:"icon-pinterest"
-  
+
+-# ユーザーの他の出品商品
 
 
 
