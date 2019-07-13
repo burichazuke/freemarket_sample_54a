@@ -89,7 +89,7 @@
         .mypage__content__tab-content__item-list--index
           .mypage__content__tab-content__item-list--index--gray
             -# - if user_signed_in? && current_user.id == @item.seller_id
-            = link_to "この商品を削除する", item_path(@item), method: :delete, class: "item-dekete"
+            = link_to "この商品を削除する", item_path(@item), method: :delete, class: "item-delete"
 
 
 
