@@ -3,7 +3,8 @@
   = link_to item_path(item.id) do
     .items-box__photo      
       -image = item.images.first
-      =image_tag "#{image.image}"
+      -if image
+        =image_tag "#{image.image}"
     .items-box__body
       %h3{class: "items-box__body__name font-2"}
         =item.name
