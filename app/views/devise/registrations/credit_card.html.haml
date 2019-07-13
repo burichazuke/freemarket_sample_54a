@@ -1,5 +1,5 @@
 :ruby
-  cardlists = ["visa-card", "mastercard", "saison-card" ,"jcb-card", "american-express-card", "diners-club-International", "discover-card"]
+  cardlists = ["visa-card.svg", "mastercard.svg", "saison-card.svg" ,"jcb-card.svg", "american-express-card.svg", "diners-club-International.svg", "discover-card.svg"]
 
 
 // 4つ目のページ
@@ -25,7 +25,6 @@
           .single__field__select.single__field__select--small
             = select :credit_card, :valid_month, ["--" ,1, 2, 3]
           %span 月
-        .single__field--flex
           .single__field__select.single__field__select--small
             = select :credit_card, :valid_year, ["--", 20, 21, 22]
           %span 年
