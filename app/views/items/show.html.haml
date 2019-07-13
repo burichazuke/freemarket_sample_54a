@@ -7,9 +7,10 @@
       .item__photo
         .owl__carousel
           .owl__item__inner
-            = image_tag "noImage1.jpg"
-            -# %img(src="noImage1.jpg" alt="")
-            -# imageまだ
+          -image = @item.images.first
+          -if image
+            =image_tag "#{image.image}"
+
 
       %table.item__detail-table
         %tboby

@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @itemimage = Image.where(item_id: @item)
+
   end
 
   def new
