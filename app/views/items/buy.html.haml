@@ -6,19 +6,28 @@
       .purchase-confirmations__container
         .purchase-confirmations__item
           .purchase-confirmations__item__detail
-            =image_tag "noImage.jpg", class: "purchase-confirmations__item__detail__img"
+            -image = @item.images.first
+            -if image
+              =image_tag "#{image.image}", class: "purchase-confirmations__item__detail__img"
             %p.purchase-confirmations__item__detail__name
-              マクガレーチュニック
+              =@item.name
           %p.purchase-confirmations__item__price
-            ¥ 3,400
-            %span 送料込み
+            ="¥ #{@item.price}"
+            %span 
+              =@item.shipping_fee
           %p.purchase-confirmations__item__point
             ポイントはありません
           %p.purchase-confirmations__item__pey-price
             支払い金額
-            %span ¥ 3,400
-          %button.purchase-button{type: "submit"}
-            購入する
+            %span 
+              ="¥ #{@item.price}"
+            =form_for @item do |f|
+              = f.text_field :status, value: 1, class: "purchase-form-hidden"
+ 
+              %button.purchase-button{type: "submit"}
+                購入する
+      
+      -# ユーザーのデータベースができてから表示
       .purchase-confirmations__container
         %section.buy-user-info
           .buy-user-info__address
