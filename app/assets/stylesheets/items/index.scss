@@ -101,10 +101,14 @@
       a{
         text-decoration: none;
       }
-      &__photo img{
+      &__photo{
         width: 213px;
-        height: 213px;
-        object-fit: cover;
+        height: 213px;  
+        img{
+          width: 213px;
+          height: 213px;
+          object-fit: cover;
+        }
       }
       &__body{
         padding: 16px;
