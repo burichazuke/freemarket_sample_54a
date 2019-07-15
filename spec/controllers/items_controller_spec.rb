@@ -18,12 +18,12 @@ describe ItemsController do
 
 
   describe 'GET #show' do
-    it "インスタンス変数を正しく取得できているassings" do
+    it "インスタンス変数を正しく取得できているか/assings" do
       item = create(:item)
       get :show, params: {id: item}
       expect(assigns(:item)).to eq item
     end
-    it "HTTPメソッドを正しく呼出せているかrender_template" do
+    it "HTTPメソッドを正しく呼出せているか/render_template" do
       item = create(:item)
       get :show, params: {id: item}
       expect(response).to render_template :show
