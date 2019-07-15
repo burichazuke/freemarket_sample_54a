@@ -1,4 +1,10 @@
 class Item < ApplicationRecord
+  before_save :item_profit
+
+  def item_profit
+    self.profit = price * 0.9
+  end
+
   # belongs_to :seller, class_name: "User"
   # belongs_to :buyer, class_name: "User"
   has_many :images, dependent: :destroy
@@ -9,3 +15,6 @@ class Item < ApplicationRecord
   # has_many :favorites, dependent: :destroy
   # has_many :users, through: :favorites, dependent: :destroy
 end
+
+
+

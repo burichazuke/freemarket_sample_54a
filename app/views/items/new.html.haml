@@ -69,7 +69,7 @@
               %span.single__field__require 必須
             .single__field__select
               = f.select :size, prompt:"---" do
-                %option{hidden: ""} --- 
+                -# %option{hidden: ""} --- 
                 %option{value: "XXS以下"} XXS以下
                 %option{value: "XS(SS)"} XS(SS)
                 %option{value: "S"} S
@@ -161,10 +161,10 @@
                  
             %li.sellfee 
               .l-left 販売手数料
-              .l-right 100
+              .l-right
             %li.sellprofit 
               .l-left 販売利益
-              .l-right 900
+              .l-right
 
       .sell-content
         .sell--box
