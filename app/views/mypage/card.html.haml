@@ -14,6 +14,8 @@
                 = link_to user_registration_path, class: "single__btn single__btn--red", id: "mail-btn" do
                   = fa_icon "credit-card lg", class: "single__icon single__icon--mail"
                   クレジットカードを追加する
+                %form{:action => "/pay", :method => "post"}
+                  %script.payjp-button{"data-key" => ENV["PAYJP_TEST_PUBLIC"], :src => "https://checkout.pay.jp/","data-partial": "true"}
             - else
               .single__field.single__field--flex
                 .single__field__left
