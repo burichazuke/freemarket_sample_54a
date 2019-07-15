@@ -14,4 +14,17 @@ describe ItemsController do
       expect(response).to render_template :index
     end
   end
+
+
+
+  describe 'DELETE #destroy' do
+    it "削除機能が機能しているか" do
+      item = create(:item)
+      expect{
+        delete :destroy, id: item
+      }. to change(Item, :count).by(-1)
+    end
+  end
+
+
 end
