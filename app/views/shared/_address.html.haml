@@ -1,0 +1,52 @@
+.single__field
+  .single__field__label
+    = label :address, :name, "お名前"
+    %span.single__field__require 必須
+  .single__field__input
+    = f.text_field :first_name, autofocus: true, placeholder: "例) 山田"
+  .single__field__input
+    = f.text_field :last_name, placeholder: "例) 彩"
+.single__field
+  .single__field__label
+    = label :address, :name_kana, "お名前カナ"
+    %span.single__field__require 必須
+  .single__field__input
+    = f.text_field :first_name_kana, placeholder: "例) ヤマダ"
+  .single__field__input
+    = f.text_field :last_name_kana, placeholder: "例) アヤ"
+.single__field
+  .single__field__label
+    = f.label :postal_code, "郵便番号"
+    %span.single__field__require 必須
+  .single__field__input
+    = f.text_field :postal_code, placeholder: "例) 123-4567"
+.single__field
+  .single__field__label
+    = f.label :prefecture, "都道府県"
+    %span.single__field__require 必須
+  .single__field__select
+    = f.select :prefecture, ["---", "北海道"]
+.single__field
+  .single__field__label
+    = f.label :municipalities, "市区町村"
+    %span.single__field__require 必須
+  .single__field__input
+    = f.text_field :municipalities, placeholder: "例) 横浜市緑区"
+.single__field
+  .single__field__label
+    = f.label :address, "番地"
+    %span.single__field__require 必須
+  .single__field__input
+    = f.text_field :address, placeholder: "例) 青山1-1-1"
+.single__field
+  .single__field__label
+    = f.label :building, "建物名"
+    %span.single__field__require.single__field__require--option 任意
+  .single__field__input
+    = f.text_field :building, placeholder: "例) 柳ビル103"
+.single__field
+  .single__field__label
+    = f.label :phone, "電話"
+    %span.single__field__require.single__field__require--option 任意
+  .single__field__input
+    = f.text_field :phone, placeholder: "例) 09012345678"          

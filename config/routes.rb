@@ -24,8 +24,7 @@ Rails.application.routes.draw do
   resources :users,  only: [:show]
   resources :mypage, only: [:index] do
     collection do
-      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "deliver_address",
-      "card", "email_password", "identification", "sms_confirmation", "help_center"
+      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "card", "email_password", "identification", "sms_confirmation", "help_center"
     end
   end
 
@@ -39,9 +38,9 @@ Rails.application.routes.draw do
   end
 
   as :address do 
-    get 'mypage/deliver_address', to: 'address#edit', as: :edit_address  
-    post 'address', to: 'address#create', as: :create_address
-    put 'address', to: 'address#update', as: :update_address
+    get 'mypage/deliver_address', to: 'addresses#edit', as: :edit_address  
+    post 'address', to: 'addresses#create', as: :create_address
+    put 'address', to: 'addresses#update', as: :update_address
   end
   
   as :items do

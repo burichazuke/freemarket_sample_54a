@@ -6,10 +6,6 @@ class MypageController < ApplicationController
   def profile
   end
 
-  def identification  
-    @address = current_user.address
-  end
-
   def card  
   end
 
