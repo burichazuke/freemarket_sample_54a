@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'credit_cards/index'
-  get 'credit_cards/new'
   devise_for :users, skip: [:registrations], controllers: {
     sessions: 'users/sessions',
     passwords: 'users/passwords'
@@ -51,6 +49,5 @@ Rails.application.routes.draw do
     resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
   resources :brands,  only: [:index, :show]
-  resources :credit_card
 
 end
