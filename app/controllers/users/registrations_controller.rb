@@ -20,6 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up/address
   def address
     @user = ""
+    @address = Address.new
     # redirect_to :credit_card_user_registration
   end
 

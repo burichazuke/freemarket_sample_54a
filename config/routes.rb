@@ -27,8 +27,8 @@ Rails.application.routes.draw do
       get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "deliver_address",
       "card", "email_password", "identification", "sms_confirmation", "help_center"
     end
-
   end
+
   as :mypage do
     get "mypage/like/history", to: "mypage#like"
     get "mypage/listings/listing", to: "mypage#listing"
@@ -38,12 +38,18 @@ Rails.application.routes.draw do
     get "logout", to: "mypage#logout"
   end
 
+  as :address do 
+    get 'mypage/deliver_address', to: 'address#edit', as: :edit_address  
+    post 'address', to: 'address#create', as: :create_address
+    put 'address', to: 'address#update', as: :update_address
+  end
   
   as :items do
     get "transaction/buy/:id", to: "items#buy", as: :items_buy
     get "items/sell", to: "items#new", as: :items_sell
   end
   resources :items, except: :new 
+  
 
     resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
