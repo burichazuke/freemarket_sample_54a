@@ -17,4 +17,10 @@ FactoryBot.define do
     created_at { Faker::Time.between(2.days.ago, Time.now, :all) }
   end
 
+  factory :user do
+    user_id {1}
+    user_id {2}
+  end
+
+
 end

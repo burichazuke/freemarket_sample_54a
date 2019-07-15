@@ -8,6 +8,10 @@ class ItemsController < ApplicationController
 
   end
 
+  
+
+
+
   def new
     @item = ""
     render layout: "single"
