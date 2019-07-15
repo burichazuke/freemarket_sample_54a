@@ -83,3 +83,5 @@ gem 'jquery-rails'
 gem 'bxslider-rails'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'active_hash'
+
