@@ -10,16 +10,15 @@
             %span.single__field__require 必須
           %p 最大10枚までアップロードできます
           .sell-upload--container
-            = f.label :images, :image do
-              .sell-upload--box
-                - 10.times do  
-                  = f.fields_for :images do |image|
-                    = image.file_field :image
-                  %span.text-mark 
-                    ドラッグアンドドロップ
-                    またはクリックしてファイルをアップロード
-
-
+            .sell-upload--box
+              %span.text-mark 
+                ドラッグアンドドロップ
+                またはクリックしてファイルをアップロード
+              = f.fields_for :images do |image|
+                =image.label :image do
+                  =fa_icon "image"
+                  = image.file_field :image
+            
       .sell-content
         .single__field.single__field--large
           .single__field__label
@@ -66,15 +65,15 @@
 
           .single__field.single__field--large
             .single__field__label
-              = f.label :item_description, "サイズ"
+              = label :size, "サイズ"
               %span.single__field__require 必須
             .single__field__select
-              = f.select :size, required: "" do
-                %option{hidden: "", value: ""} --- 
-                %option{value: "1"} XXS以下
-                %option{value: "2"} XS(SS)
-                %option{value: "3"} S
-                %option{value: "4"} M
+              = f.select :size, prompt:"---" do
+                %option{hidden: ""} --- 
+                %option{value: "XXS以下"} XXS以下
+                %option{value: "XS(SS)"} XS(SS)
+                %option{value: "S"} S
+                %option{value: "M"} M
 
           -# .single__field.single__field--large
           -#   .single__field__label
@@ -90,12 +89,12 @@
             .single__field__select
               = f.select :condition, required: "" do
                 %option{hidden: "", value: ""} --- 
-                %option{value: "1"} 新品/未使用
-                %option{value: "2"} 未使用に近い
-                %option{value: "3"} 目立った傷や汚れなし
-                %option{value: "4"} やや傷や汚れあり
-                %option{value: "5"} 傷や汚れあり
-                %option{value: "6"} 全体的に状態が悪い
+                %option{value: "新品/未使用"} 新品/未使用
+                %option{value: "未使用に近い"} 未使用に近い
+                %option{value: "目立った傷や汚れなし"} 目立った傷や汚れなし
+                %option{value: "やや傷や汚れあり"} やや傷や汚れあり
+                %option{value: "傷や汚れあり"} 傷や汚れあり
+                %option{value: "全体的に状態が悪い"} 全体的に状態が悪い
          
 
       .sell-content
@@ -108,8 +107,8 @@
             .single__field__select
               = f.select :shipping_fee, required: "" do
                 %option{hidden: "", value: ""} --- 
-                %option{value: "1"} 送料負担(出品者負担)
-                %option{value: "2"} 着払い(購入者負担)
+                %option{value: "送料負担(出品者負担)"} 送料負担(出品者負担)
+                %option{value: "着払い(購入者負担)"} 着払い(購入者負担)
           
           .single__field.single__field--large
             .single__field__label
@@ -118,10 +117,10 @@
             .single__field__select
               = f.select :shipping_method, required: "" do
                 %option{hidden: "", value: ""} --- 
-                %option{value: "1"} 未定
-                %option{value: "2"} らくらくメルカリ便
-                %option{value: "3"} ゆうメール
-                %option{value: "4"} レターパック
+                %option{value: "未定"} 未定
+                %option{value: "らくらくメルカリ便"} らくらくメルカリ便
+                %option{value: "ゆうメール"} ゆうメール
+                %option{value: "レターパック"} レターパック
 
           .single__field.single__field--large
             .single__field__label
@@ -130,10 +129,10 @@
             .single__field__select
               = f.select :prefecture, required: "" do
                 %option{hidden: "", value: ""} --- 
-                %option{value: "1"} 北海道県
-                %option{value: "2"} 青森県
-                %option{value: "3"} 岩手県
-                %option{value: "4"} 宮城県
+                %option{value: "北海道県"} 北海道県
+                %option{value: "青森県"} 青森県
+                %option{value: "岩手県"} 岩手県
+                %option{value: "宮城県"} 宮城県
 
           .single__field.single__field--large
             .single__field__label
@@ -142,9 +141,9 @@
             .single__field__select
               = f.select :shipping_date, required: "" do
                 %option{hidden: "", value: ""} --- 
-                %option{value: "1"} 1~2日で発送
-                %option{value: "2"} 2~3日で発送
-                %option{value: "3"} 4~7日で発送
+                %option{value: "1~2日で発送"} 1~2日で発送
+                %option{value: "2~3日で発送"} 2~3日で発送
+                %option{value: "4~7日で発送"} 4~7日で発送
 
       .sell-content
         %h3 販売価格(300〜9,999,999)
@@ -166,8 +165,6 @@
             %li.sellprofit 
               .l-left 販売利益
               .l-right 900
-              -# = f.text_field :profit
-      
 
       .sell-content
         .sell--box
