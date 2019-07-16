@@ -49,5 +49,12 @@ Rails.application.routes.draw do
     resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
   resources :brands,  only: [:index, :show]
+  resources :cards, only: [:new, :create, :show] do
+    collection do
+      post 'show', to: 'cards#show'
+      post 'pay', to: 'cards#pay'
+      post 'delete', to: 'cards#delete'
+    end
+  end
 
 end
