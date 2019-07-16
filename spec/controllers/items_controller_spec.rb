@@ -15,8 +15,6 @@ describe ItemsController do
     end
   end
 
-
-
   describe 'GET #show' do
     it "インスタンス変数を正しく取得できているか/assings" do
       item = create(:item)
@@ -30,5 +28,12 @@ describe ItemsController do
     end
   end
 
-
+  describe 'DELETE #destroy' do
+    it "削除機能が機能しているか" do
+      item = create(:item)
+      expect{
+        delete :destroy,  params: {id: item}
+      }. to change(Item, :count).by(-1)
+    end
+  end
 end
