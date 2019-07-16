@@ -36,7 +36,9 @@
       .sell-content
         %h3 商品の詳細
         .sell-form-box
-          -# .single__field.single__field--large
+
+          //後の実装にて使用するためコメントアウトしています
+          -# .single__field.single__field--large   
           -#   .single__field__label
           -#     = f.label :item_description, "カテゴリー"
           -#     %span.single__field__require 必須
@@ -70,7 +72,8 @@
             .single__field__select
               = f.select :size,[["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"]], class: "single__field__select", prompt: "---"
 
-          -# .single__field.single__field--large
+          //後の実装にて使用するためコメントアウトしています
+          -# .single__field.single__field--large  
           -#   .single__field__label
           -#     = f.label :item_description, "ブランド"
           -#     %span.single__field__require.single__field__require--gray 任意
