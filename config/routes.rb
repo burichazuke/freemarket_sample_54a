@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     collection do
       get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "deliver_address",
       "card", "email_password", "identification", "sms_confirmation", "help_center"
+      post "create_identification"
+      put "create_identification"
     end
 
   end

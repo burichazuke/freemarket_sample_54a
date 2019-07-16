@@ -33,3 +33,7 @@
               .single__field__input
                 .single__field__text
                   = current_user.birthday
+            -# = render partical: 'shared/address', lacals: { f: f }
+            = f.submit "登録する", class: "single__form__send-btn" 
+            .single__field
+              = link_to "本人情報の登録について>", "/", class: "single__field__text single__field__text__link single__field__text--right"
