@@ -5,7 +5,7 @@
         .single__page__main__container
           %h2.single__page__main__head
             本人情報の登録
-          = form_for @identification, url: create_identification_mypage_index_path, html: { class: "single__form--box"} do |f|
+          = form_for @identification, url: identification_path, html: { class: "single__form--box"} do |f|
             .single__field.single__field--large
               .single__field__text
                 お客さまの本人情報をご登録ください。
@@ -13,51 +13,54 @@
                   登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
               .single__field__text.single__field__text__link.single__field__text--right
                 本人確認書類のアップロードについて>
-            .single__field
+            .single__field.single__field--large
               .single__field__label
                 = label :devise, :name, "お名前"
               .single__field__text
                 = current_user.last_name + " " + current_user.first_name
-            .single__field
+            .single__field.single__field--large
               .single__field__label
                 = label :devise, :name_kana, "お名前カナ"
               .single__field__text
                 = current_user.last_name_kana + " " + current_user.first_name_kana
-            .single__field
+            .single__field.single__field--large
               .single__field__label
                 = label :devise, :birthday, "生年月日"
               .single__field__text
                 = current_user.birthday
-            .single__field
+            .single__field.single__field--large
               .single__field__label
                 = f.label :postal_code, "郵便番号"
                 %span.single__field__require.single__field__require--option 任意
               .single__field__input
                 = f.text_field :postal_code, placeholder: "例) 123-4567"
-            .single__field
+            .single__field.single__field--large
               .single__field__label
                 = f.label :prefecture, "都道府県"
                 %span.single__field__require.single__field__require--option 任意
               .single__field__select
                 = f.collection_select :prefecture, Prefecture.all, :name, :name, {prompt: "---"}
-            .single__field
+            .single__field.single__field--large
               .single__field__label
                 = f.label :municipalities, "市区町村"
                 %span.single__field__require.single__field__require--option 任意
               .single__field__input
                 = f.text_field :municipalities, placeholder: "例) 横浜市緑区"
-            .single__field
+            .single__field.single__field--large
               .single__field__label
                 = f.label :address, "番地"
                 %span.single__field__require.single__field__require--option 任意
               .single__field__input
                 = f.text_field :address, placeholder: "例) 青山1-1-1"
-            .single__field
+            .single__field.single__field--large
               .single__field__label
                 = f.label :building, "建物名"
                 %span.single__field__require.single__field__require--option 任意
               .single__field__input
                 = f.text_field :building, placeholder: "例) 柳ビル103"
-            = f.submit "登録する", class: "single__form__send-btn" 
+            .single__field.single__field--large
+              = f.submit "登録する", class: "single__form__send-btn" 
             .single__field
               = link_to "本人情報の登録について>", "/", class: "single__field__text single__field__text__link single__field__text--right"
+    .mypage__side
+      =render "shared/sidebar"
