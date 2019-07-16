@@ -14,8 +14,6 @@
                 = link_to new_card_path, class: "single__btn single__btn--red", id: "mail-btn" do
                   = fa_icon "credit-card lg", class: "single__icon single__icon--mail"
                   クレジットカードを追加する
-                %form{:action => "/cards", :method => "post"}
-                  %script.payjp-button{"data-key" => ENV["PAYJP_TEST_PUBLIC"], :src => "https://checkout.pay.jp/"}
             - else
               .single__field.single__field--flex
                 .single__field__left

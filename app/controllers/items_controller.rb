@@ -26,13 +26,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.update(item_params)
     Payjp.api_key = ENV['PAYJP_TEST_SECRET']
-    # Payjp::Customer.create(
-    #   card: params['payjp-token'],
-    #   id: current_user.id
-    # )
     Payjp::Charge.create(
       amount: @item.price, # 決済する値段
-      customer: "cus_9dfcf76e1b35927b34fcd2fc5344",
+      customer: current_user.card.customer_id,
       currency: 'jpy'
     )
     redirect_to root_path
