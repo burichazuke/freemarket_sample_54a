@@ -13,16 +13,15 @@ class MypageController < ApplicationController
   end
 
   def identification
-    if 
-      @identification = current_user.identification
-    else
-      @identification = Identification.new
-    end
+    @identification = Identification.new
+    # if 
+    #   @identification = current_user.identification
+    # else
+      
+    # end
   end
 
   def create_identification
-    create
-    update
   end
 
   private
