@@ -2,119 +2,139 @@
   .single__page__main__container
     %h2.single__page__main__head
       商品の情報を入力
-    = form_for @item, url: "/items", html:{method: :post, class:"single__formsingle__form__items"} do |f|
+    = form_for @item, url: "/items", html: {method: :post, class: "single__formsingle__form__items"} do |f|
       .sell-content
         .single__field.single__field--large
           .single__field__label
-            = f.label :images , "出品画像"
+            = label :images, :image, "出品画像"
             %span.single__field__require 必須
           %p 最大10枚までアップロードできます
           .sell-upload--container
-            .sell-upload--box
-              %span.text-mark 
-                ドラッグアンドドロップ
-                またはクリックしてファイルをアップロード
-              = f.fields_for :images do |image|
-                =image.label :image do
-                  =fa_icon "image"
-                  = image.file_field :image
-            
+            = label :images, :image do
+              .sell-upload--box
+                = file_field :images, :image
+                %span.text-mark 
+                  ドラッグアンドドロップ
+                  またはクリックしてファイルをアップロード
+
       .sell-content
         .single__field.single__field--large
           .single__field__label
-            = f.label :name, "商品名"
+            = f.label :item_name, "商品名"
             %span.single__field__require 必須
           .single__field__input
-            = f.text_field :name, placeholder: "商品名（必須40文字まで）"
+            = f.text_field :item_name, placeholder: "商品名（必須40文字まで）"
         .single__field.single__field--large
           .single__field__label
-            = f.label :description, "商品の説明"
+            = f.label :item_description, "商品の説明"
             %span.single__field__require 必須
           .single__field__textarea
-            = f.text_area :description, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-           
+            %textarea#item_description{placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
+
       .sell-content
         %h3 商品の詳細
         .sell-form-box
-          -# .single__field.single__field--large
-          -#   .single__field__label
-          -#     = f.label :item_description, "カテゴリー"
-          -#     %span.single__field__require 必須
-          -#   .single__field__select
-          -#     = f.select required: "" do
-          -#       %option{hidden: "", value: ""} --- 
-          -#       %option{value: "1"} レディース
-          -#       %option{value: "2"} メンズ
-          -#       %option{value: "3"} ベビー・キッズ
-          -#       %option{value: "4"} インテリア・住まい・小物
-          -#   .single__field__select
-          -#     = f.select required: "" do
-          -#       %option{hidden: "", value: ""} --- 
-          -#       %option{value: "1"} トップス
-          -#       %option{value: "2"} ジャケット/アウター
-          -#       %option{value: "3"} パンツ
-          -#       %option{value: "4"} スカート
-          -#   .single__field__select
-          -#     = f.select required: "" do
-          -#       %option{hidden: "", value: ""} --- 
-          -#       %option{value: "1"} Tシャツ/カットソー(半袖/袖なし)
-          -#       %option{value: "2"} Tシャツ/カットソー(七分/長袖)
-          -#       %option{value: "3"} シャツ/ブラウス(半袖/袖なし)
-          -#       %option{value: "4"} シャツ/ブラウス(七分/長袖)
+          .single__field.single__field--large
+            .single__field__label
+              = f.label :item_description, "カテゴリー"
+              %span.single__field__require 必須
+            .single__field__select
+              %select{required: ""}
+                %option{hidden: "", value: ""} --- 
+                %option{value: "1"} レディース
+                %option{value: "2"} メンズ
+                %option{value: "3"} ベビー・キッズ
+                %option{value: "4"} インテリア・住まい・小物
+            .single__field__select
+              %select{required: ""}
+                %option{hidden: "", value: ""} --- 
+                %option{value: "1"} トップス
+                %option{value: "2"} ジャケット/アウター
+                %option{value: "3"} パンツ
+                %option{value: "4"} スカート
+            .single__field__select
+              %select{required: ""}
+                %option{hidden: "", value: ""} --- 
+                %option{value: "1"} Tシャツ/カットソー(半袖/袖なし)
+                %option{value: "2"} Tシャツ/カットソー(七分/長袖)
+                %option{value: "3"} シャツ/ブラウス(半袖/袖なし)
+                %option{value: "4"} シャツ/ブラウス(七分/長袖)
             
 
           .single__field.single__field--large
             .single__field__label
-              = label :size, "サイズ"
+              = f.label :item_description, "サイズ"
               %span.single__field__require 必須
             .single__field__select
-              = f.select :size,[["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"]], class: "single__field__select", prompt: "---"
-
-          -# .single__field.single__field--large
-          -#   .single__field__label
-          -#     = f.label :item_description, "ブランド"
-          -#     %span.single__field__require.single__field__require--gray 任意
-          -#   .single__field__input
-          -#     = f.text_field :brand, placeholder: "例) シャネル"
+              %select{required: ""}
+                %option{hidden: "", value: ""} --- 
+                %option{value: "1"} XXS以下
+                %option{value: "2"} XS(SS)
+                %option{value: "3"} S
+                %option{value: "4"} M
 
           .single__field.single__field--large
             .single__field__label
-              = f.label :condition, "商品の状態"
+              = f.label :item_description, "ブランド"
+              %span.single__field__require.single__field__require--gray 任意
+            .single__field__input
+              = f.text_field :item_name, placeholder: "例) シャネル"
+
+          .single__field.single__field--large
+            .single__field__label
+              = f.label :item_description, "商品の状態"
               %span.single__field__require 必須
             .single__field__select
-              = f.select :condition,[["新品/未使用", "新品/未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"]], class: "single__field__select", prompt: "---"
-
+              %select{required: ""}
+                %option{hidden: "", value: ""} --- 
+                %option{value: "1"} 新品/未使用
+                %option{value: "2"} 未使用に近い
+                %option{value: "3"} 目立った傷や汚れなし
+                %option{value: "4"} やや傷や汚れあり
+         
 
       .sell-content
         %h3 配送について
         .sell-form-box
           .single__field.single__field--large
             .single__field__label
-              = f.label :shipping_fee, "配送料の負担"
+              = f.label :item_description, "配送料の負担"
               %span.single__field__require 必須
             .single__field__select
-              = f.select :shipping_fee, [["送料負担(出品者負担)","送料負担(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]], class: "single__field__select", prompt: "---"
+              %select{required: ""}
+                %option{hidden: "", value: ""} --- 
+                %option{value: "1"} 送料負担(出品者負担)
+                %option{value: "2"} 着払い(購入者負担)
           
           .single__field.single__field--large
             .single__field__label
-              = f.label :shipping_method, "配送の方法"
+              = f.label :item_description, "配送の方法"
               %span.single__field__require 必須
             .single__field__select
-              = f.select :shipping_method, [["未定", "未定"], ["らくらくメルカリ便", "らくらくメルカリ便"], ["ゆうメール", "ゆうメール"], ["レターパック", "レターパック"]], class: "single__field__select", prompt: "---"
-          
+              %select{required: ""}
+                %option{hidden: "", value: ""} --- 
+                %option{value: "1"} 未定
+                %option{value: "2"} らくらくメルカリ便
+                %option{value: "3"} ゆうメール
+                %option{value: "4"} レターパック
+
           .single__field.single__field--large
             .single__field__label
-              = f.label :prefecture, "発送元の地域"
+              = f.label :item_description, "発送元の地域"
               %span.single__field__require 必須
             .single__field__select
               = f.collection_select :prefecture_name, Prefecture.all, :id, :name, prompt: "--"
 
           .single__field.single__field--large
             .single__field__label
-              = f.label :shipping_date, "発送までの日数"
+              = f.label :item_description, "発送までの日数"
               %span.single__field__require 必須
             .single__field__select
-              = f.select :shipping_date, [["1~2日で発送", "1~2日で発送"], ["2~3日で発送", "2~3日で発送"], ["4~7日で発送", "4~7日で発送"]], class: "single__field__select", prompt: "---"
+              %select{required: ""}
+                %option{hidden: "", value: ""} --- 
+                %option{value: "1"} 1~2日で発送
+                %option{value: "2"} 2~3日で発送
+                %option{value: "3"} 4~7日で発送
 
       .sell-content
         %h3 販売価格(300〜9,999,999)
@@ -123,19 +143,18 @@
             %li.form-group
               .single__field--2
                 .single__field__label__left
-                  = f.label :price, "価格"
+                  = f.label :item_description, "価格"
                   %span.single__field__require 必須
                 .single__field__label__right
                   %p ¥
-                  .single__field__input.single__field__input--right.text-right
-                    = f.text_field :price, placeholder: "例) 300" ,class:"text-right"
-                 
+                  .single__field__input.single__field__input--right
+                    = f.text_field :item_name, placeholder: "1000"  
             %li.sellfee 
               .l-left 販売手数料
-              .l-right
+              .l-right 100
             %li.sellprofit 
               .l-left 販売利益
-              .l-right 
+              .l-right 900
 
       .sell-content
         .sell--box
@@ -143,8 +162,9 @@
           %p またブランド品でシリアルナンバー等がある場合はご記載ください。偽ブランドの販売は犯罪であり処罰される可能性があります。
           %p また、出品をもちまして加盟店規約に同意したことになります。
 
+      
           %p.single__field__text.single__field__text--center
-          = f.submit "出品する", class: "single__form__send-btn" 
+          = f.submit "出品する", class: "single__form__send-btn"
           = link_to root_path do
             = f.submit "もどる", class: "single__form__send-btn single__form__send-btn--gray single__form__send-btn--small" 
      
