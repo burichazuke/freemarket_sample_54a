@@ -12,7 +12,7 @@ class MypageController < ApplicationController
       Payjp.api_key = ENV["PAYJP_TEST_SECRET"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @card = customer.cards.retrieve(card.card_id) 
-    end 
+    end
   end
 
   def logout  

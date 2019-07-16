@@ -9,7 +9,7 @@
             .single__field.single__field--large
               %h3.single__field__text
                 クレジットカード一覧
-            - if true
+            - if current_user.card
               .single__field.single__field--flex
                 .single__field__left
                   .single__field__text
@@ -19,14 +19,15 @@
                   .single__field__text
                     = @card.exp_month.to_s + " / " + @card.exp_year.to_s.slice(2,3)
                 .single__field__right
-                  %button.single__mini-btn
-                    削除する
+                  =link_to card_path(@card), method: :delete do
+                    %button.single__mini-btn
+                      削除する
+
+            - else
               .single__field
                 = link_to new_card_path, class: "single__btn single__btn--red", id: "mail-btn" do
                   = fa_icon "credit-card lg", class: "single__icon single__icon--mail"
                   クレジットカードを追加する
-            - else
-
           .single__form--box
             .single__field
               = link_to "支払い方法について>", "/", class: "single__field__text single__field__text__link single__field__text--right"
