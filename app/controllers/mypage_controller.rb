@@ -21,7 +21,7 @@ class MypageController < ApplicationController
     if @identification.update(identification_params)
       redirect_to identification_mypage_index_path, notice: "変更しました"
     else
-      render :edit
+      render "mypage/identification"
     end
   end
 
