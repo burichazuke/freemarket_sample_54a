@@ -1,17 +1,34 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+-# loginページ
+%main.single__page__main
+  .single__page__main__container.single__page__main__container--small
+    .single__page__main__head--sign-up
+      %p.single__field__text
+        アカウントをお持ちでない方はこちら      
+      = link_to register_user_registration_path, class: "single__btn single__btn--sign-up " do
+        新規会員登録
+    -# urlは後々修正
+    .single__form
+      .single__form--inner
+        .single__field
+          = link_to "/", class: "single__btn single__btn--facebook", id: "facebook-btn" do
+            = fa_icon "facebook-square 2x", class: "single__icon single__icon--facebook"
+            Facebookでログイン
+        .single__field
+          -# googleはアイコンなしでできる方法あり
+          = link_to "/", class: "single__btn single__btn--google", id: "google-btn" do
+            = fa_icon "google lg", class: "single__icon single__icon--goolge"
+            Googleでログイン
+      = form_for resource, url: user_session_path, method: :post do |f|
+        .single__field
+          .single__field__input
+            = f.email_field :email, placeholder: "メールアドレス"
+          .single__field__input
+            = f.password_field  :password, placeholder: "パスワード"
+        .single__field
+          .robot-check
+            = check_box :devise, :robot
+            私はロボットではありません。
+        = f.submit "ログイン", class: "single__form__send-btn"
+        .single__field
+          = link_to "パスワードをお忘れの方", "/", class: "single__field__text single__field__text__link"
+

@@ -1,0 +1,33 @@
+%main.mypage
+  .mypage__container
+    .mypage__contents
+      .single__page__main
+        .single__page__main__container
+          %h2.single__page__main__head
+            支払い方法
+          .single__form
+            .single__field.single__field--large
+              %h3.single__field__text
+                クレジットカード一覧
+            - if true
+              .single__field
+                = link_to user_registration_path, class: "single__btn single__btn--red", id: "mail-btn" do
+                  = fa_icon "credit-card lg", class: "single__icon single__icon--mail"
+                  クレジットカードを追加する
+            - else
+              .single__field.single__field--flex
+                .single__field__left
+                  .single__field__text
+                    = fa_icon "cc-visa", class: "single__icon single__icon--mail"
+                  .single__field__text
+                    ********7322
+                  .single__field__text
+                    04 / 25
+                .single__field__right
+                  %button.single__mini-btn
+                    削除する
+          .single__form--box
+            .single__field
+              = link_to "支払い方法について>", "/", class: "single__field__text single__field__text__link single__field__text--right"
+    .mypage__side 
+      =render "shared/sidebar"
