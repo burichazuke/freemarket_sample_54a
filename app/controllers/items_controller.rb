@@ -34,6 +34,7 @@ class ItemsController < ApplicationController
       redirect_to action: "index"
     else
       flash[:notice] = "削除に失敗しました"
+      redirect_to action: "show"
     end
   end
 
@@ -46,5 +47,5 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(paramas[:id])
   end
-  
+
 end
