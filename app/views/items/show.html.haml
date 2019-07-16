@@ -19,9 +19,7 @@
             %th 出品者
             %td
               = link_to "testman", item_path, method: :get, class: "user-name-link"
-
               .item-content__detail-table__face
-
                 .item-content__detail-table__face--good
                   = fa_icon "smile-o", class: "good-icon"
                   %span.item-content__detail-table__face__name
@@ -102,7 +100,6 @@
           %span.aBlue あんしん・あんぜんへの取り組
 
 
-
   -if @item.seller_id == current_user.id
     .item__detail-message
       .message-container
@@ -110,7 +107,6 @@
           .mypage__content__tab-content__item-list--index
             .mypage__content__tab-content__item-list--index--gray
               = link_to "この商品を削除する", item_path(@item), method: :delete, class: "item-delete"
-
 
 
   =render "comment" #コメント欄部分テンプレート
@@ -137,7 +133,6 @@
       %li
         =link_to "http://www.pinterest.com" do
           =fa_icon "pinterest-square", class:"icon-pinterest"
-
 
 
   .item-other
