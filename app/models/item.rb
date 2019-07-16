@@ -14,6 +14,9 @@ class Item < ApplicationRecord
   # has_many :comments, dependent: :destroy
   # has_many :favorites, dependent: :destroy
   # has_many :users, through: :favorites, dependent: :destroy
+
+  validates :name, :description, :price, presence: true
+  validates :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, format: {with: /[^---]/}
 end
 
 
