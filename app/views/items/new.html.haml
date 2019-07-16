@@ -131,14 +131,14 @@
                 .single__field__label__right
                   %p ¥
                   .single__field__input.single__field__input--right.text-right
-                    = f.text_field :price, placeholder: "例) 300" ,class:"text-right"
+                    = f.text_field :price, placeholder: "例) 300" ,class:"text-right", id:"price-form"
                  
             %li.sellfee 
               .l-left 販売手数料
-              .l-right
+              .l-right#sellfee -
             %li.sellprofit 
               .l-left 販売利益
-              .l-right 
+              .l-right#sellprofit -
 
       .sell-content
         .sell--box
