@@ -1,8 +1,13 @@
 
 %section{class: "items-box"}
   = link_to item_path(item.id) do
-    .items-box__photo
-      =image_tag "noImage.jpg" 
+    .items-box__photo      
+      -image = item.images.first
+      -if image
+        =image_tag "#{image.image}"
+      -if item.status >= 1
+        .items-box__photo__soldout
+          %h2 SOLD
     .items-box__body
       %h3{class: "items-box__body__name font-2"}
         =item.name
