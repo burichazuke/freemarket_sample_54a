@@ -4,10 +4,10 @@
     .single__page__main__head--sign-up
       %p.single__field__text
         アカウントをお持ちでない方はこちら      
-      = link_to user_registration_path, class: "single__btn single__btn--sign-up ", id: "sign_up-btn" do
+      = link_to register_user_registration_path, class: "single__btn single__btn--sign-up " do
         新規会員登録
     -# urlは後々修正
-    = form_for resource, url: create_user_registration_path, html: { class: "single__form"} do |f|
+    .single__form
       .single__form--inner
         .single__field
           = link_to "/", class: "single__btn single__btn--facebook", id: "facebook-btn" do
@@ -18,16 +18,17 @@
           = link_to "/", class: "single__btn single__btn--google", id: "google-btn" do
             = fa_icon "google lg", class: "single__icon single__icon--goolge"
             Googleでログイン
-      .single__field
-        .single__field__input
-          = email_field :devise, :email, placeholder: "携帯電話の番号を入力"
-        .single__field__input
-          = password_field :devise, :password, placeholder: "携帯電話の番号を入力"
-      .single__field
-        .robot-check
-          = check_box :devise, :robot
-          私はロボットではありません。
-      = f.submit "ログイン", class: "single__form__send-btn"
-      .single__field
-        = link_to "パスワードをお忘れの方", "/", class: "single__field__text single__field__text__link"
+      = form_for resource, url: user_session_path, method: :post do |f|
+        .single__field
+          .single__field__input
+            = f.email_field :email, placeholder: "メールアドレス"
+          .single__field__input
+            = f.password_field  :password, placeholder: "パスワード"
+        .single__field
+          .robot-check
+            = check_box :devise, :robot
+            私はロボットではありません。
+        = f.submit "ログイン", class: "single__form__send-btn"
+        .single__field
+          = link_to "パスワードをお忘れの方", "/", class: "single__field__text single__field__text__link"
 
