@@ -1,6 +1,5 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: [:edit, :update]
-  # before_action :set_prefecture, only: [:new, :edit]
 
   def new
     @address = Address.new
@@ -34,8 +33,4 @@ class AddressesController < ApplicationController
   def set_address
     @address = current_user.address
   end
-
-  # def set_prefecture
-  #   @prefectures = Prefecture.all
-  # end
 end
