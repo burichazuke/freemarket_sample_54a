@@ -24,13 +24,12 @@ Rails.application.routes.draw do
   resources :users,  only: [:show]
   resources :mypage, only: [:index] do
     collection do
-      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "deliver_address",
-      "card", "email_password", "identification", "sms_confirmation", "help_center"
+      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "card", "email_password", "identification", "sms_confirmation", "help_center"
       post "create_identification"
       put "create_identification"
     end
-
   end
+
   as :mypage do
     get "mypage/like/history", to: "mypage#like"
     get "mypage/listings/listing", to: "mypage#listing"
@@ -40,12 +39,18 @@ Rails.application.routes.draw do
     get "logout", to: "mypage#logout"
   end
 
+  as :address do 
+    get 'mypage/deliver_address', to: 'addresses#edit', as: :edit_address  
+    post 'address', to: 'addresses#create', as: :create_address
+    put 'address', to: 'addresses#update', as: :update_address
+  end
   
   as :items do
     get "transaction/buy/:id", to: "items#buy", as: :items_buy
     get "items/sell", to: "items#new", as: :items_sell
   end
   resources :items, except: :new 
+  
 
     resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
