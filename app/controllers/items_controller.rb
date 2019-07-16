@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :user_signed_in?, only:[:new, :create, :edit, :update, :destroy]
-  bofore_action :set_item, only:[:show, :destroy]
+  before_action :set_item, only:[:show, :destroy]
 
   def index
     @items = Item.includes(:images).order("created_at desc")
@@ -23,6 +23,8 @@ class ItemsController < ApplicationController
     if @item.destroy
       redirect_to action: "index"
     else
+      flash[:notice] = "削除に失敗しました"
+      redirect_to 
     end
   end
 
