@@ -12,18 +12,8 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new
-    @item.images.build
+    @item = ""
     render layout: "single"
-  end
-
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to items_path(@item)
-    else
-      render :new, layout: "single"
-    end
   end
 
   def buy
