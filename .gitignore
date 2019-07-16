@@ -28,3 +28,5 @@
 
 # Ignore Upload command history file.
 public/uploads/*
+
+/.env
