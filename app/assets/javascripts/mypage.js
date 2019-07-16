@@ -1,22 +1,30 @@
 $(document).on('turbolinks:load',function(){
   $(function() {
-    $('.mypage__content__tabs > li').on('click', function(e) {
+    $('.mypage__content__tab').on('click', function(e) {
       e.preventDefault();
+      let num = 0
+      var index = $('.mypage__content__tab').index(this);
 
-      console.log($(this).context.className);
-
-
-      if ($(this).context.className != "active-mypage-tab") {
-        $('.active-mypage-tab').removeClass('active-mypage-tab');
-        $(this).addClass('active-mypage-tab');
+      switch( index ) {
+        case 0: 
+          num = 1;
+          break;
+        case 1: 
+          num = 0;
+          break;
+        case 2: 
+          num = 3;
+          break;
+        case 3: 
+          num = 2;
+          break;
       }
 
-      // $('.non-active-mypage-tab').addClass('active-mypage-tab');
-      // $('.non-active-mypage-tab').removeClass('non-active-mypage-tab');
-      // $('.active-mypage-tab').addClass('non-active-mypage-tab');
-      // $('.active-mypage-tab').removeClass('active-mypage-tab');
-      // $('.mypage__content__tab-content__item-list--non').show();
-      // $('.mypage__content__tab-content__item-list').hide();
+      $('.mypage__content__tab').eq(num).removeClass('active-mypage-tab');
+      $(this).addClass('active-mypage-tab');
+      $('.mypage__content__tab-content__item-list').eq(num).removeClass('show-mypage-tab');
+      $('.mypage__content__tab-content__item-list').eq(index).addClass('show-mypage-tab');
+
     });
   });
 });
