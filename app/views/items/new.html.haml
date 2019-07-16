@@ -110,7 +110,7 @@
               = f.label :prefecture, "発送元の地域"
               %span.single__field__require 必須
             .single__field__select
-              = f.collection_select :prefecture_name, Prefecture.all, :id, :name, prompt: "--"
+              = f.collection_select :prefecture, Prefecture.all, :id, :name, prompt: "--"
 
           .single__field.single__field--large
             .single__field__label
