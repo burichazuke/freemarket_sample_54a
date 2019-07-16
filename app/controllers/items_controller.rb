@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def new
@@ -26,9 +27,33 @@ class ItemsController < ApplicationController
   end
 
   def buy
+    @item = Item.find(params[:id])
+    card = Card.find_by(user_id: current_user.id)
+    if card
+      Payjp.api_key = ENV["PAYJP_TEST_SECRET"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card = customer.cards.retrieve(card.card_id) 
+    end
     render layout: "single"
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def pay
+    @item = Item.find(params[:id])
+    @item.update(item_params)
+    Payjp.api_key = ENV['PAYJP_TEST_SECRET']
+    Payjp::Charge.create(
+      amount: @item.price, # 決済する値段
+      customer: current_user.card.customer_id,
+      currency: 'jpy'
+    )
+    redirect_to root_path
+  end
   def destroy
     if @item.destroy
       redirect_to action: "index"
@@ -47,5 +72,6 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+  
 
 end
