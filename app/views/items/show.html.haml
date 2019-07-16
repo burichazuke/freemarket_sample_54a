@@ -144,53 +144,5 @@
     %section.item-other__user-items
       %h2.item-other__user-items__head
         = link_to "testmanさんのその他の出品", item_path, method: :get, class: "link item-link"
-
-
       .item-other__user-items__content
-        %section.item-other__user-items__content__box
-          = link_to item_path, method: :get, class: "link item-link" do
-            %figure.item-other__user-items__content__box__photo
-              = image_tag("other-item.png", class: "item-image", size: "220x220")
-            .item-other__user-items__content__box__body
-              %h3.item-other__user-items__content__box__body__name
-                ケーキ
-              .item-other__user-items__content__box__num
-                .item-other__user-items__content__box__num__price
-                  ¥ 20,000
-                .item-other__user-items__content__box__num__likes
-                  =fa_icon "heart-o", class: "like-icon"
-                  %span.item-other__user-items__content__box__num__likes__num
-                    100
-      
-        %section.item-other__user-items__content__box
-          = link_to item_path, method: :get, class: "link item-link" do
-            %figure.item-other__user-items__content__box__photo
-              = image_tag("other-item.png", class: "item-image", size: "220x220")
-            .item-other__user-items__content__box__body
-              %h3.item-other__user-items__content__box__body__name
-                ケーキ
-              .item-other__user-items__content__box__num
-                .item-other__user-items__content__box__num__price
-                  ¥ 20,000
-                .item-other__user-items__content__box__num__likes
-                  =fa_icon "heart-o", class: "like-icon"
-                  %span.item-other__user-items__content__box__num__likes__num
-                    100
-        %section.item-other__user-items__content__box
-          = link_to item_path, method: :get, class: "link item-link" do
-            %figure.item-other__user-items__content__box__photo
-              = image_tag("other-item.png", class: "item-image", size: "220x220")
-            .item-other__user-items__content__box__body
-              %h3.item-other__user-items__content__box__body__name
-                ケーキ
-              .item-other__user-items__content__box__num
-                .item-other__user-items__content__box__num__price
-                  ¥ 20,000
-                .item-other__user-items__content__box__num__likes
-                  =fa_icon "heart-o", class: "like-icon"
-                  %span.item-other__user-items__content__box__num__likes__num
-                    100
-
-
-
-
+        = render "other_item"
