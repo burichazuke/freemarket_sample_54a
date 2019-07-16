@@ -11,8 +11,18 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = ""
+    @item = Item.new
+    @item.images.build
     render layout: "single"
+  end
+
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to items_path(@item)
+    else
+      render :new, layout: "single"
+    end
   end
 
   def buy
@@ -24,7 +34,6 @@ class ItemsController < ApplicationController
       redirect_to action: "index"
     else
       flash[:notice] = "削除に失敗しました"
-      redirect_to 
     end
   end
 
@@ -35,7 +44,7 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id])
+    @item = Item.find(paramas[:id])
   end
-
+  
 end
