@@ -11,4 +11,6 @@ class User < ApplicationRecord
     validates :first_name_kana 
     validates :birthday
   end
+
+  has_one :address, dependent: :destroy
 end
