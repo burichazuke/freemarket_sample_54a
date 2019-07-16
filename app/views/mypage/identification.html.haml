@@ -1,0 +1,35 @@
+%main.mypage
+  .mypage__container
+    .mypage__contents
+      .single__page__main
+        .single__page__main__container
+          %h2.single__page__main__head
+            本人情報の登録
+          = form_for @identification, url: credit_card_user_registration_path, html: {method: :post, class: "single__form--box"} do |f|
+            .single__field.single__field--large
+              .single__field__text
+                お客さまの本人情報をご登録ください。
+                %br
+                  登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+              .single__field__text.single__field__text__link.single__field__text--right
+                本人確認書類のアップロードについて>
+            .single__field
+              .single__field__label
+                = label :devise, :name, "お名前"
+              .single__field__input
+                .single__field__text
+                  = current_user.last_name + " " + current_user.first_name
+
+            .single__field
+              .single__field__label
+                = label :devise, :name_kana, "お名前カナ"
+              .single__field__input
+                .single__field__text
+                  = current_user.last_name_kana + " " + current_user.first_name_kana
+
+            .single__field
+              .single__field__label
+                = label :devise, :birthday, "生年月日"
+              .single__field__input
+                .single__field__text
+                  = current_user.birthday

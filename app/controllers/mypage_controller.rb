@@ -12,4 +12,9 @@ class MypageController < ApplicationController
   def logout  
   end
 
+  def identification
+    @identification = Identification.new
+  end
+
+
 end
