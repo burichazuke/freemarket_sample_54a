@@ -9,6 +9,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = render '/shared/header'
+    = breadcrumbs pretext: "You are here: ", separator: " &rsaquo; "
     = yield
     = render "shared/sell-btn" 
     = render "shared/footer"
