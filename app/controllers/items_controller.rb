@@ -11,8 +11,18 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = ""
+    @item = Item.new
+    @item.images.build
     render layout: "single"
+  end
+
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to items_path(@item)
+    else
+      render :new, layout: "single"
+    end
   end
 
   def buy
@@ -28,4 +38,11 @@ class ItemsController < ApplicationController
   end
 
   
+end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :description, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, images_attributes: [:image]).merge(seller_id: current_user.id)
+  end
 end
