@@ -53,6 +53,7 @@ class ItemsController < ApplicationController
       currency: 'jpy'
     )
     redirect_to root_path
+  end
   def destroy
     if @item.destroy
       redirect_to action: "index"
@@ -69,7 +70,7 @@ class ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(paramas[:id])
+    @item = Item.find(params[:id])
   end
 
 end
