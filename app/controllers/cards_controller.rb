@@ -12,11 +12,7 @@ class CardsController < ApplicationController
     customer = Payjp::Customer.create
     card = customer.cards.create(card: params[:payjp_token])
     @card = Card.create(user_id: current_user.id, customer_id: customer.id, card_id: card.id)
-    if @card.save
-      redirect_to card_mypage_index_path
-    else
-      redirect_to new_card_path
-    end
+    redirect_to card_mypage_index_path
   end
 
   def destroy
