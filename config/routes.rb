@@ -49,7 +49,7 @@ Rails.application.routes.draw do
     resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
   resources :brands,  only: [:index, :show]
-  resources :cards, only: [:new, :create,:destroy, :show] do
+  resources :cards, only: [:new, :create,:destroy,] do
   end
 
 end

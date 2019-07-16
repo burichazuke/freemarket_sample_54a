@@ -4,6 +4,7 @@ class CardsController < ApplicationController
 
   def new
     render layout: "single"
+    @card = Card.new
   end
 
   def create
