@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+
   def index
     @items = Item.includes(:images).order("created_at desc")
   end
@@ -13,17 +14,28 @@ class ItemsController < ApplicationController
 
 
   def new
-    @item = ""
+    @item = Item.new
+    @item.images.build
     render layout: "single"
+  end
+
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to items_path(@item)
+    else
+      render :new, layout: "single"
+    end
   end
 
   def buy
     render layout: "single"
   end
-end
 
 
-private
+  private
+
   def item_params
-    params.require(:item).permit(:name,:description,:category_id,:size,:brand_id,:condition,:shipping_fee,:shipping_method,:prefecture,:shipping_date,:price,:profit,:status,:seller_id,:buyer_id)
+    params.require(:item).permit(:name, :description, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, images_attributes: [:image]).merge(seller_id: current_user.id)
   end
+end

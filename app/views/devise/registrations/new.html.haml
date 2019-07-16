@@ -7,17 +7,17 @@
       = devise_error_messages!
       .single__field
         .single__field__label
-          = label :devise, :nickname, "ニックネーム"
+          = f.label :nickname, "ニックネーム"
           %span.single__field__require 必須
         .single__field__input
-          = text_field :devise, :nickname, autofocus: true, placeholder: "例)メルカリ太郎"
+          = f.text_field :nickname, autofocus: true, placeholder: "例)メルカリ太郎"
 
       .single__field
         .single__field__label
           = f.label :email, "メールアドレス"
           %span.single__field__require 必須
         .single__field__input
-          = f.text_field :email, placeholder: "PC・携帯どちらでも可"
+          = f.email_field :email, placeholder: "PC・携帯どちらでも可"
 
       .single__field
         .single__field__label
@@ -39,39 +39,39 @@
 
       .single__field
         .single__field__label
-          = label :devise, :last_name, "姓(全角)"
+          = f.label :last_name, "姓(全角)"
           %span.single__field__require 必須
         .single__field__input
-          = text_field :devise, :last_name, placeholder: "例)山田"
+          = f.text_field :last_name, placeholder: "例)山田"
 
       .single__field
         .single__field__label
-          = label :devise, :first_name, "名(全角)"
+          = f.label :first_name, "名(全角)"
           %span.single__field__require 必須
         .single__field__input
-          = text_field :devise, :first_name, placeholder: "例)彩"
+          = f.text_field :first_name, placeholder: "例)彩"
 
       .single__field
         .single__field__label
-          = label :devise, :last_name_kana, "姓カナ(全角)"
+          = f.label :last_name_kana, "姓カナ(全角)"
           %span.single__field__require 必須
         .single__field__input
-          = text_field :devise, :last_name_kana, placeholder: "例)ヤマダ"
+          = f.text_field :last_name_kana, placeholder: "例)ヤマダ"
           
       .single__field
         .single__field__label
-          = label :devise, :first_name_kana, "名カナ(全角)"
+          = f.label :first_name_kana, "名カナ(全角)"
           %span.single__field__require 必須
         .single__field__input
-          = text_field :devise, :first_name_kana, placeholder: "例)アヤ"
+          = f.text_field :first_name_kana, placeholder: "例)アヤ"
 
       .single__field
         .single__field__label
-          = label :devise, :birthday, "生年月日"
+          = f.label :birthday, "生年月日"
           %span.single__field__require 必須
         .single__field__date_select
           // To Do raw sprintfとdate_separatorで年月日の文字を表示する
-          = raw sprintf(date_select(:devise, :birth_date, {use_month_numbers: true, start_year: 1930, end_year: (Time.now.year), prompt: {year: "--", month: "--", day: "--"}, date_separator: '%s'}, { class: "date_select" }), '年 ', '月 ') + '日'
+          = raw sprintf(f.date_select(:birthday, {use_month_numbers: true, start_year: 1930, end_year: (Time.now.year), prompt: {year: "--", month: "--", day: "--"}, date_separator: '%s'}, { class: "date_select" }), '年 ', '月 ') + '日'
           = fa_icon "chevron-down", class: "single__icon single__field__date_select__arrow single__field__date_select__arrow--first"
           = fa_icon "chevron-down", class: "single__icon single__field__date_select__arrow single__field__date_select__arrow--second"
           = fa_icon "chevron-down", class: "single__icon single__field__date_select__arrow single__field__date_select__arrow--third"

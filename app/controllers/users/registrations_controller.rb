@@ -19,7 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up/address
   def address
-    @user = ""
+    @address = Address.new
     # redirect_to :credit_card_user_registration
   end
 
@@ -74,7 +74,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
