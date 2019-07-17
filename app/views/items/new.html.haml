@@ -9,15 +9,27 @@
             = f.label :images , "出品画像"
             %span.single__field__require 必須
           %p 最大10枚までアップロードできます
-          .sell-upload--container
-            .sell-upload--box
+          .sell-upload__container
+            %ul.sell-upload__items
+              %li.sell-upload__item
+                .sell-upload__item__header
+                  .sell-upload__item__header__image
+                .sell-upload__item__footer
+                  = link_to "編集",  "", class: "sell-upload__item__footer__button"
+                  = link_to "削除",  "", class: "sell-upload__item__footer__button"
+              %li.sell-upload__item
+              %li.sell-upload__item
+              %li.sell-upload__item
+              %li.sell-upload__item
+            %ul.sell-upload__items
+              %li.sell-upload__item
+            .sell-upload__box
+              = f.fields_for :images do |image|
+                = image.file_field :image, style: "display: none;"
               %span.text-mark 
                 ドラッグアンドドロップ
                 またはクリックしてファイルをアップロード
-              = f.fields_for :images do |image|
-                =image.label :image do
-                  =fa_icon "image"
-                  = image.file_field :image
+              = fa_icon "image"
             
       .sell-content
         .single__field.single__field--large
