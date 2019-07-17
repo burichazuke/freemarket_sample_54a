@@ -158,3 +158,10 @@ line-height: 48px;
   }
 }
 
+.breadcrumbs{
+  font-size: 14px;
+  .current{
+    font-weight: bold;
+  }
+}
+
