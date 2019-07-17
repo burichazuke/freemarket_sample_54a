@@ -1,13 +1,13 @@
 .item__detail-message
   .message-container
     .message-content 
-      = form_for url: comments_path do |f|
-      = form_with url: item_comment_path(@item, @comment)
+      -# あとでform_forに変更する
+      %form.message-form{action: "", method:""} 
         %p
           相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        =f.text_area :content
+        .message-form__textarea
+          %textarea{comment: ""}
         
         %button.message-submit.btn-default.btn-gray{type: "submit"}
           %span コメントする
           
-

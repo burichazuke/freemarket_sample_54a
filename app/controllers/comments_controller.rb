@@ -5,8 +5,6 @@ class CommentsController < ApplicationController
     @comment = @item.comments.new(commnet_params)
     if @comment.save
       redirect_to controller: "items", action: "show"
-    else
-      redirect_to
     end
 
   end

@@ -49,9 +49,12 @@ Rails.application.routes.draw do
     get "items/sell", to: "items#new", as: :items_sell
   end
   resources :items, except: :new 
+
+  resources :items do
+    resources :comments, only:[:create, :destroy]
+  end
   
 
-    resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
   resources :brands,  only: [:index, :show]
   resources :cards, only: [:new, :create,:destroy,] do
