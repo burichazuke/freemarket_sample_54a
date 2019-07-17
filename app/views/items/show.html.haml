@@ -59,7 +59,7 @@
       =link_to items_buy_path, class: "item__buy-btn" do
         購入画面に進む
     - else
-      %button.item__buy-btn
+      %button.item__buy-btn--sold
         売り切れです
 
     %section.item__description
@@ -88,7 +88,7 @@
 
 
 
-  -if @item.seller_id == current_user.id
+  -if user_signed_in? && @item.seller_id == current_user.id
     .item__detail-message
       .message-container
         .message-content 
@@ -123,6 +123,8 @@
           = f.submit "コメントする", class: "single__form__send-btn single__form__send-btn--gray"
 
 
+
+  =render "comment" #コメント欄部分テンプレート
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev
