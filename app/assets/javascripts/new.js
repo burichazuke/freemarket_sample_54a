@@ -4,7 +4,8 @@ $(function(){
     var k = e.keyCode;
     var input = $(this).val()
 
-    if (input.search(/^[-]?[0-9]+$([3-9][0-9][0-9]|9999999)/) == 0 ) {
+    //販売価格300〜9,999,999、半角数字以外は入力不可
+    if (input.search((/^[-]?[0-9]+$/) == 0 ) && (input >= 300 && input <= 9999999)) {
       
       var fee = input * 0.1 
       //Math.floor 小数点切り下げ
@@ -22,6 +23,3 @@ $(function(){
     }
   })
 });
-
-// var input = input >= 300 && input <= 9999999
-// (300..9999999).include?this
