@@ -2,9 +2,7 @@ crumb :root do
   link "メルカリ", root_path
 end
 
-crumb :items do
-  link "一覧", items_path
-end
+
 
 
 
