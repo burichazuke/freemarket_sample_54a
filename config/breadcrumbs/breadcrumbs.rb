@@ -6,14 +6,7 @@ crumb :items do
   link "一覧", items_path
 end
 
-crumb :mypages do
-  link "マイページ", mypage_index_path
-end
 
-crumb :profile do 
-  link "プロフィール", profile_mypage_index_path
-  parent :mypages
-end
 
 # crumb :project do |project|
 #   link project.name, project_path(project)
