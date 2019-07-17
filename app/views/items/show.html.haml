@@ -79,11 +79,6 @@
         (税込)
       %span.item__price-box__shipping-fee
         送料込み
-<<<<<<< HEAD
-    =link_to items_buy_path, class: "item__buy-btn" do
-      購入画面に進む
-  
-=======
     -if @item.status == 0
       =link_to items_buy_path, class: "item__buy-btn" do
         購入画面に進む
@@ -91,7 +86,6 @@
       %button.item__buy-btn
         売り切れです
 
->>>>>>> master
     %section.item__description
       %p.item__description__innner
         = @item.description
