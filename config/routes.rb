@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   
   as :items do
     get "transaction/buy/:id", to: "items#buy", as: :items_buy
+    patch "transaction/pay/:id", to: "items#pay", as: :items_pay
     get "items/sell", to: "items#new", as: :items_sell
   end
   resources :items, except: :new 
@@ -55,5 +56,7 @@ Rails.application.routes.draw do
     resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
   resources :brands,  only: [:index, :show]
+  resources :cards, only: [:new, :create,:destroy,] do
+  end
 
 end

@@ -75,6 +75,7 @@
       text-align: right;
       display: block;
       margin-top: 8px;
+      color: $blue;
       cursor: pointer;
     }
     &__credit{
@@ -93,12 +94,29 @@
   }
 }
 
+.purchase-form-hidden{
+  display: none;
+}
+
 .purchase-button{
   background: #ea352d;
-  width: 320px;
+  width: 100%;
   height: 50px;
   font-size: 14px;
   font-weight: bold;
   color: #fff;
   cursor: pointer;
+  &--sold{
+    background: gray;
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+  }
+  &__notice{
+    color: #ea352d;
+    font-size: 15px;
+    padding: 5px;
+  }
 }
