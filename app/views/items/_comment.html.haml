@@ -11,3 +11,26 @@
         %button.message-submit.btn-default.btn-gray{type: "submit"}
           %span コメントする
           
+
+  .item__detail-message
+    .message-container
+      .message-content 
+        = form_for url: item_comments_path(@item, @comment), method: :post do |f|
+          %p
+            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          .message-form__textarea
+            = f.text_area :content
+          
+          %button.message-submit.btn-default.btn-gray{type: "submit"}
+            = f.submit "コメントする"
+
+
+        .message-form
+          = form_for url: item_comments_path(@item, @comments), method: :post do |f|
+            %p
+              相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            = f.text_area :content, class: "message-form__textarea"
+            %button.message-submit.btn-default.btn-gray{type: "submit"}
+              = f.submit "コメントする"
+
+
