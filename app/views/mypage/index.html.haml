@@ -1,12 +1,21 @@
 :ruby
   first_titles = ["お知らせ", "やることリスト"]
   second_titles = ["取引中", "過去の取引"]
-  announces = [{
+
+  first_announces = [{
     Name:"コメントがつきました", url:"#"
   },{
     Name:"いいね！！！！がつきました", url:"#"
   },{
     Name:"事務局からメッセージ！コメントがつきました！いいねがつきました！確認してください！", url:"#"
+  }]
+
+  second_announces =  [{
+    Name:"商品が届いたらお知らせください", url:"#"
+  },{
+    Name:"送金してください", url:"#"
+  },{
+    Name:"商品が届いたら評価しましょう", url:"#"
   }]
 
 %main.mypage
@@ -38,7 +47,7 @@
             = render partial: "mypage-tabs", locals: { titles: first_titles } 
           .mypage__content__tab-content
             %ul.mypage__content__tab-content__item-list.show-mypage-tab
-              = render partial: "mypage-tab-lists", locals: { announces: announces }
+              = render partial: "mypage-tab-lists", locals: { announces: first_announces }
             %ul.mypage__content__tab-content__item-list
               = render partial: "mypage-tab-lists", locals: { announces: [] }
           
@@ -51,7 +60,7 @@
             = render partial: "mypage-tabs", locals: { titles: second_titles }
           .mypage__content__tab-content
             %ul.mypage__content__tab-content__item-list.show-mypage-tab
-              = render partial: "mypage-tab-lists", locals: { announces: announces }
+              = render partial: "mypage-tab-lists", locals: { announces: second_announces }
             %ul.mypage__content__tab-content__item-list
               = render partial: "mypage-tab-lists", locals: { announces: [] }
 
