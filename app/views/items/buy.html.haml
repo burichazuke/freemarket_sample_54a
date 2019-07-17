@@ -21,16 +21,22 @@
             支払い金額
             %span 
               ="¥ #{@item.price}"
-
-          - if @item.status == 0
-            =form_for @item, url: {controller: "items", action: "pay"} do |f|
-              = f.text_field :status, value: 1, class: "purchase-form-hidden"
-              = f.text_field :buyer_id, value: current_user.id, class: "purchase-form-hidden"
-              %button.purchase-button{type: "submit"}
-                購入する
+          -if @card
+            -if @item.status == 0
+              =form_for @item, url: {controller: "items", action: "pay"} do |f|
+                = f.text_field :status, value: 1, class: "purchase-form-hidden"
+                = f.text_field :buyer_id, value: current_user.id, class: "purchase-form-hidden"
+                %button.purchase-button{type: "submit"}
+                  購入する
+            -else
+              %button.purchase-button--sold
+                売り切れです
           -else
-            %button.purchase-button
-              売り切れです
+            %p.purchase-button__notice
+              支払い方法を登録してください
+            %button.purchase-button--cant
+              購入する
+
   
       -# ユーザーのデータベースができてから表示
       .purchase-confirmations__container
@@ -46,16 +52,30 @@
                 変更する
                 =fa_icon "angle-right"
       .purchase-confirmations__container
-        %section.buy-user-info
-          .buy-user-info__credit
-            %h3 支払い方法
-            %p.buy-user-info__credit__number
-              = "********" + @card.last4
-              %br
-              = @card.exp_month.to_s + " / " + @card.exp_year.to_s.slice(2,3)
-            = fa_icon "cc-#{@card.brand.downcase}", class: "single__icon single__icon--mail"
-            =link_to card_mypage_index_path, class: "buy-user-info__fix" do 
-              %span
-                変更する
-                =fa_icon "angle-right"
+        -if @card
+          %section.buy-user-info
+            .buy-user-info__credit
+              %h3 支払い方法
+              %p.buy-user-info__credit__number
+                = "********" + @card.last4
+                %br
+                = @card.exp_month.to_s + " / " + @card.exp_year.to_s.slice(2,3)
+              = fa_icon "cc-#{@card.brand.downcase}", class: "single__icon single__icon--mail"
+              =link_to card_mypage_index_path, class: "buy-user-info__fix" do 
+                %span
+                  変更する
+                  =fa_icon "angle-right"
+        -else
+          %section.buy-user-info
+            .buy-user-info__credit
+              %h3 支払い方法
+              %p.buy-user-info__credit__number
+                = ""
+                %br
+                = " / " 
+              =link_to card_mypage_index_path, class: "buy-user-info__fix" do 
+                %span
+                  変更する
+                  =fa_icon "angle-right"
+
  
