@@ -4,7 +4,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   layout 'single'
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  before_action :set_user, only: [:sms_confirmation, :add_phone_number, :verification_code_input, :verification]
+  before_action :set_user, only: [:sms_confirmation, :add_phone_number]
+  before_filter :load_not_verified_entry, only: [:verification_code_input :verification]
 
   # 後々、wicked用のクラスを作成してそこに基本メソッド以外のメソッドは移行する予定
   # GET /resource/sign_up
@@ -28,7 +29,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def verification
-    # redirect_to :address_user_registration
+    if @user.verify_and_save(params[:user])
+      redirect_to :address_user_registration
+    else
+      render :add_phone_number
+    end
   end
 
   # GET /resource/sign_up/address
@@ -107,6 +112,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def set_user
     @user = User.find(current_user.id)
+  end
+
+  def load_not_verified_entry
+    @user = User.not_verified.find(current_user.id)
   end
 
   def phone_number_params
