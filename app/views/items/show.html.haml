@@ -2,55 +2,79 @@
 .show-container
   
   .item__box-container
-    %h1.item__name 【アダムエロペ】花柄ショートパンツ
+    %h1.item__name
+      = @item.name
     .item__main-content
       .item__photo
         .owl__carousel
           .owl__item__inner
-            = image_tag "noImage1.jpg"
-            -# %img(src="noImage1.jpg" alt="")
-         
+          -image = @item.images.first
+          -if image
+            =image_tag "#{image.image}"
+
+
       %table.item__detail-table
         %tboby
           %tr
             %th 出品者
             %td
-              =link_to root_path,class:'aBlue' do
-                めるこ
+              = link_to @item.seller.nickname, item_path, method: :get, class: "user-name-link"
+              .item-content__detail-table__face
+                .item-content__detail-table__face--good
+                  = fa_icon "smile-o", class: "good-icon"
+                  %span.item-content__detail-table__face__name
+                    10
+                .item-content__detail-table__face--normal
+                  = fa_icon "meh-o", class: "normal-icon"
+                  %span.item-content__detail-table__face__name
+                    10
+                .item-content__detail-table__face--bad
+                  = fa_icon "frown-o", class: "bad-icon"
+                  %span.item-content__detail-table__face__name
+                    10
+
+
           %tr
             %th カテゴリー
             %td
               =link_to root_path,class:'aBlue' do
                 レディース
+                -# カテゴリーまだ
           %tr
             %th ブランド
             %td
               =link_to root_path,class:'aBlue' do
                 エルメス
+                -# ブランドまだ
           %tr
             %th 商品のサイズ
-            %td M
+            %td 
+              = @item.size
           %tr
             %th 商品の状態
-            %td 新品、未使用
+            %td 
+              = @item.condition
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %td 
+              = @item.shipping_fee
           %tr
             %th 配送の方法
-            %td らくらくメルカリ便
+            %td
+              = @item.shipping_method
           %tr
             %th 配送元地域
             %td
               =link_to root_path,class:'aBlue' do
-                神奈川県
+                = @item.prefecture
           %tr
             %th 配達日の目安
-            %td 1~2日で発送
+            %td
+              = @item.shipping_date
 
     .item__price-box
       %span.item__price-box__price
-        ¥450
+        = "¥ #{@item.price}"
       %span.item__price-box__tax
         (税込)
       %span.item__price-box__shipping-fee
@@ -64,14 +88,7 @@
 
     %section.item__description
       %p.item__description__innner
-        アダムエロペ
-        %br
-        花柄ショートパンツ（ネイビー×ブルー×ホワイト）
-        %br
-        サイズ36 
-        %br
-        Sサイズで選択してとりますが、当方は158センチ46キロで、普段Mサイズを履いており、こちらも問題なく履けました
-        簡易包装で発送予定です
+        = @item.description
 
     .item__button-container
       .item__button__left
@@ -87,8 +104,7 @@
           %span.aBlue あんしん・あんぜんへの取り組
 
 
-
-  -if user_signed_in? && @item.seller_id == current_user.id
+  -if @item.seller_id == current_user&.id
     .item__detail-message
       .message-container
         .message-content 
@@ -100,6 +116,7 @@
 
 
   =render "comment" #コメント欄部分テンプレート
+  -# コメント機能まだ
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev
@@ -122,7 +139,11 @@
       %li
         =link_to "http://www.pinterest.com" do
           =fa_icon "pinterest-square", class:"icon-pinterest"
-  
 
 
-
+  .item-other
+    %section.item-other__user-items
+      %h2.item-other__user-items__head
+        = link_to "testmanさんのその他の出品", item_path, method: :get, class: "link item-link"
+      .item-other__user-items__content
+        = render "other_item"
