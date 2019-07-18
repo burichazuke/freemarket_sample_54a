@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load',function(){
 
   $('#price-form').on('keyup', function(e){
     var k = e.keyCode;
