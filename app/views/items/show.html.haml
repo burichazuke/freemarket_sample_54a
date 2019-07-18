@@ -119,41 +119,50 @@
 
   .item__detail-message
     .message-container
-      .message-content
+      .item__comments
 
-        %ul.message-items
-          %li.message-list
-            .message-icon
+        .item__comment
+          .item__comment__user
+            .item__comment__user-icon
               = link_to mypage_index_path do
-                %figure
-                = image_tag "mypage_icon.png", size: "40x40"
-                .message-icon--name
-                  %p name
-            .message-body
-              .message-body__text
-                %p 欲しいです
-              .message-body__icon
-                = fa_icon 'clock-o', class: 'icon'
-                %span.message-body__icon__time
+                = image_tag("mypage_icon.png", size: "40x40")
+          
+          .item__comment__content
+            .item__comment__content-name
+              .item__comment__content-name__user
+                名前
+            .item__comment__content-comment
+              .item__comment__content-comment__user
+                %p
+                  買いたいです
+                = fa_icon "clock-o", class: "comment-clock"
+                %span.comment-clock
                   5分前
-              .message-body__balloon
+              .item__comment__content-balloon
 
-        %ul.message-items__self
-          %li.message-list__self
-            .message-body__self
-              .message-body__text__self
-                %p 買ってください
-              .message-body__icon__self
-                = fa_icon 'clock-o', class: 'icon'
-                %span.message-body__icon__time__self
+        
+
+        .item__comment
+          .item__comment__content
+            .item__comment__content-name
+              .item__comment__content-name__seller
+                名前
+            .item__comment__content-comment
+              .item__comment__content-comment__seller
+                %p
+                  買ってください
+                = fa_icon "clock-o", class: "comment-clock"
+                %span.comment-clock
                   5分前
-              .item__comment__right-balloon__self
-            .message-icon__self
-              = link_to mypage_index_path do
-                %figure
-                = image_tag "mypage_icon.png", size: "40x40"
-                .message-icon--name__self
-                  %p name
+              .item__comment__content-balloon
+          .item__comment__user
+            .item__comment__user-icon
+              = image_tag("mypage_icon.png", size: "40x40")
+              .item__comment__user-seller
+                %p 出品者
+
+
+
 
 
       .message-content
