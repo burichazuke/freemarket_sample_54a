@@ -25,7 +25,7 @@
             = f.label :name, "商品名"
             %span.single__field__require 必須
           .single__field__input
-            field :name, placeholder: "商品名（必須40文字まで）"
+            = f.text_field :name, placeholder: "商品名（必須40文字まで）"
         .single__field.single__field--large
           .single__field__label
             = f.label :description, "商品の説明"
