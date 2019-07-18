@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   end
 
   belongs_to :seller, class_name: "User"
-  belongs_to :buyer, class_name: "User"
+  belongs_to :buyer, class_name: "User", optional: true
   has_many :images, dependent: :destroy
 
   accepts_nested_attributes_for :images
@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   # has_many :users, through: :favorites, dependent: :destroy
 
   validates :name, :description, :price, presence: true
-  validates :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, format: {with: /[^---]/}
+  validates :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, presence: true
 end
 
 
