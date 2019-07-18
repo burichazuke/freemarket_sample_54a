@@ -54,5 +54,5 @@
                 %li.header-user-list__login
                   =link_to 'ログイン',new_user_session_path
                 
-
-= render "/shared/header-nav"
+- unless current_page?(root_path)
+  = render "/shared/header-nav"
