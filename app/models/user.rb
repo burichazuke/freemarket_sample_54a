@@ -23,6 +23,7 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   has_one :identification, dependent: :destroy
 
+
 # sms送信用のメソッド定義
   def verify_and_save(attributes)
     self.assign_attributes(attributes)
@@ -57,7 +58,6 @@ class User < ApplicationRecord
       return false
     end
   end
-  
 
   def issue_verification_code
     self.verification_code = VERIFICATION_CODE_LENGTH.times.map{ Random.rand(9) + 1 }.join
