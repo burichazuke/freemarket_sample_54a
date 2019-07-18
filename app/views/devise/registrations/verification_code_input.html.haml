@@ -1,0 +1,21 @@
+// 2つ目のページのsms返信
+%main.single__page__main
+  .single__page__main__container
+    %h2.single__page__main__head
+      電話番号の確認
+    = form_for @user, url: verification_path, html: {method: :put, class: "single__form"} do |f|
+      .single__field
+        .single__field__label
+          = f.label :verification_code, "認証番号"
+        .single__field__input
+          = f.text_field  :verification_code, autofocus: true, placeholder: "認証番号を入力"
+        %p.single__field__text  
+          SMSで届いた認証番号を入力してください
+      = f.submit "認証して完了", class: "single__form__send-btn"
+      .single__field
+        .single__field__label
+          %p.single__field__text
+            認証番号を再送することもできます。もう一度電話番号を入力して下さい。
+        = link_to "電話番号を再度入力する", sms_confirmation_user_registration_path, class: "single__field__text single__field__text__link"
+        %p.single__field__text
+          ※SMSが届かない場合はSMS受信設定を確認して、もう一度電話番号を入力してください。

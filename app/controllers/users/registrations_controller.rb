@@ -4,6 +4,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   layout 'single'
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  before_action :set_user, only: [:sms_confirmation, :add_phone_number, :verification_code_input, :verification]
 
   # 後々、wicked用のクラスを作成してそこに基本メソッド以外のメソッドは移行する予定
   # GET /resource/sign_up
@@ -13,14 +14,26 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up/sms_confirmation
   def sms_confirmation
-    @user = ""
+  end
+
+  def add_phone_number
+    if @user.update(phone_number_params)
+      redirect_to :verification_code_input
+    else
+      render :sms_confirmation
+    end
+  end
+
+  def verification_code_input
+  end
+
+  def verification
     # redirect_to :address_user_registration
   end
 
   # GET /resource/sign_up/address
   def address
     @address = Address.new
-    # redirect_to :credit_card_user_registration
   end
 
   # GET /resource/sign_up/credit_card
@@ -79,12 +92,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:phone_number])
   end
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    # super(resource)
     sms_confirmation_user_registration_path
   end
 
@@ -92,4 +104,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def set_user
+    @user = User.find(current_user.id)
+  end
+
+  def phone_number_params
+    params.require(:user).permit(:phone_number)
+  end
 end
