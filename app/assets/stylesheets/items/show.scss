@@ -321,3 +321,107 @@
   }
 }
 
+
+
+
+.message-items{
+  width: 652px;
+  .message-list{
+    height:150px;
+    padding-top:20px;
+    .message-icon{
+      float: left;
+      position: relative;
+      padding-top: -20px;
+      display: inline-block;
+      img{
+        border-radius: 50%;
+        }
+      .message-icon__name {
+        font-size: 10px;
+      }
+    }
+    .message-body{
+      width:600px;
+      float: right;
+      position: relative;
+      padding: 16px;
+      background: #eef0f4;
+      border-radius: 15px;
+      .message-body__text{
+        display: block;
+      }
+      .message-body__icon{
+        display: inline-block;
+        margin-top:8px;
+        color: #aaa;
+        span{
+        }
+        .message-body__balloon{
+
+          color: #eef0f4;
+ 
+          position: relative;
+          padding: 20px;
+        }
+        .message-body__balloon::before{
+          content: '';
+          position: absolute;
+          left: 20px;
+          top: -15px;
+          display: block;
+          width: 0;
+          height: 0;
+          border-right: 15px solid transparent;
+          border-bottom: 15px solid #fff3ad;
+          border-left: 15px solid transparent;
+        }
+        }
+      }
+    }
+  }
+
+    
+
+    .message-items__self{
+      width: 652px;
+      .message-list__self{
+        height:150px;
+        padding-top:20px;
+        .message-body__self{
+          float: left;
+          position: relative;
+          padding-top: -20px;
+          display: inline-block;
+          width:600px;
+          padding: 16px;
+          background: #fbf0e6;
+          border-radius: 15px;
+          .message-body__text__self{
+            display: block;
+          }
+          .message-body__icon__self{
+            display: inline-block;
+            margin-top:8px;
+            color: #aaa;
+          span{
+              }
+            }
+          }
+        }
+        .message-icon__self{
+          float: right;
+          position: relative;
+          img{
+            border-radius: 50%;
+            }
+          .message-icon__name__self {
+            font-size: 10px;
+          }
+        }
+      }
+
+
+
+
+

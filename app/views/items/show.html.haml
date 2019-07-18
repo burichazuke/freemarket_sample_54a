@@ -113,25 +113,58 @@
             .mypage__content__tab-content__item-list--index--gray
               = link_to "この商品を削除する", item_path(@item), method: :delete, class: "item-delete"
 
+
+
+
+
   .item__detail-message
     .message-container
       .message-content
 
-        .message-items
+        %ul.message-items
           %li.message-list
-            = link_to mypage_index_path do
-              %figure
+            .message-icon
+              = link_to mypage_index_path do
+                %figure
                 = image_tag "mypage_icon.png", size: "40x40"
+                .message-icon--name
+                  %p name
+            .message-body
+              .message-body__text
+                %p 欲しいです
+              .message-body__icon
+                = fa_icon 'clock-o', class: 'icon'
+                %span.message-body__icon__time
+                  5分前
+              .message-body__balloon
+
+        %ul.message-items__self
+          %li.message-list__self
+            .message-body__self
+              .message-body__text__self
+                %p 買ってください
+              .message-body__icon__self
+                = fa_icon 'clock-o', class: 'icon'
+                %span.message-body__icon__time__self
+                  5分前
+              .item__comment__right-balloon__self
+            .message-icon__self
+              = link_to mypage_index_path do
+                %figure
+                = image_tag "mypage_icon.png", size: "40x40"
+                .message-icon--name__self
+                  %p name
 
 
+      .message-content
         .message-form
-        = form_with url: item_comments_path(@item, @comment), class: "message-form" do |f|
-          %p
-            相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-          .message-form__textarea
-            = f.text_area :content
-          -# .message-submit.btn-default.btn-gray
-          = f.submit "コメントする", class: "single__form__send-btn single__form__send-btn--gray"
+          = form_with url: item_comments_path(@item, @comment), class: "message-form" do |f|
+            %p
+              相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            .message-form__textarea
+              = f.text_area :content
+            -# .message-submit.btn-default.btn-gray
+            = f.submit "コメントする", class: "single__form__send-btn single__form__send-btn--gray"
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev

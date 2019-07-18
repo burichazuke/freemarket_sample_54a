@@ -11,4 +11,24 @@
         %button.message-submit.btn-default.btn-gray{type: "submit"}
           %span コメントする
 
-          
+
+
+          %li.message-list__self
+            = link_to mypage_index_path do
+              %figure
+                = image_tag "mypage_icon.png", size: "40x40"
+                .name
+                  名前
+              .seller
+                出品者
+            .message-body
+              .message-body__text
+                買ってください
+              .message-body__icon
+                .message-body__icon--left
+                  .message-body__icon__left__time-icon
+                    = fa_icon 'clock-o', class: 'icon'
+                  %span
+                    5分前
+              .icon-balloon
+
