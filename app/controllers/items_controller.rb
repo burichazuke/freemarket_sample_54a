@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @comments = Comment.where(item_id: @item.id)
-    @nickname = current_user&.nickname
   end
 
   def new
