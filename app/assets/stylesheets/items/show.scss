@@ -240,3 +240,84 @@
     }
   }
 }
+
+.user-name-link {
+  @include item-aHover;
+}
+
+.item-content__detail-table__face{
+  display: flex;
+  span {
+    color: black;
+    font-size: 0.8rem;
+    vertical-align: middle;
+  }
+  &--good{
+    color: #ef5185;
+    margin: 8px 15px 0 0;
+  }
+  &--normal{
+    color:#fba933;
+    margin: 8px 15px 0 0;
+  }
+  &--bad{
+    color: #6ab5d8;
+    margin: 8px 15px 0 0;
+  }
+}
+
+
+.item-other {
+  width: 700px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+  &__user-items {
+    &__head {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-right: 8px;
+      padding-bottom: 8px;
+    }
+    &__content {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 700px;
+      &__box {
+        background-color: white;
+        margin: 0 0 20px 20px;
+        &:nth-child(3n+1) {
+          margin-left: 0px;
+
+        }
+        &__body {
+          padding: 16px;
+          height: 110px;
+          width: 220px;
+          color: #000;
+          &__name {
+            font-size: 1rem;
+            line-height: 1.5;
+            height: 3rem;
+            overflow: hidden;
+            white-space: normal;
+          }
+        }
+        &__num {
+          margin: 8px 0 0;
+          &__price {
+            float: left;
+            font-weight: 600;
+          }
+          &__likes {
+            float: right;
+            &__num {
+              font-size: 0.9rem;
+              margin-left: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
