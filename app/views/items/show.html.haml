@@ -59,7 +59,7 @@
       =link_to items_buy_path, class: "item__buy-btn" do
         購入画面に進む
     - else
-      %button.item__buy-btn
+      %button.item__buy-btn--sold
         売り切れです
 
     %section.item__description
@@ -88,13 +88,14 @@
 
 
 
-  -if @item.seller_id == current_user.id
+  -if user_signed_in? && @item.seller_id == current_user.id
     .item__detail-message
       .message-container
         .message-content 
           .mypage__content__tab-content__item-list--index
             .mypage__content__tab-content__item-list--index--gray
               = link_to "この商品を削除する", item_path(@item), method: :delete, class: "item-delete"
+
 
 
 
