@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
   before_action :set_user, only: [:sms_confirmation, :add_phone_number]
-  before_filter :load_not_verified_entry, only: [:verification_code_input :verification]
+  before_action :load_not_verified_entry, only: [:verification_code_input, :verification]
 
   # 後々、wicked用のクラスを作成してそこに基本メソッド以外のメソッドは移行する予定
   # GET /resource/sign_up
@@ -30,7 +30,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def verification
-    if @user.verify_and_save(params[:user])
+    if @user.verify_and_save(verification_params)
       redirect_to :address_user_registration
     else
       render :add_phone_number
@@ -111,7 +111,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   private
-  
+
   def check_captcha
     unless verify_recaptcha
       self.resource = resource_class.new sign_up_params
@@ -132,6 +132,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def phone_number_params
     params.require(:user).permit(:phone_number)
   end
-  
 
+  def verification_params
+    params.require(:user).permit(:verification_code_confirmation)
+  end
 end

@@ -6,9 +6,9 @@ class User < ApplicationRecord
   
   VERIFICATION_CODE_LENGTH = 6
   attr_accessor :verification_code_confirmation
-  # validates :phone_number, format: { with: /^\d{3}-?\d{4}-?\d{4}$/ }, allow_blank: true
-  after_create :issue_verification_code
-  after_create :send_verification_code
+  validates :phone_number, format: { with: /\A\d{3}-?\d{4}-?\d{4}\z/ }, allow_blank: true
+  after_update :issue_verification_code, if: :user_has_verification_code?
+  after_update :send_verification_code, unless: :user_verified?
 
   with_options presence: true do
     validates :nickname 
@@ -39,17 +39,29 @@ class User < ApplicationRecord
   def self.not_verified
     where(verified: false)
   end
-
   
   private
+  # todo: after_createになった場合は、下記の記述は必要なし→unless user_verified?に変更
+  def user_has_verification_code?
+    if self.verification_code.nil? && self.verified == false
+      return true
+    else
+      return false
+    end
+  end
+
+  def user_verified?
+    if self.verified == true
+      return true
+    else
+      return false
+    end
+  end
+  
 
   def issue_verification_code
     self.verification_code = VERIFICATION_CODE_LENGTH.times.map{ Random.rand(9) + 1 }.join
     self.save!
-  end
-
-  def twilio_client
-    @twilio_client ||= Twilio::REST::Client.new ENV["TWILIO_SID"], ENV["TWILIO_TOKEN"]
   end
 
   # 080-1234-5678 => # +8180-1234-5678
@@ -58,7 +70,8 @@ class User < ApplicationRecord
   end
 
   def send_verification_code
-    twilio_client.account.sms.messages.create(
+    @twilio_client = Twilio::REST::Client.new(ENV["TWILIO_SID"], ENV["TWILIO_TOKEN"])
+    @twilio_client.api.account.messages.create(
       from: ENV["TWILIO_NUMBER"],
       to: formatted_phone_number,
       body: "この認証コードを入力してください。\n#{verification_code}"
