@@ -336,20 +336,21 @@
               border-radius: 50%;
             }
             &-seller {
-              background-color: #eee;
-              font-size: 12px;
-              padding: 4px;
+              background-color:#fbf0e6;;
+              font-size: 11px;
+              padding: 3px;
               margin-top: 5px;
-              border-radius: 4px;
+              letter-spacing: 0.5px;
             }
           }
           &__content {
             display: flex;
             width: 91%;
-
             &-name {
-              font-size: 14px;
+              font-size: 13px;
               position: absolute;
+              font-weight: bold;
+              letter-spacing: 1px;
             &__user{
               padding-left:10px;
             }
@@ -368,7 +369,6 @@
               border-radius: 14px;
               letter-spacing: 1px;
               margin-top:26px;
-              z-index: 2;
               width: 560px;
               background-color: #eee;
               p {
