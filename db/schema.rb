@@ -98,9 +98,6 @@ ActiveRecord::Schema.define(version: 2019_07_16_041925) do
     t.string "first_name_kana", null: false
     t.date "birthday", null: false
     t.integer "wallet"
-    t.string "phone_number"
-    t.string "verification_code"
-    t.boolean "verified", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
