@@ -101,6 +101,17 @@
       text-align: center;
       font-weight: 600;
       font-size: 24px;
+      &--sold{
+        width: 100%;
+        display: block;
+        margin: 16px 0 0;
+        background: gray;
+        color: #fff;
+        line-height: 56px;
+        text-align: center;
+        font-weight: 600;
+        font-size: 24px;
+      }
     }
   
   .item__description {
