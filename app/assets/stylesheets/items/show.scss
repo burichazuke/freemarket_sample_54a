@@ -29,23 +29,31 @@
     .item__photo {
       float: left;
       width: 300px;
-      min-height: 375px;
-      // position: relative;後の実装にて使用
-      position: relative; 
+      height: 420px;
       background: #f5f5f5;
       margin: 0 auto;
-    }
+      &__slide{
+        display: flex;
+        overflow: hidden;
+        &__img{
+          display: block;
+          height: 300px;
+          width: 300px;
+          object-fit: cover;
+          margin: auto;
+        }
+      }
 
-    .olw__carousel {
-      height: 360px;
-      width: 300px;
-    }
-    img{
-      display: block;
-      height: 300px;
-      width: 225px;
-      object-fit: cover;
-      margin: auto;
+      &__container{
+        display: flex;
+        flex-wrap: wrap;
+        &__img{
+          width: 60px;
+          height: 60px;
+          object-fit: cover;
+          opacity: .4;
+        }
+      }
     }
 
     .item__detail-table {
