@@ -18,7 +18,7 @@
           %tr
             %th 出品者
             %td
-              = link_to "testman", item_path, method: :get, class: "user-name-link"
+              = link_to @item.seller.nickname, item_path, method: :get, class: "user-name-link"
               .item-content__detail-table__face
                 .item-content__detail-table__face--good
                   = fa_icon "smile-o", class: "good-icon"
@@ -104,7 +104,7 @@
           %span.aBlue あんしん・あんぜんへの取り組
 
 
-  -if @item.seller_id == current_user.id
+  -if @item.seller_id == current_user&.id
     .item__detail-message
       .message-container
         .message-content 
