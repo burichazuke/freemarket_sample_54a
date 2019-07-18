@@ -1,7 +1,6 @@
 $(document).on('turbolinks:load',function(){
 
-  $('#price-form').on('keyup', function(e){
-    var k = e.keyCode;
+  $('#price-form').on('keyup', function(){
     var input = $(this).val()
 
     //販売価格300〜9,999,999、半角数字以外は入力不可
