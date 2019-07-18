@@ -17,7 +17,7 @@ class Item < ApplicationRecord
   # has_many :favorites, dependent: :destroy
   # has_many :users, through: :favorites, dependent: :destroy
 
-  validates :name, :description, :price, presence: true
+  validates :name, :description, :price, :images, presence: true
   validates :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, presence: true
 end
 
