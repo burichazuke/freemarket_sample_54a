@@ -10,8 +10,8 @@
           -@item.images.each do |image|
             =image_tag "#{image.image}", class: "item__photo__slide__img"
         .item__photo__container
-          -@item.images.each do |image|
-            =image_tag "#{image.image}", class: "item__photo__container__img"
+          -@item.images.each_with_index do |image,i|
+            =image_tag "#{image.image}", class: "item__photo__container__img","data-id": "#{i}"
 
 
       %table.item__detail-table
