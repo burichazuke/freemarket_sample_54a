@@ -1,38 +1,59 @@
 :ruby
   cardlists = ["visa-card.svg", "mastercard.svg", "saison-card.svg" ,"jcb-card.svg", "american-express-card.svg", "diners-club-International.svg", "discover-card.svg"]
 
-
 // 4つ目のページ
 %main.single__page__main
   .single__page__main__container
     %h2.single__page__main__head
       支払い方法
-    -# = form_for resource, url: create_user_registration_path, html: {method: :post, class: "single__form"} do |f|
-    = form_for resource, url: finish_user_registration_path, html: {method: :get, class: "single__form"} do |f|
+    = form_with(url: cards_path, html: {method: :post, class: "single__form", id: "charge-form"}) do |f|
       .single__field
         .single__field__label
-          = label :credit_card, :number, "カード番号"
+          = f.label :number, "カード番号"
           %span.single__field__require 必須
         .single__field__input
-          = text_field :credit_card, :number, placeholder: "半角数字のみ"
+          = f.text_field :number, placeholder: "半角数字のみ", maxlength: "16", name: "number", type: "text", id: "payment_card_no", class: "number input-default"
         - cardlists.each do |card|
           = image_tag "#{card}", class: "single__icon--card"
       .single__field
         .single__field__label
-          = label :credit_card, :valid, "有効期限"
+          = f.label :valid, "有効期限"
           %span.single__field__require 必須
         .single__field--flex
           .single__field__select.single__field__select--small
-            = select :credit_card, :valid_month, ["--" ,1, 2, 3]
+            %select.exp_month#card_expire_mm{maxlength: "2", name: "exp_month", type: "text"}
+              %option{value: "1"}01
+              %option{value: "2"}02
+              %option{value: "3"}03
+              %option{value: "4"}04
+              %option{value: "5"}05
+              %option{value: "6"}06
+              %option{value: "7"}07
+              %option{value: "8"}08
+              %option{value: "9"}09
+              %option{value: "10"}10
+              %option{value: "11"}11
+              %option{value: "12"}12
           %span 月
           .single__field__select.single__field__select--small
-            = select :credit_card, :valid_year, ["--", 20, 21, 22]
+            %select.exp_year#card_expire_yy{maxlength: "4", name: "exp_year", type: "text"}
+              %option{value: "2019"}19
+              %option{value: "2020"}20
+              %option{value: "2021"}21
+              %option{value: "2022"}22
+              %option{value: "2023"}23
+              %option{value: "2024"}24
+              %option{value: "2025"}25
+              %option{value: "2026"}26
+              %option{value: "2027"}27
+              %option{value: "2028"}28
+              %option{value: "2029"}29
           %span 年
       .single__field
         .single__field__label
-          = label :credit_card, :number, "セキュリティコード"
+          = f.label :number, "セキュリティコード"
           %span.single__field__require 必須
         .single__field__input
-          = text_field :credit_card, :number, placeholder: "カード背面4桁もしくは3桁の番号"
+          = f.text_field :number, placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "3", name: "cvc", type: "text", id: "cvc_code", class: "cvc input-default"
         = link_to "カード裏面の番号とは？", "/", class: "single__field__text single__field__text__link single__field__text--right"
-      = f.submit "次へ進む", class: "single__form__send-btn"
+      
