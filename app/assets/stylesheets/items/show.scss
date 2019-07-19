@@ -361,7 +361,17 @@
             &-balloon {
               color: #eee;
               font-size: 50px;
-              transform: rotate(160deg) rotateY(180deg);
+              
+
+            }
+            &-balloon:before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              right: -30px;
+              margin-top: -90px;
+              border: 15px solid transparent;
+              border-left: 15px solid #ff8e9d;
 
             }
             &-comment {
