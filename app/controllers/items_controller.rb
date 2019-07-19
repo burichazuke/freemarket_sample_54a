@@ -9,7 +9,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @comments = Comment.where(item_id: @item.id)
+    @comments = Comment.where(item_id: @item)
+
   end
 
   def new
