@@ -360,21 +360,16 @@
             }
             }
             &-balloon {
-              color: #eee;
-              font-size: 50px;
-              
-
+              position: relative;
             }
             &-balloon:before {
               content: "";
               position: absolute;
-              top: 50%;
-              right: -30px;
-              margin-top: -90px;
+              left: -40px;
+              margin-top: -55px;
               border: 15px solid transparent;
-              border-left: 15px solid #ff8e9d;
-
-            }
+              border-right: 15px solid #eee;
+              }
             &-comment {
               padding: 15px;
               border-radius: 14px;
@@ -387,9 +382,21 @@
               }
               .comment-clock {
                 color: #aaa;
-
               }
             }
           }
         }
+      }
+
+      .item__comment__content-balloon__seller{
+        position: relative;
+      }
+      .item__comment__content-balloon__seller:before{
+        content: "";
+        position: absolute;
+
+        left: 102%;
+        margin-top: -55px;
+        border: 15px solid transparent;
+        border-left: 15px solid #eee;
       }
