@@ -104,7 +104,7 @@
           %span.aBlue あんしん・あんぜんへの取り組
 
 
-  -if @item.seller_id == current_user&.id
+  -if @item.seller_id.to_s == current_user&.id.to_s
     .item__detail-message
       .message-container
         .message-content 
@@ -116,7 +116,7 @@
   .item__detail-message
     .message-container
       .item__comments
-        = render partial: "comment_list"
+        = render partial: "comment_list", collection: @comments, as: :comment 
 
       .message-content
         .message-form
@@ -125,7 +125,6 @@
               相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
             .message-form__textarea
               = f.text_area :content
-            -# .message-submit.btn-default.btn-gray
             = f.submit "コメントする", class: "single__form__send-btn single__form__send-btn--gray"
 
   %ul.nav-item__link-prev-next
