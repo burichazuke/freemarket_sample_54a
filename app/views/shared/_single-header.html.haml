@@ -1,3 +1,6 @@
+:ruby
+  steps = ["会員情報", "電話番号認証", "お届け先住所入力", "支払い方法", "完了"]
+
 %header.single__page__header
   = link_to "/" do
     = image_tag "mercari_logo.png", size: "185x50", alt: "mercari"
@@ -6,7 +9,7 @@
       %ol.sign-up__bar__menus
         %li.active-single-nav
           会員情報
-          .progress-status
+          .progress-status.progress-status--active
         %li
           電話番号認証
           .progress-status
@@ -19,3 +22,18 @@
         %li
           完了
           .progress-status
+    -# %nav.sign-up__bar
+    -#   %ol.sign-up__bar__menus
+    -#     - steps.each_with_index do |step, i|
+    -#       - if i < @step_num
+    -#         %li
+    -#           = step
+    -#           .progress-status.progress-status--active
+    -#       - elsif i == @step_num
+    -#         %li.active-single-nav
+    -#           = step
+    -#           .progress-status.progress-status--active
+    -#       - else
+    -#         %li
+    -#           = step
+    -#           .progress-status 
