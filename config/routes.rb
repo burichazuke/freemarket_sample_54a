@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :users,  only: [:show]
   resources :mypage, only: [:index] do
     collection do
-      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "card", "email_password", "identification", "sms_confirmation", "help_center"
+      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "email_password", "identification", "sms_confirmation", "help_center"
     end
   end
 
@@ -56,10 +56,12 @@ Rails.application.routes.draw do
   resources :items, except: :new 
   
 
-    resources :comments, only:[:create, :destroy]
+  resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
   resources :brands,  only: [:index, :show]
-  resources :cards, only: [:new, :create,:destroy,] do
+  resources :cards, only: [:new, :create,:destroy,]
+  as :cards do
+    get "mypage/card", to: "cards#card"
   end
 
 end
