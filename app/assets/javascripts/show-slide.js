@@ -6,7 +6,6 @@ $(document).on('turbolinks:load',function(){
       $('.active-img').removeClass('active-img');
       $(target).addClass('active-img');
       var id = $('.active-img').data("id");
-      console.log(id)
       $('.item__photo__slide').animate({"left": id * -300 + "px", easing:'easeInOutExpo'}); 
     },700)
   },function(){
