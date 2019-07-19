@@ -118,7 +118,8 @@
       .item__comments
         = render partial: "comment_list", collection: @comments, as: :comment 
 
-      = render "comment"
+      - if user_signed_in?
+        = render "comment"
 
 
   %ul.nav-item__link-prev-next
