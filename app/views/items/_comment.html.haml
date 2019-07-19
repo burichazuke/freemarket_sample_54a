@@ -12,23 +12,45 @@
           %span コメントする
 
 
+                .item__comments
+        - @comments.each do |comment|
+          .item__comment
+            .item__comment__user
+              .item__comment__user-icon
+                = link_to mypage_index_path do
+                  = image_tag("mypage_icon.png", size: "40x40")
+            .item__comment__content
+              .item__comment__content-name
+                .item__comment__content-name__user
+                  = comment.user.nickname
+              .item__comment__content-comment
+                .item__comment__content-comment__user
+                  %p
+                    = comment.content
+                  = fa_icon "clock-o", class: "comment-clock"
+                  %span.comment-clock
+                    = comment.created_at.strftime("%Y/%m/%d %H:%M")
+                .item__comment__content-balloon
 
-          %li.message-list__self
-            = link_to mypage_index_path do
-              %figure
-                = image_tag "mypage_icon.png", size: "40x40"
-                .name
-                  名前
-              .seller
-                出品者
-            .message-body
-              .message-body__text
-                買ってください
-              .message-body__icon
-                .message-body__icon--left
-                  .message-body__icon__left__time-icon
-                    = fa_icon 'clock-o', class: 'icon'
-                  %span
-                    5分前
-              .icon-balloon
+
+      .item__comments
+        - @comments.each do |comment|
+          .item__comment
+            .item__comment__content
+              .item__comment__content-name
+                .item__comment__content-name__seller
+                  = @item.seller.nickname
+              .item__comment__content-comment
+                .item__comment__content-comment__seller
+                  %p
+                    = comment.content
+                  = fa_icon "clock-o", class: "comment-clock"
+                  %span.comment-clock
+                    = comment.created_at.strftime("%Y/%m/%d %H:%M")
+                .item__comment__content-balloon__seller
+            .item__comment__user
+              .item__comment__user-icon
+                = image_tag("mypage_icon.png", size: "40x40")
+                .item__comment__user-seller
+                  %p 出品者
 
