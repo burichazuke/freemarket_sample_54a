@@ -18,7 +18,8 @@ class User < ApplicationRecord
     validates :first_name_kana 
     validates :birthday
   end
-
+  validates :last_name_kana, :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+  
   has_one :card
   has_one :address, dependent: :destroy
   has_one :identification, dependent: :destroy

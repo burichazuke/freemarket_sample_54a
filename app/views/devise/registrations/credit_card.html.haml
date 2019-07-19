@@ -56,4 +56,5 @@
         .single__field__input
           = f.text_field :number, placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "3", name: "cvc", type: "text", id: "cvc_code", class: "cvc input-default"
         = link_to "カード裏面の番号とは？", "/", class: "single__field__text single__field__text__link single__field__text--right"
+      = f.submit "次へ進む", class: "single__form__send-btn", id: "submit-charge"
       

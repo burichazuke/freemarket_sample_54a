@@ -6,7 +6,7 @@ class AddressesController < ApplicationController
     if @address.save
       redirect_to :credit_card_user_registration
     else
-      render :address_user_registration
+      render "devise/registrations/address"
     end
   end
 
