@@ -16,9 +16,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up/sms_confirmation
   def sms_confirmation
+    @step_num = 1
   end
 
   def add_phone_number
+    @step_num = 1
     if @user.update(phone_number_params)
       redirect_to :verification_code_input
     else
@@ -27,6 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def verification_code_input
+    @step_num = 1
   end
 
   def verification
@@ -39,23 +42,24 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up/address
   def address
+    @step_num = 2
     @address = Address.new
   end
 
   # GET /resource/sign_up/credit_card
   def credit_card
-    @user = ""
-    # redirect_to :finish_user_registration
+    @step_num = 3
+    @card = Card.new
   end
 
   # GET /resource/sign_up/finish
   def finish
-    @user = ""
-    # redirect_to :root
+    @step_num = 4
   end
 
   # GET /resource/sign_up/registration
   def new
+    @step_num = 0
     super
   end
 
@@ -126,7 +130,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def load_not_verified_entry
-    @user = User.not_verified.find(current_user.id)
+    @user = User.not_verified.find(current_user.id)  
   end
 
   def phone_number_params
