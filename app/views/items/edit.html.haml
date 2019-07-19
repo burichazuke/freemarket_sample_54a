@@ -1,0 +1,9 @@
+= render "new2"
+%main.single__page__main
+  .single__page__main__container
+    = form_for @item, url: "/items", html:{method: :post, class:"single__formsingle__form__items"} do |f|
+      .sell-content
+        = f.submit "変更する", class: "single__form__send-btn" 
+        = link_to root_path do
+          = f.submit "キャンセル", class: "single__form__send-btn single__form__send-btn--gray single__form__send-btn--small" 
+    

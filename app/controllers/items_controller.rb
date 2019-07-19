@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :user_signed_in?, only:[:new, :create, :edit, :update, :destroy]
-  before_action :set_item, only:[:show, :destroy]
+  before_action :set_item, only:[:show, :destroy, :edit]
 
   def index
     @items = Item.includes(:images).order("created_at desc")
@@ -38,9 +38,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    render layout: "single"
+
   end
 
   def update
+    @item = Item.find(params[:id])
+    @item.update(item_params)
   end
 
   def pay
