@@ -118,14 +118,8 @@
       .item__comments
         = render partial: "comment_list", collection: @comments, as: :comment 
 
-      .message-content
-        .message-form
-          = form_for @comment, url: item_comments_path(@item, @comment), class: "message-form" do |f|
-            %p
-              相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            .message-form__textarea
-              = f.text_area :content
-            = f.submit "コメントする", class: "single__form__send-btn single__form__send-btn--gray"
+      = render "comment"
+
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev

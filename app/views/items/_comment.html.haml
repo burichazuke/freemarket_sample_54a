@@ -1,56 +1,8 @@
-.item__detail-message
-  .message-container
-    .message-content 
-      -# あとでform_forに変更する
-      %form.message-form{action: "", method:""} 
-        %p
-          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-        .message-form__textarea
-          %textarea{comment: ""}
-        
-        %button.message-submit.btn-default.btn-gray{type: "submit"}
-          %span コメントする
-
-
-                .item__comments
-        - @comments.each do |comment|
-          .item__comment
-            .item__comment__user
-              .item__comment__user-icon
-                = link_to mypage_index_path do
-                  = image_tag("mypage_icon.png", size: "40x40")
-            .item__comment__content
-              .item__comment__content-name
-                .item__comment__content-name__user
-                  = comment.user.nickname
-              .item__comment__content-comment
-                .item__comment__content-comment__user
-                  %p
-                    = comment.content
-                  = fa_icon "clock-o", class: "comment-clock"
-                  %span.comment-clock
-                    = comment.created_at.strftime("%Y/%m/%d %H:%M")
-                .item__comment__content-balloon
-
-
-      .item__comments
-        - @comments.each do |comment|
-          .item__comment
-            .item__comment__content
-              .item__comment__content-name
-                .item__comment__content-name__seller
-                  = @item.seller.nickname
-              .item__comment__content-comment
-                .item__comment__content-comment__seller
-                  %p
-                    = comment.content
-                  = fa_icon "clock-o", class: "comment-clock"
-                  %span.comment-clock
-                    = comment.created_at.strftime("%Y/%m/%d %H:%M")
-                .item__comment__content-balloon__seller
-            .item__comment__user
-              .item__comment__user-icon
-                = image_tag("mypage_icon.png", size: "40x40")
-                .item__comment__user-seller
-                  %p 出品者
-
+.message-content
+  .message-form
+    = form_for @comment, url: item_comments_path(@item, @comment), class: "message-form" do |f|
+      %p
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      .message-form__textarea
+        = f.text_area :content
+      = f.submit "コメントする", class: "single__form__send-btn single__form__send-btn--gray"
