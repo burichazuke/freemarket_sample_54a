@@ -1,0 +1,28 @@
+.category-wrapper
+  .category-list
+    .category-list-heading
+      %h2 カテゴリー一覧 
+
+    .category-list-parent.clearfix
+      - @parents.each do |parent|
+        =link_to '/',class:'category-list-parent__link' do
+          = parent.name
+
+    .category-list-box
+      - @parents.each do |parent|
+        .category-parent-box.clearfix
+          %h3
+            .category-list-box__heading
+              = parent.name
+            .cateBox-child
+              - parent.children.each do |child|
+                %h4
+                  = child.name
+
+                .cateBox-grandchild
+                  - child.children.each do |grandchild|
+                    %p
+                      = grandchild.name
+
+
+
