@@ -6,15 +6,15 @@
         = link_to '/',class: 'header-logo-link' do
           = image_tag 'mercari_logo.png', alt: 'mercari', height: '36', width: '134', class: 'header-logo'
       
-      -# = form_with(model: @items, url:'items_search_path', class:'header-form',local:false) do |f|
+      -# = form_with(model: @items, url: items_search_path, class:'header-form',local:false) do |f|
       -#   = f.text_field :keyword, value: '',type:'search', placeholder:'何かお探しですか？', class:'search-txt-field' 
       -#   = f.submit :search, class:'btn-search'
       -#   .btn-search
       -#     =fa_icon 'search'
           
       = form_tag('/items/search',class:'header-form', method: :get) do
-        %input.search{:name => "keyword", placeholder: '何かお探しですか？', :type => "text", :value => "", class:'search-txt-field' }/
-        %button.search-icon{:title => "検索", :type => "submit"}
+        %input.search{name: "keyword", placeholder: '何かお探しですか？', type: "text", value: "", class:'search-txt-field' }/
+        %button.search-icon{title: "検索", type: "submit"}
           =fa_icon 'search'
             
     .header-bottom
