@@ -1,0 +1,12 @@
+%main.mypage
+
+
+  .mypage__container
+    .mypage__contents
+      %section{class: "items-box__container"}
+        .items-box__content
+          = render @items
+
+
+    .mypage__side
+      =render "shared/sidebar"
