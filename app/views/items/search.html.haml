@@ -12,7 +12,8 @@
         ="#{@items.count}件の商品"
       %section{class: "items-box__container"}
         .items-box__content
-          =render partial: "search-result"
+          -@items.each do |item|
+            =render partial: "search-result", locals: {item: item}
 
 
     .mypage__side
