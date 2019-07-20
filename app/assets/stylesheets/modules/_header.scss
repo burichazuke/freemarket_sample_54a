@@ -89,12 +89,12 @@ h2 span{
           &__link{
             color:black;
             text-decoration: none;
+            display: flex;
+            align-items: center;
             .header-user-icon{
               color: #ccc;
               margin-right:10px;
               font-size:20px;
-            }
-            .header-user-img{
               line-height: 44px;
             }
           }
