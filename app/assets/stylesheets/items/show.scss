@@ -41,7 +41,7 @@
           display: block;
           height: 300px;
           width: 300px;
-          object-fit: cover;
+          object-fit: scale-down;
           margin: auto;
         }
       }
@@ -56,8 +56,10 @@
           object-fit: cover;
           opacity: 0.4;
           display: block;
+          cursor: pointer;
           &.active-img{
             opacity: 1;
+            cursor: default;
           }
         }
       }
