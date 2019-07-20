@@ -13,7 +13,7 @@
       -#     =fa_icon 'search'
           
       = form_tag('/items/search',class:'header-form', method: :get) do
-        %input.search{:name => "keyword", placeholder:'何かお探しですか？', :type => "text", :value => "", class:'search-txt-field' }/
+        %input.search{:name => "keyword", placeholder: '何かお探しですか？', :type => "text", :value => "", class:'search-txt-field' }/
         %button.search-icon{:title => "検索", :type => "submit"}
           =fa_icon 'search'
             
