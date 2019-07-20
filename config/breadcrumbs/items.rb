@@ -7,3 +7,8 @@ crumb :item_name do |item_name|
   link item_name.name
   parent :root
 end
+
+crumb :item_search do |item_search|
+  link "#{params[:keyword]}"
+  parent :root
+end
