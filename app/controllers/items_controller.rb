@@ -65,6 +65,7 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.where("name LIKE(?)", "%#{params[:keyword]}%").includes(:images).order("created_at desc")
+    @keyword = params[:keyword]
   end
 
   private
