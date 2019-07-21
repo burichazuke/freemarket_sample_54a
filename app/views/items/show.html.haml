@@ -6,11 +6,12 @@
       = @item.name
     .item__main-content
       .item__photo
-        .owl__carousel
-          .owl__item__inner
-          -image = @item.images.first
-          -if image
-            =image_tag "#{image.image}"
+        .item__photo__slide
+          -@item.images.each do |image|
+            =image_tag "#{image.image}", class: "item__photo__slide__img"
+        .item__photo__container
+          -@item.images.each_with_index do |image,i|
+            =image_tag "#{image.image}", class: "item__photo__container__img","data-id": "#{i}"
 
 
       %table.item__detail-table
@@ -74,7 +75,7 @@
 
     .item__price-box
       %span.item__price-box__price
-        = "¥ #{@item.price}"
+        = "¥ #{@item.price.to_s(:delimited)}"
       %span.item__price-box__tax
         (税込)
       %span.item__price-box__shipping-fee
