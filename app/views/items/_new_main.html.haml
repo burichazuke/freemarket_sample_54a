@@ -13,6 +13,7 @@
           =image.label :image do
             =fa_icon "image"
             = image.file_field :image
+            = image.hidden_field :id, value: @item.id
       
 .sell-content
   .single__field.single__field--large

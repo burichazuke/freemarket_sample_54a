@@ -48,6 +48,11 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+# 編集画面で使用？？要らない記述かもしれないです
+  def update_item_params
+    params.require(:item).permit(:name, :description, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, images_attributes: [:image]).merge(seller_id: current_user.id)
+  end
+
   def pay
     @item = Item.find(params[:id])
     @item.update(item_params)
