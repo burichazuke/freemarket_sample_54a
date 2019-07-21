@@ -1,0 +1,17 @@
+%section{class: "items-box--s"}
+  = link_to item_path(item.id) do
+    .items-box--s__photo      
+      -image = item.images.first
+      -if image
+        =image_tag "#{image.image}"
+      -if item.status >= 1
+        .items-box--s__photo__soldout
+          %h2 SOLD
+    .items-box--s__body
+      %h3{class: "items-box--s__body__name font-2"}
+        =item.name
+      .items-box--s__body__num
+        .items-box--s__body__num__price.font-5
+          ="¥ #{item.price.to_s(:delimited)}"
+        .items-box--s__body__num__like.font-2
+          =fa_icon "heart-o" 

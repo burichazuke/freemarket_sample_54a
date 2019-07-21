@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   # belongs_to_active_hash :category
 
   # belongs_to_active_hash :brand
-  # has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy
   # has_many :favorites, dependent: :destroy
   # has_many :users, through: :favorites, dependent: :destroy
 

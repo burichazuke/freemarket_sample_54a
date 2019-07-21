@@ -36,6 +36,10 @@ $dark-red: #ea352d;
     }
     &__copyright {
       font-size: 13px;
+      &__index {
+        color: white;
+        font-size: 10px;
+      }
     }
   }
 }

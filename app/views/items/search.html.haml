@@ -1,0 +1,20 @@
+-breadcrumb :item_search
+%main.mypage
+  .mypage__container
+    .mypage__contents
+      %h2.search-head
+        -if @keyword ==""
+          新着商品
+        -else 
+          = "#{@keyword}"
+          %span の検索結果
+      %p.search-count
+        ="#{@items.count}件の商品"
+      %section{class: "items-box__container"}
+        .items-box__content
+          -@items.each do |item|
+            =render partial: "item-s", locals: {item: item}
+
+
+    .mypage__side
+      =render "shared/sidebar"
