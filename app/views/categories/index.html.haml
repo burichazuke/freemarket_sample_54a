@@ -11,16 +11,21 @@
     .category-list-box
       - @parents.each do |parent|
         .category-parent-box.clearfix
-          %h3
-            .category-list-box__heading
+          .category-list-box__heading
+            %h3
               = parent.name
-            .cateBox-child
-              - parent.children.each do |child|
+          .cateBox-child
+            .cateBox-child__all
+              %p
+                =link_to '/' do
+                  すべて
+            - parent.children.each do |child|
+              .cateBox-child__content
                 %h4
                   = child.name
-
-                .cateBox-grandchild
-                  - child.children.each do |grandchild|
+              .cateBox-grandchild
+                - child.children.each do |grandchild|
+                  .cateBox-grandchild__content
                     %p
                       = grandchild.name
 
