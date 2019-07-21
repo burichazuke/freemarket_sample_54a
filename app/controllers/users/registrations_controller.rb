@@ -2,13 +2,10 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'single'
-  # prepend_before_action :check_captcha, only: [:create]
+  prepend_before_action :check_captcha, only: [:validation]
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  # before_action :set_user, only: [:sms_confirmation, :add_phone_number]
-  # before_action :load_not_verified_entry, only: [:verification_code_input, :verification]
 
-  # 後々、wicked用のクラスを作成してそこに基本メソッド以外のメソッドは移行する予定
   # GET /resource/sign_up
   def register
   end
@@ -21,11 +18,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource/sign_up/sms_confirmation
   def validation
-    @user = User.new(session_params)
+    @user = User.new(user_params)
     if @user.valid?
       @step_num = 1
-      binding.pry
-      session[:user_attributes] = session_params
+      session[:user_attributes] = user_params
       redirect_to :sms_confirmation_user_registration
     else
       @step_num = 0
@@ -38,31 +34,36 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @step_num = 1
     @user = User.new
   end
+
   # post phone
   def add_phone_number
     @step_num = 1
-    binding.pry
     session[:user_attributes] = session[:user_attributes].merge(phone_number: phone_number_params[:phone_number])
     @user = User.new(session[:user_attributes])
-    if @user.valid?
+    if @user.valid_and_set_verification_code
+      session[:user_attributes] =  session[:user_attributes].merge(verification_code: @user.verification_code)
       redirect_to :verification_code_input
     else
       render :sms_confirmation
     end
   end
+
   # GET /resource/sign_up/sms_confirmation/sms
   def verification_code_input
     @step_num = 1
-    @user = User.new(session[:user_attributes])
+    @user = User.new
   end
-  # patch user
+
+  
   def verification
     @step_num = 1
     session[:user_attributes] = session[:user_attributes].merge(verification_code_confirmation: verification_params[:verification_code_confirmation])
+    @user = User.new(session[:user_attributes])
     if @user.verify_and_save(session[:user_attributes])
+      sign_in @user
       redirect_to :address_user_registration
     else
-      render :add_phone_number
+      render :verification_code_input
     end
   end
 
@@ -83,11 +84,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @step_num = 4
   end
 
-
   # POST /resource
-  def create
-    super
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   def edit
@@ -117,41 +117,37 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday])
-  end
+  # def configure_sign_up_params
+  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday])
+  # end
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:phone_number])
-  end
+  # def configure_account_update_params
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:phone_number])
+  # end
 
   # The path used after sign up.
-  def after_sign_up_path_for(resource)
-    sms_confirmation_user_registration_path
-  end
+  # def after_sign_up_path_for(resource)
+  #   address_user_registration
+  # end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  private
 
+  private
   def check_captcha
     unless verify_recaptcha
-      self.resource = resource_class.new sign_up_params
+      self.resource = resource_class.new user_params
       resource.validate # Look for any other validation errors besides Recaptcha
       set_minimum_password_length
       respond_with resource
     end 
   end
 
-  def set_user
-    @user = User.find(current_user.id)
-  end
-
-  def load_not_verified_entry
-    @user = User.not_verified.find(current_user.id)  
+  def user_params
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday)
   end
 
   def phone_number_params
@@ -160,9 +156,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def verification_params
     params.require(:user).permit(:verification_code_confirmation)
-  end
-
-  def session_params
-    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday)
   end
 end

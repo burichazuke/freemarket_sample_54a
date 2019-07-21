@@ -3,8 +3,7 @@
   .single__page__main__container
     %h2.single__page__main__head
       電話番号の確認
-    -# = form_for @user, url: create_user_registration_path, html: {method: :post, class: "single__form"} do |f|
-    = form_for @user, url: verification_path, html: {method: :put, class: "single__form"} do |f|
+    = form_for @user, url: verification_path, html: {method: :post, class: "single__form"} do |f|
       .single__field
         .single__field__label
           = f.label :verification_code_confirmation, "認証番号"

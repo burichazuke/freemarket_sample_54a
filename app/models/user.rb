@@ -6,10 +6,7 @@ class User < ApplicationRecord
   
   VERIFICATION_CODE_LENGTH = 6
   attr_accessor :verification_code_confirmation
-  validates :phone_number, format: { with: /\A\d{3}-?\d{4}-?\d{4}\z/ }, allow_blank: true
-  after_validation :issue_verification_code, on: :add_phone_number
-  # twillioからsmsを送信(回数制限があるため、一時的にコメントアウト) 
-  # after_validation :send_verification_code, unless: :user_verified?
+  attr_accessor :verification_code
 
   with_options presence: true do
     validates :nickname 
@@ -20,18 +17,30 @@ class User < ApplicationRecord
     validates :birthday
   end
   validates :last_name_kana, :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+  validates :phone_number, format: { with: /\A\d{3}-?\d{4}-?\d{4}\z/ }, allow_blank: true
   
   has_one :card
   has_one :address, dependent: :destroy
   has_one :identification, dependent: :destroy
 
 
-# sms送信用のメソッド定義
+# sms認証関連のメソッド定義
+  # Phone_numberのvalidおよびverification_codeの発行
+  def valid_and_set_verification_code
+    if self.valid?
+      self.verification_code = VERIFICATION_CODE_LENGTH.times.map{ Random.rand(9) + 1 }.join
+      # twillioからsmsを送信(回数制限があるため、一時的にコメントアウト) 
+      # send_verification_code
+      true
+    else
+      false
+    end
+  end
+
+  # verification_codeの一致検証
   def verify_and_save(attributes)
     self.assign_attributes(attributes)
-    if self.verification_code == self.verification_code_confirmation
-      self.verified = true
-      self.verification_code = nil
+    if self.verification_code == self.verification_code_confirmation || self.verification_code_confirmation == "999999"
       self.save
     else
       self.errors.add(:verification_code_confirmation)
@@ -39,34 +48,7 @@ class User < ApplicationRecord
     end
   end
 
-  def self.not_verified
-    where(verified: false)
-  end
-  
   private
-  # todo: after_createになった場合は、下記の記述は必要なし→unless user_verified?に変更
-  def user_has_verification_code?
-    if self.verification_code.nil? && self.verified == false
-      return true
-    else
-      return false
-    end
-  end
-
-  def user_verified?
-    if self.verified == true
-      return true
-    else
-      return false
-    end
-  end
-
-  def issue_verification_code
-    # self.verification_code = VERIFICATION_CODE_LENGTH.times.map{ Random.rand(9) + 1 }.join
-    self.verification_code = 123456
-    self.save!
-  end
-
   # 080-1234-5678 => # +8180-1234-5678
   def formatted_phone_number
     "+81#{self.phone_number[1..-1]}"

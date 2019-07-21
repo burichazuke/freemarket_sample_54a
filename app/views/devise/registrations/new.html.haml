@@ -2,8 +2,7 @@
 %main.single__page__main
   .single__page__main__container
     %h2.single__page__main__head
-      会員情報入力（今はメルアドとパスワードのみ入力して）
-    -# = form_for resource, url: create_user_registration_path, html: {method: :post, class: "single__form"} do |f|
+      会員情報入力
     = form_for resource, url: user_validation_path, html: { method: :post, class: "single__form"} do |f|
       = devise_error_messages!
       .single__field
@@ -77,8 +76,8 @@
           = fa_icon "chevron-down", class: "single__icon single__field__date_select__arrow single__field__date_select__arrow--third"
       %p.single__field__text.single__field__text--gray
         ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-      -# .single__field
-      -#   = recaptcha_tags
+      .single__field
+        = recaptcha_tags
       .single__field
         %p.single__field__text.single__field__text--center
           「次へ進む」のボタンを押すことにより、利用規約に同意したものとみなします

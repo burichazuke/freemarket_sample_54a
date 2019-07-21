@@ -3,7 +3,7 @@
   .single__page__main__container
     %h2.single__page__main__head
       電話番号の確認
-    = form_for @user, url: add_phone_number_path, html: {method: :patch, class: "single__form"} do |f|
+    = form_for @user, url: add_phone_number_path, html: {method: :post, class: "single__form"} do |f|
       .single__field.single__field--large
         .single__field__label
           = f.label :phone_number, "携帯電話の番号"

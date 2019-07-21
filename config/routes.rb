@@ -10,9 +10,9 @@ Rails.application.routes.draw do
     get 'users/sign_up', to: 'users/registrations#register', as: :register_user_registration
     post 'users/sign_up/sms_confirmation', to: 'users/registrations#validation', as: :user_validation
     get 'users/sign_up/sms_confirmation', to: 'users/registrations#sms_confirmation', as: :sms_confirmation_user_registration
-    patch 'users/sign_up/add_phone_number', to: 'users/registrations#add_phone_number', as: :add_phone_number
+    post 'users/sign_up/add_phone_number', to: 'users/registrations#add_phone_number', as: :add_phone_number
     get 'users/sign_up/sms_confirmation/sms', to: 'users/registrations#verification_code_input', as: :verification_code_input
-    put 'users/sign_up/verification', to: 'users/registrations#verification', as: :verification
+    post 'users/sign_up/verification', to: 'users/registrations#verification', as: :verification
     get 'users/sign_up/address', to: 'users/registrations#address', as: :address_user_registration
     get 'users/sign_up/credit_card', to: 'users/registrations#credit_card', as: :credit_card_user_registration
     get 'users/sign_up/finish', to: 'users/registrations#finish', as: :finish_user_registration
