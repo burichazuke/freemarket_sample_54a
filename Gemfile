@@ -46,7 +46,7 @@ group :development, :test do
   gem 'capistrano3-unicorn'
   gem 'rspec-rails'
   gem 'rails-controller-testing'
-  gem 'factory_bot_rails'   
+  gem 'factory_bot_rails' 
 end
 
 group :development do
@@ -86,5 +86,9 @@ gem 'mini_magick'
 gem 'payjp'
 gem 'dotenv-rails'
 gem 'active_hash'
+gem 'gretel'
+gem 'recaptcha'
 gem 'ancestry'
 gem 'activerecord-import'
+gem 'fog-aws'
+gem 'rails-i18n'

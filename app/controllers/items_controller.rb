@@ -9,6 +9,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @comments = Comment.where(item_id: @item.id)
+    @comment = Comment.new
   end
 
   def new
@@ -20,7 +22,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to items_path(@item)
+      redirect_to item_path(@item)
     else
       render :new, layout: "single"
     end
@@ -63,10 +65,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @items = Item.where("name LIKE(?)", "%#{params[:keyword]}%").includes(:images).order("created_at desc")
+    @keyword = params[:keyword]
+  end
+
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :buyer_id, images_attributes: [:image]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :description, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, images_attributes: [:image]).merge(seller_id: current_user.id)
   end
 
   def set_item

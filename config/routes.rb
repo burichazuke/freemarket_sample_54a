@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   end
 
   as :mypage do
+    post "identification", to: "mypage#create_identification"
+    patch "identification", to: "mypage#create_identification"
     get "mypage/like/history", to: "mypage#like"
     get "mypage/listings/listing", to: "mypage#listing"
     get "mypage/listings/in_progress", to: "mypage#in_progress"
@@ -40,21 +42,24 @@ Rails.application.routes.draw do
   as :address do 
     get 'mypage/deliver_address', to: 'addresses#edit', as: :edit_address  
     post 'address', to: 'addresses#create', as: :create_address
-    put 'address', to: 'addresses#update', as: :update_address
+    patch 'address', to: 'addresses#update', as: :update_address
   end
   
   as :items do
     get "transaction/buy/:id", to: "items#buy", as: :items_buy
     patch "transaction/pay/:id", to: "items#pay", as: :items_pay
     get "items/sell", to: "items#new", as: :items_sell
+    get "items/search", to: "items#search"
   end
-  resources :items, except: :new 
+  resources :items, except: :new do
+    resources :comments, only:[:create, :destroy]
+  end
   
 
-    resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
   resources :brands,  only: [:index, :show]
   resources :cards, only: [:new, :create,:destroy,] do
   end
 
 end
+

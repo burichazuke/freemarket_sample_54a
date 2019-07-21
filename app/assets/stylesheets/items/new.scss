@@ -126,4 +126,8 @@
       padding: 24px 0;
     }
   }
+  .sell-notice {
+    @include item-aHover;
+  }
 }
+

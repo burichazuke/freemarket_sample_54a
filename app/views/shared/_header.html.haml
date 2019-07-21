@@ -5,10 +5,10 @@
       .header-top__img
         = link_to '/',class: 'header-logo-link' do
           = image_tag 'mercari_logo.png', alt: 'mercari', height: '36', width: '134', class: 'header-logo'
-      
-      = form_with class:'header-form' do
-        = text_field_tag :search,'', type:'search', placeholder:'何かお探しですか？', class:'search-txt-field' 
-        .search-icon
+                
+      = form_tag('/items/search',class:'header-form', method: :get) do
+        %input.search{name: "keyword", placeholder: '何かお探しですか？', type: "text", value: "", class:'search-txt-field' }/
+        %button.search-icon{title: "検索", type: "submit"}
           =fa_icon 'search'
             
     .header-bottom
@@ -54,5 +54,5 @@
                 %li.header-user-list__login
                   =link_to 'ログイン',new_user_session_path
                 
-
-= render "/shared/header-nav"
+- unless current_page?(root_path)
+  = render "/shared/header-nav"

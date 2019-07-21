@@ -46,3 +46,127 @@
     padding: 10px;
   }
 }
+
+// sサイズボックス
+@mixin item-box-s {
+  margin: 0 15px 20px 0;
+  width: 160px;
+  height: 240px;
+  background-color: #fff;
+  a{
+    text-decoration: none;
+  }
+  &__photo{
+    width: 160px;
+    height: 160px;  
+    position: relative;
+    img{
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+    }
+    &__soldout{
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 4;
+      border-style: solid;
+      border-width: 80px 80px 0 0;
+      border-color: #EA352D transparent transparent transparent;
+      h2{
+        font-size: 18px;
+        color: #fff;
+        letter-spacing: 2px;
+        font-weight: bold;
+        transform: rotate(-45deg);
+        position: absolute;
+        top: -65px;
+        z-index: 5;
+      }
+    }
+  }
+  &__body{
+    width: 160px;
+    height: 80px;
+    padding: 8px 12px;
+    &__name{
+      font-size: 14px;
+      overflow: hidden;
+      position: relative;
+      font-weight: 400;
+      height: 3em;
+      line-height: 1.5;
+      word-break: break-word;
+      white-space: normal;
+    }
+    &__num{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &__price{
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// デフォルトサイズアイテムボックス
+@mixin item-box{
+  margin: 0 0 20px 20px;
+  width: 213px;
+  height: 330px;
+  background-color: #fff;
+  a{
+    text-decoration: none;
+  }
+  &__photo{
+    width: 213px;
+    height: 213px;  
+    position: relative;
+    img{
+      width: 213px;
+      height: 213px;
+      object-fit: cover;
+    }
+    &__soldout{
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 4;
+      border-style: solid;
+      border-width: 100px 100px 0 0;
+      border-color: #EA352D transparent transparent transparent;
+      h2{
+        font-size: 20px;
+        color: #fff;
+        letter-spacing: 2px;
+        font-weight: bold;
+        transform: rotate(-45deg);
+        position: absolute;
+        top: -80px;
+        z-index: 5;
+      }
+    }
+  }
+  &__body{
+    padding: 16px;
+    &__name{
+      overflow: hidden;
+      position: relative;
+      font-weight: 400;
+      height: 3em;
+      line-height: 1.5;
+      word-break: break-word;
+      white-space: normal;
+    }
+    &__num{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 8px 0 0;
+      &__price{
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -11,12 +11,15 @@
 @import 'modules/category-nav';
 @import 'modules/brand-nav';
 @import 'mypage/sidebar';
-@import 'mypage/mypage';
-@import 'users/show'; 
+@import 'mypage/index';
+@import 'mypage/profile'; 
 @import 'items/index';
 @import 'items/buy';
 @import 'items/show';
 @import 'items/buy';
 @import 'items/new';
+@import 'slick/slick-theme';
+@import 'slick/slick';
+@import 'items/search';
 
 
