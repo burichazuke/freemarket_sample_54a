@@ -51,9 +51,7 @@ Rails.application.routes.draw do
     get "items/sell", to: "items#new", as: :items_sell
     get "items/search", to: "items#search"
   end
-  resources :items, except: :new 
-
-  resources :items do
+  resources :items, except: :new do
     resources :comments, only:[:create, :destroy]
   end
   
@@ -64,3 +62,4 @@ Rails.application.routes.draw do
   end
 
 end
+
