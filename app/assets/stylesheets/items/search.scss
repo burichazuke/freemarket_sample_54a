@@ -1,0 +1,18 @@
+.search-head{
+  font-size: 22px;
+  font-weight: bold;
+  span{
+    font-size: 17px;
+    font-weight: normal;
+    margin-left: -4px;
+  }
+}
+.search-count{
+  font-size: 10px;
+  margin: 16px 0;
+  color: #888888;
+}
+
+.items-box--s{
+@include item-box-s
+}
