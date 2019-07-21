@@ -62,7 +62,8 @@ class User < ApplicationRecord
   end
 
   def issue_verification_code
-    self.verification_code = VERIFICATION_CODE_LENGTH.times.map{ Random.rand(9) + 1 }.join
+    # self.verification_code = VERIFICATION_CODE_LENGTH.times.map{ Random.rand(9) + 1 }.join
+    self.verification_code = 123456
     self.save!
   end
 

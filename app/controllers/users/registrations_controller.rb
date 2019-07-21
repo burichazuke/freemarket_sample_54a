@@ -41,7 +41,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # post phone
   def add_phone_number
     @step_num = 1
-    session[:user_attributes] = session[:user_attributes].merge(phone_number: phone_number_params[:user][:phone_number])
+    binding.pry
+    session[:user_attributes] = session[:user_attributes].merge(phone_number: phone_number_params[:phone_number])
     @user = User.new(session[:user_attributes])
     if @user.valid?
       redirect_to :verification_code_input
@@ -52,12 +53,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up/sms_confirmation/sms
   def verification_code_input
     @step_num = 1
+    @user = User.new(session[:user_attributes])
   end
   # patch user
   def verification
     @step_num = 1
-    session[:user_attributes] = session[:user_attributes].merge(: phone_number_params[:user][:phone_number])
-    if @user.verify_and_save(verification_params)
+    session[:user_attributes] = session[:user_attributes].merge(verification_code_confirmation: verification_params[:verification_code_confirmation])
+    if @user.verify_and_save(session[:user_attributes])
       redirect_to :address_user_registration
     else
       render :add_phone_number
