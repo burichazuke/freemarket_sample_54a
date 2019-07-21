@@ -5,7 +5,7 @@
 
     .category-list-parent.clearfix
       - @parents.each do |parent|
-        =link_to '/',class:'category-list-parent__link' do
+        =link_to category_path(parent.id),class:'category-list-parent__link' do
           = parent.name
 
     .category-list-box
@@ -17,7 +17,7 @@
           .cateBox-child
             .cateBox-child__all
               %p
-                =link_to '/' do
+                =link_to category_path(parent.id) do
                   すべて
             - parent.children.each do |child|
               .cateBox-child__content
@@ -27,7 +27,8 @@
                 - child.children.each do |grandchild|
                   .cateBox-grandchild__content
                     %p
-                      = grandchild.name
+                      =link_to category_path(grandchild.id)  do
+                        = grandchild.name
 
 
 

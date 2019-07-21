@@ -102,8 +102,11 @@
         p{
           font-size:16px;
           margin:0 8px;
-          @include item-aHover;
-          cursor: pointer;
+          a{
+            @include item-aHover;
+            cursor: pointer;
+          }
+          
         }
       }
     }
