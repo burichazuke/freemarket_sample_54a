@@ -24,7 +24,6 @@ class User < ApplicationRecord
   has_many :comments
   has_one :identification, dependent: :destroy
 
-
 # sms送信用のメソッド定義
   def verify_and_save(attributes)
     self.assign_attributes(attributes)
