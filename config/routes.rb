@@ -37,6 +37,7 @@ Rails.application.routes.draw do
     get "mypage/listings/completed", to: "mypage#completed"
     get "mypage/review/history", to: "mypage#review"
     get "logout", to: "mypage#logout"
+    patch "mypage/profile", to: "mypage#update_profile"
   end
 
   as :address do 

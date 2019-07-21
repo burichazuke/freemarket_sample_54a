@@ -1,14 +1,20 @@
 class MypageController < ApplicationController
 
+  before_action :user_signed_in?
+
   def index
   end
 
+
   def profile
-    @user = current_user.id
-    if @user.update(user_params)
-      redirect_to profile_mypage_index_path, notice: "変更しました"
+    @user = current_user
+  end
+
+  def update_profile
+    if current_user.update(user_profile_params)
+      redirect_to  profile_mypage_index_path, notice: "変更しました"
     else
-      render "mypage/plofile"
+      render :profile
     end
   end
 
@@ -42,8 +48,8 @@ class MypageController < ApplicationController
     params.require(:identification).permit(:postal_code, :prefecture, :municipalities, :address, :building).merge(user_id: current_user.id)
   end
 
-  def user_params
-    params.require(:user).permit(:introduce, :image)
+  def user_profile_params
+    params.require(:user).permit(:nickname, :introduce)
   end
 
 end
