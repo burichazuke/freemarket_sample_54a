@@ -5,7 +5,7 @@
       .mypage__content
         %section.mypage__content__setting-profile
           %h2.mypage__content__setting-profile__title プロフィール
-          = form_for profile_mypage_index_path(@user), method: :patch, class: "mypage-content__setting-profile__form" do |f|
+          = form_for @user, url: profile_mypage_index_path(@user), class: "mypage-content__setting-profile__form" do |f|
             .mypage__content__setting-profile__form__icon
               %figure
                 = image_tag "mypage_icon.png", size: "60x60"
@@ -18,7 +18,3 @@
 
     .mypage__side
       =render "shared/sidebar"
-
-
-
-
