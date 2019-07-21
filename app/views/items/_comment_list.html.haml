@@ -10,7 +10,7 @@
             = comment.content
           = fa_icon "clock-o", class: "comment-clock"
           %span.comment-clock
-            = comment.created_at.strftime("%Y/%m/%d %H:%M")
+            = time_format(comment.created_at)
         .item__comment__content-balloon__seller
     .item__comment__user
       .item__comment__user-icon
@@ -34,5 +34,5 @@
             = comment.content
           = fa_icon "clock-o", class: "comment-clock"
           %span.comment-clock
-            = comment.created_at.strftime("%Y/%m/%d %H:%M")
+            = time_format(comment.created_at)
         .item__comment__content-balloon
