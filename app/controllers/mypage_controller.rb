@@ -4,6 +4,12 @@ class MypageController < ApplicationController
   end
 
   def profile
+    @user = current_user.id
+    if @user.update(user_params)
+      redirect_to profile_mypage_index_path, notice: "変更しました"
+    else
+      render "mypage/plofile"
+    end
   end
 
   def card
@@ -34,6 +40,10 @@ class MypageController < ApplicationController
   private
   def identification_params
     params.require(:identification).permit(:postal_code, :prefecture, :municipalities, :address, :building).merge(user_id: current_user.id)
+  end
+
+  def user_params
+    params.require(:user).permit(:introduce, :image)
   end
 
 end
