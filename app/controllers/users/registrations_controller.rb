@@ -5,8 +5,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   prepend_before_action :check_captcha, only: [:create]
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  before_action :set_user, only: [:sms_confirmation, :add_phone_number]
-  before_action :load_not_verified_entry, only: [:verification_code_input, :verification]
 
   # 後々、wicked用のクラスを作成してそこに基本メソッド以外のメソッドは移行する予定
   # GET /resource/sign_up
@@ -16,30 +14,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up/sms_confirmation
   def sms_confirmation
-  end
-
-  def add_phone_number
-    if @user.update(phone_number_params)
-      redirect_to :verification_code_input
-    else
-      render :sms_confirmation
-    end
-  end
-
-  def verification_code_input
-  end
-
-  def verification
-    if @user.verify_and_save(verification_params)
-      redirect_to :address_user_registration
-    else
-      render :add_phone_number
-    end
+    @user = ""
+    # redirect_to :address_user_registration
   end
 
   # GET /resource/sign_up/address
   def address
     @address = Address.new
+    # redirect_to :credit_card_user_registration
   end
 
   # GET /resource/sign_up/credit_card
@@ -98,7 +80,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:phone_number])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   end
 
   # The path used after sign up.
@@ -111,7 +93,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
   private
-
   def check_captcha
     unless verify_recaptcha
       self.resource = resource_class.new sign_up_params
@@ -119,21 +100,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_minimum_password_length
       respond_with resource
     end 
-  end
-
-  def set_user
-    @user = User.find(current_user.id)
-  end
-
-  def load_not_verified_entry
-    @user = User.not_verified.find(current_user.id)
-  end
-
-  def phone_number_params
-    params.require(:user).permit(:phone_number)
-  end
-
-  def verification_params
-    params.require(:user).permit(:verification_code_confirmation)
   end
 end

@@ -9,16 +9,13 @@ Rails.application.routes.draw do
     get 'users/sign_up/registration', to: 'users/registrations#new', as: :user_registration
     get 'users/sign_up', to: 'users/registrations#register', as: :register_user_registration
     get 'users/sign_up/sms_confirmation', to: 'users/registrations#sms_confirmation', as: :sms_confirmation_user_registration
-    patch 'users/sign_up/add_phone_number', to: 'users/registrations#add_phone_number', as: :add_phone_number
-    get 'users/sign_up/sms_confirmation/sms', to: 'users/registrations#verification_code_input', as: :verification_code_input
-    put 'users/sign_up/verification', to: 'users/registrations#verification', as: :verification
     get 'users/sign_up/address', to: 'users/registrations#address', as: :address_user_registration
     get 'users/sign_up/credit_card', to: 'users/registrations#credit_card', as: :credit_card_user_registration
     get 'users/sign_up/finish', to: 'users/registrations#finish', as: :finish_user_registration
     post 'users', to: 'users/registrations#create', as: :create_user_registration
-    patch 'users', to: 'users/registrations#update', as: :update_user_registration
     # ToDo: マイページに応じて、要追加
     # get 'users/edit', to: 'users/registrations#edit', as: :edit_user_registration
+    # patch 'users', to: 'users/registrations#update', as: :update_user_registration
     # delete 'users', to: 'users/registrations#destroy', as: :destroy_user_registration
     # get 'users/cancel', to: 'users/registrations#cancell', as: :cancel_user_registration
   end
