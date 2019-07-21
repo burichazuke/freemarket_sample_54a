@@ -5,10 +5,11 @@ class CategoriesController < ApplicationController
 
   def show
     @parents = Category.find(params[:id])
+    @items = Item.includes(:images).order("created_at desc")
   end
   
   private
-  def Category_params
+  def category_params
     params.require(:category).permit(:name,:ancestry)
   end
 end
