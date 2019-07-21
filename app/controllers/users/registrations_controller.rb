@@ -2,37 +2,61 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'single'
-  prepend_before_action :check_captcha, only: [:create]
+  # prepend_before_action :check_captcha, only: [:create]
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
-  before_action :set_user, only: [:sms_confirmation, :add_phone_number]
-  before_action :load_not_verified_entry, only: [:verification_code_input, :verification]
+  # before_action :set_user, only: [:sms_confirmation, :add_phone_number]
+  # before_action :load_not_verified_entry, only: [:verification_code_input, :verification]
 
   # 後々、wicked用のクラスを作成してそこに基本メソッド以外のメソッドは移行する予定
   # GET /resource/sign_up
   def register
-    # redirect_to :sms_confirmation_user_registration
+  end
+
+  # GET /resource/sign_up/registration
+  def new
+    @step_num = 0
+    super
+  end
+
+  # POST /resource/sign_up/sms_confirmation
+  def validation
+    @user = User.new(session_params)
+    if @user.valid?
+      @step_num = 1
+      binding.pry
+      session[:user_attributes] = session_params
+      redirect_to :sms_confirmation_user_registration
+    else
+      @step_num = 0
+      render :new
+    end
   end
 
   # GET /resource/sign_up/sms_confirmation
   def sms_confirmation
     @step_num = 1
+    @user = User.new
   end
-
+  # post phone
   def add_phone_number
     @step_num = 1
-    if @user.update(phone_number_params)
+    session[:user_attributes] = session[:user_attributes].merge(phone_number: phone_number_params[:user][:phone_number])
+    @user = User.new(session[:user_attributes])
+    if @user.valid?
       redirect_to :verification_code_input
     else
       render :sms_confirmation
     end
   end
-
+  # GET /resource/sign_up/sms_confirmation/sms
   def verification_code_input
     @step_num = 1
   end
-
+  # patch user
   def verification
+    @step_num = 1
+    session[:user_attributes] = session[:user_attributes].merge(: phone_number_params[:user][:phone_number])
     if @user.verify_and_save(verification_params)
       redirect_to :address_user_registration
     else
@@ -57,11 +81,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @step_num = 4
   end
 
-  # GET /resource/sign_up/registration
-  def new
-    @step_num = 0
-    super
-  end
 
   # POST /resource
   def create
@@ -139,5 +158,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def verification_params
     params.require(:user).permit(:verification_code_confirmation)
+  end
+
+  def session_params
+    params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :last_name, :first_name, :last_name_kana, :first_name_kana, :birthday)
   end
 end

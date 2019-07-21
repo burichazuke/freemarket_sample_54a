@@ -7,8 +7,9 @@ class User < ApplicationRecord
   VERIFICATION_CODE_LENGTH = 6
   attr_accessor :verification_code_confirmation
   validates :phone_number, format: { with: /\A\d{3}-?\d{4}-?\d{4}\z/ }, allow_blank: true
-  after_update :issue_verification_code, if: :user_has_verification_code?
-  # after_update :send_verification_code, unless: :user_verified?
+  after_validation :issue_verification_code, on: :add_phone_number
+  # twillioからsmsを送信(回数制限があるため、一時的にコメントアウト) 
+  # after_validation :send_verification_code, unless: :user_verified?
 
   with_options presence: true do
     validates :nickname 

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   as :user do
     get 'users/sign_up/registration', to: 'users/registrations#new', as: :user_registration
     get 'users/sign_up', to: 'users/registrations#register', as: :register_user_registration
+    post 'users/sign_up/sms_confirmation', to: 'users/registrations#validation', as: :user_validation
     get 'users/sign_up/sms_confirmation', to: 'users/registrations#sms_confirmation', as: :sms_confirmation_user_registration
     patch 'users/sign_up/add_phone_number', to: 'users/registrations#add_phone_number', as: :add_phone_number
     get 'users/sign_up/sms_confirmation/sms', to: 'users/registrations#verification_code_input', as: :verification_code_input
@@ -53,13 +54,13 @@ Rails.application.routes.draw do
     patch "transaction/pay/:id", to: "items#pay", as: :items_pay
     get "items/sell", to: "items#new", as: :items_sell
   end
-  resources :items, except: :new 
+  resources :items, except: :new
   
 
   resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
   resources :brands,  only: [:index, :show]
-  resources :cards, only: [:new, :create,:destroy,]
+  resources :cards, only: [:new, :create, :destroy,]
   as :cards do
     get "mypage/card", to: "cards#card"
   end

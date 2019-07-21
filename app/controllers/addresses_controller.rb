@@ -27,6 +27,6 @@ class AddressesController < ApplicationController
   end 
 
   def set_address
-    @address = current_user.address
+    @address = Address.find_or_initialize_by(user_id: current_user.id)
   end
 end
