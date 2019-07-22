@@ -9,8 +9,7 @@
             .mypage__content__setting-profile__form__icon
               %figure
                 = f.label :image, class: 'image-label' do
-                  = f.fields_for :images do |image|
-                    = image_tag "mypage_icon.png", size: "60x60"
+                  = image_tag "mypage_icon.png", size: "60x60"
                   = f.file_field :image, class: 'hidden'
               = f.text_field :nickname, class: "input-default", placeholder: "例）testman"
             .mypage__content__setting-profile__form__content

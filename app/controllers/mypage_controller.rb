@@ -6,7 +6,6 @@ class MypageController < ApplicationController
     @user = current_user
   end
 
-
   def profile
     @user = current_user
   end
@@ -15,7 +14,7 @@ class MypageController < ApplicationController
     if current_user.update(user_profile_params)
       redirect_to  profile_mypage_index_path, notice: "変更しました"
     else
-      render :profile
+      render :index
     end
   end
 
