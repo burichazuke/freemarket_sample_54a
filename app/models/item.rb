@@ -19,6 +19,20 @@ class Item < ApplicationRecord
 
   validates :name, :description, :price, :images, presence: true
   validates :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, presence: true
+
+  belongs_to :user
+  has_many :favorites, dependent: :destroy
+  has_many :users, through: :favorites, dependent: :destroy
+
+  #いいね！する
+    def create(user)
+      favorites.create(user_id: user_id)
+    end
+  
+  #いいね！解除する
+    def destroy(user)
+      favorites.find_by(user_id: user.id).destroy
+    end
 end
 
 

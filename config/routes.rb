@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     get "items/search", to: "items#search"
   end
   resources :items, except: :new 
+    resources :favorites, only: [:create, :destroy]
   
 
     resources :comments, only:[:create, :destroy]
