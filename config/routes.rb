@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     get "mypage/review/history", to: "mypage#review"
     get "logout", to: "mypage#logout"
     patch "mypage/profile", to: "mypage#update_profile"
+    get "mypage/detail", to: "mypage#show_detail"
   end
 
   as :address do 

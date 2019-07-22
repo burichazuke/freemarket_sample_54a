@@ -11,11 +11,15 @@ class MypageController < ApplicationController
   end
 
   def update_profile
+    @user = User.new(image:"mypage_icon.png", size: "60x60")
     if current_user.update(user_profile_params)
       redirect_to  profile_mypage_index_path, notice: "変更しました"
     else
       render :profile
     end
+  end
+
+  def show_detail
   end
 
   def card
