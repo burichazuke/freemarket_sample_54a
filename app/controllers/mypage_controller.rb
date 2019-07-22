@@ -3,6 +3,7 @@ class MypageController < ApplicationController
   before_action :user_signed_in?
 
   def index
+    @user = current_user
   end
 
 
@@ -11,7 +12,6 @@ class MypageController < ApplicationController
   end
 
   def update_profile
-    @user = User.new(image:"mypage_icon.png", size: "60x60")
     if current_user.update(user_profile_params)
       redirect_to  profile_mypage_index_path, notice: "変更しました"
     else
@@ -20,6 +20,7 @@ class MypageController < ApplicationController
   end
 
   def show_detail
+    @user = current_user
   end
 
   def card

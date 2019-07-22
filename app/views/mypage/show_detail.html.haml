@@ -10,7 +10,7 @@
               %figure
                 = image_tag "mypage_icon.png", size: "180x180"
               %h2.mypage__content__head__user-icon__name.bold
-                testman
+                = @user.nickname
               .mypage__content__head__user-icon__number
                 .mypage__content__head__user-icon__number--rate
                   評価
@@ -19,7 +19,8 @@
                 .mypage__content__head__user-icon__number--display
                   出品数
                   %span.bold
-                    0
+                    10
+                    
         .white
           .item-content__detail-table__face--detail
             .item-content__detail-table__face--good
@@ -35,7 +36,7 @@
               %span.item-content__detail-table__face__name
                 10
           .maypage__detail__introduce
-            ああああ
+            = @user.introduce
 
           .item__social-media-box
             %ul.item__social-media-box__links
@@ -69,17 +70,5 @@
                           =fa_icon "heart-o", class: "like-icon"
                           %span.item-other__user-items__content__box__num__likes__num
                           100
-
-
-
-
-
-
-
-          
-
-          
-
-
     .mypage__side
       =render "shared/sidebar"
