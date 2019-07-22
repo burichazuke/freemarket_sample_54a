@@ -30,7 +30,7 @@
           %section.mypage__content__head__user-icon
             = link_to mypage_show_path do
               %figure
-                = image_tag "mypage_icon.png", size: "60x60"
+                = image_tag @user.image.url, size: "60x60"
               %h2.mypage__content__head__user-icon__name.bold
                 = @user.nickname
               .mypage__content__head__user-icon__number
