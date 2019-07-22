@@ -1,16 +1,20 @@
 .sidebar
-  -# = sort_link(@keyword, :price, "値段でソート",default_order: :desc)
+  
   .search-side
     
     %h3.search-side__title
       詳細検索
     
     =search_form_for(@keyword, url: items_search_path) do |f|
+      = sort_link(@keyword, :price, "値段でソート",default_order: :desc)
       .search-side__group
         .single__field.single__field--large
           .single__field__label
             = f.label :name_cont_all, "キーワードを追加する"
           .single__field__input
+            = f.sort_fields do |s|
+              = s.sort_select
+            
             = f.text_field :name_cont_all, placeholder: "商品名"
 
       .search-side__group
@@ -29,7 +33,7 @@
           .single__field__label
             = label :size, "サイズ"
           .single__field__select
-            = f.select :size_eq_any,[["---",""],["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"]], class: "single__field__select", prompt: "---"
+            = f.select :size_eq_any,[["---",""],["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"]], class: "single__field__select"
 
       .search-side__group
         .single__field.single__field--large

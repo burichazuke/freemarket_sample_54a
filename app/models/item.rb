@@ -19,6 +19,11 @@ class Item < ApplicationRecord
 
   validates :name, :description, :price, :images, presence: true
   validates :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, presence: true
+
+
+  def self.ransortable_attributes(auth_object = nil)
+    %w(price created_at)
+  end
 end
 
 

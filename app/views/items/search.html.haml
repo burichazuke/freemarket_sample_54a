@@ -3,8 +3,15 @@
   .mypage__container
     .mypage__contents
       %h2.search-head
-        -if params[:q]
-          検索結果
+        -if params[:q][:name_cont_all].blank?
+          商品一覧
+        
+        -elsif params[:q]  
+          -qs = params[:q][:name_cont_all]
+          -qs.each do |q|
+            = q           
+          %span
+            の検索結果
           -# = "#{params[:q][:name_cont_all]}"
         -else 
           =params[:keyword]
