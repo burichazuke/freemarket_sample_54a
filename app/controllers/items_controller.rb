@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.build
+    @parents = Category.all.order('id ASC').limit(13)
     render layout: "single"
   end
 
@@ -25,6 +26,14 @@ class ItemsController < ApplicationController
       render :new, layout: "single"
     end
   end
+
+  # 購入ページのカテゴリー選択で使用しています
+  def category
+    @children = Category.find(params[:parent_id]).children
+  end
+
+  def category_grandchild
+    @grandchild = Category.find(params[:parent_id]).grandchild
 
   def buy
     @item = Item.find(params[:id])

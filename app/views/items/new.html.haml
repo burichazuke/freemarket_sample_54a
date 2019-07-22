@@ -36,35 +36,17 @@
       .sell-content
         %h3 商品の詳細
         .sell-form-box
-
-          //後の実装にて使用するためコメントアウトしています
-          -# .single__field.single__field--large   
-          -#   .single__field__label
-          -#     = f.label :item_description, "カテゴリー"
-          -#     %span.single__field__require 必須
-          -#   .single__field__select
-          -#     = f.select required: "" do
-          -#       %option{hidden: "", value: ""} --- 
-          -#       %option{value: "1"} レディース
-          -#       %option{value: "2"} メンズ
-          -#       %option{value: "3"} ベビー・キッズ
-          -#       %option{value: "4"} インテリア・住まい・小物
-          -#   .single__field__select
-          -#     = f.select required: "" do
-          -#       %option{hidden: "", value: ""} --- 
-          -#       %option{value: "1"} トップス
-          -#       %option{value: "2"} ジャケット/アウター
-          -#       %option{value: "3"} パンツ
-          -#       %option{value: "4"} スカート
-          -#   .single__field__select
-          -#     = f.select required: "" do
-          -#       %option{hidden: "", value: ""} --- 
-          -#       %option{value: "1"} Tシャツ/カットソー(半袖/袖なし)
-          -#       %option{value: "2"} Tシャツ/カットソー(七分/長袖)
-          -#       %option{value: "3"} シャツ/ブラウス(半袖/袖なし)
-          -#       %option{value: "4"} シャツ/ブラウス(七分/長袖)
-            
-
+          .single__field.single__field--large   
+            .single__field__label
+              = f.label :description, "カテゴリー"
+              %span.single__field__require 必須
+            .single__field__select
+              = f.collection_select :name, @parents, :id, :name,{prompt: "---"}, id: "parent-form", name: 'item[category_ids][]'
+            -# .single__field__select
+            -#   = f.collection_select :name, @children, :id, :name,{prompt: "---"}, id: "children-form", name: 'item[category_ids][]'
+            -# .single__field__select
+            -#   = f.collection_select :name, @parents, :id, :name,{prompt: "---"}, id: "parent-form", name: 'item[category_ids][]'
+          
           .single__field.single__field--large
             .single__field__label
               = label :size, "サイズ"
