@@ -8,7 +8,9 @@
           = form_for @user, url: profile_mypage_index_path(@user), class: "mypage-content__setting-profile__form" do |f|
             .mypage__content__setting-profile__form__icon
               %figure
-                = image_tag "mypage_icon.png", size: "60x60"
+                = f.label :image, class: 'image-label' do
+                  = image_tag "mypage_icon.png", size: "60x60"
+                  = f.file_field :image, class: 'hidden'
               = f.text_field :nickname, class: "input-default", placeholder: "例）testman"
             .mypage__content__setting-profile__form__content
               = f.text_area :introduce, class: "textarea-default", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！商品や発送方法などご質問がありましたらお気軽にどうぞ♪"

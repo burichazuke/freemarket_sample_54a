@@ -49,7 +49,7 @@ class MypageController < ApplicationController
   end
 
   def user_profile_params
-    params.require(:user).permit(:nickname, :introduce)
+    params.require(:user).permit(:nickname, :introduce, :image)
   end
 
 end
