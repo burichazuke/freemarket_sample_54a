@@ -7,10 +7,10 @@
           = image_tag 'mercari_logo.png', alt: 'mercari', height: '36', width: '134', class: 'header-logo'
                 
       = form_tag('/items/search',class:'header-form', method: :get) do
-        %input.search{name: "keyword", placeholder: '何かお探しですか？', type: "text", value: "", class:'search-txt-field' }/
-        %button.search-icon{title: "検索", type: "submit"}
+        %input.search{name: "keyword", placeholder: '何かお探しですか？', type: "text", value: "", class:'search-txt-field',id: "search-box" }/
+        %button.search-icon{title: "検索", type: "submit",id: "search-icon"}
           =fa_icon 'search'
-            
+
     .header-bottom
       .header-nav
         %ul.header-nav__left

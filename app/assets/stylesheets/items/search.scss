@@ -16,3 +16,32 @@
 .items-box--s{
 @include item-box-s
 }
+
+.search-side{
+  background: #ffffff;
+  padding: 16px;
+  &__title{
+    font-size: 16px;
+  }
+  &__group{
+    margin-top: 35px;
+    &__price{
+      display: flex;
+      justify-content: space-between;
+      span{
+        width: 50px;
+        text-align: center;
+        line-height: 46px;
+      }
+    }
+    &__cheak{
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 5px;
+      &__box{
+        width: 50%;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

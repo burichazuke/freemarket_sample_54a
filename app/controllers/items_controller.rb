@@ -65,7 +65,13 @@ class ItemsController < ApplicationController
 
   def search
     @items = Item.where("name LIKE(?)", "%#{params[:keyword]}%").includes(:images).order("created_at desc")
-    @keyword = params[:keyword]
+    @keyword = Item.ransack(params[:q])
+    if params[:q]
+      params[:q][:name_cont_all] = params[:q][:name_cont_all].split(/[\p{blank}\s]+/)
+      @keyword = Item.ransack(params[:q])
+      @keyword.sorts = 'created_at desc' if @keyword.sorts.empty?
+      @items = @keyword.result(distinct: true)
+    end    
   end
 
   private

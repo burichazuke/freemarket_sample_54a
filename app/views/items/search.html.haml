@@ -3,11 +3,13 @@
   .mypage__container
     .mypage__contents
       %h2.search-head
-        -if @keyword ==""
-          新着商品
+        -if params[:q]
+          検索結果
+          -# = "#{params[:q][:name_cont_all]}"
         -else 
-          = "#{@keyword}"
-          %span の検索結果
+          =params[:keyword]
+          %span
+            の検索結果
       %p.search-count
         ="#{@items.count}件の商品"
       %section{class: "items-box__container"}
@@ -17,4 +19,4 @@
 
 
     .mypage__side
-      =render "shared/sidebar"
+      =render "shared/search-side"
