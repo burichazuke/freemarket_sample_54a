@@ -1,6 +1,5 @@
 %main.mypage
 
-
   .mypage__container
     .mypage__contents
       .mypage__content__detail
@@ -8,7 +7,7 @@
           %section.mypage__content__head__user-icon
             = link_to mypage_show_path do
               %figure
-                = image_tag "mypage_icon.png", size: "180x180"
+                = image_tag @user.image.url, size: "180x180"
               %h2.mypage__content__head__user-icon__name.bold
                 = @user.nickname
               .mypage__content__head__user-icon__number
@@ -50,7 +49,6 @@
                 =link_to "http://www.pinterest.com" do
                   =fa_icon "pinterest-square", class:"icon-pinterest"
 
-                
           .item-other
             %section.item-other__user-items
               %h2.item-other__user-items__head
