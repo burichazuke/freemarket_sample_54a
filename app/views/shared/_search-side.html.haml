@@ -10,6 +10,8 @@
       .search-side__group
         .single__field.single__field--large
           .single__field__label
+            .search-side__group__icon
+              = fa_icon "plus"
             = f.label :name_cont_all, "キーワードを追加する"
           .single__field__input     
             = f.search_field :name_cont_all, placeholder: "商品名"
@@ -17,6 +19,8 @@
       .search-side__group
         .single__field.single__field--large
           .single__field__label
+            .search-side__group__icon
+              = fa_icon "sort"
             = f.label "並べ替え"
           .single__field__input
             = f.sort_fields do |s|
@@ -26,17 +30,36 @@
       .search-side__group
         .single__field.single__field--large
           .single__field__label
+            .search-side__group__icon
+              = fa_icon "database"
             = f.label :price_gteq, "価格"
+          .single__field__select
+            %select#search-price
+              %option(value=",") ---
+              %option(value="300,1000") 
+                300 ~ 1000
+              %option(value="1000,5000") 
+                1000 ~ 5000
+              %option(value="5000,10000") 
+                5000 ~ 10000
+              %option(value="10000,30000") 
+                10000 ~ 30000
+              %option(value="30000,50000") 
+                30000 ~ 50000
+              %option(value="50000") 
+                50000 ~                 
           .search-side__group__price
             .single__field__input
-              = f.search_field :price_gteq, placeholder: "¥ min"
+              = f.search_field :price_gteq, placeholder: "¥ min", id: "search-price-min"
             %span.single__field__input ~
             .single__field__input
-              = f.search_field :price_lteq, placeholder: "¥ max"
+              = f.search_field :price_lteq, placeholder: "¥ max", id: "search-price-max"
 
       .search-side__group
         .single__field.single__field--large
           .single__field__label
+            .search-side__group__icon
+              = fa_icon "expand"
             = label :size, "サイズ"
           .single__field__select
             = f.select :size_eq_any,[["---",""],["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"]], class: "single__field__select"
@@ -44,6 +67,8 @@
       .search-side__group
         .single__field.single__field--large
           .single__field__label
+            .search-side__group__icon
+              = fa_icon "star"
             = f.label "商品の状態"
           .search-side__group__cheak
             .search-side__group__cheak__box
@@ -70,9 +95,12 @@
               = f.label "全体的に状態が悪い" do
                 = f.check_box :condition_eq_any, { multiple: true }, "全体的に状態が悪い", ""
                 %span 全体的に状態が悪い
+
       .search-side__group
         .single__field.single__field--large
           .single__field__label
+            .search-side__group__icon
+              = fa_icon "truck"
             = f.label "配送料の負担"
           .search-side__group__cheak
             .search-side__group__cheak__box
@@ -87,8 +115,10 @@
       .search-side__group
         .single__field.single__field--large
           .single__field__label
+            .search-side__group__icon
+              = fa_icon "shopping-cart"
             = f.label "販売状況"
-          .search-side__group__cheak
+          .search-side__group__cheak#search-status-box
             .search-side__group__cheak__box
               = f.label "販売中" do
                 = f.check_box :status_eq_any, { multiple: true }, 0, ""

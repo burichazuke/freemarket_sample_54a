@@ -3,19 +3,6 @@
   .mypage__container
     .mypage__contents
       %h2.search-head
-        -# -if params[:q][:name_cont_all].blank?
-        -#   商品一覧
-        
-        -# -elsif params[:q]  
-        -#   -qs = params[:q][:name_cont_all]
-        -#   -qs.each do |q|
-        -#     = q           
-        -#   %span
-        -#     の検索結果
-        -# -else 
-        -#   =params[:keyword]
-        -#   %span
-        -#     の検索結果
 
         -if params[:keyword]
           =params[:keyword]

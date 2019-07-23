@@ -22,6 +22,7 @@
   padding: 16px;
   &__title{
     font-size: 16px;
+    font-weight: bold;
   }
   &__group{
     margin-top: 35px;
@@ -41,11 +42,14 @@
       &__box{
         width: 50%;
         margin-bottom: 10px;
+        display: flex;
+        align-items: center;
         label{
           display: flex;
           align-items: center;
           span{
             margin-left: 8px;
+            color: #333333;
           }
         }
       }
@@ -53,6 +57,10 @@
     &__sort{
       display: flex;
       justify-content: space-between;
+    }
+    i{
+      color:#333333;
+      margin-right: 5px;
     }
   }
 }
