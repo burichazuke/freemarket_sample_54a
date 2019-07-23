@@ -15,7 +15,7 @@ $(document).on('turbolinks:load',function(){
       //Math.ceil 少数点切り上げ
       profit = String(Math.ceil(profit)).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
       $('#sellprofit').html("¥" + profit)
-
+      
     } else {
       $('#sellfee').html('-')
       $('#sellprofit').html('-')

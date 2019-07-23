@@ -1,14 +1,14 @@
 $(function(){
   //セレクトボックスの中身（forEach用）
   function buildHTML(category){
-    var html =`<option value="${category.name}" data-category="${category.id}">${category.name}</option>`;
+    var html =`<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
     return html;
   }
   // 子のカテゴリーボックスを表示
   function appendChildrenBox(insertHtml){
     var childSelectHtml = '';
     childSelectHtml = `<div class="single__field__select" id="children_wrapper">
-                        <select class="category-selected-child" id="child_category">
+                        <select class="category-selected-child" id="child_category",name='category_id'>
                           <option value="",data-category="---">---</option>
                           ${insertHtml}
                         </select>
@@ -19,7 +19,7 @@ $(function(){
   function appendGrandChildrenBox(insertHtml){
     var grandchildHtml = '';
     grandchildHtml =  `<div class="single__field__select" id="grandchildren_wrapper">
-                        <select id="grandchild_category" name='category_id'>
+                        <select id="grandchild_category" name='item[category_id]'>
                           <option value="",data-category="---">---</option>
                           ${insertHtml}
                         </select>
