@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
     render layout: "single"
   end
 
+  # 出品ページでカテゴリーのセレクトボックス用。jbuilderとroutes.rbと繋がっています
   def category
     @select_children = Category.find(params[:parent_id]).children
   end
@@ -35,9 +36,6 @@ class ItemsController < ApplicationController
       render :new, layout: "single"
     end
   end
-
-  # 購入ページのカテゴリー選択で使用しています
-  
 
   def buy
     @item = Item.find(params[:id])
