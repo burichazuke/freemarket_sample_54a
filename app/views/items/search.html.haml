@@ -3,19 +3,33 @@
   .mypage__container
     .mypage__contents
       %h2.search-head
-        -if params[:q][:name_cont_all].blank?
-          商品一覧
+        -# -if params[:q][:name_cont_all].blank?
+        -#   商品一覧
         
-        -elsif params[:q]  
+        -# -elsif params[:q]  
+        -#   -qs = params[:q][:name_cont_all]
+        -#   -qs.each do |q|
+        -#     = q           
+        -#   %span
+        -#     の検索結果
+        -# -else 
+        -#   =params[:keyword]
+        -#   %span
+        -#     の検索結果
+
+        -if params[:keyword]
+          =params[:keyword]
+          %span
+            の検索結果
+        -elsif params[:q][:name_cont_all].blank?
+          商品一覧 
+        -else 
           -qs = params[:q][:name_cont_all]
           -qs.each do |q|
             = q           
           %span
             の検索結果
-        -else 
-          =params[:keyword]
-          %span
-            の検索結果
+
       %p.search-count
         ="#{@items.count}件の商品"
       %section{class: "items-box__container"}
