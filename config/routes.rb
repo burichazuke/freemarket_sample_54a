@@ -49,12 +49,12 @@ Rails.application.routes.draw do
     get "transaction/buy/:id", to: "items#buy", as: :items_buy
     patch "transaction/pay/:id", to: "items#pay", as: :items_pay
     get "items/sell", to: "items#new", as: :items_sell
-    # get 'items/category',to: 'items#category', as: :item_category, defaults:{format:'json'}
   end
   resources :items, except: :new do
+    # 商品出品ページのカテゴリーセレクトボックスで、jbuilderに送るメソッドです
     collection do
       get 'category', defaults:{format:'json'}
-      get 'category_grandchild',defaults:{format:'json'}
+      get 'category_grandchildren', defaults:{format:'json'}
     end
   end
   

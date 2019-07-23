@@ -36,16 +36,12 @@
       .sell-content
         %h3 商品の詳細
         .sell-form-box
-          .single__field.single__field--large   
+          .single__field.single__field--large.category-select-box
             .single__field__label
               = f.label :description, "カテゴリー"
               %span.single__field__require 必須
             .single__field__select
-              = f.collection_select :name, @parents, :id, :name,{prompt: "---"}, id: "parent-form", name: 'item[category_ids][]'
-            -# .single__field__select
-            -#   = f.collection_select :name, @children, :id, :name,{prompt: "---"}, id: "children-form", name: 'item[category_ids][]'
-            -# .single__field__select
-            -#   = f.collection_select :name, @parents, :id, :name,{prompt: "---"}, id: "parent-form", name: 'item[category_ids][]'
+              = f.collection_select :name, @parents, :id, :name,{prompt: "---"}, id: "parent-form"
           
           .single__field.single__field--large
             .single__field__label

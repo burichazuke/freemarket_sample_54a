@@ -18,6 +18,14 @@ class ItemsController < ApplicationController
     render layout: "single"
   end
 
+  def category
+    @select_children = Category.find(params[:parent_id]).children
+  end
+
+  def category_grandchildren
+    @select_grandchildren = Category.find("#{params[:child_id]}").children
+  end
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -28,12 +36,7 @@ class ItemsController < ApplicationController
   end
 
   # 購入ページのカテゴリー選択で使用しています
-  def category
-    @children = Category.find(params[:parent_id]).children
-  end
-
-  def category_grandchild
-    @grandchild = Category.find(params[:parent_id]).grandchild
+  
 
   def buy
     @item = Item.find(params[:id])
