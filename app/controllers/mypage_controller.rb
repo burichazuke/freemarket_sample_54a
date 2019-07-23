@@ -18,10 +18,6 @@ class MypageController < ApplicationController
     end
   end
 
-  def show_detail
-    @user = current_user
-  end
-
   def card
     card = Card.find_by(user_id: current_user.id)
     if card

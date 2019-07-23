@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @user = current_user
     @item = Item.find(params[:id])
     @comments = Comment.where(item_id: @item.id)
     @comment = Comment.new
@@ -48,6 +47,7 @@ class ItemsController < ApplicationController
 
   def pay
     @item = Item.find(params[:id])
+    @user = User.find(params[:id])
     @item.update(item_params)
     Payjp.api_key = ENV['PAYJP_TEST_SECRET']
     Payjp::Charge.create(
@@ -83,3 +83,4 @@ class ItemsController < ApplicationController
   
 
 end
+  

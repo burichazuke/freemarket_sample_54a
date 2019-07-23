@@ -28,7 +28,7 @@
       .mypage__content
         .mypage__content__head.mypage__content__head--image
           %section.mypage__content__head__user-icon
-            = link_to mypage_show_path do
+            = link_to show_mypage_path(@user) do
               %figure
                 = image_tag @user.image.url, size: "60x60"
               %h2.mypage__content__head__user-icon__name.bold
