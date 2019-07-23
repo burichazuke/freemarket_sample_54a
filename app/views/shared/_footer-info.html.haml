@@ -1,0 +1,115 @@
+:ruby
+  footerlists = [{
+    name: "会社概要"
+  },{
+    name: "採用情報"
+  },{
+    name: "プレスリリース"
+  },{
+    name: "公式ブログ"
+  },{
+    name: "メルカリロゴ利用ガイドライン"
+  }]
+
+  footerlists2 = [{
+    name: "メルカリガイド"
+  },{
+    name: "らくらくメルカリ便"
+  },{
+    name: "ゆうゆうメルカリ便"
+  },{
+    name: "大型メルカリ便"
+  },{
+    name: "車体取引ガイド"
+  },{
+    name: "メルカリあんしん・あんぜん宣言！"
+  },{
+    name: "偽ブランド品撲滅への取り組み"
+  },{
+    name: "メルカリボックス"
+  }]
+
+  footerlists3 = [{
+    name: "プライバシーポリシー"
+  },{
+    name: "メルカリ利用規約"
+  },{
+    name: "あんしんスマホサポート制度に関する利用特約"
+  },{
+    name: "コンプライアンスポリシー"
+  }]
+
+  footerlists4 = [{
+    name: "個人データの安全管理に係る基本方針"
+  },{
+    name: "特定商取引に関する表記"
+  },{
+    name: "資金決済法に基づく表示"
+  },{
+    name: "法令遵守と犯罪抑止のために"
+  }]
+
+  footerlists5 = [{
+    name: "日本"
+  },{
+    name: "United States"
+  }]
+
+
+%nav.info
+  .footer__cell
+    .footer__head 
+      メルカリについて
+      %ul.footer__lists
+        -footerlists.each do |list|
+          =link_to "/" do
+            %p.footer__lists__list
+              =list[:name]
+      %ul.footer-social-links
+        %li.footer-social-links--icon
+          =link_to "/" do
+            =fa_icon "twitter", class:"footer-social-links--icon"
+        %li.footer-social-links--icon
+          =link_to "/" do
+            =fa_icon "facebook-square", class:"footer-social-links--icon"
+
+  .footer__cell.footer__cell__child
+    .footer__head
+      ヘルプ＆ガイド
+      %ul.footer__lists
+        -footerlists2.each do |list|
+          =link_to "/" do
+            %p.footer__lists__list
+              =list[:name]
+
+  .footer__cell.footer__cell__width
+    .footer__head
+      プライバシーと利用規約
+      .inner__footer__cell
+        .inner__footer__cell__child
+          %ul.footer__lists
+            -footerlists3.each do |list|
+              =link_to "/" do
+                %p.footer__lists__list
+                  =list[:name]
+        .inner__footer__cell__child
+          %ul.footer__lists
+            -footerlists4.each do |list|
+              =link_to "/" do
+                %p.footer__lists__list
+                  =list[:name]
+              
+  .footer__cell.footer__cell__short
+    .footer__head
+      国
+      %ul.footer__lists
+        -footerlists5.each do |list|
+          =link_to "/" do
+            %p.footer__lists__list
+              =list[:name]
+              
+  .footer__bottom
+    =link_to "/" do
+      = image_tag 'mercari_logo_white.svg', alt: 'mercari'
+    .footer__copyright
+      %small.single__page__footer__copyright__index © 2019 Mercari

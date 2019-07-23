@@ -105,6 +105,8 @@ ActiveRecord::Schema.define(version: 2019_07_23_051349) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "cards", "users"
+  add_foreign_key "comments", "items"
+  add_foreign_key "comments", "users"
   add_foreign_key "identifications", "users"
   add_foreign_key "images", "items"
 end

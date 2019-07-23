@@ -9,6 +9,8 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @comments = Comment.where(item_id: @item.id)
+    @comment = Comment.new
   end
 
   def new
@@ -72,6 +74,11 @@ class ItemsController < ApplicationController
       flash[:notice] = "削除に失敗しました"
       redirect_to action: "show"
     end
+  end
+
+  def search
+    @items = Item.where("name LIKE(?)", "%#{params[:keyword]}%").includes(:images).order("created_at desc")
+    @keyword = params[:keyword]
   end
 
   private
