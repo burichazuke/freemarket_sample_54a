@@ -14,7 +14,7 @@
         .item__comment__content-balloon__seller
     .item__comment__user
       .item__comment__user-icon
-        = image_tag("mypage_icon.png", size: "40x40")
+        = image_tag @item.seller.image.url, size: "40x40"
         .item__comment__user-seller
           %p 出品者
 
@@ -22,8 +22,7 @@
   .item__comment
     .item__comment__user
       .item__comment__user-icon
-        = link_to mypage_index_path do
-          = image_tag("mypage_icon.png", size: "40x40")
+        = image_tag @user.image.url, size: "40x40"
     .item__comment__content
       .item__comment__content-name
         .item__comment__content-name__user

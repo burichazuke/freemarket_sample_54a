@@ -55,6 +55,4 @@ class ImageUploader < CarrierWave::Uploader::Base
     "mypage_icon.png"
   end
 
-
-
 end

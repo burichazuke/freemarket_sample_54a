@@ -113,11 +113,10 @@
             .mypage__content__tab-content__item-list--index--gray
               = link_to "この商品を削除する", item_path(@item), method: :delete, class: "item-delete"
 
-
   .item__detail-message
     .message-container
       .item__comments
-        = render partial: "comment_list", collection: @comments, as: :comment 
+        = render partial: "comment_list", collection: @comments, as: :comment
 
       - if user_signed_in?
         = render "comment"

@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @item = Item.find(params[:id])
     @comments = Comment.where(item_id: @item.id)
     @comment = Comment.new

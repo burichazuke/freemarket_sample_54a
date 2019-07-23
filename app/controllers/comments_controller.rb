@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   def create
+    @user = current_user
     @item = Item.find(params[:item_id])
     @comment = @item.comments.create(commnet_params)
     if @comment.save
