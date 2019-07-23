@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'users/sign_up/credit_card', to: 'users/registrations#credit_card', as: :credit_card_user_registration
     get 'users/sign_up/finish', to: 'users/registrations#finish', as: :finish_user_registration
     post 'users', to: 'users/registrations#create', as: :create_user_registration
-    get 'users/:id', to: 'users#show', as: :show_mypage
+    get 'users/:id', to: 'users#show', as: :show_user_plofile
     # ToDo: マイページに応じて、要追加
     # get 'users/edit', to: 'users/registrations#edit', as: :edit_user_registration
     # patch 'users', to: 'users/registrations#update', as: :update_user_registration

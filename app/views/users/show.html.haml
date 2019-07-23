@@ -5,7 +5,7 @@
       .mypage__content__detail
         .mypage__content__head.mypage__content__head--image
           %section.mypage__content__head__user-icon
-            = link_to show_mypage_path(@user) do
+            = link_to show_user_plofile_path(@user) do
               %figure
                 = image_tag @user.image.url, size: "180x180"
               %h2.mypage__content__head__user-icon__name.bold
