@@ -1,0 +1,12 @@
+en:
+  ransack:
+    asc: "昇順"
+    desc: "降順"
+
+  activerecord:
+    models:
+      item: 
+    attributes:
+      item:
+        price: "価格"
+        created_at: "出品日"
