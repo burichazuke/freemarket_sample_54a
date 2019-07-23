@@ -102,6 +102,10 @@ h2 span{
         .header-user-list{
           display: flex;
 
+        .header-user-img{
+
+        }
+
           &__new{
             background: #ea352d;
             border: 1px solid #ea352d;
@@ -170,3 +174,15 @@ line-height: 48px;
   }
 }
 
+
+//追加
+
+.header-nav__user__box{
+  position: absolute;
+  top:44px;
+  width: 320px;
+  background-color: #eee;
+  right: 0;
+  display: block;
+
+}
