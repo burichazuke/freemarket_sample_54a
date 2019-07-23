@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   end
 
   # 出品ページでカテゴリーのセレクトボックス用。jbuilderとroutes.rbと繋がっています
-  def category
+  def category_children
     @select_children = Category.find(params[:parent_id]).children
   end
 

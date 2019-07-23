@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load',function(){
   //セレクトボックスの中身（forEach用）
   function buildHTML(category){
     var html =`<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
@@ -32,12 +32,13 @@ $(function(){
     var parentValue = document.getElementById("parent-form").value;
     if (parentValue != '---'){
       $.ajax({
-        url: 'category',
+        url: 'category_children',
         type:'GET',
         data:{parent_id: parentValue},
         dataType:'json'
       })
       .done(function(children){
+
         $('#children_wrapper').remove();
         $('#grandchildren_wrapper').remove();
         var insertHtml = '';
