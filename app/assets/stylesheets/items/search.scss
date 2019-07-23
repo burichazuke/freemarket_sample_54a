@@ -50,6 +50,10 @@
         }
       }
     }
+    &__sort{
+      display: flex;
+      justify-content: space-between;
+    }
   }
 }
 
@@ -61,7 +65,6 @@
   overflow: hidden;
   margin-top: 8px;
   text-align: center;
-  width: 100%;
   padding: 10px 16px;
   border: 1px solid #aaaaaa;
   border-radius: 5px;
@@ -101,4 +104,12 @@
     position: relative;
     z-index: 1;
   }
+}
+
+#q_s_0_name{
+  width: 65%;
+}
+
+#q_s_0_dir{
+  width: 30%;
 }
