@@ -2,9 +2,11 @@ class ItemsController < ApplicationController
 
   before_action :user_signed_in?, only:[:new, :create, :edit, :update, :destroy]
   before_action :set_item, only:[:show, :destroy]
+  before_action :set_category
 
   def index
     @items = Item.includes(:images).order("created_at desc")
+    # @parents = Category.all.order('id ASC').limit(13)
   end
 
   def show
@@ -16,7 +18,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.build
-    @parents = Category.all.order('id ASC').limit(13)
+    # @parents = Category.all.order('id ASC').limit(13)
     render layout: "single"
   end
 
@@ -89,6 +91,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_category
+    @parents = Category.all.order('id ASC').limit(13)
   end
 
 end

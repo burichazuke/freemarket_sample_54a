@@ -38,7 +38,6 @@ $(document).on('turbolinks:load',function(){
         dataType:'json'
       })
       .done(function(children){
-
         $('#children_wrapper').remove();
         $('#grandchildren_wrapper').remove();
         var insertHtml = '';
@@ -48,7 +47,9 @@ $(document).on('turbolinks:load',function(){
         appendChildrenBox(insertHtml)
       })
       .fail(function(){
-        alert('通信に失敗しました。')
+        // alert('通信に失敗しました。')
+        $('#children_wrapper').remove();
+        $('#grandchildren_wrapper').remove();
       })
     }else{
       $('#children_wrapper').remove();
@@ -76,7 +77,8 @@ $(document).on('turbolinks:load',function(){
         appendGrandChildrenBox(insertHtml)
       })
       .fail(function(){
-        alert('通信に失敗しました。')
+        // alert('通信に失敗しました。')
+        $('#grandchildren_wrapper').remove();
       })
     }else{
       $('#grandchildren_wrapper').remove();
