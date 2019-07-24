@@ -1,0 +1,114 @@
+.category-wrapper{
+  background-color: #F5F5F5;
+}
+.category-list{
+  width:700px;
+  margin: 0 auto;
+  padding:40px 0;
+  background: transparent;
+  
+}
+.category-list-heading{
+  h2{
+    font-size:22px;
+    line-height: 1.4;
+    padding:8px 0;
+    font-weight: bold;
+  }
+}
+.category-list-parent{
+  display:block;
+  text-align: center;
+  &::after{
+    content:'';
+    display: block;
+    clear: both;
+  }
+  &__link{
+    display: block;
+    float:left;
+    border-radius: 4px;
+    min-width: 80px;
+    height: 40px;
+    box-shadow: 1px 1px 1px 1px rgba(14,14,14,0.0580392);
+    color:#fff;
+    background-color:#fff;
+    padding: 0 30px;
+    margin: 5px;
+    color: #333;
+    font-size: 16px;
+    line-height: 40px;
+    &:hover{
+      background-color:#EA352D;
+      color:#fff;
+    }
+  }
+  
+}
+
+.category-list-box{
+  margin:30px auto;
+  
+  .category-parent-box{
+    margin:40px auto;
+    &::after{
+      content:'';
+      display: block;
+      clear: both;
+    }
+    .category-list-box__heading{
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      padding: 7px 30px 0 30px;
+      height: 40px;
+      color:#fff;
+      background-color:#EA352D;
+      font-size:22px;
+      font-weight: bold;
+      &__h3{
+        line-height: 40px;
+        
+      }
+    }
+  }
+  .cateBox-child{
+    padding:24px 30px 10px 30px;
+    border-bottom-left-radius:4px;
+    border-bottom-right-radius:4px;
+    background-color:white;
+    &__all{
+      a{
+        @include item-aHover;
+      }
+      
+    }
+    &__content{
+      padding-top:15px;
+      padding-bottom:5px;
+
+    }
+    .cateBox-grandchild{
+      padding:0 20px 10px 20px;
+      &::after{
+        content:'';
+        display: block;
+        clear: both;
+      }
+      &__content{
+        float:left;
+        width:50%;
+        padding-right:20px;
+        height: 32px;
+        p{
+          font-size:16px;
+          margin:0 8px;
+          a{
+            @include item-aHover;
+            cursor: pointer;
+          }
+          
+        }
+      }
+    }
+  }
+}
