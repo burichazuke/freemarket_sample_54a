@@ -14,11 +14,12 @@
             -# %ul.sell-upload__items
             -#   %li.sell-upload__item
             .sell-upload__box
-              = f.file_field :images, multiple: true, id: "images", name: "item[images][]"
-              -# %span.text-mark 
-              -#   ドラッグアンドドロップ
-              -#   またはクリックしてファイルをアップロード
-              -# = fa_icon "image"
+              = f.label :images, class: "sell-upload__box__label" do
+                = f.file_field :images, multiple: true, name: "item[images][]", id: "images", style: "display: none;"
+                %span.text-mark 
+                  ドラッグアンドドロップ
+                  またはクリックしてファイルをアップロード
+                = fa_icon "image"
             
       .sell-content
         .single__field.single__field--large
