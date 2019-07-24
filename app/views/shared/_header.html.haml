@@ -46,7 +46,24 @@
                   = link_to mypage_index_path,class:'header-nav__user__link' do
                     = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-img'
                     %span マイページ
-              
+
+
+                    .mypage__nav
+                      .mypage__nav.mypage__nav--image
+                        .mypage__nav__user-icon
+                          %figure
+                            = image_tag "mypage_icon.png", size: "60x60"
+                            %h2.mypage__nav__user-icon__name.bold
+                              testman
+                        .mypage__nav__user-icon__number
+                          .mypage__nav__user-icon__number--rate
+                            評価
+                            %span.bold
+                              0
+                          .mypage__nav__user-icon__number--display
+                            出品数
+                            %span.bold
+                              0
             - else
               %ul.header-user-list
                 %li.header-user-list__new

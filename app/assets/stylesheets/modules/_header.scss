@@ -177,12 +177,29 @@ line-height: 48px;
 
 //追加
 
-.header-nav__user__box{
+.mypage__nav{
   position: absolute;
-  top:44px;
   width: 320px;
-  background-color: #eee;
-  right: 0;
-  display: block;
-
+  background-color:#eee;
+  z-index:3;
+  height:300px;
+  top:100px;
+  &--image {
+    background: image-url("mypage_haikei");
+    background-size: cover;
+    height: 75px;
+  }
+  &__user-icon{
+    height:100px;
+  img{
+    border-radius: 50%;
+  }
+  figure{
+    margin-top:30px;
+    height:60px;
+  }
 }
+}
+
+
+
