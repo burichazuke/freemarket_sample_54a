@@ -1,14 +1,17 @@
 -if user_signed_in?
-  -if @item.favorites.present?
-  
-    = link_to favorite_path(item_id: @item.id), method: :delete, id: "favorite-buttons", "data-item-id": "#{@item.id}","data-favo-id": "#{@item.favorites.count}", remote: true do
-      %button.item__button.favorite
-        =fa_icon "heart"
-        %span いいね! 
-        = @item.favorites.count
+  -# -if @item.favorites.present?
+  -if item.favorite_user(current_user.id)
+    = button_to favarite_path(favorite, item_id: item.id), method: :delete, id: "favorite-button", remote: true do
+    -# = link_to favorite_path(item_id: @item.id), method: :delete, id: "favorite-buttons", "data-item-id": "#{@item.id}","data-favo-id": "#{@item.favorites.count}", remote: true do
+    -# = link_to favorite_path(item_id: @item.id), method: :delete, class: "", remote: true do
+    %button.item__button.favorite
+      =fa_icon "heart"
+      %span いいね! 
+      = @item.favorites.count
 
   - else
-    = link_to favorites_path(item_id: @item.id), method: :post, id: "favorite-buttons", "data-item-id": "#{@item.id}", "data-favo-id": "#{@item.favorites.count}",remote: true do
+    -# = link_to favorites_path(item_id: @item.id), method: :post, id: "favorite-buttons", "data-item-id": "#{@item.id}", "data-favo-id": "#{@item.favorites.count}",remote: true do
+    = link_to favorite_path(item_id: @item.id), method: :post, class: "item__botton", remote: true do
       %button.item__button#item__button
         =fa_icon "heart-o"
         %span いいね!
