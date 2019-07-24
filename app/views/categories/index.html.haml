@@ -1,0 +1,34 @@
+.category-wrapper
+  .category-list
+    .category-list-heading
+      %h2 カテゴリー一覧 
+
+    .category-list-parent.clearfix
+      - @parents.each do |parent|
+        =link_to category_path(parent.id),class:'category-list-parent__link' do
+          = parent.name
+
+    .category-list-box
+      - @parents.each do |parent|
+        .category-parent-box.clearfix
+          .category-list-box__heading
+            %h3
+              = parent.name
+          .cateBox-child
+            .cateBox-child__all
+              %p
+                =link_to category_path(parent.id) do
+                  すべて
+            - parent.children.each do |child|
+              .cateBox-child__content
+                %h4
+                  = child.name
+              .cateBox-grandchild
+                - child.children.each do |grandchild|
+                  .cateBox-grandchild__content
+                    %p
+                      =link_to category_path(grandchild.id)  do
+                        = grandchild.name
+
+
+
