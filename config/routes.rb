@@ -53,7 +53,12 @@ Rails.application.routes.draw do
     get "items/sell", to: "items#new", as: :items_sell
     get "items/search", to: "items#search"
   end
+  
   resources :items, except: :new do
+    collection do
+      get 'category_children', defaults:{format:'json'}
+      get 'category_grandchildren', defaults:{format:'json'}
+    end
     resources :comments, only:[:create, :destroy]
   end
 
