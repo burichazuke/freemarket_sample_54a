@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:images).order("created_at desc")
+    # @items = Item.all.order("created_at desc")
   end
 
   def show
@@ -22,6 +23,9 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+      item_params[:image_files].each do |image|
+        @item.images.create(image: image)
+      end
       redirect_to item_path(@item)
     else
       render :new, layout: "single"
@@ -56,6 +60,7 @@ class ItemsController < ApplicationController
     )
     redirect_to root_path
   end
+
   def destroy
     if @item.destroy
       redirect_to action: "index"
@@ -73,7 +78,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, images_attributes: [:image]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:name, :description, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, {image_files: []}).merge(seller_id: current_user.id)
   end
 
   def set_item

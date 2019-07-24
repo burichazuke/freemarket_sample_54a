@@ -45,6 +45,16 @@ ActiveRecord::Schema.define(version: 2019_07_17_122108) do
     t.string "ancestry"
   end
 
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content", null: false
+    t.bigint "user_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_comments_on_item_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "identifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code"
     t.string "prefecture"
@@ -98,6 +108,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_122108) do
     t.string "first_name_kana", null: false
     t.date "birthday", null: false
     t.integer "wallet"
+    t.string "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
