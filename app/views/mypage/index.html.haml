@@ -28,11 +28,11 @@
       .mypage__content
         .mypage__content__head.mypage__content__head--image
           %section.mypage__content__head__user-icon
-            = link_to mypage_index_path do
+            = link_to show_user_plofile_path(@user) do
               %figure
-                = image_tag "mypage_icon.png", size: "60x60"
+                = image_tag @user.image.url, size: "60x60"
               %h2.mypage__content__head__user-icon__name.bold
-                testman
+                = @user.nickname
               .mypage__content__head__user-icon__number
                 .mypage__content__head__user-icon__number--rate
                   評価
@@ -41,7 +41,7 @@
                 .mypage__content__head__user-icon__number--display
                   出品数
                   %span.bold
-                    0
+                    10
 
 
         %section.mypage__content__tab-container

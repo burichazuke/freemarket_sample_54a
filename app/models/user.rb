@@ -16,4 +16,7 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   has_many :comments
   has_one :identification, dependent: :destroy
+
+  mount_uploader :image, ImageUploader
+
 end
