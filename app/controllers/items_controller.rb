@@ -47,7 +47,6 @@ class ItemsController < ApplicationController
 
   def pay
     @item = Item.find(params[:id])
-    @user = User.find(params[:id])
     @item.update(item_params)
     Payjp.api_key = ENV['PAYJP_TEST_SECRET']
     Payjp::Charge.create(
