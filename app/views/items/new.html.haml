@@ -11,15 +11,14 @@
           %p 最大10枚までアップロードできます
           .sell-upload__container
             %ul.sell-upload__items
-            -# %ul.sell-upload__items
-            -#   %li.sell-upload__item
-            .sell-upload__box
-              = f.label :images, class: "sell-upload__box__label" do
-                = f.file_field :images, multiple: true, name: "item[images][]", id: "images", style: "display: none;"
-                %span.text-mark 
-                  ドラッグアンドドロップ
-                  またはクリックしてファイルをアップロード
-                = fa_icon "image"
+              .sell-upload__box 
+                = f.label :images, for: "images", class: "sell-upload__box__label" do
+                  %span
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード
+                  = fa_icon "image"
+                  = f.file_field :images, multiple: true, name: "item[images][]", id: "images", style: "display: none;"
+                
             
       .sell-content
         .single__field.single__field--large

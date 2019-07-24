@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    binding.pry
     if @item.save
       item_params[:image_files].each do |image|
         @item.images.create(image: image)
