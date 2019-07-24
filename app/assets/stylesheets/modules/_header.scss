@@ -178,9 +178,10 @@ line-height: 48px;
 //追加
 
 .mypage__nav{
+  display: none;
   position: absolute;
   width: 320px;
-  z-index:3;
+  z-index:900;
   height:500px;
   text-align: center;
   right:60px;
