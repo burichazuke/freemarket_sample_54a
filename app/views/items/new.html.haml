@@ -4,7 +4,6 @@
       商品の情報を入力
     = form_for @item, url: "/items", html:{method: :post, class:"single__formsingle__form__items"} do |f|
       = render partial: 'new_main', locals: { f: f }
-
       .sell-content
         %div
           %p.single__field__text

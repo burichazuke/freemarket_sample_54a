@@ -49,14 +49,21 @@ Rails.application.routes.draw do
     get "transaction/buy/:id", to: "items#buy", as: :items_buy
     patch "transaction/pay/:id", to: "items#pay", as: :items_pay
     get "items/sell", to: "items#new", as: :items_sell
+    get "items/search", to: "items#search"
   end
-  resources :items, except: :new 
   
-
+  resources :items, except: :new do
+    collection do
+      get 'category_children', defaults:{format:'json'}
+      get 'category_grandchildren', defaults:{format:'json'}
+    end
     resources :comments, only:[:create, :destroy]
+  end
+
   resources :categories,  only: [:index, :show]
   resources :brands,  only: [:index, :show]
   resources :cards, only: [:new, :create,:destroy,] do
   end
 
 end
+
