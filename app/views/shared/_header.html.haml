@@ -16,7 +16,7 @@
         %ul.header-nav__left
           %li#header-category
             %h2
-              = link_to '/', class:'header-nav__left__category' do
+              = link_to categories_path, class:'header-nav__left__category' do
                 = fa_icon 'list',class:'header-nav__left__icon'
                 %span.header-nav__left__category__span カテゴリーから探す
             = render '/shared/category-nav'
