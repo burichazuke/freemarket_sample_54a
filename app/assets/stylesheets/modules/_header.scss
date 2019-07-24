@@ -183,7 +183,6 @@ line-height: 48px;
   background-color:white;
   z-index:3;
   height:500px;
-  top:100px;
   text-align: center;
   &--image {
     background: image-url("mypage_haikei");
@@ -226,9 +225,6 @@ line-height: 48px;
   .mypage__nav__user-icon__numbers__list{
     display: block;
     padding: 0 8px;
-    &:hover{
-      opacity: 0.5;
-    }
   }
 
 
@@ -236,32 +232,46 @@ line-height: 48px;
     display: flex;
     height:50px;
     padding: 16px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid #eee;
     align-items: center;
+    &:hover{
+      opacity: 0.5;
+    }
     .mypage__nav__user-icon__numbers__sales--title{
-      
-
     }
     .mypage__nav__user-icon__numbers__sales--num{
       padding-left:170px;
       padding-right:15px;
-
     }
     .mypage__nav__user-icon__numbers__sales--icon{
       font-weight: bold;
       color: #888;
       font-size:20px;
-
     }
   }
   .mypage__nav__user-icon__numbers__point{
     display: flex;
     height: 50px;
     padding: 16px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid #eee;
     align-items: center;
+    &:hover{
+      opacity: 0.5;
+    }
+    .mypage__nav__user-icon__numbers__point--title{
+    }
+    .mypage__nav__user-icon__numbers__point--num{
+      padding-left:165px;
+      padding-right:15px;
+    }
+    .mypage__nav__user-icon__numbers__point--icon{
+      font-weight: bold;
+      color: #888;
+      font-size:20px;
+    }
   }
 }
+
 .mypage__nav__user-icon--while{
   height:15px;
   background-color: white;
