@@ -1,23 +1,25 @@
 -if user_signed_in?
   -if @item.favorites.present?
-    %button.item__button.item__button__like.favorite__icon--red
-      = link_to favorite_path(item_id: @item.id), method: :delete, id: "favorite-buttons" do
-        =fa_icon "heart" 
+  
+    = link_to favorite_path(item_id: @item.id), method: :delete, id: "favorite-buttons", "data-item-id": "#{@item.id}","data-favo-id": "#{@item.favorites.count}", remote: true do
+      %button.item__button.favorite
+        =fa_icon "heart"
         %span いいね! 
         = @item.favorites.count
 
   - else
-    %button.item__button.item__button__like__icon
-      = link_to favorites_path(item_id: @item.id), method: :post, id: "favorite-buttons" do
+    = link_to favorites_path(item_id: @item.id), method: :post, id: "favorite-buttons", "data-item-id": "#{@item.id}", "data-favo-id": "#{@item.favorites.count}",remote: true do
+      %button.item__button#item__button
         =fa_icon "heart-o"
         %span いいね!
-        = @item.favorites.count
+        .favo-count
+          = @item.favorites.count
 
 
 - else
-  %button.item__button.item__button__like
-    =fa_icon "heart-o"
-    %span いいね!
-    = @favorites_count
-
-    = favorite.where(item_id: params[:item_id]).count
+  %button.item__button
+    = link_to "/" do
+      =fa_icon "heart-o"
+      %span いいね!
+      %p.favo-count
+        = @item.favorites.count

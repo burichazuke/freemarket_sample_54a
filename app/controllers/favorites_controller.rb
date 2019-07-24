@@ -3,12 +3,13 @@ class FavoritesController < ApplicationController
   
   def create
     @favorite = Favorite.create(user_id: current_user.id, item_id: params[:item_id])
-    # redirect_to root_path
+    render json: @item_id
   end
 
   def destroy
     favorite = Favorite.find_by(user_id: current_user.id, item_id: params[:item_id])
     favorite.destroy
+    render json: @item_id
   end
 
   private
