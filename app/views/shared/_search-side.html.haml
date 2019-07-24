@@ -1,12 +1,12 @@
 .sidebar
-  
-  .search-side
+  =search_form_for(@keyword, url: items_search_path) do |f|  
+    .search-side__sorts 
+      = f.select( :sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )
     
-    %h3.search-side__title
-      詳細検索
-    
-    =search_form_for(@keyword, url: items_search_path) do |f|
-
+    .search-side     
+      %h3.search-side__title
+        詳細検索
+      
       .search-side__group
         .single__field.single__field--large
           .single__field__label
@@ -20,12 +20,10 @@
         .single__field.single__field--large
           .single__field__label
             .search-side__group__icon
-              = fa_icon "sort"
-            = f.label "並べ替え"
-          .single__field__input
-            = f.sort_fields do |s|
-              .search-side__group__sort
-                = s.sort_select
+              = fa_icon "expand"
+            = label :size, "サイズ"
+          .single__field__select
+            = f.select :size_eq_any,[["---",""],["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"]], class: "single__field__select"            
 
       .search-side__group
         .single__field.single__field--large
@@ -54,15 +52,6 @@
             %span.single__field__input ~
             .single__field__input
               = f.search_field :price_lteq, placeholder: "¥ max", id: "search-price-max"
-
-      .search-side__group
-        .single__field.single__field--large
-          .single__field__label
-            .search-side__group__icon
-              = fa_icon "expand"
-            = label :size, "サイズ"
-          .single__field__select
-            = f.select :size_eq_any,[["---",""],["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"]], class: "single__field__select"
 
       .search-side__group
         .single__field.single__field--large

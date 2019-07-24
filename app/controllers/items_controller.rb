@@ -64,14 +64,16 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.where("name LIKE(?)", "%#{params[:keyword]}%").includes(:images).order("created_at desc")
-    @keyword = Item.ransack(params[:q])
-    @keyword.sorts = 'created_at desc' if @keyword.sorts.empty?
-    if params[:q]
+
+    if params[:q].present?
       params[:q][:name_cont_all] = params[:q][:name_cont_all].split(/[\p{blank}\s]+/)
       @keyword = Item.ransack(params[:q])
       @keyword.sorts = 'created_at desc' if @keyword.sorts.empty?
       @items = @keyword.result(distinct: true)
+    else
+      @items = Item.where("name LIKE(?)", "%#{params[:keyword]}%").includes(:images).order("created_at desc")
+      @keyword = Item.ransack()
+      params[:q] = { sorts: 'id desc' }
     end    
   end
 
