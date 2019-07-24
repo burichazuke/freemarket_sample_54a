@@ -2,7 +2,8 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'single'
-  prepend_before_action :check_captcha, only: [:create]
+  # ローカル開発ではAPIのキーがないため、コメントアウトしています
+  # prepend_before_action :check_captcha, only: [:create]
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
