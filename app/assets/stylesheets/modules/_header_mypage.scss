@@ -23,7 +23,7 @@
     height:60px;
   }
 }
-.mypage__nav__user__number{
+.mypage__nav__user__review{
   display: flex;
   justify-content: center;
   font-size: 12px;
@@ -48,14 +48,14 @@
   }
 }
 
-  .mypage__nav__user__numbers{
+  .mypage__nav__user__number{
     background-color:white;
     font-size:13px;
-  .mypage__nav__user__numbers__list{
+  &__list{
     display: block;
-    padding: 0 10px;
+    padding: 0 12px;
   }
-  .mypage__nav__user__numbers--box{
+  &--box{
     display: flex;
     height: 45px;
     padding: 14px;
@@ -65,19 +65,19 @@
     &:hover{
       opacity: 0.5;
     }
-    .mypage__nav__user__numbers__sales--num{
-      padding-left:172px;
-      padding-right:15px;
+    .mypage__nav__user__number--sales{
+      padding-left:167px;
+      padding-right:13px;
     }
-    .mypage__nav__user__numbers--icon{
+    .mypage__nav__user__number--point{
+      padding-left:155px;
+      padding-right:13px;
+  }
+  .mypage__nav__user__number--icon{
       font-weight: bold;
       color: #888;
-      font-size:20px;
+      font-size:22px;
     }
-  }
-    .mypage__nav__user__numbers__point--num{
-      padding-left:160px;
-      padding-right:15px;
   }
 }
 

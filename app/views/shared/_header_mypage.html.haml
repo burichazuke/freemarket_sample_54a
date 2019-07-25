@@ -23,35 +23,36 @@
         = image_tag current_user.image.url, size: "60x60"
       %h2.mypage__nav__user__icon__name
         = current_user.nickname
-    .mypage__nav__user__number
+
+    .mypage__nav__user__review
       = link_to mypage_index_path, class: "header-mypage-number" do
-        .mypage__nav__user__number--rate
+        .mypage__nav__user__review--rate
           評価:
           %span.bold
             0
       = link_to mypage_index_path, class: "header-mypage-number" do
-        .mypage__nav__user__number--display
+        .mypage__nav__user__review--display
           出品数:
           %span.bold
             0
 
-    .mypage__nav__user__numbers
-      .mypage__nav__user__numbers__list
+    .mypage__nav__user__number
+      .mypage__nav__user__number__list
         = link_to mypage_index_path, class: "header-mypage-number" do
-          .mypage__nav__user__numbers--box
-            .mypage__nav__user__numbers--title
+          .mypage__nav__user__number--box
+            .mypage__nav__user__number--title
               売上金
-            .mypage__nav__user__numbers__sales--num
+            .mypage__nav__user__number--sales
               ¥100
-            .mypage__nav__user__numbers--icon
+            .mypage__nav__user__number--icon
               =fa_icon "angle-right", class: 'icon-chek'
         = link_to mypage_index_path, class: "header-mypage-number" do
-          .mypage__nav__user__numbers--box
-            .mypage__nav__user__numbers--title
+          .mypage__nav__user__number--box
+            .mypage__nav__user__number--title
               ポイント
-            .mypage__nav__user__numbers__point--num
+            .mypage__nav__user__number--point
               P100
-            .mypage__nav__user__numbers--icon
+            .mypage__nav__user__number--icon
               =fa_icon "angle-right", class: 'icon-chek'
 
       .mypage__nav__user--while
