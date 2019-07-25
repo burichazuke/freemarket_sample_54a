@@ -1,8 +1,6 @@
 class ItemsController < ApplicationController
-
   # before_action :user_signed_in?, only:[:new, :create, :edit, :update, :destroy]
   before_action :set_item, only:[:show, :edit, :update, :destroy, :buy, :pay]
-  before_action :set_category, only:[:show, :new, :edit]
 
   def index
     @items = Item.includes(:images).order("created_at desc")
@@ -15,7 +13,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    # @item.images.build
     render layout: "single"
   end
 
@@ -99,8 +96,5 @@ class ItemsController < ApplicationController
     @grandchild = Category.find(@item.category_id)
   end
 
-  def set_category
-    @parents = Category.all.order('id ASC').limit(13)
-  end
 end
   
