@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
 
   before_action :user_signed_in?, only:[:new, :create, :edit, :update, :destroy]
-  before_action :set_item, only:[:show, :destroy]
 
   def index
     @items = Item.includes(:images).order("created_at desc")
@@ -78,6 +77,7 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
   def destroy
+    @item = Item.find(params[:id])
     if @item.destroy
       redirect_to action: "index"
     else
