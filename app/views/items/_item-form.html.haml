@@ -4,15 +4,25 @@
       = f.label :images , "出品画像"
       %span.single__field__require 必須
     %p 最大10枚までアップロードできます
-    .sell-upload--container
-      .sell-upload--box
-        %span.text-mark 
-          ドラッグアンドドロップ
-          またはクリックしてファイルをアップロード
-        = f.fields_for :images do |image|
-          =image.label :image do
-            =fa_icon "image"
-            = image.file_field :image
+    .sell-upload__container
+      %ul.sell-upload__items
+        - @item.images&.each do |image|
+          %li.sell-upload__item
+            .sell-upload__item__header
+              = image_tag "#{image.image}", class: "sell-upload__item__header__image"
+            .sell-upload__item__footer
+              = link_to "編集", "/", class: "sell-upload__item__footer__btn sell-upload__item__footer__btn--edit"
+              = link_to "削除", "/", class: "sell-upload__item__footer__btn sell-upload__item__footer__btn--remove"
+        .sell-upload__box 
+          = f.label :images, for: "images", class: "sell-upload__box__label" do
+            %span
+              ドラッグアンドドロップ
+              またはクリックしてファイルをアップロード
+            = fa_icon "image"
+            = f.file_field :images, multiple: true, name: "item[images][]", id: "images", style: "display: none;"
+        %ul.sell-upload__error
+          %li
+            アップロードできる画像は10枚までです。
       
 .sell-content
   .single__field.single__field--large
@@ -28,7 +38,7 @@
     .single__field__textarea
       = f.text_area :description, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
       
-.sell-content
+.sell-content.sell-content--flex
   %h3 商品の詳細
   .sell-form-box
     .single__field.single__field--large.category-select-box
@@ -44,7 +54,6 @@
         %span.single__field__require 必須
       .single__field__select
         = f.select :size,[["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"]], class: "single__field__select", prompt: "---"
-
     //後の実装にて使用するためコメントアウトしています
     -# .single__field.single__field--large  
     -#   .single__field__label
@@ -60,8 +69,7 @@
       .single__field__select
         = f.select :condition,[["新品/未使用", "新品/未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"]], class: "single__field__select", prompt: "---"
 
-
-.sell-content
+.sell-content.sell-content--flex
   %h3 配送について
   .sell-form-box
     .single__field.single__field--large
@@ -92,7 +100,7 @@
       .single__field__select
         = f.select :shipping_date, [["1~2日で発送", "1~2日で発送"], ["2~3日で発送", "2~3日で発送"], ["4~7日で発送", "4~7日で発送"]], class: "single__field__select", prompt: "---"
 
-.sell-content
+.sell-content.sell-content--flex
   %h3 販売価格(300〜9,999,999)
   .sell-form-box
     %ul.sell-price
@@ -108,7 +116,15 @@
             
       %li.sellfee 
         .l-left 販売手数料
-        .l-right#sellfee -
+        .l-right#sellfee 
+          - if @item.price.present?
+            = @item.price - @item.profit
+          - else
+            \-
       %li.sellprofit 
         .l-left 販売利益
-        .l-right#sellprofit -
+        .l-right#sellprofit
+          - if @item.price.present?
+            = @item.profit
+          - else
+            \-

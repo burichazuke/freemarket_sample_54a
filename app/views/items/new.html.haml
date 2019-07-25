@@ -2,8 +2,8 @@
   .single__page__main__container
     %h2.single__page__main__head
       商品の情報を入力
-    = form_for @item, url: "/items", html:{method: :post, class:"single__formsingle__form__items"} do |f|
-      = render partial: 'new_main', locals: { f: f }
+    = form_for @item, url: items_path, html: {class: "single__form single__form--sell", id: "single__form--sell" } do |f|
+      = render partial: 'item-form', locals: { f: f }
       .sell-content
         %div
           %p.single__field__text
@@ -22,7 +22,7 @@
             = link_to "加盟店規約", "https://www.mercari.com/jp/seller_terms/", class:"sell-notice"
             に同意したことになります。
 
-        = f.submit "出品する", class: "single__form__send-btn" 
+        = f.submit "出品する", class: "single__form__send-btn", id: "sell-submit"
         = link_to root_path do
           = f.submit "もどる", class: "single__form__send-btn single__form__send-btn--gray single__form__send-btn--small" 
     

@@ -2,9 +2,8 @@
   .single__page__main__container
     %h2.single__page__main__head
       商品の情報を入力
-    = form_for @item, url: item_path do |f|
-      = render partial: 'new_main', locals: { f: f }
-      
+    = form_for @item, url: item_path, html: {class: "single__form single__form--sell", id: "single__form--sell"} do |f|
+      = render partial: 'item-form', locals: { f: f }
       .sell-content
         = f.submit "変更する", class: "single__form__send-btn" 
         = link_to root_path do
