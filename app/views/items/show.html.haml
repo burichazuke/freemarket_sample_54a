@@ -1,6 +1,5 @@
 -breadcrumb :item_name
 .show-container
-  
   .item__box-container
     %h1.item__name
       = @item.name
@@ -13,13 +12,12 @@
           -@item.images.each_with_index do |image,i|
             =image_tag "#{image.image}", class: "item__photo__container__img","data-id": "#{i}"
 
-
       %table.item__detail-table
         %tboby
           %tr
             %th 出品者
             %td
-              = link_to @item.seller.nickname, item_path, method: :get, class: "user-name-link"
+              = link_to @item.seller.nickname, show_user_plofile_path(@item.seller), method: :get, class: "user-name-link"
               .item-content__detail-table__face
                 .item-content__detail-table__face--good
                   = fa_icon "smile-o", class: "good-icon"
@@ -111,13 +109,12 @@
         .message-content 
           .mypage__content__tab-content__item-list--index
             .mypage__content__tab-content__item-list--index--gray
-              = link_to "この商品を削除する", item_path(@item), method: :delete, class: "item-delete"
-
+              = link_to "この商品を削除する", item_path(@item), method: :delete, class: "item-delete", data: { confirm: '削除しますか？' }
 
   .item__detail-message
     .message-container
       .item__comments
-        = render partial: "comment_list", collection: @comments, as: :comment 
+        = render partial: "comment_list", collection: @comments, as: :comment
 
       - if user_signed_in?
         = render "comment"

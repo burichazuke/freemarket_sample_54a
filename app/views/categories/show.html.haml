@@ -1,23 +1,29 @@
 .category-show-wrapper
   .category-show-contents
     .category-sibling-list
-      = link_to '/' do
-        ルームウェア/パジャマ
-      -# - @children.each do |child|
-      -#   =link_to category_path(child.id) do
-      -#     = child.name
+      -if @category.children? 
+        -# 子カテゴリーがあるなら、子カテゴリーを表示する
+        - @children.each do |child|
+          =link_to category_path(child.id) do
+            = child.name
+      -else
+        -# 子カテゴリーがないのなら、従兄弟カテゴリー（孫カテゴリー）を表示する
+        -@grandchildren.each do |grandchild|
+          =link_to category_path(grandchild.id) do
+            =grandchild.name
     .category-show-box
       .cateShow-heading
-        %h1 レディースの商品一覧
+        %h1
+          = @category.name
       %section{class: "cateShow-container"}
         .cateShow-content
-
           = render 'cate-item'
     -# pagination
 
     .category-discription
       .category-discription__heading
-        %h3 レディース
+        %h3 
+          =@category.name
       .category-discription__content
-        %p レディースの着ない服、いらない洋服を売るならメルカリへ。レディースの商品は100万点以上あります。人気のあるカテゴリーはロングスカートとシャツ/ブラウス(七分/長袖)です。人気の商品は「フレームワーク ブルースカート」や「グローバルワーク ペプラムブラウス タグ付き」があります。レディースの買い取りやリサイクル処分、服の整理を検討中の方にお勧めです。
-
+        %p 
+        ="#{@category.name}の着ない服、いらない洋服を売るならメルカリへ。#{@category.name}の商品は100万点以上あります。人気のあるカテゴリーはロングスカートとシャツ/ブラウス(七分/長袖)です。人気の商品は「フレームワーク ブルースカート」や「グローバルワーク ペプラムブラウス タグ付き」があります。#{@category.name}の買い取りやリサイクル処分、服の整理を検討中の方にお勧めです。"
