@@ -22,7 +22,7 @@
       %figure
         = image_tag "mypage_icon.png", size: "60x60"
       %h2.mypage__nav__user-icon__name
-        = @user.name
+        = @user.nickname
     .mypage__nav__user-icon__number
       = link_to mypage_index_path, class: "header-mypage-number" do
         .mypage__nav__user-icon__number--rate
