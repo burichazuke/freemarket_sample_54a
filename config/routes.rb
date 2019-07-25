@@ -60,7 +60,8 @@ Rails.application.routes.draw do
     resources :comments, only:[:create, :destroy]
   end
 
-  resources :categories,  only: [:index, :show]
+  resources :categories,  only: [:index, :show] 
+
   resources :brands,  only: [:index, :show]
   resources :cards, only: [:new, :create,:destroy,] do
   end

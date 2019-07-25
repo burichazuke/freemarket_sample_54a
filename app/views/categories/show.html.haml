@@ -1,19 +1,16 @@
 .category-show-wrapper
   .category-show-contents
     .category-sibling-list
-        
       -if @category.children? 
         -# 子カテゴリーがあるなら、子カテゴリーを表示する
         - @children.each do |child|
           =link_to category_path(child.id) do
             = child.name
-        
       -else
         -# 子カテゴリーがないのなら、従兄弟カテゴリー（孫カテゴリー）を表示する
         -@grandchildren.each do |grandchild|
           =link_to category_path(grandchild.id) do
             =grandchild.name
-
     .category-show-box
       .cateShow-heading
         %h1
