@@ -1,5 +1,4 @@
 class MypageController < ApplicationController
-
   def index
     @user = User.find(current_user.id)
   end
@@ -13,15 +12,6 @@ class MypageController < ApplicationController
       redirect_to  profile_mypage_index_path, notice: "変更しました"
     else
       render :index
-    end
-  end
-
-  def card
-    card = Card.find_by(user_id: current_user.id)
-    if card
-      Payjp.api_key = ENV["PAYJP_TEST_SECRET"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @card = customer.cards.retrieve(card.card_id) 
     end
   end
 
