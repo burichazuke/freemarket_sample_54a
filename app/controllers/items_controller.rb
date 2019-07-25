@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:images).order("created_at desc")
-    # @parents = Category.all.order('id ASC').limit(13)
   end
 
   def show
@@ -14,7 +13,6 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    # @item.images.build
     render layout: "single"
   end
 
