@@ -6,9 +6,9 @@
     = form_for @user, url: add_phone_number_path, html: {method: :post, class: "single__form"} do |f|
       .single__field.single__field--large
         .single__field__label
-          = label :devise, :phone, "携帯電話の番号"
+          = label :phone_number, "携帯電話の番号"
         .single__field__input
-          = text_field :devise, :phone, autofocus: true, placeholder: "携帯電話の番号を入力"
+          = f.text_field :phone_number, autofocus: true, placeholder: "携帯電話の番号を入力"
         %p.single__field__text  
           本人確認のため、携帯電話のSMS（ショートメッセージサービス）を利用して認証を行います。
       = f.submit "SMSを送信する", class: "single__form__send-btn"
