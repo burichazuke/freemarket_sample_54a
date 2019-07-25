@@ -110,6 +110,8 @@ ActiveRecord::Schema.define(version: 2019_07_23_051349) do
     t.date "birthday", null: false
     t.integer "wallet"
     t.string "phone_number"
+    t.text "introduce"
+    t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
