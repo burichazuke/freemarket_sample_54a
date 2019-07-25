@@ -2,9 +2,7 @@
 .active{
   display:block;
   background-color:#EA352E;
-  a{
-    color:white;
-  }
+  
 }
 .active-child{
   display:block; 
@@ -30,14 +28,17 @@
     font-size: 14px;
     display: flex;
     align-items: center;
-    a{
-      width: 100%;
-      height: 100%;
-      line-height: 44px;
-      @include category-char;
-      text-decoration: none;
-      color: black;
-
+    &__heading{
+      a{
+        width: 100%;
+        height: 100%;
+        line-height: 44px;
+        @include category-char;
+        &:hover{
+          color:white;
+          display: block;
+        }
+      }
     }
   }
 }

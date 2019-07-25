@@ -3,8 +3,8 @@
 %ul.header-nav-parent-wrap#header-nav-parent
   - @parents.each do |parent|
     %li.header-nav-parent
-      %h3
-        =link_to category_path(parent.id) do
+      %h3.header-nav-parent__heading
+        =link_to category_path(parent.id),class:'header-nav-parent__a' do
           = parent.name
       %ul.header-nav-child-wrap
         - parent.children.each do |child|
