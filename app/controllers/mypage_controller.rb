@@ -1,8 +1,5 @@
 class MypageController < ApplicationController
-  before_action :set_category
-
   def index
-    @parents = Category.all.order('id ASC').limit(13)
   end
 
   def profile
@@ -37,9 +34,4 @@ class MypageController < ApplicationController
   def identification_params
     params.require(:identification).permit(:postal_code, :prefecture, :municipalities, :address, :building).merge(user_id: current_user.id)
   end
-
-  def set_category
-    @parents = Category.all.order('id ASC').limit(13)
-  end
-
 end

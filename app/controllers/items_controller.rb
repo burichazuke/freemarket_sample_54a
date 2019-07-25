@@ -1,8 +1,5 @@
 class ItemsController < ApplicationController
-
   before_action :user_signed_in?, only:[:new, :create, :edit, :update, :destroy]
-  before_action :set_item, only:[:show, :destroy]
-  before_action :set_category
 
   def index
     @items = Item.includes(:images).order("created_at desc")
@@ -85,14 +82,6 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:name, :description,:category_id, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, images_attributes: [:image]).merge(seller_id: current_user.id)
-  end
-
-  def set_item
-    @item = Item.find(params[:id])
-  end
-
-  def set_category
-    @parents = Category.all.order('id ASC').limit(13)
   end
 
 end
