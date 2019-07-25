@@ -11,6 +11,8 @@
           = fa_icon "clock-o", class: "comment-clock"
           %span.comment-clock
             = time_format(comment.created_at)
+          = link_to item_path(@item) ,method: :delete, data: { confirm: '削除しますか？' } do
+            = fa_icon "trash-o", class: "delete-icon"
         .item__comment__content-balloon__seller
     .item__comment__user
       .item__comment__user-icon
@@ -34,4 +36,6 @@
           = fa_icon "clock-o", class: "comment-clock"
           %span.comment-clock
             = time_format(comment.created_at)
+          = link_to item_path(@item), method: :delete, data: { confirm: '削除しますか？' } do
+            = fa_icon "trash-o", class: "delete-icon"
         .item__comment__content-balloon
