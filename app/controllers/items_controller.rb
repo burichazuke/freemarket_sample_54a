@@ -96,7 +96,7 @@ class ItemsController < ApplicationController
       params[:q][:category_id_eq_any] = params[:q][:category_id_eq_any].split(/[\p{blank}\s]+/)
       @keyword = Item.ransack(params[:q])
       # @keyword.sorts = 'created_at desc' if @keyword.sorts.empty?
-      @items = @keyword.result(distinct: true)
+      @items = @keyword.result(distinct: true).includes(:images, :category)
     else
       @items = Item.where("name LIKE(?)", "%#{params[:keyword]}%").includes(:images).order("created_at desc")
       @keyword = Item.ransack()
