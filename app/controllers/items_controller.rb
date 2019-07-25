@@ -33,8 +33,9 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.update(item_params)
-    redirect_to root_path
+    binding.pry
+    # @item.update(item_params)
+    # redirect_to root_path
   end
 
   def destroy
@@ -86,9 +87,8 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :description, :category_id, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, {image_files: []}).merge(seller_id: current_user.id)
   end
 
-  # 編集画面で使用？？要らない記述かもしれないです
   def update_item_params
-    params.require(:item).permit(:name, :description, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, images_attributes: [:image]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:id, :name, :description, :category_id, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, {image_files: []}).merge(seller_id: current_user.id)
   end
 
   def set_item
