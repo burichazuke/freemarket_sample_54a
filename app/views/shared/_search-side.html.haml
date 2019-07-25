@@ -14,13 +14,13 @@
               = fa_icon "plus"
             = f.label :name_cont_all, "キーワードを追加する"
           .single__field__input     
-            = f.search_field :name_cont_all, placeholder: "商品名"
+            = f.search_field :name_cont_all, placeholder: "商品名", id: "search-item-name"
 
       .search-side__group
         .single__field.single__field--large.category-select-box
           .single__field__label
             .search-side__group__icon
-              = fa_icon "bars"
+              = fa_icon "list"
             = label :size, "カテゴリー"
           .single__field__select
             = f.collection_select :name, @parents, :id,:name,{prompt: "---"}, id: "search-parent-form"
