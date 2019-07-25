@@ -64,7 +64,11 @@ class ItemsController < ApplicationController
       customer: current_user.card.customer_id,
       currency: 'jpy'
     )
-    redirect_to root_path
+    redirect_to items_done_path(@item)
+  end
+
+  def done
+    @item = Item.find(params[:id])
   end
 
   # 出品ページでカテゴリーのセレクトボックス用。jbuilderとroutes.rbと繋がっています
