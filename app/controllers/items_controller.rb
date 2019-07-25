@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:images).order("created_at desc")
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def show

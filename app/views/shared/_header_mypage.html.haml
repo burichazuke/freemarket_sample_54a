@@ -20,7 +20,7 @@
   .mypage__nav.mypage__nav--image
     .mypage__nav__user-icon
       %figure
-        = image_tag "mypage_icon.png", size: "60x60"
+        = image_tag @user.image.url, size: "60x60"
       %h2.mypage__nav__user-icon__name
         = @user.nickname
     .mypage__nav__user-icon__number
