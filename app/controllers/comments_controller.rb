@@ -8,6 +8,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    if  @comment.destroy
+      redirect_to item_path(@item)
+    else
+      flash[:notice] =  "削除に失敗しました"
+      redirect_to item_path(@item)
+    end
+  end
+
   private 
   
   def commnet_params
