@@ -5,7 +5,7 @@
         .single__page__main__container
           %h2.single__page__main__head
             発送元・お届け先住所変更
-          = form_for @address, url: update_address_path, html: {method: :put, class: "single__form"} do |f|
+          = form_for @address, url: update_address_path, html: {method: :patch, class: "single__form"} do |f|
             = render partial: "shared/address", locals: { f: f }
             = f.submit "変更する", class: "single__form__send-btn"
     .mypage__side 

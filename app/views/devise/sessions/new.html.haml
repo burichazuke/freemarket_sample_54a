@@ -25,9 +25,7 @@
           .single__field__input
             = f.password_field  :password, placeholder: "パスワード"
         .single__field
-          .robot-check
-            = check_box :devise, :robot
-            私はロボットではありません。
+          = recaptcha_tags
         = f.submit "ログイン", class: "single__form__send-btn"
         .single__field
           = link_to "パスワードをお忘れの方", "/", class: "single__field__text single__field__text__link"

@@ -2,8 +2,8 @@
 %main.single__page__main
   .single__page__main__container
     %h2.single__page__main__head
-      会員情報入力（今はメルアドとパスワードのみ入力して）
-    = form_for resource, url: create_user_registration_path, html: {method: :post, class: "single__form"} do |f|
+      会員情報入力
+    = form_for resource, url: user_validation_path, html: { method: :post, class: "single__form"} do |f|
       = devise_error_messages!
       .single__field
         .single__field__label
@@ -70,7 +70,6 @@
           = f.label :birthday, "生年月日"
           %span.single__field__require 必須
         .single__field__date_select
-          // To Do raw sprintfとdate_separatorで年月日の文字を表示する
           = raw sprintf(f.date_select(:birthday, {use_month_numbers: true, start_year: 1930, end_year: (Time.now.year), prompt: {year: "--", month: "--", day: "--"}, date_separator: '%s'}, { class: "date_select" }), '年 ', '月 ') + '日'
           = fa_icon "chevron-down", class: "single__icon single__field__date_select__arrow single__field__date_select__arrow--first"
           = fa_icon "chevron-down", class: "single__icon single__field__date_select__arrow single__field__date_select__arrow--second"
