@@ -14,9 +14,9 @@ class ItemsController < ApplicationController
   end
 
   def new
-    render layout: "single"
     @item = Item.new
     # @item.images.build
+    render layout: "single"
   end
 
   def create
@@ -96,6 +96,7 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+    @grandchild = Category.find(@item.category_id)
   end
 
   def set_category

@@ -15,7 +15,6 @@ $(document).on('turbolinks:load',function(){
   }
 
   // ファイルの追加→表示
-  // $(document).on('change', '#images', function(e) {
   $('#images').on('change', function(e) {
     let files = e.target.files;
     let fileNumber = files.length + fileCollection.length;

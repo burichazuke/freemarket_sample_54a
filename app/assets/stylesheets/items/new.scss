@@ -24,7 +24,6 @@
       display: flex;
       align-items: center;
       &__image {
-        background-color: pink;
         height: 85px;
         width: 100%;
       }
@@ -87,14 +86,18 @@
   width:700px;
   padding: 40px;
   border-top: 1px solid #eee;
+  &--flex {
+    display: flex;
+    justify-content: space-between;
+  }
   h3 {
     color: #888888;
     font-weight: bold;
+    font-size: 14px;
   }
 
   .sell-form-box {
     width: 400px;
-    margin-left: auto;
     .single__field--2 {
       width: 400px;
       display: flex;
