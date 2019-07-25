@@ -21,7 +21,11 @@ class ItemsController < ApplicationController
   end
 
   # 出品ページでカテゴリーのセレクトボックス用。jbuilderとroutes.rbと繋がっています
-  def category_children
+  def category_parent
+    @select_parent = Category.find(params[:parent_id])
+  end
+
+  def category_children 
     @select_children = Category.find(params[:parent_id]).children
   end
 
@@ -77,11 +81,12 @@ class ItemsController < ApplicationController
   end
 
   def search
-
+    @parents = Category.all.order('id ASC').limit(13)
     if params[:q].present?
       params[:q][:name_cont_all] = params[:q][:name_cont_all].split(/[\p{blank}\s]+/)
+      params[:q][:category_id_eq_any] = params[:q][:category_id_eq_any].split(/[\p{blank}\s]+/)
       @keyword = Item.ransack(params[:q])
-      @keyword.sorts = 'created_at desc' if @keyword.sorts.empty?
+      # @keyword.sorts = 'created_at desc' if @keyword.sorts.empty?
       @items = @keyword.result(distinct: true)
     else
       @items = Item.where("name LIKE(?)", "%#{params[:keyword]}%").includes(:images).order("created_at desc")
