@@ -1,5 +1,5 @@
 $(document).on('turbolinks:load',function(){
-  let fileCollection = new Array();
+  let fileCollection = []
 
   function buildImage(image) {
     let template = `<li class="sell-upload__item">
@@ -14,27 +14,23 @@ $(document).on('turbolinks:load',function(){
     return template;
   }
 
-  function buildError() {
-    let error = `<ul class="sell-upload__error">
-                  <li>アップロードできる画像は10枚までです。</li>
-                </ul>`
-    return error;
-  }
-
   // ファイルの追加→表示
-  $(document).on('change', '#images', function(e) {
+  // $(document).on('change', '#images', function(e) {
+  $('#images').on('change', function(e) {
     let files = e.target.files;
-    let fileNumber = files.length + fileCollection.length
+    let fileNumber = files.length + fileCollection.length;
     
     if (fileNumber > 10) {
-      let html = buildError();
-      $('.sell-upload__items').after(html);
+      $('.sell-upload__error').show();
     } else {
+
       if (fileNumber == 10) {
         $('.sell-upload__box').hide();
       }
-      $('.sell-upload__error').remove();
+      $('.sell-upload__error').hide();
+      
       $.each(files, function(i, file) {
+        console.log(i);
         fileCollection.push(file);
         let reader = new FileReader();
         reader.readAsDataURL(file);
@@ -44,17 +40,20 @@ $(document).on('turbolinks:load',function(){
         }
       });
     }
-
+    console.log(files);
   });
 
   // ファイルの削除
   $(document).on('click', '.sell-upload__item__footer__btn--remove', function(e) {
     e.preventDefault();
     let index = $('.sell-upload__item__footer__btn--remove').index(this);
-    $('.sell-upload__item').eq(index).remove();
-    fileCollection.splice(index, 1);
-    if (fileCollection.length == 9) {
-      $('.sell-upload__box').show();
+    if (index > 0) {
+      $('.sell-upload__item').eq(index).remove();
+      fileCollection.splice(index, 1);
+
+      if (fileCollection.length == 9) {
+        $('.sell-upload__box').show();
+      }
     }
   });
 

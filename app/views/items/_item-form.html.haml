@@ -1,0 +1,51 @@
+.sell-content
+  %h3 配送について
+  .sell-form-box
+    .single__field.single__field--large
+      .single__field__label
+        = f.label :shipping_fee, "配送料の負担"
+        %span.single__field__require 必須
+      .single__field__select
+        = f.select :shipping_fee, [["送料負担(出品者負担)","送料負担(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]], class: "single__field__select", prompt: "---"
+    
+    .single__field.single__field--large
+      .single__field__label
+        = f.label :shipping_method, "配送の方法"
+        %span.single__field__require 必須
+      .single__field__select
+        = f.select :shipping_method, [["未定", "未定"], ["らくらくメルカリ便", "らくらくメルカリ便"], ["ゆうメール", "ゆうメール"], ["レターパック", "レターパック"]], class: "single__field__select", prompt: "---"
+    
+    .single__field.single__field--large
+      .single__field__label
+        = f.label :prefecture, "発送元の地域"
+        %span.single__field__require 必須
+      .single__field__select
+        = f.collection_select :prefecture, Prefecture.all, :name, :name, prompt: "---"
+
+    .single__field.single__field--large
+      .single__field__label
+        = f.label :shipping_date, "発送までの日数"
+        %span.single__field__require 必須
+      .single__field__select
+        = f.select :shipping_date, [["1~2日で発送", "1~2日で発送"], ["2~3日で発送", "2~3日で発送"], ["4~7日で発送", "4~7日で発送"]], class: "single__field__select", prompt: "---"
+
+.sell-content
+  %h3 販売価格(300〜9,999,999)
+  .sell-form-box
+    %ul.sell-price
+      %li.form-group
+        .single__field--2
+          .single__field__label__left
+            = f.label :price, "価格"
+            %span.single__field__require 必須
+          .single__field__label__right
+            %p ¥
+            .single__field__input.single__field__input--right.text-right
+              = f.text_field :price, placeholder: "例) 300" ,class:"text-right", id:"price-form"
+            
+      %li.sellfee 
+        .l-left 販売手数料
+        .l-right#sellfee -
+      %li.sellprofit 
+        .l-left 販売利益
+        .l-right#sellprofit -

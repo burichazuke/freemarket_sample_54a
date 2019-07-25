@@ -3,7 +3,73 @@
     %h2.single__page__main__head
       商品の情報を入力
     = form_for @item, url: item_path do |f|
-      = render partial: 'new_main', locals: { f: f }
+      .sell-content
+        .single__field.single__field--large
+          .single__field__label
+            = f.label :images , "出品画像"
+            %span.single__field__require 必須
+          %p 最大10枚までアップロードできます
+          .sell-upload__container
+            %ul.sell-upload__items
+              .sell-upload__box 
+                = f.label :images, for: "images", class: "sell-upload__box__label" do
+                  %span
+                    ドラッグアンドドロップ
+                    またはクリックしてファイルをアップロード
+                  = fa_icon "image"
+                  = f.file_field :images, multiple: true, name: "item[images][]", id: "images", style: "display: none;"
+              %ul.sell-upload__error
+                %li
+                  アップロードできる画像は10枚までです。
+            
+      .sell-content
+        .single__field.single__field--large
+          .single__field__label
+            = f.label :name, "商品名"
+            %span.single__field__require 必須
+          .single__field__input
+            = f.text_field :name, placeholder: "商品名（必須40文字まで）"
+        .single__field.single__field--large
+          .single__field__label
+            = f.label :description, "商品の説明"
+            %span.single__field__require 必須
+          .single__field__textarea
+            = f.text_area :description, placeholder: "商品の説明（必須1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+            
+      .sell-content
+        %h3 商品の詳細
+        .sell-form-box
+          .single__field.single__field--large.category-select-box
+            .single__field__label
+              = f.label :description, "カテゴリー"
+              %span.single__field__require 必須
+            .single__field__select
+              = f.collection_select :category_id, @parents, :id,:name,{prompt: "---"}, id: "parent-form"
+          
+          .single__field.single__field--large
+            .single__field__label
+              = label :size, "サイズ"
+              %span.single__field__require 必須
+            .single__field__select
+              = f.select :size,[["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"]], class: "single__field__select", prompt: "---"
+          //後の実装にて使用するためコメントアウトしています
+          -# .single__field.single__field--large  
+          -#   .single__field__label
+          -#     = f.label :item_description, "ブランド"
+          -#     %span.single__field__require.single__field__require--gray 任意
+          -#   .single__field__input
+          -#     = f.text_field :brand, placeholder: "例) シャネル"
+
+          .single__field.single__field--large
+            .single__field__label
+              = f.label :condition, "商品の状態"
+              %span.single__field__require 必須
+            .single__field__select
+              = f.select :condition,[["新品/未使用", "新品/未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"]], class: "single__field__select", prompt: "---"
+
+
+      = render partial: 'item-form', locals: { f: f }
+
       
       .sell-content
         = f.submit "変更する", class: "single__form__send-btn" 
