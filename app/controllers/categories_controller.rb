@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+
   def index
     @parents = Category.all.order('id ASC').limit(13)
   end
@@ -12,4 +13,6 @@ class CategoriesController < ApplicationController
   def category_params
     params.require(:category).permit(:name,:ancestry)
   end
+
+  
 end

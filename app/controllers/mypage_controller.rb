@@ -1,11 +1,12 @@
 class MypageController < ApplicationController
 
+
   def index
-    @user = current_user
+    @user = User.find(current_user.id)
   end
 
   def profile
-    @user = current_user
+    @user = User.find(current_user.id)
   end
 
   def update_profile
@@ -49,5 +50,6 @@ class MypageController < ApplicationController
   def user_profile_params
     params.require(:user).permit(:nickname, :introduce, :image)
   end
+
 
 end
