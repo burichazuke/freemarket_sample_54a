@@ -1,0 +1,37 @@
+- if comment.user_id.to_s == @item.seller_id.to_s
+  .item__comment
+    .item__comment__content
+      .item__comment__content-name
+        .item__comment__content-name__seller
+          = link_to @item.seller.nickname, show_user_plofile_path(@item.seller), method: :get
+      .item__comment__content-comment
+        .item__comment__content-comment__seller
+          %p
+            = comment.content
+          = fa_icon "clock-o", class: "comment-clock"
+          %span.comment-clock
+            = time_format(comment.created_at)
+        .item__comment__content-balloon__seller
+    .item__comment__user
+      .item__comment__user-icon
+        = image_tag @item.seller.image.url, size: "40x40"
+        .item__comment__user-seller
+          %p 出品者
+
+- else
+  .item__comment
+    .item__comment__user
+      .item__comment__user-icon
+        = image_tag comment.user.image.url, size: "40x40"
+    .item__comment__content
+      .item__comment__content-name
+        .item__comment__content-name__user
+          = link_to comment.user.nickname, show_user_plofile_path(comment.user), method: :get
+      .item__comment__content-comment
+        .item__comment__content-comment__user
+          %p
+            = comment.content
+          = fa_icon "clock-o", class: "comment-clock"
+          %span.comment-clock
+            = time_format(comment.created_at)
+        .item__comment__content-balloon

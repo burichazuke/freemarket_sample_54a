@@ -17,9 +17,10 @@ Rails.application.routes.draw do
     get 'users/sign_up/credit_card', to: 'users/registrations#credit_card', as: :credit_card_user_registration
     get 'users/sign_up/finish', to: 'users/registrations#finish', as: :finish_user_registration
     post 'users', to: 'users/registrations#create', as: :create_user_registration
-    patch 'users', to: 'users/registrations#update', as: :update_user_registration
+    get 'users/:id', to: 'users#show', as: :show_user_plofile
     # ToDo: マイページに応じて、要追加
     # get 'users/edit', to: 'users/registrations#edit', as: :edit_user_registration
+    # patch 'users', to: 'users/registrations#update', as: :update_user_registration
     # delete 'users', to: 'users/registrations#destroy', as: :destroy_user_registration
     # get 'users/cancel', to: 'users/registrations#cancell', as: :cancel_user_registration
   end
@@ -41,6 +42,7 @@ Rails.application.routes.draw do
     get "mypage/listings/completed", to: "mypage#completed"
     get "mypage/review/history", to: "mypage#review"
     get "logout", to: "mypage#logout"
+    patch "mypage/profile", to: "mypage#update_profile"
   end
 
   as :address do 
@@ -53,11 +55,17 @@ Rails.application.routes.draw do
     get "transaction/buy/:id", to: "items#buy", as: :items_buy
     patch "transaction/pay/:id", to: "items#pay", as: :items_pay
     get "items/sell", to: "items#new", as: :items_sell
+    get "items/search", to: "items#search"
   end
-  resources :items, except: :new
   
+  resources :items, except: :new do
+    collection do
+      get 'category_children', defaults:{format:'json'}
+      get 'category_grandchildren', defaults:{format:'json'}
+    end
+    resources :comments, only:[:create, :destroy]
+  end
 
-  resources :comments, only:[:create, :destroy]
   resources :categories,  only: [:index, :show]
   resources :brands,  only: [:index, :show]
   resources :cards, only: [:new, :create, :destroy,]
@@ -66,3 +74,4 @@ Rails.application.routes.draw do
   end
 
 end
+

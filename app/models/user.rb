@@ -21,8 +21,10 @@ class User < ApplicationRecord
   
   has_one :card
   has_one :address, dependent: :destroy
+  has_many :comments
   has_one :identification, dependent: :destroy
 
+  mount_uploader :image, ImageUploader
 
 # sms認証関連のメソッド定義
   # Phone_numberのvalidおよびverification_codeの発行

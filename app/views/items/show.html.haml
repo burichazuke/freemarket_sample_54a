@@ -6,19 +6,19 @@
       = @item.name
     .item__main-content
       .item__photo
-        .owl__carousel
-          .owl__item__inner
-          -image = @item.images.first
-          -if image
-            =image_tag "#{image.image}"
-
+        .item__photo__slide
+          -@item.images.each do |image|
+            =image_tag "#{image.image}", class: "item__photo__slide__img"
+        .item__photo__container
+          -@item.images.each_with_index do |image,i|
+            =image_tag "#{image.image}", class: "item__photo__container__img","data-id": "#{i}"
 
       %table.item__detail-table
         %tboby
           %tr
             %th 出品者
             %td
-              = link_to @item.seller.nickname, item_path, method: :get, class: "user-name-link"
+              = link_to @item.seller.nickname, show_user_plofile_path(@item.seller), method: :get, class: "user-name-link"
               .item-content__detail-table__face
                 .item-content__detail-table__face--good
                   = fa_icon "smile-o", class: "good-icon"
@@ -65,7 +65,7 @@
           %tr
             %th 配送元地域
             %td
-              =link_to root_path,class:'aBlue' do
+              =link_to item_path,class:'aBlue' do
                 = @item.prefecture
           %tr
             %th 配達日の目安
@@ -74,7 +74,7 @@
 
     .item__price-box
       %span.item__price-box__price
-        = "¥ #{@item.price}"
+        = "¥ #{@item.price.to_s(:delimited)}"
       %span.item__price-box__tax
         (税込)
       %span.item__price-box__shipping-fee
@@ -104,19 +104,21 @@
           %span.aBlue あんしん・あんぜんへの取り組
 
 
-  -if @item.seller_id == current_user&.id
+  -if @item.seller_id.to_s == current_user&.id.to_s
     .item__detail-message
       .message-container
         .message-content 
           .mypage__content__tab-content__item-list--index
             .mypage__content__tab-content__item-list--index--gray
-              = link_to "この商品を削除する", item_path(@item), method: :delete, class: "item-delete"
+              = link_to "この商品を削除する", item_path(@item), method: :delete, class: "item-delete", data: { confirm: '削除しますか？' }
 
+  .item__detail-message
+    .message-container
+      .item__comments
+        = render partial: "comment_list", collection: @comments, as: :comment
 
-
-
-  =render "comment" #コメント欄部分テンプレート
-  -# コメント機能まだ
+      - if user_signed_in?
+        = render "comment"
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev
