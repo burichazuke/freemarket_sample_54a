@@ -1,20 +1,3 @@
-:ruby
-  mypageheaderlists = [{
-      name: "いいね！一覧",
-      url: mypage_index_path
-    },{
-      name: "出品した商品-出品中",
-      url: mypage_index_path
-    },{
-      name: "出品した商品-取引中",
-      url: mypage_index_path
-    },{
-      name: "出品した商品-売却済み",
-      url: mypage_index_path
-    },{
-      name: "購入した商品-取引中",
-      url: mypage_index_path
-  }]
 
 //ヘッダー
 %header.header
@@ -65,56 +48,7 @@
                     = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-img'
                     %span マイページ
 
-                  .mypage__nav
-                    .mypage__nav.mypage__nav--image
-                      .mypage__nav__user-icon
-                        %figure
-                          = image_tag "mypage_icon.png", size: "60x60"
-                        %h2.mypage__nav__user-icon__name
-                          testman
-                      .mypage__nav__user-icon__number
-                        .mypage__nav__user-icon__number--rate
-                          評価:
-                          %span.bold
-                            0
-                        .mypage__nav__user-icon__number--display
-                          出品数:
-                          %span.bold
-                            0
-
-                      .mypage__nav__user-icon__numbers
-                        .mypage__nav__user-icon__numbers__list
-
-                          .mypage__nav__user-icon__numbers__sales
-                            .mypage__nav__user-icon__numbers__sales--title
-                              売上金
-                            .mypage__nav__user-icon__numbers__sales--num
-                              ¥100
-                            .mypage__nav__user-icon__numbers__sales--icon
-                              =fa_icon "angle-right", class: 'icon-chek'
-
-                        .mypage__nav__user-icon__numbers__point
-                          .mypage__nav__user-icon__numbers__point--title
-                            ポイント
-                          .mypage__nav__user-icon__numbers__point--num
-                            P100
-                          .mypage__nav__user-icon__numbers__point--icon
-                            =fa_icon "angle-right", class: 'icon-chek'
-
-                        .mypage__nav__user-icon--while
-
-                                  
-                        .mypage__side
-                          .sidebar
-                            %ul.sidebar__lists
-                              -mypageheaderlists.each do |list|
-                                =link_to list[:url] do
-                                  %li.sidebar__lists__list
-                                    %p 
-                                      =list[:name]
-                                    =fa_icon "angle-right"
-
-                            
+                  = render partial: '/shared/header_mypage',locals: { user: @user }
 
 
             - else
