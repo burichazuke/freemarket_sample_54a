@@ -25,5 +25,13 @@
         %h3 
           =@category.name
       .category-discription__content
-        %p 
-        ="#{@category.name}の着ない服、いらない洋服を売るならメルカリへ。#{@category.name}の商品は100万点以上あります。人気のあるカテゴリーはロングスカートとシャツ/ブラウス(七分/長袖)です。人気の商品は「フレームワーク ブルースカート」や「グローバルワーク ペプラムブラウス タグ付き」があります。#{@category.name}の買い取りやリサイクル処分、服の整理を検討中の方にお勧めです。"
+        %p
+        -# -unless @item.ids
+        -if @category.children? 
+          ="#{@category.name}の着ない服、いらない洋服を売るならメルカリへ。#{@category.name}の商品は#{@items.ids.count}万点以上あります。人気のあるカテゴリーは#{@category.children.sample.name}と#{@category.children.sample.name}です。人気の商品は「#{@items.sample.name}」や「#{@items.sample.name}」があります。#{@category.name}の買い取りやリサイクル処分、服の整理を検討中の方にお勧めです。"
+        -else
+          ="#{@category.name}の着ない服、いらない洋服を売るならメルカリへ。#{@category.name}の商品は#{@items.ids.count}万点以上あります。人気の商品は「#{@items.sample.name}」や「#{@items.sample.name}」があります。#{@category.name}の買い取りやリサイクル処分、服の整理を検討中の方にお勧めです。"
+        -#   ="#{@category.name}の着ない服、いらない洋服、モノを売るならメルカリへ。#{@category.name}の商品は現在出品されていません。#{@category.name}の買い取りやリサイクル処分、服、モノの整理を検討中の方にお勧めです。このカテゴリーの最初の出品者になりましょう。"
+        -# -else 
+        -#   -# ="#{@category.name}の着ない服、いらない洋服、モノを売るならメルカリへ。#{@category.name}の商品は現在出品されていません。#{@category.name}の買い取りやリサイクル処分、服、モノの整理を検討中の方にお勧めです。このカテゴリーの最初の出品者になりましょう。"
+        -#   ="#{@category.name}の着ない服、いらない洋服を売るならメルカリへ。#{@category.name}の商品は#{@items.ids.count}万点以上あります。人気のあるカテゴリーは#{@category.children.sample.name}と#{@category.children.sample.name}です。人気の商品は「#{@items.sample.name}」や「#{@items.sample.name}」があります。#{@category.name}の買い取りやリサイクル処分、服の整理を検討中の方にお勧めです。"

@@ -3,10 +3,10 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category =  Category.includes(:items).find(params[:id])
-    @children = Category.find(params[:id]).children.limit(8)
-    @grandchildren = Category.find(params[:id]).siblings
     
+    @category =  Category.includes(:items).find(params[:id])
+    @children = Category.find(params[:id]).children
+    @grandchildren = Category.find(params[:id]).siblings
     # 現在地が親なら
     if params[:id].to_i<=13
       ids = Category.find(params[:id]).descendant_ids
