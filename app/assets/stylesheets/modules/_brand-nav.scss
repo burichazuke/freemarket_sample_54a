@@ -5,24 +5,13 @@
   float:left;
   display: none;
   z-index:800; //下との重なりを解消しています。
-
   .header-brand-nav-parent{
     width:224px;
     height:44px;
     line-height: 44px;
-
-    &:hover{
-      width:224px;
-      background-color:#EA352E;
-      color:white;
-      display: block;
-    }
-    span{
-      @include category-char;
-      &:hover{
-        text-decoration: none;
-        color:white;
-      }
+    &.header-brand-nav-heading{
+      display:block;
+      width:100%;
     }
   }
 }

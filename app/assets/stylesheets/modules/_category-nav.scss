@@ -2,6 +2,14 @@
 .active{
   display:block;
   background-color:#EA352E;
+  h3{
+    a{
+      color:white;
+      span{
+        color:white;
+      }
+    }
+  }
 }
 .active-child{
   display:block; 
@@ -47,7 +55,6 @@
 //子
 .header-nav-child-wrap{
   @include category-wrap;
-  
   .header-nav-child{
     width:224px;
     @include category-mono;
@@ -65,11 +72,9 @@
 .header-nav-grand-child-wrap{
   @include category-wrap;
   overflow: hidden;
-
   .header-nav-grand-child{
     width: 320px;
     @include category-mono;
-   
     &:hover{
       background-color: #f5f5f5;
     }
