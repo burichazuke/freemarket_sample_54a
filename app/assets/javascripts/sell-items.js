@@ -113,5 +113,11 @@ $(document).on('turbolinks:load',function() {
       processData: false,
       contentType: false
     })
+
+    .done(function(json) {
+      if (json.redirect) {
+        window.location = json.redirect;
+      }
+    })
   })
 });

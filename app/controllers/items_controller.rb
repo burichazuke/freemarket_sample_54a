@@ -33,16 +33,23 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
-      item_params[:delete_image_files]&.each do |image_num|
-        @item.images[image_num.to_i].delete
+    respond_to do |format|
+      if @item.update(item_params)
+        
+        item_params[:delete_image_files]&.each do |image_num|
+          @item.images[image_num.to_i].delete
+        end
+
+        item_params[:image_files]&.each do |image|
+          @item.images.create(image: image)
+        end
+        
+        format.html { redirect_to item_path(@item) }
+        format.json { render json: { redirect: item_path(@item) } }
+
+      else
+        render :new, layout: "single"
       end
-      item_params[:image_files]&.each do |image|
-        @item.images.create(image: image)
-      end
-      redirect_to item_path(@item)
-    else
-      render :new, layout: "single"
     end
   end
 
