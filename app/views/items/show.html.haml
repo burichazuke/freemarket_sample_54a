@@ -148,3 +148,21 @@
         = link_to "testmanさんのその他の出品", item_path, method: :get, class: "link item-link"
       .item-other__user-items__content
         = render "other_item"
+
+
+  .modal-window
+    .modal-window-body
+      .modal-window-body__top
+        .modal-window-body__top--1
+          確認
+        .modal-window-body__top--2
+          @コメント
+        .modal-window-body__top--3
+          本当にこのコメントを削除してよろしいですか？
+      .modal-window-body__form
+        .modal-window-body__form__btn
+
+          キャンセル
+        .modal-window-body__form__btn
+          = link_to " 削除する", 
+         
