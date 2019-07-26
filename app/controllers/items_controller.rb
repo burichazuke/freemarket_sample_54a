@@ -9,6 +9,7 @@ class ItemsController < ApplicationController
   def show
     @comments = Comment.where(item_id: @item.id)
     @comment = Comment.new
+    
   end
 
   def new

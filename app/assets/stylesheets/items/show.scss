@@ -283,6 +283,13 @@
   }
 }
 
+.item-category__icon{
+  &::before{
+    font-size:7px;
+  }
+  
+}
+
 
 .item-other {
   width: 700px;

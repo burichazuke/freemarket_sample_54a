@@ -30,6 +30,7 @@ $(document).on('turbolinks:load',function(){
    // 子のカテゴリーボックスを作る
   $("#parent-form").on("change",function(){
     var parentValue = document.getElementById("parent-form").value;
+    
     if (parentValue != '---'){
       $.ajax({
         url: 'category_children',
