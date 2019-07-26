@@ -1,17 +1,16 @@
 -if user_signed_in?
   -if @item.favorites.present?
-    %button.item__button#favorited-button.favorite{"data-item-id" => "#{@item.id}", "data-favo-id" => "#{@item.favorites.count}"}
-      = link_to favorite_path(item_id: @item.id), method: :delete, id: "favorite-buttons", "data-item-id": "#{@item.id}", "data-favo-id": "#{@item.favorites.count}" do
-        =fa_icon "heart" 
-        %span いいね! 
+    %button.item__button#favorited-button{"data-item-id": "#{@item.id}", "data-favo-id": "#{@item.favorites.count}"}
+      =fa_icon "heart" 
+      %span いいね! 
+      %span.xxx
         = @item.favorites.count
 
   -else
-    %button.item__button#item__button{"data-item-id" => "#{@item.id}", "data-favo-id" => "#{@item.favorites.count}"}
-      -#  link_to favorites_path(item_id: @item.id), method: :=post, id: "favorite-buttons", "data-item-id": "#{@item.id}", "data-favo-id": "#{@item.favorites.count}" do
+    %button.item__button#item__button{"data-item-id": "#{@item.id}", "data-favo-id": "#{@item.favorites.count}"}
       =fa_icon "heart-o"
       %span いいね!
-      .favo-count
+      %span.xxx
         = @item.favorites.count
 
 - else
@@ -19,5 +18,4 @@
     = link_to "/" do
       =fa_icon "heart-o"
       %span いいね!
-      %p.favo-count
-        = @item.favorites.count
+      = @item.favorites.count
