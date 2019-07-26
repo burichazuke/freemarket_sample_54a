@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   def show
     
     @category =  Category.includes(:items).find(params[:id])
-    @children = Category.find(params[:id]).children
+    @children = Category.find(params[:id]).children.limit(8)
     @grandchildren = Category.find(params[:id]).siblings
     # 現在地が親なら
     if params[:id].to_i<=13
