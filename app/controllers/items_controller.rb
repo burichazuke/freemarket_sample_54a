@@ -33,9 +33,17 @@ class ItemsController < ApplicationController
   end
 
   def update
-    binding.pry
-    # @item.update(item_params)
-    # redirect_to root_path
+    if @item.update(item_params)
+      item_params[:delete_image_files]&.each do |image_num|
+        @item.images[image_num.to_i].delete
+      end
+      item_params[:image_files]&.each do |image|
+        @item.images.create(image: image)
+      end
+      redirect_to item_path(@item)
+    else
+      render :new, layout: "single"
+    end
   end
 
   def destroy
@@ -84,11 +92,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, {image_files: []}).merge(seller_id: current_user.id)
-  end
-
-  def update_item_params
-    params.require(:item).permit(:id, :name, :description, :category_id, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, {image_files: []}).merge(seller_id: current_user.id)
+    params.require(:item).permit(:id, :name, :description, :category_id, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, :image_validation, {image_files: []}, {delete_image_files: []}).merge(seller_id: current_user.id)
   end
 
   def set_item
