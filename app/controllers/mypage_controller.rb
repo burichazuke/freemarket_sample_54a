@@ -3,6 +3,14 @@ class MypageController < ApplicationController
     @user = current_user
   end
 
+  def notification
+    @user = current_user
+  end
+
+  def todo
+    @user = current_user
+  end
+
   def profile
     @user = current_user
   end

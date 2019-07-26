@@ -1,0 +1,28 @@
+:ruby
+  titles = ["お知らせ", "やることリスト"]
+  path = [notification_mypage_index_path, todo_mypage_index_path]
+
+  announces = [{
+    Name:"コメントがつきました", url:"#"
+  },{
+    Name:"いいね！！！！がつきました", url:"#"
+  },{
+    Name:"事務局からメッセージ！コメントがつきました！いいねがつきました！確認してください！", url:"#"
+  }]
+
+-breadcrumb :mypages
+
+%main.mypage
+  .mypage__container
+    %section.mypage__content__tab-container
+      %ul.mypage__content__tabs
+        = render partial: "mypage-tabs", locals: { titles: titles, path: path } 
+      .mypage__content__tab-content
+        %ul.mypage__content__tab-content__item-list.show-mypage-tab
+          = render partial: "mypage-tab-lists", locals: { announces: announces }
+        %ul.mypage__content__tab-content__item-list
+          = render partial: "mypage-tab-lists", locals: { announces: [] }
+
+
+    .mypage__side
+      =render "shared/sidebar"

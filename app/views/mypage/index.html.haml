@@ -1,6 +1,8 @@
 :ruby
   first_titles = ["お知らせ", "やることリスト"]
+  first_path = [notification_mypage_index_path, todo_mypage_index_path]
   second_titles = ["取引中", "過去の取引"]
+  second_path = [notification_mypage_index_path, todo_mypage_index_path]
 
   first_announces = [{
     Name:"コメントがつきました", url:"#"
@@ -44,7 +46,7 @@
 
         %section.mypage__content__tab-container
           %ul.mypage__content__tabs
-            = render partial: "mypage-tabs", locals: { titles: first_titles } 
+            = render partial: "mypage-tabs", locals: { titles: first_titles, path: first_path } 
           .mypage__content__tab-content
             %ul.mypage__content__tab-content__item-list.show-mypage-tab
               = render partial: "mypage-tab-lists", locals: { announces: first_announces }
@@ -57,7 +59,7 @@
           購入した商品
         %section.mypage__content__tab-container
           %ul.mypage__content__tabs
-            = render partial: "mypage-tabs", locals: { titles: second_titles }
+            = render partial: "mypage-tabs", locals: { titles: second_titles, path: second_path }
           .mypage__content__tab-content
             %ul.mypage__content__tab-content__item-list.show-mypage-tab
               = render partial: "mypage-tab-lists", locals: { announces: second_announces }
