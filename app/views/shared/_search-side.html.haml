@@ -27,7 +27,7 @@
 
         -#  ここでカテゴリーidのvalueを取得
         .single__field__input     
-          = f.search_field :category_id_eq_any, id: "category-search", value: ""
+          = f.search_field :category_id_eq_any, id: "category-search", value: "", type: "hidden"
 
       .search-side__group
         .single__field.single__field--large
@@ -36,7 +36,7 @@
               = fa_icon "expand"
             = label :size, "サイズ"
           .single__field__select
-            = f.select :size_eq_any,[["---",""],["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"]], class: "single__field__select"            
+            = f.select :size_eq_any,[["---",""],["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"],["L","L"],["XL(LL)","XL(LL)"],["XXL以上","XXL以上"]], class: "single__field__select"            
 
       .search-side__group
         .single__field.single__field--large
@@ -46,7 +46,7 @@
             = f.label :price_gteq, "価格"
           .single__field__select
             %select#search-price
-              %option(value=",") ---
+              %option(value="" ) ---
               %option(value="300,1000") 
                 300 ~ 1000
               %option(value="1000,5000") 
