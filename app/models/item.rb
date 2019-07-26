@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   # has_many :favorites, dependent: :destroy
   # has_many :users, through: :favorites, dependent: :destroy
 
-  validates :image_files, :name, :description, :price, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, presence: true
+  validates :name, :description, :price, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, presence: true
 end
 
 
