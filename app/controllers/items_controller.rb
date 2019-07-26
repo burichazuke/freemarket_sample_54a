@@ -68,7 +68,14 @@ class ItemsController < ApplicationController
   end
 
   def done
+    card = Card.find_by(user_id: current_user.id)
+    if card
+      Payjp.api_key = ENV["PAYJP_TEST_SECRET"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card = customer.cards.retrieve(card.card_id) 
+    end
     @item = Item.find(params[:id])
+    render layout: "single"
   end
 
   # 出品ページでカテゴリーのセレクトボックス用。jbuilderとroutes.rbと繋がっています
