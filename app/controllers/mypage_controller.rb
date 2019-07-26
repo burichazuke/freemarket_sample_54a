@@ -11,7 +11,27 @@ class MypageController < ApplicationController
     @user = current_user
   end
 
-  def profile
+  def purchase
+    @user = current_user
+  end
+
+  def purchased
+    @user = current_user
+  end
+
+  def news
+    @user = current_user
+  end
+
+  def support
+    @user = current_user
+  end
+
+  def sales
+    @user = current_user
+  end
+
+  def point
     @user = current_user
   end
 

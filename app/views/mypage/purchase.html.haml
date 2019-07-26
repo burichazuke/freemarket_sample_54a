@@ -1,27 +1,28 @@
 :ruby
-  titles = ["お知らせ", "やることリスト"]
+  titles = ["取引中", "過去の取引"]
   path = [notification_mypage_index_path, todo_mypage_index_path]
 
   announces = [{
-    Name:"コメントがつきました", url:"#"
+    Name:"aさんの商品を購入！", url:"#"
   },{
-    Name:"いいね！！！！がつきました", url:"#"
+    Name:"bさんの商品を購入！", url:"#"
   },{
-    Name:"事務局からメッセージ！コメントがつきました！いいねがつきました！確認してください！", url:"#"
+    Name:"cさんの商品を購入！", url:"#"
   }]
 
--breadcrumb :mypages
 
+-breadcrumb :mypages
 %main.mypage
   .mypage__container
     .mypage__content
+      .mypage__content__head.mypage__content__head--text
+        購入した商品
       %section.mypage__content__tab-container
         %ul.mypage__content__tabs
-          = render partial: "mypage-tabs", locals: { titles: titles, path: path } 
+          = render partial: "mypage-tabs", locals: { titles: titles, path: path }
         .mypage__content__tab-content
           %ul.mypage__content__tab-content__item-list.show-mypage-tab
             = render partial: "mypage-tab-lists", locals: { announces: announces }
-
 
     .mypage__side
       =render "shared/sidebar"

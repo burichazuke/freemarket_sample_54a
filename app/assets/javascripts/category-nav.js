@@ -2,7 +2,7 @@ $(document).on('turbolinks:load',function(){
   //親
   $('#header-category').hover(function(){
     $('.header-nav-parent-wrap').show();
-    $('.header-nav-parent'>a).css('color','white');
+    $('.header-nav-parent> a').css('color','white');
   },function(){
     $('.header-nav-parent-wrap').hide();
   });
