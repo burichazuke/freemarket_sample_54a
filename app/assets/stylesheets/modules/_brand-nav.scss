@@ -15,6 +15,7 @@
       width:224px;
       background-color:#EA352E;
       color:white;
+      display: block;
     }
     span{
       @include category-char;

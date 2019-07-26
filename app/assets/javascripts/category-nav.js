@@ -2,7 +2,6 @@ $(document).on('turbolinks:load',function(){
   //親
   $('#header-category').hover(function(){
     $('.header-nav-parent-wrap').show();
-    $('.header-nav-parent'>a).css('color','white');
   },function(){
     $('.header-nav-parent-wrap').hide();
   });
@@ -10,6 +9,7 @@ $(document).on('turbolinks:load',function(){
   //子
   $('.header-nav-parent').hover(function(){
     $(this).addClass('active');
+    $('.header-nav-parent').css({'color':'#EA352E'});
     var children = $('.active').children('.header-nav-child-wrap');
     children.show();
 
@@ -22,6 +22,7 @@ $(document).on('turbolinks:load',function(){
   //孫
   $('.header-nav-child').hover(function(){
     $(this).addClass('active-child')
+    $('.header-nav-parent').css({'color':'#EA352E'});
     var grandChild = $('.active-child').children('.header-nav-grand-child-wrap')
     grandChild.show();
 
