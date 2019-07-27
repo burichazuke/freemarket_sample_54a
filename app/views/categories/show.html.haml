@@ -1,13 +1,12 @@
--# -if @category.parent != true
--#   -breadcrumb :category_parent
--# -elsif @category.children != true
--#   -breadcrumb :category_grandchild
--# -else
--#   -breadcrumb :category_child
+-if @category.parent.present? ==false
+  -breadcrumb :category_parent
+-elsif @category.children.present? ==false
+  -breadcrumb :category_grandchild
+-else
+  -breadcrumb :category_child
 .category-show-wrapper
   .category-show-contents
     .category-sibling-list
-    
       -if @category.children? 
         -# 子カテゴリーがあるなら、子カテゴリーを表示する
         - @children.each do |child|
