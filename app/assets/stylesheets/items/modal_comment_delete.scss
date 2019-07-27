@@ -17,7 +17,6 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  // height: 330px;
   width:600px;
   margin: 20px auto;
   background: #fff;
@@ -27,10 +26,19 @@
 .modal-window-body__top{
   height:260px;
   border-bottom: 1px solid #ccc;
-  .modal-window-body__top--1{
-    
+  padding: 64px;
+  font-size:14px;
+  .modal-window-body__top--title{
+  font-weight: bold;
+  font-size:16px;
+  }
+  .modal-window-body__top--comment{
+  margin: 18px  0;
+  padding: 16px;
+  background: #eee;
   }
 }
+
 .modal-window-body__form{
   height: 70px;
   display: flex;

@@ -145,7 +145,7 @@
   .item-other
     %section.item-other__user-items
       %h2.item-other__user-items__head
-        = link_to "testmanさんのその他の出品", item_path, method: :get, class: "link item-link"
+        = link_to "#{@item.seller.nickname}さんのその他の出品", item_path, method: :get, class: "link item-link"
       .item-other__user-items__content
         = render "other_item"
 
@@ -153,16 +153,14 @@
   .modal-window
     .modal-window-body
       .modal-window-body__top
-        .modal-window-body__top--1
+        .modal-window-body__top--title
           確認
-        .modal-window-body__top--2
+        .modal-window-body__top--comment
           @コメント
-        .modal-window-body__top--3
+        .modal-window-body__top--text
           本当にこのコメントを削除してよろしいですか？
       .modal-window-body__form
         .modal-window-body__form__btn
-
-          キャンセル
+          = link_to "キャンセル"
         .modal-window-body__form__btn
-          = link_to " 削除する", 
-         
+          = link_to "削除する"
