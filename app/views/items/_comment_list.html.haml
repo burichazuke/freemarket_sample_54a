@@ -36,6 +36,6 @@
           = fa_icon "clock-o", class: "comment-clock"
           %span.comment-clock
             = time_format(comment.created_at)
-          = link_to item_comment_path(@item,comment), method: :delete do
+          = link_to do
             = fa_icon "trash-o", class: "delete-icon"
         .item__comment__content-balloon

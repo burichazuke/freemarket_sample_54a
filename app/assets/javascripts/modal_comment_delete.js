@@ -1,8 +1,9 @@
-$(function() {
-  $(".delete-icon").click(function(){
-    $('.modal-window').fadeIn();
-  });
-  $('.modal-window-body__form__btn').click(function() {
-    $('.modal-window').fadeOut();
+$(document).on('turbolinks:load',function(){
+  $('.delete-icon').on('click',function(e){
+      e.preventDefault();
+      $('.modal-window').fadeIn("slow");
+      $('.modal-window-body__form__btn').on('click',function(){
+      $('.modal-window').fadeOut("slow");
+    });
   });
 });
