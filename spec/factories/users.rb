@@ -1,10 +1,6 @@
 FactoryBot.define do
 
   factory :user do
-    # email {test@test}
-    # encrypted_password {"123456"}
-    # created_at {Faker::Time.between(2.days.ago, Time.now, :all)}
-
     email { Faker::Internet.free_email }
     password {Faker::Internet.password(8)}
     nickname { Faker::Name.name }
