@@ -32,7 +32,6 @@
                   %span.item-content__detail-table__face__name
                     10
 
-
           %tr
             %th カテゴリー
             %td
@@ -102,7 +101,6 @@
           =fa_icon "lock"
           %span.aBlue あんしん・あんぜんへの取り組
 
-
   -if @item.seller_id.to_s == current_user&.id.to_s
     .item__detail-message
       .message-container
@@ -141,14 +139,12 @@
         =link_to "http://www.pinterest.com" do
           =fa_icon "pinterest-square", class:"icon-pinterest"
 
-
   .item-other
     %section.item-other__user-items
       %h2.item-other__user-items__head
         = link_to "#{@item.seller.nickname}さんのその他の出品", item_path, method: :get, class: "link item-link"
       .item-other__user-items__content
         = render "other_item"
-
 
   .modal-window
     .modal-window-body
@@ -163,4 +159,4 @@
         .modal-window-body__form__btn
           = link_to "キャンセル"
         .modal-window-body__form__btn
-          = link_to "削除する"
+          = link_to "削除する", item_path(@item), method: :delete
