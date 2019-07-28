@@ -1,6 +1,8 @@
 FactoryBot.define do
 
   factory :item do
+    association :category
+    association :seller, factory: :user
     name              {"abe"}
     description       {"説明"}
     size              {"s"}
@@ -12,8 +14,6 @@ FactoryBot.define do
     price             {2000}
     profit            {200}
     status            {0}
-    seller_id         {1}
-    buyer_id          {2}
     created_at { Faker::Time.between(2.days.ago, Time.now, :all) }
   end
 
