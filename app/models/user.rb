@@ -18,5 +18,5 @@ class User < ApplicationRecord
 
   belongs_to :item
   has_many :favorites, dependent: :destroy
-  has_many :favorites_items, through: :favorites, source: :item
+  has_many :items, through: :favorites, source: :item
 end
