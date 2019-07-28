@@ -1,3 +1,18 @@
+.modal-window{data:{id:comment.id}}
+  .modal-window-body
+    .modal-window-body__top
+      .modal-window-body__top--title
+        確認
+      .modal-window-body__top--comment
+        = comment.content
+      .modal-window-body__top--text
+        本当にこのコメントを削除してよろしいですか？
+    .modal-window-body__form
+      .modal-window-body__form__btn
+        = link_to "キャンセル"
+      .modal-window-body__form__btn
+        = link_to "削除する"
+
 - if comment.user_id.to_s == @item.seller_id.to_s
   .item__comment
     .item__comment__content
@@ -22,7 +37,7 @@
           %p 出品者
 
 - else
-  .item__comment
+  .item__comment{data:{id:comment.id}}
     .item__comment__user
       .item__comment__user-icon
         = image_tag comment.user.image.url, size: "40x40"
