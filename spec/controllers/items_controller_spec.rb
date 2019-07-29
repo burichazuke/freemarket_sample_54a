@@ -2,14 +2,14 @@ require 'rails_helper'
 
 describe ItemsController do
   describe 'GET #index' do
-    it "populates an array of items ordered by created_at DESC" do
+    it "インスタンス変数を正しく取得できているか/assings" do
       items = create_list(:item, 3) 
       get :index
       expect(assigns(:items)).to match(items.sort{|a, b| b.created_at <=> a.created_at })
     end
 
 
-    it "renders the :new template" do
+    it "HTTPメソッドを正しく呼出せているか/render_template" do
       get :index
       expect(response).to render_template :index
     end
@@ -27,6 +27,19 @@ describe ItemsController do
       expect(response).to render_template :show
     end
   end
+
+  describe 'GET #new' do
+    it "HTTPメソッドを正しく呼出せているか/render_template" do
+      get :new
+      expect(response).to render_template :new
+    end
+  end
+
+  describe 'CREATE #create' do
+    
+  end
+
+
 
   describe 'DELETE #destroy' do
     it "削除機能が機能しているか" do
