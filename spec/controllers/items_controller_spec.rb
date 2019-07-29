@@ -35,24 +35,6 @@ describe ItemsController do
     end
   end
 
-  # describe 'CREATE #create' do
-
-  #   let(:user) { create(:user) }
-  #   let(:category) { create(:category) }
-  #   let(:params) { { item: FactoryBot.attributes_for(:item) } }
-  #   before do
-  #     login user
-  #   end
-
-  #   it "出品機能が機能しているか" do
-  #     expect{
-  #       post :create, params: params
-  #     }.to change(Item, :count).by(1)
-  #   end
-  # end
-
-
-
   describe 'DELETE #destroy' do
     it "削除機能が機能しているか" do
       item = create(:item)
