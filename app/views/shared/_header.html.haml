@@ -1,58 +1,58 @@
 //ヘッダー
--# %header.header
-  -# .header-inner
-    -# .header-top
-    -#   .header-top__img
-    -#     = link_to '/',class: 'header-logo-link' do
-    -#       = image_tag 'mercari_logo.png', alt: 'mercari', height: '36', width: '134', class: 'header-logo'
+%header.header
+  .header-inner
+    .header-top
+      .header-top__img
+        = link_to '/',class: 'header-logo-link' do
+          = image_tag 'mercari_logo.png', alt: 'mercari', height: '36', width: '134', class: 'header-logo'
                 
-    -#   = form_tag('/items/search',class:'header-form', method: :get) do
-    -#     %input.search{name: "keyword", placeholder: '何かお探しですか？', type: "text", value: "", class:'search-txt-field' }/
-    -#     %button.search-icon{title: "検索", type: "submit"}
-    -#       =fa_icon 'search'
+      = form_tag('/items/search',class:'header-form', method: :get) do
+        %input.search{name: "keyword", placeholder: '何かお探しですか？', type: "text", value: "", class:'search-txt-field' }/
+        %button.search-icon{title: "検索", type: "submit"}
+          =fa_icon 'search'
             
-    -# .header-bottom
-    -#   .header-nav
-    -#     %ul.header-nav__left
-    -#       %li#header-category
-    -#         %h2
-    -#           = link_to categories_path, class:'header-nav__left__category' do
-    -#             = fa_icon 'list',class:'header-nav__left__icon'
-    -#             %span.header-nav__left__category__span カテゴリーから探す
-    -#         = render '/shared/category-nav'
+    .header-bottom
+      .header-nav
+        %ul.header-nav__left
+          %li#header-category
+            %h2
+              = link_to categories_path, class:'header-nav__left__category' do
+                = fa_icon 'list',class:'header-nav__left__icon'
+                %span.header-nav__left__category__span カテゴリーから探す
+            = render '/shared/category-nav'
 
-    -#       %li#header-brand
-    -#         %h2
-    -#           = link_to '/',class:'header-nav__left__brand' do
-    -#             =fa_icon 'tag',class:'header-nav__left__icon'
-    -#             %span.b-left__span ブランドから探す 
-    -#           = render '/shared/brand-nav'
+          %li#header-brand
+            %h2
+              = link_to '/',class:'header-nav__left__brand' do
+                =fa_icon 'tag',class:'header-nav__left__icon'
+                %span.b-left__span ブランドから探す 
+              = render '/shared/brand-nav'
               
-    -#     .header-nav__right
-    -#       %ul.header-nav
-    -#         - if user_signed_in?
-    -#           %li.header-nav__user
-    -#             %h2
-    -#               = link_to '/', class:'header-nav__user__link' do
-    -#                 = fa_icon 'bell-o',class:'header-user-icon'
-    -#                 %span お知らせ
-    -#           %li.header-nav__user
-    -#             %h2
-    -#               = link_to '/',class:'header-nav__user__link' do
-    -#                 = fa_icon 'check',class:'header-user-icon'
-    -#                 %span やることリスト
-    -#           %li.header-nav__user
-    -#             %h2
-    -#               = link_to mypage_index_path,class:'header-nav__user__link' do
-    -#                 = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-img'
-    -#                 %span マイページ
+        .header-nav__right
+          %ul.header-nav
+            - if user_signed_in?
+              %li.header-nav__user
+                %h2
+                  = link_to '/', class:'header-nav__user__link' do
+                    = fa_icon 'bell-o',class:'header-user-icon'
+                    %span お知らせ
+              %li.header-nav__user
+                %h2
+                  = link_to '/',class:'header-nav__user__link' do
+                    = fa_icon 'check',class:'header-user-icon'
+                    %span やることリスト
+              %li.header-nav__user
+                %h2
+                  = link_to mypage_index_path,class:'header-nav__user__link' do
+                    = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-img'
+                    %span マイページ
               
-    -#         - else
-    -#           %ul.header-user-list
-    -#             %li.header-user-list__new
-    -#               =link_to '新規会員登録',register_user_registration_path
-    -#             %li.header-user-list__login
-    -#               =link_to 'ログイン',new_user_session_path
+            - else
+              %ul.header-user-list
+                %li.header-user-list__new
+                  =link_to '新規会員登録',register_user_registration_path
+                %li.header-user-list__login
+                  =link_to 'ログイン',new_user_session_path
 %header.sp-header  
   .sp-header-inner#sp-header-inner
     .sp-header-top
