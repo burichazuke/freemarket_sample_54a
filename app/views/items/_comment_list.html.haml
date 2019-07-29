@@ -1,8 +1,9 @@
-.modal-window{data:{id:comment.id}}
+.modal-window{id: comment.id}
   .modal-window-body
     .modal-window-body__top
       .modal-window-body__top--title
         確認
+      -# .modal-window-body__top--comment data-id": "#{comment.id}"
       .modal-window-body__top--comment
         = comment.content
       .modal-window-body__top--text
@@ -11,7 +12,8 @@
       .modal-window-body__form__btn
         = link_to "キャンセル"
       .modal-window-body__form__btn
-        = link_to "削除する"
+        = link_to "削除する", item_comment_path(@item,comment), method: :delete
+
 
 - if comment.user_id.to_s == @item.seller_id.to_s
   .item__comment
@@ -23,12 +25,11 @@
         .item__comment__content-comment__seller
           %p
             = comment.content
-          = fa_icon "clock-o", class: "comment-clock"
           %span.comment-clock
             = time_format(comment.created_at)
           -if @item.seller_id.to_s == current_user&.id.to_s
-            = link_to do
-              = fa_icon "trash-o", class: "delete-icon"
+            = link_to "/" do
+              = fa_icon "trash-o", class: "delete-icon", "data-id": "#{comment.id}"
         .item__comment__content-balloon__seller
     .item__comment__user
       .item__comment__user-icon
@@ -37,7 +38,7 @@
           %p 出品者
 
 - else
-  .item__comment{data:{id:comment.id}}
+  .item__comment
     .item__comment__user
       .item__comment__user-icon
         = image_tag comment.user.image.url, size: "40x40"
@@ -49,7 +50,6 @@
         .item__comment__content-comment__user
           %p
             = comment.content
-          = fa_icon "clock-o", class: "comment-clock"
           %span.comment-clock
             = time_format(comment.created_at)
           -if comment.user_id.to_s == current_user&.id.to_s
