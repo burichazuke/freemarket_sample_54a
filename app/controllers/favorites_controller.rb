@@ -2,7 +2,8 @@ class FavoritesController < ApplicationController
 
   
   def create
-    @favorite = Favorite.create(user_id: current_user.id, item_id: params[:item_id])
+    @favorite = Favorite.new(user_id: current_user.id, item_id: params[:item_id])
+    @favorite.save
 
   end
 
@@ -10,7 +11,4 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.find_by(user_id: current_user.id, item_id: params[:item_id])
     @favorite.destroy
   end
-
-
-
 end

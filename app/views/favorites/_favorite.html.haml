@@ -1,16 +1,16 @@
 -if user_signed_in?
-  -if @item.favorites.present?
-    %button.item__button#favorited-button{"data-item-id": "#{@item.id}", "data-favo-id": "#{@item.favorites.count}"}
-      =fa_icon "heart" 
+  -if @item.favorited_by?(current_user)
+    %button.item__button#favorited-button{"data-item-id": "#{@item.id}", "data-favcount-id": "#{@item.favorites.count}"}
+      =fa_icon "heart", class:'favorite'
       %span いいね! 
-      %span.xxx
+      %span.favorite_count
         = @item.favorites.count
 
   -else
-    %button.item__button#item__button{"data-item-id": "#{@item.id}", "data-favo-id": "#{@item.favorites.count}"}
-      =fa_icon "heart-o"
+    %button.item__button#item__button{"data-item-id": "#{@item.id}", "data-favcount-id": "#{@item.favorites.count}"}
+      =fa_icon "heart-o", class:'favorite'
       %span いいね!
-      %span.xxx
+      %span.favorite_count
         = @item.favorites.count
 
 - else

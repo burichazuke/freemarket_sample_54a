@@ -16,7 +16,6 @@ class User < ApplicationRecord
   has_one :address, dependent: :destroy
   has_one :identification, dependent: :destroy
 
-  belongs_to :item
   has_many :favorites, dependent: :destroy
   has_many :items, through: :favorites, source: :item
 end
