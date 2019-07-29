@@ -1,3 +1,4 @@
+//いいね！を付ける
 $(document).on('click', "#item__button", function(e) {
   e.preventDefault();
   var id = $(this).data("item-id")
@@ -18,6 +19,7 @@ $(document).on('click', "#item__button", function(e) {
   })
 })
 
+//付けたいいね！を消す
 $(document).on('click', "#favorited-button", function(e) {
   e.preventDefault();
   var id = $(this).data("item-id")
