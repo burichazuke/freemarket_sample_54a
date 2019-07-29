@@ -262,6 +262,7 @@
   @include item-aHover;
 }
 
+//評価アイコン
 .item-content__detail-table__face{
   display: flex;
   span {
@@ -283,7 +284,7 @@
   }
 }
 
-
+//出品者の他の出品中商品
 .item-other {
   width: 700px;
   margin: 0 auto;
@@ -402,17 +403,17 @@
               }
               .comment-clock {
                 color: #aaa;
+                font-size: 13px;
               }
               .delete-icon{
-                padding-left:315px;
-                color: #aaa;
-                
+                text-align: right;
+                float: right;
+                color: #aaa; 
               }
             }
           }
         }
       }
-
       .item__comment__content-balloon__seller{
         position: relative;
       }
