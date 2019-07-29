@@ -140,12 +140,9 @@
       }
     }
     &__body{
-      padding-left:10px;
+      padding-left: 20px;
       width: 600px;
       font-size:14px;
-      &--text{
-        padding-left:10px;
-      }
       &--icon-time {
         display: inline-block;
         font-weight: bold;
@@ -155,6 +152,26 @@
       }
       span {
         color: #888;
+      }
+      &__detail {
+        display: flex;
+        color: #888;
+        &__comments {
+          margin: 0 10px;
+        }
+        &__status {
+          padding: 2px 6px;
+          border-radius: 4px;
+          background-color: #0099e8;
+          color: white;
+          font-size: 12px;
+          &--red {
+            background-color: $red;
+          }
+          &--gray {
+            background-color: #888;
+          }
+        }
       }
     }
     &__right-icon{

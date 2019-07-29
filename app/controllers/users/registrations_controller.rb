@@ -92,7 +92,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    super
+    render layout: "application"
+
   end
 
   # PUT /resource
@@ -101,9 +102,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # DELETE /resource
-  def destroy
-    super
-  end
+  # def destroy
+  #   super
+  # end
 
 
   # GET /resource/cancel

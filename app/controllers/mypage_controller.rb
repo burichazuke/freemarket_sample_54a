@@ -1,38 +1,28 @@
 class MypageController < ApplicationController
+
   def index
-    @user = current_user
+    @purchase_items = Item.where(buyer_id: current_user, status: 1)
+    @purchased_items = Item.where(buyer_id: current_user, status: 2)
   end
 
-  def notification
-    @user = current_user
+  def listing
+    @items = Item.where(seller_id: current_user, status: 0)
   end
 
-  def todo
-    @user = current_user
+  def in_progress
+    @items = Item.where(seller_id: current_user, status: 1)
+  end
+
+  def completed
+    @items = Item.where(seller_id: current_user, status: 2)
   end
 
   def purchase
-    @user = current_user
+    @items = Item.where(buyer_id: current_user, status: 1)
   end
 
   def purchased
-    @user = current_user
-  end
-
-  def news
-    @user = current_user
-  end
-
-  def support
-    @user = current_user
-  end
-
-  def sales
-    @user = current_user
-  end
-
-  def point
-    @user = current_user
+    @items = Item.where(buyer_id: current_user, status: 2)
   end
 
   def update_profile

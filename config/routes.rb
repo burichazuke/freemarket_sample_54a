@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, skip: [:registrations], controllers: {
     sessions: 'users/sessions',
-    passwords: 'users/passwords'
+    # passwords: 'users/passwords'
     # ToDo: facebook認証に応じて追加
     # omniauth_callbacks: "users/omniauth_callbacks"
   }
@@ -18,11 +18,8 @@ Rails.application.routes.draw do
     get 'users/sign_up/finish', to: 'users/registrations#finish', as: :finish_user_registration
     post 'users', to: 'users/registrations#create', as: :create_user_registration
     get 'users/:id', to: 'users#show', as: :show_user_plofile
-    # ToDo: マイページに応じて、要追加
-    # get 'users/edit', to: 'users/registrations#edit', as: :edit_user_registration
-    # patch 'users', to: 'users/registrations#update', as: :update_user_registration
-    # delete 'users', to: 'users/registrations#destroy', as: :destroy_user_registration
-    # get 'users/cancel', to: 'users/registrations#cancell', as: :cancel_user_registration
+    get 'mypage/email_password', to: 'users/registrations#edit', as: :email_password_mypage_index
+    patch 'users/:id', to: 'users/registrations#update', as: :update_user_registration
   end
 
   root to: "items#index"
