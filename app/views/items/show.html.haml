@@ -92,6 +92,87 @@
       %button.item__buy-btn--sold
         売り切れです
 
+    -# スマホサイズ用商品詳細テーブル
+    %table.sp-item__detail-table
+      %tboby
+        %tr
+          %th 出品者
+          %td
+            = link_to @item.seller.nickname, show_user_plofile_path(@item.seller), method: :get, class: "user-name-link"
+            .item-content__detail-table__face
+              .item-content__detail-table__face--good
+                = fa_icon "smile-o", class: "good-icon"
+                %span.item-content__detail-table__face__name
+                  10
+              .item-content__detail-table__face--normal
+                = fa_icon "meh-o", class: "normal-icon"
+                %span.item-content__detail-table__face__name
+                  10
+              .item-content__detail-table__face--bad
+                = fa_icon "frown-o", class: "bad-icon"
+                %span.item-content__detail-table__face__name
+                  10
+
+        %tr
+          %th カテゴリー
+          %td
+            =link_to category_path(@grandchild.parent.parent.id),class:'aBlue' do
+              = @grandchild.parent.parent.name
+            =link_to category_path(@grandchild.id),class:'aBlue' do
+              .item-category-sub
+                = fa_icon 'chevron-right',class:'item-category__icon'
+                = @grandchild.parent.name
+            =link_to category_path(@grandchild.id),class:'aBlue' do
+              .item-category-sub-sub
+                = fa_icon 'chevron-right',class:'item-category__icon'
+                = @grandchild.name
+              
+        %tr
+          %th ブランド
+          %td
+            =link_to root_path,class:'aBlue' do
+              エルメス
+              -# ブランドまだ
+        %tr
+          %th 商品のサイズ
+          %td 
+            = @item.size
+        %tr
+          %th 商品の状態
+          %td 
+            = @item.condition
+        %tr
+          %th 配送料の負担
+          %td 
+            = @item.shipping_fee
+        %tr
+          %th 配送の方法
+          %td
+            = @item.shipping_method
+        %tr
+          %th 配送元地域
+          %td
+            =link_to item_path,class:'aBlue' do
+              = @item.prefecture
+        %tr
+          %th 配達日の目安
+          %td
+            = @item.shipping_date
+
+    .sp-item__price-box
+      %span.sp-item__price-box__price
+        = "¥ #{@item.price.to_s(:delimited)}"
+      %span.sp-item__price-box__tax
+        (税込)
+      %span.sp-item__price-box__shipping-fee
+        送料込み
+    -if @item.status == 0
+      =link_to items_buy_path, class: "sp-item__buy-btn" do
+        購入画面に進む
+    - else
+      %button.sp-item__buy-btn--sold
+        売り切れです
+
     %section.item__description
       %p.item__description__innner
         = @item.description
