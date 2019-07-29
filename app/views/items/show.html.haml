@@ -145,6 +145,6 @@
   .item-other
     %section.item-other__user-items
       %h2.item-other__user-items__head
-        = link_to "testmanさんのその他の出品", item_path, method: :get, class: "link item-link"
+        = link_to "testmanさんのその他の出品", item_path(@item), method: :get, class: "link item-link"
       .item-other__user-items__content
-        = render "other_item"
+        = render partial: "other_item", collection: @item, as: :item
