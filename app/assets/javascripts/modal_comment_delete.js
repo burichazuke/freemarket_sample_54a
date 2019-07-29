@@ -1,9 +1,8 @@
 $(document).on('turbolinks:load',function(){
   $('.delete-icon').on('click',function(e){
       e.preventDefault();
-      $('.modal-window').fadeIn("slow");
-      $('.modal-window-body__form__btn').on('click',function(){
-      $('.modal-window').fadeOut("slow");
-    });
+      var dataId = $(this).data('id');
+      console.log(dataId)
+      $(`#${dataId}`).fadeIn("slow");
   });
 });
