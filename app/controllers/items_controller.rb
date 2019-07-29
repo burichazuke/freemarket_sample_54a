@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:images).order("created_at desc").limit(8)
+    ids = Category.find(1).descendant_ids
+    @ladies_items = Item.where(category_id: ids).limit(4)
   end
 
   def show
