@@ -52,42 +52,144 @@
       }
     }
   }
-  &__global{
+}
+
+@media screen and(min-width: 770px){
+  .footer__banner{
+    display: block;
+  }
+  .footer__global{
     width: 100%;
     height:400px;
     background: #212121;
     display: flex;
     position: relative;
+  }
+  .info {
+    margin: 0 auto;
+    width: 1020px;
+    height: 298px;
+  } 
+
+  .footer__cell {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 18px;
+    padding-right: 20px;
+    width: 20%;
+    height: 241px;
+    color: white;
+    &__child {
+      width: 23%;
+      padding-right: 40px;
+    }
+    &__width {
+      width: 42%;
+      .inner__footer__cell {
+        display: flex;
+        &__child {
+          padding-left: 10px;
+        }
+      }
+    }
+
+    &__short {
+      width: auto;
+    }
+    .footer__head {
+      font-size: 16px;
+    }
+    .footer__lists {
+      font-size: 12px;
+      opacity: .7;
+      :hover {
+        text-decoration-line: underline;
+      }
+      &__list{
+        margin-top: 12px;
+        color: white;
+      }
+    }
+    .footer-social-links {
+      margin-top: 14px;
+      width: 45px;
+      height: 45px;
+      display: flex;
+
+      &--icon {
+        font-size: 30px;
+        display: inline-block;
+        padding-right: 10px; 
+        color: white;
+      }
+    }
+  }
+  .footer__bottom {
+    width: 1020px;
+    height: 50px;
+    margin: 30px 0 20px;
+    position: absolute;
+    bottom: 0; /*下に固定*/
+    .footer-logo-white {
+      color: white;
+      width: 124px;
+      height: 33px;
+    }
+    .footer__copyright {
+      width: 745px;
+      display: inline-block;
+      text-align: center;
+      margin-top: 8px;
+    }
+  }
+}
+
+@media screen and(max-width:769px){
+  .footer__banner{
+    display:none;
+  }
+  .footer__global{
+    width: 100%;
+    background: #212121;
+    display: flex;
+    padding:0 20px 10px 20px;
+    position: relative;
     .info {
       margin: 0 auto;
-      width: 1020px;
-      height: 298px;
-    } 
- 
+      width: 100vw;
+    }
+    a{
+      font-size: 12px;
+      line-height: 1.5em;
+    }
+  }
     .footer__cell {
       display: inline-block;
       vertical-align: top;
       margin-top: 18px;
-      padding-right: 20px;
-      width: 20%;
-      height: 241px;
+      padding-right: 10px;
       color: white;
+      &__mercari{
+        width:50%;
+        float:left;
+      }
       &__child {
-        width: 23%;
+        width: 50%;
         padding-right: 40px;
       }
       &__width {
-        width: 42%;
+        width: 100vw;
         .inner__footer__cell {
           display: flex;
           &__child {
             padding-left: 10px;
+            width:50%;
           }
         }
       }
-
       &__short {
-        width: auto;
+        width: 100vw;
+        margin-top:35px;
       }
       .footer__head {
         font-size: 16px;
@@ -108,7 +210,7 @@
         width: 45px;
         height: 45px;
         display: flex;
-
+  
         &--icon {
           font-size: 30px;
           display: inline-block;
@@ -117,22 +219,25 @@
         }
       }
     }
-    .footer__bottom {
-      width: 1020px;
-      height: 50px;
-      margin: 30px 0 20px;
+  .footer__bottom {
+    width: 100vw;
+    margin: 50px auto 0;
+    display: flex;
+    align-items: center;
+
+    .footer-logo-white {
+      color: white;
+      width: 124px;
+      height: 33px;
+      
+    }
+    .footer__copyright {
+      margin-top: 8px;
       position: absolute;
-      bottom: 0; /*下に固定*/
-      .footer-logo-white {
-        color: white;
-        width: 124px;
-        height: 33px;
-      }
-      .footer__copyright {
-        width: 745px;
-        display: inline-block;
-        text-align: center;
-        margin-top: 8px;
+      bottom:15px;
+      left:150px;
+      &__index{
+        font-size:12px;
       }
     }
   }
