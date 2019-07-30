@@ -1,10 +1,10 @@
 class MypageController < ApplicationController
   def index
-    @user = current_user
+    @items = Item.where(seller_id: current_user.id)
   end
 
   def profile
-    @user = current_user
+    @items = Item.where(seller_id: current_user.id)
   end
 
   def update_profile
@@ -39,5 +39,4 @@ class MypageController < ApplicationController
   def user_profile_params
     params.require(:user).permit(:nickname, :introduce, :image)
   end
-
 end
