@@ -140,8 +140,8 @@ class ItemsController < ApplicationController
     @grandchild = Category.find(@item.category_id)
   end
 
-  def authenticate
-    redirect_to new_user_session_path
+  def authenticate  
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
   
