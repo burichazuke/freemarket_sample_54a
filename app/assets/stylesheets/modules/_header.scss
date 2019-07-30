@@ -101,11 +101,6 @@ h2 span{
         }
         .header-user-list{
           display: flex;
-
-        .header-user-img{
-
-        }
-
           &__new{
             background: #ea352d;
             border: 1px solid #ea352d;
@@ -116,7 +111,6 @@ h2 span{
             line-height: 30px;
             height: 30px;
             font-size:14px;
-            
             a{
               color: #fff; //SCSSリファクタリング後に消します
             }
