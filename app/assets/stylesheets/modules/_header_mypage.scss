@@ -11,7 +11,7 @@
     background: image-url("mypage_haikei");
     background-size: cover;
   }
-    &__user__icon{
+    &__icon{
       padding-top:24px;
       background: image-url("mypage_haikei");
       background-size: cover;
@@ -23,7 +23,7 @@
         height:60px;
       }
     }
-    &__user__review{
+    &__review{
     display: flex;
     justify-content: center;
     font-size: 12px;
@@ -32,7 +32,7 @@
     span{
       color: black;
     }
-      &--rate{
+      &__rate{
         display: block;
         padding-right:22px;
         &:hover{
@@ -40,7 +40,7 @@
           opacity: 0.5;
         }
       }
-      &--display{
+      &__display{
         &:hover{
           text-decoration: underline solid black;
           opacity: 0.5;
@@ -48,14 +48,14 @@
       }
     }
 
-  .mypage__nav__user__number{
+  .mypage__nav__number{
     background-color:white;
     font-size:13px;
     &__list{
       display: block;
       padding: 0 12px;
     }
-      &--box{
+      &__box{
         display: flex;
         height: 45px;
         padding: 14px;
@@ -65,16 +65,13 @@
         &:hover{
           opacity: 0.5;
         }
-        &--sales{
-          // padding:
-          padding-left:167px;
-          padding-right:13px;
+        &__sales{
+          padding: 0 13px 0 167px;
         }
-        .number--point{
-          padding-left:155px;
-          padding-right:13px;
+        &__point{
+          padding: 0 13px 0 155px;
         }
-        .number--icon{
+        &__icon{
           font-weight: bold;
           color: #888;
           font-size:22px;
@@ -82,7 +79,7 @@
       }
     }
 
-.mypage__nav__user--while{
+.mypage__nav--while{
   height:15px;
   background-color: white;
   border-bottom: 1px solid #eee;
