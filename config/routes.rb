@@ -19,14 +19,14 @@ Rails.application.routes.draw do
     post 'users', to: 'users/registrations#create', as: :create_user_registration
     get 'users/:id', to: 'users#show', as: :show_user_plofile
     # get 'mypage/email_password', to: 'users/registrations#edit', as: :email_password_mypage_index
-    patch 'users/:id', to: 'users/registrations#update', as: :update_user_registration
+    # get 'mypage/email_password/confirmation', to: 'users/registrations#update_confirmation', as: :email_password_confirmation_mypage_index
+    put 'mypage/email_password', to: 'users/registrations#update', as: :update_user_registration
   end
 
   root to: "items#index"
-  resources :users,  only: [:show]
   resources :mypage, only: [:index] do
     collection do
-      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "email_password", "identification", "sms_confirmation", "help_center"
+      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "email_password", "confirmation", "identification", "sms_confirmation", "help_center"
     end
   end
 
@@ -65,7 +65,6 @@ Rails.application.routes.draw do
 
   resources :categories,  only: [:index, :show] 
 
-  resources :brands,  only: [:index, :show]
   resources :cards, only: [:new, :create, :destroy,]
   as :cards do
     get "mypage/card", to: "cards#card"
