@@ -419,9 +419,17 @@
         border-left: 15px solid #eee;
       }
 
-      .mypage__content__tab-content__item-list--index--red--edit{
-        padding: 0px;
+      .mypage__content__tab-content__item-list--index--edit{
+        a {
+          color: #fff;
+          background-color:#ea352d;
+          border: 1px solid #ea352d;
+          &:hover{
+            background-color:red;
+            text-decoration: none;
+        }
       }
+    }
       .mypage-content--choose{
         text-align: center;
       }
