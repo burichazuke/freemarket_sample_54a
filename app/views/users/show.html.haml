@@ -61,10 +61,10 @@
                       = image_tag("other-item.png", class: "item-image", size: "220x220")
                     .item-other__user-items__content__box__body
                       %h3.item-other__user-items__content__box__body__name
-                        = @item.name
+                        @user.item.name
                       .item-other__user-items__content__box__num
                         .item-other__user-items__content__box__num__price
-                          = "¥ #{@item.price}"
+                          100
                         .item-other__user-items__content__box__num__likes
                           =fa_icon "heart-o", class: "like-icon"
                           %span.item-other__user-items__content__box__num__likes__num
