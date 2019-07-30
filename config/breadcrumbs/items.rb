@@ -9,6 +9,16 @@ crumb :item_name do |item_name|
 end
 
 crumb :item_search do |item_search|
-  link "#{params[:keyword]}"
+
+  if params[:keyword]
+    link "#{params[:keyword]}"
+  elsif params[:q][:name_cont_all].blank?
+    link "商品一覧" 
+  else 
+    qs = params[:q][:name_cont_all]
+    qs.each do |q|
+      link "#{q}"
+    end
+  end
   parent :root
 end
