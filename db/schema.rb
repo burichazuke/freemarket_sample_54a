@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(version: 2019_07_23_051349) do
     t.date "birthday", null: false
     t.integer "wallet"
     t.string "phone_number"
+    t.string "verification_code"
+    t.boolean "verified", default: false, null: false
     t.text "introduce"
     t.string "image"
     t.index ["email"], name: "index_users_on_email", unique: true
