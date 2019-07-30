@@ -3,6 +3,7 @@
 @import 'config/mixin';
 @import 'font-awesome';
 @import 'modules/header';
+@import 'modules/header-phone';
 @import 'modules/footer';
 @import 'modules/single';
 @import 'modules/single-form';
@@ -16,10 +17,14 @@
 @import 'items/index';
 @import 'items/buy';
 @import 'items/show';
+@import 'items/sp-show.scss';
 @import 'items/buy';
 @import 'items/new';
+@import 'categories/index';
+@import 'categories/show';
 @import 'slick/slick-theme';
 @import 'slick/slick';
 @import 'items/search';
+@import 'users/show';
 
 

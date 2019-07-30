@@ -5,9 +5,13 @@
       .top-main-visual
         .top-main-visual__wrapper
           .top-main-visual__wrapper__content
-            %h2
+            %h2.top-main-visual__wrapper__content__title
               スマホでかんたん
               %br フリマアプリ
+            %h2.sp-top-main-visual__title
+              スマホで
+              %br かんたん
+              フリマアプリ
             %p
               メルカリはスマホカメラからすぐ出品できる
               %br 購入時も安心な独自システムのアプリです
@@ -22,25 +26,52 @@
         =image_tag "camp.png", class: "top-main-visual--camp__img"
     
 
+  -# カテゴリ
+  %section.pickup
+    %h2{class: "pickup__head"}
+      ピックアップカテゴリー
+    %section{class: "items-box__container"}
+      %h3{class: "text-center"} 
+        = link_to "レディース新着アイテム", category_path(1)
+      .items-box__content
+        -@ladies_items.each do |item|
+          = render partial: "items2", locals: {item: item}
+      .view-all
+        = link_to "すべての商品を見る", category_path(1)
 
-  -# 商品一覧仮置きです。カテゴリ追加次第切り替え
+    %section{class: "items-box__container"}
+      %h3{class: "text-center"} 
+        = link_to "メンズ新着アイテム", category_path(2)
+      .items-box__content
+        -@mens_items.each do |item|
+          = render partial: "items2", locals: {item: item}
+      .view-all
+        = link_to "すべての商品を見る", category_path(2)
+
+    %section{class: "items-box__container"}
+      %h3{class: "text-center"} 
+        = link_to "ベビー・キッズ新着アイテム", category_path(3)
+      .items-box__content
+        -@babys_items.each do |item|
+          = render partial: "items2", locals: {item: item}
+      .view-all
+        = link_to "すべての商品を見る", category_path(3)
+
+    %section{class: "items-box__container"}
+      %h3{class: "text-center"} 
+        = link_to "コスメ・香水・美容新着アイテム", category_path(7)
+      .items-box__content
+        -@cosmetics_items.each do |item|
+          = render partial: "items2", locals: {item: item}
+      .view-all
+        = link_to "すべての商品を見る", category_path(7)
+
+
+  -# 商品一覧
   %section.pickup
     %h2{class: "pickup__head"}
       商品一覧
     %section{class: "items-box__container"}
       .items-box__content
         = render @items
-
-
-
-  -# カテゴリ追加次第こちらに切り替え
-  %section.pickup
-    %h2{class: "pickup__head"}
-      ピックアップカテゴリー
-    = render "items2"
-
-  %section.pickup
-    %h2{class: "pickup__head"}
-      ピックアップブランド
-    = render "items2"
 

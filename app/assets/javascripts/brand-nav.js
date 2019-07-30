@@ -1,11 +1,11 @@
 $(document).on('turbolinks:load',function(){
   $('#header-brand').hover(function(){
-    $('.header-nav-parent-wrap2').show();
+    $('.header-nav-brand-wrap').show();
   },function(){
-    $('.header-nav-parent-wrap2').hide();
+    $('.header-nav-brand-wrap').hide();
   });
 
-  $('.header-brand-nav-parent').hover(function(){
+  $('.header-nav-brand-wrap__parent').hover(function(){
     $(this).addClass('active');
   },function(){
     $(this).removeClass('active');

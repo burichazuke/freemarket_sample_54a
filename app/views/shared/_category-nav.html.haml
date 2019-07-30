@@ -1,112 +1,17 @@
-// あとで部分テンプレートで書き出します。
-//ブランド多段階ナビゲーションバー
-
-%ul.header-nav-parent-wrap
-  %li.header-nav-parent
-    %h3
-      = link_to '/' do
-        %span.parent-span レディース
-    %ul.header-nav-child-wrap
-      %li.header-nav-child
-        = link_to '/' do
-          %span トップス
-
-        %ul.header-nav-grand-child-wrap
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span Tシャツ/カットソー（半袖なし/袖なし）
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span Tシャツ/カットソー（七分/長袖)
-      %li.header-nav-child
-        = link_to '/' do
-          %span ジャケット
-        %ul.header-nav-grand-child-wrap
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span テーラードジャケット
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span ノーカラージャケット
-      %li.header-nav-child
-        = link_to '/' do
-          %span パンツ
-        %ul.header-nav-grand-child-wrap
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span デニム
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span ショートパンツ
-
-  %li.header-nav-parent
-    %h3
-      = link_to '/' do
-        %span.parent-span メンズ
-    %ul.header-nav-child-wrap
-      %li.header-nav-child
-        = link_to '/' do
-          %span スーツ
-        %ul.header-nav-grand-child-wrap
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span ネクタイ
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span ベルト
-      %li.header-nav-child
-        = link_to '/' do
-          %span 靴
-        %ul.header-nav-grand-child-wrap
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span スニーカ
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span サンダル
-      %li.header-nav-child
-        = link_to '/' do
-          %span 帽子
-        %ul.header-nav-grand-child-wrap
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span バケットハット
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span 野球帽
-
-  %li.header-nav-parent
-    %h3
-      = link_to '/' do
-        %span.parent-span ベビー・キッズ
-    %ul.header-nav-child-wrap
-      %li.header-nav-child
-        = link_to '/' do
-          %span おもちゃ
-        %ul.header-nav-grand-child-wrap
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span くるま
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span あやかすときに使うアレ
-      %li.header-nav-child
-        = link_to '/' do
-          %span ベビーカー
-        %ul.header-nav-grand-child-wrap
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span ハイブリットベビーカー
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span 空飛ぶベビーカー
-      %li.header-nav-child
-        = link_to '/' do
-          %span ベビー服(寺門さん用)
-        %ul.header-nav-grand-child-wrap
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span トップス
-          %li.header-nav-grand-child
-            =link_to '/' do
-              %span ボトムス
+-# //ブランド多段階ナビゲーションバー
+%ul.header-nav-parent-wrap#header-nav-parent
+  - @parents.each do |parent|
+    %li.header-nav-parent
+      %h3.header-nav-parent__heading
+        =link_to category_path(parent.id),class:'header-nav-parent__a' do
+          = parent.name
+      %ul.header-nav-child-wrap
+        - parent.children.each do |child|
+          %li.header-nav-child
+            = link_to category_path(child.id) do
+              = child.name
+            %ul.header-nav-grand-child-wrap
+              - child.children.each do |grandchild|
+                %li.header-nav-grand-child
+                  = link_to category_path(grandchild.id) do
+                    = grandchild.name

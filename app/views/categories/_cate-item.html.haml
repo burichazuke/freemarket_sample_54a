@@ -1,0 +1,19 @@
+
+-@items.each do |item|
+  %section{class: "cateItem-box"}
+    = link_to item_path(item.id) do
+      .cateItem-box__photo
+        -image = item.images.first
+        -if image
+          =image_tag "#{image.image}"
+        -if item.status >= 1
+          .items-box__photo__soldout
+            %h2 SOLD
+      .cateItem-box__body
+        %h3{class: "cateItem-box__body__name font-2"}
+          = item.name
+        .cateItem-box__body__num
+          .cateItem-box__body__num__price.font-5
+            ="¥ #{item.price.to_s(:delimited)}" 
+          .cateItem-box__body__num__like.font-2
+            =fa_icon "heart-o" 

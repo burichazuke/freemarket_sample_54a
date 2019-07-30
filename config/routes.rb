@@ -8,11 +8,16 @@ Rails.application.routes.draw do
   as :user do
     get 'users/sign_up/registration', to: 'users/registrations#new', as: :user_registration
     get 'users/sign_up', to: 'users/registrations#register', as: :register_user_registration
+    post 'users/sign_up/sms_confirmation', to: 'users/registrations#validation', as: :user_validation
     get 'users/sign_up/sms_confirmation', to: 'users/registrations#sms_confirmation', as: :sms_confirmation_user_registration
+    post 'users/sign_up/add_phone_number', to: 'users/registrations#add_phone_number', as: :add_phone_number
+    get 'users/sign_up/sms_confirmation/sms', to: 'users/registrations#verification_code_input', as: :verification_code_input
+    post 'users/sign_up/verification', to: 'users/registrations#verification', as: :verification
     get 'users/sign_up/address', to: 'users/registrations#address', as: :address_user_registration
     get 'users/sign_up/credit_card', to: 'users/registrations#credit_card', as: :credit_card_user_registration
     get 'users/sign_up/finish', to: 'users/registrations#finish', as: :finish_user_registration
     post 'users', to: 'users/registrations#create', as: :create_user_registration
+    get 'users/:id', to: 'users#show', as: :show_user_plofile
     # ToDo: マイページに応じて、要追加
     # get 'users/edit', to: 'users/registrations#edit', as: :edit_user_registration
     # patch 'users', to: 'users/registrations#update', as: :update_user_registration
@@ -24,7 +29,7 @@ Rails.application.routes.draw do
   resources :users,  only: [:show]
   resources :mypage, only: [:index] do
     collection do
-      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "card", "email_password", "identification", "sms_confirmation", "help_center"
+      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "email_password", "identification", "sms_confirmation", "help_center"
     end
   end
 
@@ -37,6 +42,7 @@ Rails.application.routes.draw do
     get "mypage/listings/completed", to: "mypage#completed"
     get "mypage/review/history", to: "mypage#review"
     get "logout", to: "mypage#logout"
+    patch "mypage/profile", to: "mypage#update_profile"
   end
 
   as :address do 
@@ -46,6 +52,7 @@ Rails.application.routes.draw do
   end
   
   as :items do
+    get "transaction/done/:id", to: "items#done", as: :items_done
     get "transaction/buy/:id", to: "items#buy", as: :items_buy
     patch "transaction/pay/:id", to: "items#pay", as: :items_pay
     get "items/sell", to: "items#new", as: :items_sell
@@ -54,11 +61,22 @@ Rails.application.routes.draw do
   resources :items, except: :new 
     resource :favorites, only: [:create, :destroy]
   
-
+  resources :items, except: :new do
+    collection do
+      get "category_parent", defaults:{format:'json'} 
+      get 'category_children', defaults:{format:'json'}
+      get 'category_grandchildren', defaults:{format:'json'}
+    end
     resources :comments, only:[:create, :destroy]
-  resources :categories,  only: [:index, :show]
+  end
+
+  resources :categories,  only: [:index, :show] 
+
   resources :brands,  only: [:index, :show]
-  resources :cards, only: [:new, :create,:destroy,] do
+  resources :cards, only: [:new, :create, :destroy,]
+  as :cards do
+    get "mypage/card", to: "cards#card"
   end
 
 end
+
