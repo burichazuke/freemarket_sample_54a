@@ -8,6 +8,51 @@
   }
   &__container{
     border-bottom: 1px solid #f5f5f5;
+    min-height: 100px;
+    align-items: center;
+    display: flex;
+  }
+  &__notice{
+    background: #fff6de;
+    width: 100%;
+    min-height: 100px;
+    &__wait{
+      color: $red;
+      font-size: 18px;
+      font-weight: bold;
+      padding-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      span{
+        font-size: 30px;
+        color: $red;
+        margin-right: 10px;
+      }
+    }
+    &__message{
+      font-size: 15px;
+      text-align: center;
+      padding-bottom: 20px; 
+    }
+  }
+  &__done{
+    width: 100%;
+    margin: 20px 0;
+    text-align: center;
+    h3{
+      font-weight: bold;
+    }
+    p{
+      padding: 10px 0 10px;
+    }
+    &__link{
+      color: $blue;
+    }
+    &__face{
+      display: flex;
+      justify-content: center;
+    }
   }
   &__item{
     width: 320px;
@@ -20,11 +65,19 @@
         height: 64px;
         width: 64px;
         object-fit: cover;
+        &--done{
+          display: block;
+          height: 100px;
+          width: 100px;
+          margin: 0 auto 10px;
+          object-fit: cover;
+        }
       }
       &__name{
         padding-left: 16px;
         font-size: 16px;
         font-weight: bold;
+        text-align: center;
       }
     }
     &__price{
@@ -32,6 +85,7 @@
       padding-top: 10px;
       font-size: 17px;
       font-weight: bold;
+      margin: 0 auto;
       span{
         font-size: 14px;
         font-weight: normal;
