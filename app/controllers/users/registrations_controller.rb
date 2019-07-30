@@ -95,12 +95,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    binding.pry
     @user = current_user
+    # deviseの公式Gemを参考に記述
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
-    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
-    resource_updated = update_resource(resource, account_update_params)
-    if resource_updated
+    if update_resource(resource, account_update_params)
       sign_in :user, @user, bypass: true
       redirect_to confirmation_mypage_index_path
     else
@@ -116,11 +114,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
     devise_parameter_sanitizer.permit(:account_update, keys: [:email, :current_password, :password, :password_confirmation])
   end
 
-  # def after_update_path_for(resource)
-  #   # sign_in_after_change_password? ? signed_in_root_path(resource) : new_session_path(resource_name)
-  #   binding.pry
-  #   render "/mypage/confirmation"
-  # end
+  def update_resource(resource, params)
+    if params[:password].blank?
+      resource.update_without_password(email: params[:email])
+    else
+      resource.update_with_password(params)
+    end
+  end
   
   private
 
