@@ -62,7 +62,7 @@
         = label :size, "サイズ"
         %span.single__field__require 必須
       .single__field__select
-        = f.select :size,[["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"]], class: "single__field__select", prompt: "---"
+        = f.select :size,[["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"],["L","L"],["XL(LL)","XL(LL)"],["FREE SIZE","FREE SIZE"]], class: "single__field__select", prompt: "---"
     //後の実装にて使用するためコメントアウトしています
     -# .single__field.single__field--large  
     -#   .single__field__label
@@ -86,7 +86,7 @@
         = f.label :shipping_fee, "配送料の負担"
         %span.single__field__require 必須
       .single__field__select
-        = f.select :shipping_fee, [["送料負担(出品者負担)","送料負担(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]], class: "single__field__select", prompt: "---"
+        = f.select :shipping_fee, [["送料負担(出品者負担)","送料込み"],["着払い(購入者負担)","着払い"]], class: "single__field__select", prompt: "---"
     
     .single__field.single__field--large
       .single__field__label

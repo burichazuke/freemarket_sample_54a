@@ -83,7 +83,7 @@
       %span.item__price-box__tax
         (税込)
       %span.item__price-box__shipping-fee
-        送料込み
+        = @item.shipping_fee
     -if @item.status == 0
       =link_to items_buy_path, class: "item__buy-btn" do
         購入画面に進む

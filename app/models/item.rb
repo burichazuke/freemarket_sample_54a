@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   before_save :item_profit
-  attr_accessor :image_validation, :image_files, :delete_image_files, :parent_id, :child_id, 
+  attr_accessor :image_validation, :image_files, :delete_image_files, :parent_id, :child_id
 
   def item_profit
     self.profit = price * 0.9
@@ -14,9 +14,6 @@ class Item < ApplicationRecord
   # belongs_to_active_hash :category
 
   # belongs_to_active_hash :brand
-
-  validates :name, :description, :price, :images, presence: true
-  validates :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, presence: true
 
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
