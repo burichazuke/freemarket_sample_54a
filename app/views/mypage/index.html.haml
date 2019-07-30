@@ -30,7 +30,7 @@
         %section.mypage__content__tab-container
           %ul.mypage__content__tabs
             = render partial: "mypage-tabs", locals: { active: true, title: first_titles[0], path: first_path[0] } 
-            = render partial: "mypage-tabs", locals: { active: false, title: first_titles[0], path: first_path[0] } 
+            = render partial: "mypage-tabs", locals: { active: false, title: first_titles[1], path: first_path[1] } 
           .mypage__content__tab-content
             %ul.mypage__content__tab-content__item-list.show-mypage-tab
               = render partial: "mypage-tab-lists", locals: { announces: [] }
