@@ -1,15 +1,14 @@
-.header-nav-parent-wrap2{
+.header-nav-brand-wrap{
   background-color:white;
   width:auto;
   position: absolute;
-  float:left;
   display: none;
   z-index:800; //下との重なりを解消しています。
-  .header-brand-nav-parent{
+  &__parent{
     width:224px;
     height:44px;
     line-height: 44px;
-    &.header-brand-nav-heading{
+    &--heading{
       display:block;
       width:100%;
     }

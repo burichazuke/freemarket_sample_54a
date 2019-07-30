@@ -55,7 +55,7 @@
 }
 
 @media screen and(min-width: 770px){
-  .fotter__banner{
+  .footer__banner{
     display: block;
   }
   .footer__global{
@@ -152,8 +152,8 @@
     width: 100%;
     background: #212121;
     display: flex;
-    position: relative;
     padding:0 20px 10px 20px;
+    position: relative;
     .info {
       margin: 0 auto;
       width: 100vw;
@@ -172,32 +172,24 @@
       &__mercari{
         width:50%;
         float:left;
-
       }
-
       &__child {
         width: 50%;
-        float:right;
         padding-right: 40px;
       }
       &__width {
         width: 100vw;
         .inner__footer__cell {
           display: flex;
-          
-          
           &__child {
             padding-left: 10px;
             width:50%;
-            float:left;
           }
         }
       }
-  
       &__short {
         width: 100vw;
         margin-top:35px;
-
       }
       .footer__head {
         font-size: 16px;
