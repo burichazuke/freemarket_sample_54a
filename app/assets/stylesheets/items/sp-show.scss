@@ -289,46 +289,6 @@
         margin-right: 8px;
         padding-bottom: 8px;
       }
-      &__content {
-        display: flex;
-        flex-wrap: wrap;
-        // max-width: 700px;
-        &__box {
-          background-color: white;
-          margin: 0 0 20px 20px;
-          &:nth-child(3n+1) {
-            margin-left: 0px;
-  
-          }
-          &__body {
-            padding: 16px;
-            height: 110px;
-            // width: 220px;
-            color: #000;
-            &__name {
-              font-size: 1rem;
-              line-height: 1.5;
-              height: 3rem;
-              overflow: hidden;
-              white-space: normal;
-            }
-          }
-          &__num {
-            margin: 8px 0 0;
-            &__price {
-              float: left;
-              font-weight: 600;
-            }
-            &__likes {
-              float: right;
-              &__num {
-                font-size: 0.9rem;
-                margin-left: 3px;
-              }
-            }
-          }
-        }
-      }
     }
   }
   

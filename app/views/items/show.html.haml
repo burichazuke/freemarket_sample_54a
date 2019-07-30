@@ -152,5 +152,7 @@
     %section.item-other__user-items
       %h2.item-other__user-items__head
         = link_to "#{@item.seller.nickname}さんのその他の出品", item_path, method: :get, class: "link item-link"
-      .item-other__user-items__content
-      -# 他のアイテムを表示
+      .item-other__user-items__contents
+        %section{class: "items-box__container"}
+          .items-box__content
+            = render @user_items
