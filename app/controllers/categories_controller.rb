@@ -16,9 +16,9 @@ class CategoriesController < ApplicationController
       @items = Item.where(category_id: ids)
     # 現在地が孫なら
     else
-      ids = Category.find(params[:id]).child_ids
+      @items = Item.where(category_id: params[:id])
     end
-    @items = Item.where(category_id: params[:id])
+    
   end
 
   private

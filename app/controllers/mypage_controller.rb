@@ -1,10 +1,10 @@
 class MypageController < ApplicationController
   def index
-    @user = current_user
+    @items = Item.where(seller_id: current_user.id)
   end
 
   def profile
-    @user = current_user
+    @items = Item.where(seller_id: current_user.id)
   end
 
   def update_profile
@@ -30,6 +30,11 @@ class MypageController < ApplicationController
       render "mypage/identification"
     end
   end
+ 
+  def like
+    @user = User.find(current_user.id)
+    @items = @user.favorite_items
+  end
 
   private
   def identification_params
@@ -39,5 +44,4 @@ class MypageController < ApplicationController
   def user_profile_params
     params.require(:user).permit(:nickname, :introduce, :image)
   end
-
 end

@@ -24,6 +24,8 @@ class User < ApplicationRecord
   has_many :comments
   has_one :identification, dependent: :destroy
 
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_items, through: :favorites, source: :item
   mount_uploader :image, ImageUploader
 
 # sms認証関連のメソッド定義
