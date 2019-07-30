@@ -1,17 +1,16 @@
-.modal-window{id: comment.id}
-  .modal-window-body
-    .modal-window-body__top
-      .modal-window-body__top--title
+.modal__window{id: comment.id}
+  .modal
+    .modal__top
+      .modal__top__title
         確認
-      -# .modal-window-body__top--comment data-id": "#{comment.id}"
-      .modal-window-body__top--comment
+      .modal__top__comment
         = comment.content
-      .modal-window-body__top--text
+      .modal__top__text
         本当にこのコメントを削除してよろしいですか？
-    .modal-window-body__form
-      .modal-window-body__form__btn
+    .modal__form
+      .modal__form__btn
         = link_to "キャンセル"
-      .modal-window-body__form__btn
+      .modal__form__btn
         = link_to "削除する", item_comment_path(@item,comment), method: :delete
 
 
