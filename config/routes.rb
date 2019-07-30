@@ -76,6 +76,7 @@ Rails.application.routes.draw do
     get "mypage/card", to: "cards#card"
   end
 
+  # 一番下に置いてください↓
   get '*path', controller: 'application', action: 'render_404'
 
 end
