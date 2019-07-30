@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout 'single'
+  layout 'single', except: [:update]
   prepend_before_action :check_captcha, only: [:validation]
-  before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  # after_action :move_to_edit_page, only: [:update]
 
   # GET /resource/sign_up
   def register
@@ -92,7 +92,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/edit
   def edit
-    render layout: "application"
   end
 
   # PUT /resource
@@ -135,6 +134,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
+  # end
+
+  # def move_to_edit_page
+  #   redirect_to email_password_mypage_index_path
   # end
   
   private

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get 'users/sign_up/finish', to: 'users/registrations#finish', as: :finish_user_registration
     post 'users', to: 'users/registrations#create', as: :create_user_registration
     get 'users/:id', to: 'users#show', as: :show_user_plofile
-    get 'mypage/email_password', to: 'users/registrations#edit', as: :email_password_mypage_index
+    # get 'mypage/email_password', to: 'users/registrations#edit', as: :email_password_mypage_index
     patch 'users/:id', to: 'users/registrations#update', as: :update_user_registration
   end
 
