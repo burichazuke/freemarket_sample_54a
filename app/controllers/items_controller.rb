@@ -115,6 +115,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     render layout: "single"
   end
+  def destroy
+    if @item.destroy
+      redirect_to action: "index"
+    else
+      flash[:notice] = "削除に失敗しました"
+      redirect_to action: "show"
+    end
+  end
 
   # 出品ページでカテゴリーのセレクトボックス用。jbuilderとroutes.rbと繋がっています
   def category_children
@@ -151,4 +159,3 @@ class ItemsController < ApplicationController
   end
 
 end
-  
