@@ -127,12 +127,12 @@
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev
-      =link_to root_path,class:'aBlue' do
+      =link_to item_path(@item.id),class:'aBlue' do
         =fa_icon "angle-left"
-        花柄ワンピース
+        = @items.sample.name
     %li.nav-item__link-next
-      =link_to root_path,class:'aBlue' do
-        レインコート
+      =link_to item_path(@item.id),class:'aBlue' do
+        = @items.sample.name
         =fa_icon "angle-right"
   
   .item__social-media-box
@@ -151,6 +151,6 @@
   .item-other
     %section.item-other__user-items
       %h2.item-other__user-items__head
-        = link_to "testmanさんのその他の出品", item_path, method: :get, class: "link item-link"
+        = link_to "#{@item.seller.nickname}さんのその他の出品", item_path, method: :get, class: "link item-link"
       .item-other__user-items__content
-        = render "other_item"
+      -# 他のアイテムを表示
