@@ -1,4 +1,37 @@
 $(document).on('turbolinks:load',function(){
+
+  $('#search-price').on('change',function(){
+    var input = $(this).val();
+    var array = input.split(',')
+    $('#search-price-min').val(array[0]);
+    $('#search-price-max').val(array[1])
+  });
+
+  $(document).on('change', '#grand-child_category' ,function(){
+    var input = $(this).val();
+    if(input == ""){
+      var input = $('#search-child_category').val();
+      $('#category-search').val(input);
+    }else{
+      $('#category-search').val(input);
+    }
+  });
+
+  $(document).on('change', '#search-child_category' ,function(){
+    var input = $(this).val();
+    if(input == ""){
+      var input = $('#parent-form').val();
+      $('#category-search').val(input);
+    }else{
+    }
+  });
+  
+  $(document).on('change', '#parent-form' ,function(){
+    var input = $(this).val();
+    $('#category-search').val(input);
+  });
+
+  // ここからカテゴリセレクトボックス  
   //セレクトボックスの中身（forEach用）
   function buildHTML(category){
     var html =`<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
@@ -8,18 +41,18 @@ $(document).on('turbolinks:load',function(){
   function appendChildrenBox(insertHtml){
     var childSelectHtml = '';
     childSelectHtml = `<div class="single__field__select" id="children_wrapper">
-                        <select class="category-selected-child" id="child_category",name='category_id'>
+                        <select class="category-selected-child" id="search-child_category",name='category_id'>
                           <option value="",data-category="---">---</option>
                           ${insertHtml}
                         </select>
-                       </div>`
+                        </div>`
     $('.category-select-box').append(childSelectHtml);
   }
-   // 孫のカテゴリーボックスを表示
+    // 孫のカテゴリーボックスを表示
   function appendGrandChildrenBox(insertHtml){
     var grandchildHtml = '';
     grandchildHtml =  `<div class="single__field__select" id="grandchildren_wrapper">
-                        <select id="grandchild_category" name='item[category_id]'>
+                        <select id="grand-child_category" name='item[category_id]'>
                           <option value="",data-category="---">---</option>
                           ${insertHtml}
                         </select>
@@ -27,9 +60,9 @@ $(document).on('turbolinks:load',function(){
     $('.category-select-box').append(grandchildHtml);
   }
 
-   // 子のカテゴリーボックスを作る
-  $("#parent-form").on("change",function(){
-    var parentValue = $(this).val();
+    // 子のカテゴリーボックスを作る
+  $("#search-parent-form").on("change",function(){
+    var parentValue = document.getElementById("search-parent-form").value;
     if (parentValue != '---'){
       $.ajax({
         url: 'category_children',
@@ -38,6 +71,7 @@ $(document).on('turbolinks:load',function(){
         dataType:'json'
       })
       .done(function(children){
+
         $('#children_wrapper').remove();
         $('#grandchildren_wrapper').remove();
         var insertHtml = '';
@@ -45,11 +79,29 @@ $(document).on('turbolinks:load',function(){
           insertHtml += buildHTML(child);
         });
         appendChildrenBox(insertHtml)
+        console.log('ok')
+
+        $.ajax({
+          url: 'category_parent',
+          type:'GET',
+          data:{parent_id: parentValue},
+          dataType:'json'
+        })
+        .done(function(parent){
+          console.log(parent.descendant_ids)
+          var input = '';
+          parent.descendant_ids.forEach(function(id){
+            input += id + " "
+          })
+          $('#category-search').val(input);
+        })
+        .fail(function(){
+          alert('通信に失敗しました。')
+        })
+
       })
       .fail(function(){
-        // alert('通信に失敗しました。')
-        $('#children_wrapper').remove();
-        $('#grandchildren_wrapper').remove();
+        alert('通信に失敗しました。')
       })
     }else{
       $('#children_wrapper').remove();
@@ -59,8 +111,8 @@ $(document).on('turbolinks:load',function(){
 
 
   // 孫のカテゴリーボックスを作る
-  $('.category-select-box').on('change','#child_category',function(){
-    var childId = $('#child_category option:selected').data('category');
+  $('.category-select-box').on('change','#search-child_category',function(){
+    var childId = $('#search-child_category option:selected').data('category');
     if (childId != '---'){
       $.ajax({
         url: 'category_grandchildren',
@@ -71,17 +123,20 @@ $(document).on('turbolinks:load',function(){
       .done(function(grandchildren){
         $('#grandchildren_wrapper').remove();
         var insertHtml = '';
+        var input = '';
+        console.log('ok')
         grandchildren.forEach(function(grandchild){
           insertHtml += buildHTML(grandchild);
+          input += grandchild.id + " "
         });
         appendGrandChildrenBox(insertHtml)
+        $('#category-search').val(input);
       })
       .fail(function(){
-        // alert('通信に失敗しました。')
-        $('#grandchildren_wrapper').remove();
+        alert('通信に失敗しました。')
       })
     }else{
       $('#grandchildren_wrapper').remove();
     }
-  });
+  });  
 });

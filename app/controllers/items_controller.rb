@@ -3,17 +3,39 @@ class ItemsController < ApplicationController
   before_action :set_item, only:[:show, :edit, :update, :destroy, :buy, :pay]
 
   def index
-    @items = Item.includes(:images).order("created_at desc")
+    @items = Item.includes(:images).order("created_at desc").limit(8)
+    ids = Category.find(1).descendant_ids
+    @ladies_items = Item.where(category_id: ids).order("created_at desc").limit(4)
+    ids = Category.find(2).descendant_ids
+    @mens_items = Item.where(category_id: ids).order("created_at desc").limit(4)
+    ids = Category.find(3).descendant_ids
+    @babys_items = Item.where(category_id: ids).order("created_at desc").limit(4)
+    ids = Category.find(7).descendant_ids
+    @cosmetics_items = Item.where(category_id: ids).order("created_at desc").limit(4)
   end
 
   def show
     @comments = Comment.where(item_id: @item.id)
     @comment = Comment.new
+    @items = Item.where(params[:id])
   end
 
   def new
     @item = Item.new
     render layout: "single"
+  end
+
+  # 出品ページでカテゴリーのセレクトボックス用。jbuilderとroutes.rbと繋がっています
+  def category_parent
+    @select_parent = Category.find(params[:parent_id])
+  end
+
+  def category_children 
+    @select_children = Category.find(params[:parent_id]).children
+  end
+
+  def category_grandchildren
+    @select_grandchildren = Category.find("#{params[:child_id]}").children
   end
 
   def create
@@ -64,7 +86,18 @@ class ItemsController < ApplicationController
       customer: current_user.card.customer_id,
       currency: 'jpy'
     )
-    redirect_to root_path
+    redirect_to items_done_path(@item)
+  end
+
+  def done
+    card = Card.find_by(user_id: current_user.id)
+    if card
+      Payjp.api_key = ENV["PAYJP_TEST_SECRET"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @card = customer.cards.retrieve(card.card_id) 
+    end
+    @item = Item.find(params[:id])
+    render layout: "single"
   end
 
   # 出品ページでカテゴリーのセレクトボックス用。jbuilderとroutes.rbと繋がっています
@@ -77,8 +110,18 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.where("name LIKE(?)", "%#{params[:keyword]}%").includes(:images).order("created_at desc")
-    @keyword = params[:keyword]
+    @parents = Category.all.order('id ASC').limit(13)
+    if params[:q].present?
+      params[:q][:name_cont_all] = params[:q][:name_cont_all].split(/[\p{blank}\s]+/)
+      params[:q][:category_id_eq_any] = params[:q][:category_id_eq_any].split(/[\p{blank}\s]+/)
+      @keyword = Item.ransack(params[:q])
+      # @keyword.sorts = 'created_at desc' if @keyword.sorts.empty?
+      @items = @keyword.result(distinct: true).includes(:images, :category)
+    else
+      @items = Item.where("name LIKE(?)", "%#{params[:keyword]}%").includes(:images).order("created_at desc")
+      @keyword = Item.ransack()
+      params[:q] = { sorts: 'id desc' }
+    end    
   end
 
   private
