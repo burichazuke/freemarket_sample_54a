@@ -3,7 +3,15 @@ class ItemsController < ApplicationController
   before_action :set_item, only:[:show, :edit, :update, :destroy, :buy, :pay]
 
   def index
-    @items = Item.includes(:images).order("created_at desc")
+    @items = Item.includes(:images).order("created_at desc").limit(8)
+    ids = Category.find(1).descendant_ids
+    @ladies_items = Item.where(category_id: ids).order("created_at desc").limit(4)
+    ids = Category.find(2).descendant_ids
+    @mens_items = Item.where(category_id: ids).order("created_at desc").limit(4)
+    ids = Category.find(3).descendant_ids
+    @babys_items = Item.where(category_id: ids).order("created_at desc").limit(4)
+    ids = Category.find(7).descendant_ids
+    @cosmetics_items = Item.where(category_id: ids).order("created_at desc").limit(4)
   end
 
   def show
