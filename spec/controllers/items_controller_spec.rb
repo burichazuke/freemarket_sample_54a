@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe ItemsController do
+
+  let(:user) { create(:user) }
+  let(:category) { create(:category) }
+  let(:item) { build(:item) }
+  let(:params) { { item: { name: item.name, description: item.description, size: item.size, condition: item.condition, shipping_fee: item.shipping_fee, shipping_method: item.shipping_method, prefecture: item.prefecture, shipping_date: item.shipping_date, price: item.price, profit: item.profit, status: item.status, created_at: item.created_at, category_id: category.id, seller_id: user.id,image_files: ["3333", "333"]  }} }
+
   describe 'GET #index' do
     it "インスタンス変数を正しく取得できているか/assings" do
       items = create_list(:item, 3) 
@@ -35,21 +41,18 @@ describe ItemsController do
     end
   end
 
-  # describe 'CREATE #create' do
+  describe 'CREATE #create' do
 
-  #   let(:user) { create(:user) }
-  #   let(:category) { create(:category) }
-  #   let(:params) { { item: FactoryBot.attributes_for(:item) } }
-  #   before do
-  #     login user
-  #   end
+    before do
+      login user
+    end
 
-  #   it "出品機能が機能しているか" do
-  #     expect{
-  #       post :create, params: params
-  #     }.to change(Item, :count).by(1)
-  #   end
-  # end
+    it "出品機能が機能しているか" do
+      expect{
+        post :create, params: params
+      }.to change(Item, :count).by(1)
+    end
+  end
 
 
 
