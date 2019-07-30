@@ -58,8 +58,6 @@ Rails.application.routes.draw do
     get "items/sell", to: "items#new", as: :items_sell
     get "items/search", to: "items#search"
   end
-  resources :items, except: :new 
-    resource :favorites, only: [:create, :destroy]
   
   resources :items, except: :new do
     collection do
@@ -68,6 +66,7 @@ Rails.application.routes.draw do
       get 'category_grandchildren', defaults:{format:'json'}
     end
     resources :comments, only:[:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
   end
 
   resources :categories,  only: [:index, :show] 
