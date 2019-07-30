@@ -33,7 +33,7 @@ class MypageController < ApplicationController
  
   def like
     @user = User.find(current_user.id)
-    @items = @user.items
+    @items = @user.favorite_items
   end
 
   private
