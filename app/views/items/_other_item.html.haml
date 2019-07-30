@@ -7,8 +7,8 @@
         = item.name
       .item-other__user-items__content__box__num
         .item-other__user-items__content__box__num__price
-          = "¥ #{@item.price}"
+          = "¥ #{item.price}"
         .item-other__user-items__content__box__num__likes
           =fa_icon "heart-o", class: "like-icon"
           %span.item-other__user-items__content__box__num__likes__num
-            100
+            = item.favorites.count
