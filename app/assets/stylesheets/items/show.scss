@@ -226,23 +226,7 @@
       }
     }
   }
-}
-
-.user-name-link {
-  @include item-aHover;
-}
-
-//評価アイコン
-.item-content__detail-table__face{
-  display: flex;
-  span {
-    color: black;
-    font-size: 0.8rem;
-    vertical-align: middle;
-  }
-  &--good{
-    color: #ef5185;
-    margin: 8px 15px 0 0;
+  
   
   
   .item__social-media-box {
@@ -328,6 +312,7 @@
           margin: 0 0 20px 20px;
           &:nth-child(3n+1) {
             margin-left: 0px;
+  
           }
           &__body {
             padding: 16px;
@@ -366,26 +351,6 @@
           margin-top:10px;
           .item__comment {
             display: flex;
-            width: 91%;
-            &-name {
-              @include item-aHover;
-              font-size: 13px;
-              position: absolute;
-              font-weight: bold;
-              letter-spacing: 1px;
-              width:550px;
-              &:hover{
-                opacity: 0.5;
-              }
-            &__user{
-              padding-left:10px;
-            }
-            &__seller{
-              text-align: right;
-            }
-            }
-            &-balloon {
-              position: relative;
             overflow: hidden;
             padding: 20px 30px;
             &__user {
@@ -411,6 +376,7 @@
                 position: absolute;
                 font-weight: bold;
                 letter-spacing: 1px;
+                width:550px;
                 &:hover{
                   opacity: 0.5;
                 }
@@ -418,16 +384,9 @@
                 padding-left:10px;
               }
               &__seller{
-                padding-left:520px;
-              }
-              .comment-clock {
-                color: #aaa;
-                font-size: 13px;
-              }
-              .delete-icon{
                 text-align: right;
-                float: right;
-                color: #aaa; 
+
+              }
               }
               &-balloon {
                 position: relative;
@@ -450,25 +409,29 @@
                 p {
                   padding-bottom: 10px;
                 }
-                .comment-clock {
+                .comment-clock{
+                  font-size: 13px;
                   color: #aaa;
+                }
+                .delete-icon{
+                  text-align: right;
+                  float: right;
+                  color: #aaa; 
                 }
               }
             }
           }
         }
-      }
-      .item__comment__content-balloon__seller{
-        position: relative;
-      }
-      .item__comment__content-balloon__seller:before{
-        content: "";
-        position: absolute;
-        left: 102%;
-        margin-top: -55px;
-        border: 15px solid transparent;
-        border-left: 15px solid #eee;
-      }
-    }
-  }
+  
+        .item__comment__content-balloon__seller{
+          position: relative;
+        }
+        .item__comment__content-balloon__seller:before{
+          content: "";
+          position: absolute;
+          left: 102%;
+          margin-top: -55px;
+          border: 15px solid transparent;
+          border-left: 15px solid #eee;
+        }
 }
