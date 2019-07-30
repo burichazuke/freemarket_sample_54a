@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   end
   
   as :items do
+    get "transaction/done/:id", to: "items#done", as: :items_done
     get "transaction/buy/:id", to: "items#buy", as: :items_buy
     patch "transaction/pay/:id", to: "items#pay", as: :items_pay
     get "items/sell", to: "items#new", as: :items_sell
