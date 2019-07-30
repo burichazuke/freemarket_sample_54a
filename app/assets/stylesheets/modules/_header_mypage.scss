@@ -7,46 +7,46 @@
   height:500px;
   text-align: center;
   right:60px;
-  &--image {
+  &__image {
     background: image-url("mypage_haikei");
     background-size: cover;
   }
-  &__user-icon{
-    padding-top:24px;
-    background: image-url("mypage_haikei");
-    background-size: cover;
-    height: 75px;
-  img{
-    border-radius: 50%;
-  }
-  figure{
-    height:60px;
-  }
-}
-.mypage__nav__user__review{
-  display: flex;
-  justify-content: center;
-  font-size: 12px;
-  background-color: white;
-  padding-top:50px;
-  span{
-    color: black;
-  }
-  &--rate{
-    display: block;
-    padding-right:22px;
-    &:hover{
-      text-decoration: underline solid black;
-      opacity: 0.5;
+    &__user__icon{
+      padding-top:24px;
+      background: image-url("mypage_haikei");
+      background-size: cover;
+      height: 75px;
+      img{
+        border-radius: 50%;
+      }
+      figure{
+        height:60px;
+      }
     }
-  }
-  &--display{
-    &:hover{
-      text-decoration: underline solid black;
-      opacity: 0.5;
+    &__user__review{
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    background-color: white;
+    padding-top:50px;
+    span{
+      color: black;
     }
-  }
-}
+      &--rate{
+        display: block;
+        padding-right:22px;
+        &:hover{
+          text-decoration: underline solid black;
+          opacity: 0.5;
+        }
+      }
+      &--display{
+        &:hover{
+          text-decoration: underline solid black;
+          opacity: 0.5;
+        }
+      }
+    }
 
   .mypage__nav__user__number{
     background-color:white;
@@ -65,7 +65,8 @@
         &:hover{
           opacity: 0.5;
         }
-        .number--sales{
+        &--sales{
+          // padding:
           padding-left:167px;
           padding-right:13px;
         }

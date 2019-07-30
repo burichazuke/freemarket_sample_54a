@@ -17,8 +17,8 @@
   }]
 
 .mypage__nav
-  .mypage__nav.mypage__nav--image
-    .mypage__nav__user-icon
+  .mypage__nav__image
+    .mypage__nav__user__icon
       %figure
         = image_tag current_user.image.url, size: "60x60"
       %h2.mypage__nav__user__icon__name
@@ -52,7 +52,7 @@
               ポイント
             .number--point
               P100
-            .number--icon
+            .mypage__nav__user__number--box--icon
               =fa_icon "angle-right", class: 'icon-chek'
 
       .mypage__nav__user--while
