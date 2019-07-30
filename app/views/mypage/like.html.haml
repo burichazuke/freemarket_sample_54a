@@ -6,21 +6,23 @@
           %h2.mypage__content__setting-profile__title いいね！一覧
           %section.mypage__content__tab-container
             .mypage__content__tab-content
-              %ul.mypage__content__tab-content__item-list.show-mypage-tab
+              - if @items.length == 0
+                .mypage__content__tab-content__item-list--none
+                  いいね！がありません
+              - else 
                 - @items.each do |item|
-                  %li
-                    = link_to item_path(item),class: "mypage__content__tab-content__item-list__link" do
-                      .mypage__content__tab-content__item-list__icon 
-                        - image = item.images.first
-                        - if image
-                          =image_tag "#{image.image}",size: "48x48"
-                      .mypage__content__tab-content__item-list__body
-                        .mypage__content__tab-content__item-list__body--text
-                          =item.name
-                        .mypage__content__tab-content__item-list__body--text
-                          ="¥ #{item.price.to_s(:delimited)}"
-                      .mypage__content__tab-content__item-list__right-icon
-                        =fa_icon "angle-right", class: 'icon-chek'
+                  = link_to item_path(item),class: "mypage__content__tab-content__item-list__link" do
+                    .mypage__content__tab-content__item-list__icon 
+                      - image = item.images.first
+                      - if image
+                        =image_tag "#{image.image}",size: "48x48"
+                    .mypage__content__tab-content__item-list__body
+                      .mypage__content__tab-content__item-list__body--text
+                        =item.name
+                      .mypage__content__tab-content__item-list__body--text
+                        ="¥ #{item.price.to_s(:delimited)}"
+                    .mypage__content__tab-content__item-list__right-icon
+                      =fa_icon "angle-right", class: 'icon-chek'
 
     .mypage__side
       =render "shared/sidebar"
