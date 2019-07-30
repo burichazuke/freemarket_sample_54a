@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   def show
     @comments = Comment.where(item_id: @item.id)
     @comment = Comment.new
-    @items = Item.includes(:images)
+    @items = Item.where(params[:id])
   end
 
   def new
