@@ -422,11 +422,10 @@
       .mypage__content__tab-content__item-list--index--edit{
         a {
           color: #fff;
-          background-color:#ea352d;
-          border: 1px solid #ea352d;
+          background-color:#ea352b;
+          border: 1px solid #ea352b;
           &:hover{
-            background-color:red;
-            text-decoration: none;
+            opacity: 0.5;
         }
       }
     }
