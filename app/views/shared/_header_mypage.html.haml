@@ -1,0 +1,69 @@
+:ruby
+  mypageheaderlists = [{
+      name: "いいね！一覧",
+      url: mypage_like_history_path
+    },{
+      name: "出品した商品-出品中",
+      url: mypage_listings_listing_path
+    },{
+      name: "出品した商品-取引中",
+      url: mypage_listings_in_progress_path
+    },{
+      name: "出品した商品-売却済み",
+      url: mypage_listings_completed_path
+    },{
+      name: "購入した商品-取引中",
+      url: purchase_mypage_index_path
+  }]
+
+.mypage__nav
+  .mypage__nav__image
+    .mypage__nav__icon
+      %figure
+        = image_tag current_user.image.url, size: "60x60"
+      %h2.mypage__nav__icon__name
+        = current_user.nickname
+
+    .mypage__nav__review
+      = link_to mypage_index_path, class: "header-mypage-number" do
+        .mypage__nav__review__rate
+          評価:
+          %span.bold
+            0
+      = link_to mypage_index_path, class: "header-mypage-number" do
+        .mypage__nav__review__display
+          出品数:
+          %span.bold
+            1
+
+
+    .mypage__nav__number
+      .mypage__nav__number__list
+        = link_to mypage_index_path, class: "header-mypage-number" do
+          .mypage__nav__number__box
+            .mypage__nav__number__box__title
+              売上金
+            .mypage__nav__number__box__sales
+              ¥100
+            .mypage__nav__number__box__icon
+              =fa_icon "angle-right", class: 'icon-chek'
+        = link_to mypage_index_path, class: "header-mypage-number" do
+          .mypage__nav__number__box
+            .mypage__nav__number__box__title
+              ポイント
+            .mypage__nav__number__box__point
+              P100
+            .mypage__nav__number--box__icon
+              =fa_icon "angle-right", class: 'icon-chek'
+
+      .mypage__nav--while
+
+      .mypage__side
+        .sidebar
+          %ul.sidebar__lists
+            -mypageheaderlists.each do |list|
+              =link_to list[:url] do
+                %li.sidebar__lists__list
+                  %p 
+                    =list[:name]
+                  =fa_icon "angle-right"

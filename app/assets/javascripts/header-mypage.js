@@ -5,5 +5,3 @@ $(document).on('turbolinks:load',function(){
     $('.mypage__nav').hide();
   });
 });
-
-

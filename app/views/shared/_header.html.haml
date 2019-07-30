@@ -1,3 +1,4 @@
+
 //ヘッダー
 %header.header
   .header-inner
@@ -46,12 +47,14 @@
                   = link_to '/',class:'header-nav__user__link' do
                     = fa_icon 'check',class:'header-user-icon'
                     %span やることリスト
-              %li.header-nav__user
+              %li.header-nav__user.header-nav__user--mypage
                 %h2
                   = link_to mypage_index_path,class:'header-nav__user__link' do
                     = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-img'
                     %span マイページ
-              
+
+                  = render '/shared/header_mypage'
+
             - else
               %ul.header-user-list
                 %li.header-user-list__new
