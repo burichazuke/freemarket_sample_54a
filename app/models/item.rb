@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   before_save :item_profit
-  attr_accessor :image_files
+  attr_accessor :image_validation, :image_files, :delete_image_files, :parent_id, :child_id, 
 
   def item_profit
     self.profit = price * 0.9
@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   # has_many :favorites, dependent: :destroy
   # has_many :users, through: :favorites, dependent: :destroy
 
-  validates :name, :description, :price, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, presence: true
+  validates :image_validation, :name, :description, :price, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, presence: true
 end
 
 
