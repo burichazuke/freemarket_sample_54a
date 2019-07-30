@@ -61,7 +61,7 @@
                 %br
                 = @card.exp_month.to_s + " / " + @card.exp_year.to_s.slice(2,3)
               = fa_icon "cc-#{@card.brand.downcase}", class: "single__icon single__icon--mail"
-              =link_to card_mypage_index_path, class: "buy-user-info__fix" do 
+              =link_to mypage_card_path, class: "buy-user-info__fix" do 
                 %span
                   変更する
                   =fa_icon "angle-right"
@@ -73,7 +73,7 @@
                 = ""
                 %br
                 = " / " 
-              =link_to card_mypage_index_path, class: "buy-user-info__fix" do 
+              =link_to mypage_card_path, class: "buy-user-info__fix" do 
                 %span
                   変更する
                   =fa_icon "angle-right"

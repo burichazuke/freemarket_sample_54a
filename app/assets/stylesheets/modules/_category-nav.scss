@@ -2,7 +2,14 @@
 .active{
   display:block;
   background-color:#EA352E;
-  
+  h3{
+    a{
+      color:white;
+      span{
+        color:white;
+      }
+    }
+  }
 }
 .active-child{
   display:block; 
@@ -29,10 +36,12 @@
     display: flex;
     align-items: center;
     &__heading{
+      display: block;
+      width: 100%;
       a{
-        width: 100%;
         height: 100%;
         line-height: 44px;
+        display: block;
         @include category-char;
         &:hover{
           color:white;
@@ -46,7 +55,6 @@
 //子
 .header-nav-child-wrap{
   @include category-wrap;
-  
   .header-nav-child{
     width:224px;
     @include category-mono;
@@ -54,6 +62,7 @@
       background-color: #f5f5f5;
     }
     a{
+      
       @include category-char;
       color:black;
     }
@@ -64,11 +73,9 @@
 .header-nav-grand-child-wrap{
   @include category-wrap;
   overflow: hidden;
-
   .header-nav-grand-child{
     width: 320px;
     @include category-mono;
-   
     &:hover{
       background-color: #f5f5f5;
     }
