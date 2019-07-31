@@ -4,7 +4,6 @@ class MypageController < ApplicationController
   end
 
   def profile
-    @items = Item.where(seller_id: current_user.id)
   end
 
   def update_profile
@@ -29,11 +28,6 @@ class MypageController < ApplicationController
     else
       render "mypage/identification"
     end
-  end
- 
-  def like
-    @user = User.find(current_user.id)
-    @items = @user.favorite_items
   end
 
   private
