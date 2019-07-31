@@ -14,7 +14,7 @@
         = link_to "削除する", item_comment_path(@item,comment), method: :delete
 
 
-- if comment.user_id.to_s == @item.seller_id.to_s
+- if comment.user_id == @item.seller_id
   .item__comment
     .item__comment__content
       .item__comment__content-name
@@ -26,7 +26,7 @@
             = comment.content
           %span.comment-clock
             = time_format(comment.created_at)
-          -if @item.seller_id.to_s == current_user&.id.to_s
+          -if @item.seller_id == current_user&.id
             = link_to "/" do
               = fa_icon "trash-o", class: "delete-icon", "data-id": "#{comment.id}"
         .item__comment__content-balloon__seller
@@ -51,7 +51,7 @@
             = comment.content
           %span.comment-clock
             = time_format(comment.created_at)
-          -if comment.user_id.to_s == current_user&.id.to_s
+          -if comment.user_id == current_user&.id
             = link_to do
               = fa_icon "trash-o", class: "delete-icon"
         .item__comment__content-balloon
