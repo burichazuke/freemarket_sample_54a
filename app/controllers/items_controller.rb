@@ -96,13 +96,17 @@ class ItemsController < ApplicationController
 
   def pay
     @item.update(item_params)
-    Payjp.api_key = ENV['PAYJP_TEST_SECRET']
-    Payjp::Charge.create(
-      amount: @item.price, # 決済する値段
-      customer: current_user.card.customer_id,
-      currency: 'jpy'
-    )
-    redirect_to items_done_path(@item)
+    if @item.save  
+      Payjp.api_key = ENV['PAYJP_TEST_SECRET']
+      Payjp::Charge.create(
+        amount: @item.price, # 決済する値段
+        customer: current_user.card.customer_id,
+        currency: 'jpy'
+      )
+      redirect_to items_done_path(@item)
+    else
+      redirect_to item_path(@item)
+    end
   end
 
   def done
@@ -115,6 +119,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     render layout: "single"
   end
+
   def destroy
     if @item.destroy
       redirect_to action: "index"
