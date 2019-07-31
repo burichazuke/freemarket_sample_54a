@@ -4,7 +4,8 @@ module ItemsHelper
   end
 
   def prev_item
-    prev_item = Item.all.order('created_at DESC').sample
+    prev_item = Item.all.sample
+    prev_item_id =prev_item
   end
 
 end

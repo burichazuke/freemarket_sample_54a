@@ -126,9 +126,10 @@
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev
-      =link_to item_path(prev_item),class:'aBlue' do
+      -item = prev_item 
+      =link_to item_path(item),class:'aBlue' do
         =fa_icon "angle-left"
-        = prev_item.name
+        = item.name
     %li.nav-item__link-next
       =link_to item_path(next_item.id),class:'aBlue' do
         = next_item.name
