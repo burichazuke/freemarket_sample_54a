@@ -24,8 +24,8 @@
             = f.email_field :email, placeholder: "メールアドレス"
           .single__field__input
             = f.password_field  :password, placeholder: "パスワード"
-        -# .single__field
-        -#   = recaptcha_tags
+        .single__field
+          = recaptcha_tags
         = f.submit "ログイン", class: "single__form__send-btn"
         .single__field
           = link_to "パスワードをお忘れの方", "/", class: "single__field__text single__field__text__link"
