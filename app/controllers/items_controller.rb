@@ -17,7 +17,9 @@ class ItemsController < ApplicationController
   def show
     @comments = Comment.where(item_id: @item.id)
     @comment = Comment.new
-    @items = Item.where(params[:id])
+    # @items = Item.where(params[:id])
+   
+    @user_items = Item.where(seller_id: @item.seller_id).where.not(id: @item.id).order('created_at DESC').limit(6)
   end
 
   def new
