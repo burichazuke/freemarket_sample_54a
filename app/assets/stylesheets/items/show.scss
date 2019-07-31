@@ -369,8 +369,14 @@
           p {
             padding-bottom: 10px;
           }
-          .comment-clock {
+          .comment-clock{
+            font-size: 13px;
             color: #aaa;
+          }
+          .delete-icon{
+            text-align: right;
+            float: right;
+            color: #aaa; 
           }
         }
       }

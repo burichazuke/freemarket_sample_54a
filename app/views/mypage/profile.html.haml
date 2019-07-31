@@ -5,11 +5,11 @@
       .mypage__content
         %section.mypage__content__setting-profile
           %h2.mypage__content__setting-profile__title プロフィール
-          = form_for @user, url: profile_mypage_index_path(@user), class: "mypage-content__setting-profile__form" do |f|
+          = form_for current_user, url: profile_mypage_index_path, class: "mypage-content__setting-profile__form" do |f|
             .mypage__content__setting-profile__form__icon
               %figure
                 = f.label :image, class: 'image-label' do
-                  = image_tag @user.image.url, size: "60x60"
+                  = image_tag current_user.image.url, size: "60x60"
                   = f.file_field :image, class: 'hidden'
               = f.text_field :nickname, class: "input-default", placeholder: "例）testman"
             .mypage__content__setting-profile__form__content

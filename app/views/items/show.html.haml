@@ -96,9 +96,8 @@
 
     .item__button-container
       .item__button__left
-        %button.item__button.item__button__like
-          =fa_icon "heart-o"
-          %span いいね!
+        = render "favorites/favorite" #いいね! 部分テンプレート
+    
         %button.item__button.item__button__report
           =fa_icon "flag-o"
           %span 不適切な商品の報告
@@ -106,7 +105,6 @@
         =link_to "https://www.mercari.com/jp/safe/description/" do
           =fa_icon "lock"
           %span.aBlue あんしん・あんぜんへの取り組み
-
 
   -if @item.seller_id.to_s == current_user&.id.to_s
     .item__detail-message
@@ -146,7 +144,6 @@
       %li
         =link_to "http://www.pinterest.com" do
           =fa_icon "pinterest-square", class:"icon-pinterest"
-
 
   .item-other
     %section.item-other__user-items
