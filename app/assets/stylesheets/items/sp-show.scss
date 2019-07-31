@@ -332,6 +332,7 @@
           position: absolute;
           font-weight: bold;
           letter-spacing: 1px;
+          width:79%;
           &:hover{
             opacity: 0.5;
           }
@@ -339,12 +340,9 @@
           padding-left:10px;
         }
         &__seller{
-          overflow: hidden;
-          max-width: 100%;
-          min-width: 214px;
-          height: 1.2em;
-          white-space: nowrap;
-          text-overflow: ellipsis;
+          left:auto;
+          right:56px;
+          text-align: right;
         }
         }
         &-balloon {

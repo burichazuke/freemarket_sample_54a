@@ -334,15 +334,18 @@
           position: absolute;
           font-weight: bold;
           letter-spacing: 1px;
-          &__seller{
-          }
+          width:550px;
           &:hover{
             opacity: 0.5;
           }
         &__user{
           padding-left:10px;
         }
-        
+        &__seller{
+          text-align: right;
+          left:auto;
+          right:56px;
+        }
         
         }
         &-balloon {
