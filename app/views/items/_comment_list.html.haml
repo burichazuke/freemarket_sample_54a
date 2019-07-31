@@ -52,6 +52,6 @@
           %span.comment-clock
             = time_format(comment.created_at)
           -if comment.user_id.to_s == current_user&.id.to_s
-            = link_to do
-              = fa_icon "trash-o", class: "delete-icon"
+            = link_to "/" do
+              = fa_icon "trash-o", class: "delete-icon", "data-id": "#{comment.id}"
         .item__comment__content-balloon
