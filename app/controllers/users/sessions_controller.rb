@@ -3,7 +3,7 @@
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   layout 'single'
-  prepend_before_action :check_captcha, only: [:create]
+  # prepend_before_action :check_captcha, only: [:create]
 
   # GET /resource/sign_in
   def new
@@ -29,13 +29,13 @@ class Users::SessionsController < Devise::SessionsController
 
   private
 
-  def check_captcha
-    unless verify_recaptcha
-      self.resource = resource_class.new sign_in_params
-      resource.validate # Look for any other validation errors besides Recaptcha
-      set_minimum_password_length
-      respond_with resource
-    end 
-  end
+  # def check_captcha
+  #   unless verify_recaptcha
+  #     self.resource = resource_class.new sign_in_params
+  #     resource.validate # Look for any other validation errors besides Recaptcha
+  #     set_minimum_password_length
+  #     respond_with resource
+  #   end 
+  # end
   
 end

@@ -12,10 +12,14 @@
                   = image_tag current_user.image.url, size: "60x60"
                   = f.file_field :image, class: 'hidden'
               = f.text_field :nickname, class: "input-default", placeholder: "例）testman"
+
+
             .mypage__content__setting-profile__form__content
               = f.text_area :introduce, class: "textarea-default", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！商品や発送方法などご質問がありましたらお気軽にどうぞ♪"
-            .mypage__content__tab-content__item-list--index
-              .mypage__content__tab-content__item-list--index--red
+              .mypage__content__setting-profile__form__content__rede
+                アイコンをクリックすると画像が変更できます。
+            .mypage__content__tab-content__item-list__btn
+              .mypage__content__tab-content__item-list__btn--red
                 = f.submit "変更する", class: "single__form__send-btn single__form__send-btn--gray"
 
     .mypage__side

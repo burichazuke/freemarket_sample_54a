@@ -17,7 +17,9 @@ class ItemsController < ApplicationController
   def show
     @comments = Comment.where(item_id: @item.id)
     @comment = Comment.new
-    @items = Item.where(params[:id])
+    # @items = Item.where(params[:id])
+   
+    @user_items = Item.where(seller_id: @item.seller_id).where.not(id: @item.id).order('created_at DESC').limit(6)
   end
 
   def new
@@ -39,14 +41,17 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      item_params[:image_files].each do |image|
-        @item.images.create(image: image)
+    respond_to do |format|
+      @item = Item.new(item_params)
+      if @item.save
+        item_params[:image_files].each do |image|
+          @item.images.create(image: image)
+        end
+        format.html { redirect_to item_path(@item) }
+        format.json
+      else
+        render :new, layout: "single"
       end
-      redirect_to item_path(@item)
-    else
-      render :new, layout: "single"
     end
   end
   
@@ -96,13 +101,17 @@ class ItemsController < ApplicationController
 
   def pay
     @item.update(item_params)
-    Payjp.api_key = ENV['PAYJP_TEST_SECRET']
-    Payjp::Charge.create(
-      amount: @item.price, # 決済する値段
-      customer: current_user.card.customer_id,
-      currency: 'jpy'
-    )
-    redirect_to items_done_path(@item)
+    if @item.save  
+      Payjp.api_key = ENV['PAYJP_TEST_SECRET']
+      Payjp::Charge.create(
+        amount: @item.price, # 決済する値段
+        customer: current_user.card.customer_id,
+        currency: 'jpy'
+      )
+      redirect_to items_done_path(@item)
+    else
+      redirect_to item_path(@item)
+    end
   end
 
   def done
@@ -115,6 +124,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     render layout: "single"
   end
+
   def destroy
     if @item.destroy
       redirect_to action: "index"
@@ -150,7 +160,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:id, :name, :description, :category_id, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, :image_validation, {image_files: []}, {delete_image_files: []}).merge(seller_id: current_user.id)
+    params.require(:item).permit(:id, :name, :description, :category_id, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :seller_id, :buyer_id, :image_validation, {image_files: []}, {delete_image_files: []}).merge(seller_id: current_user.id)
   end
 
   def set_item
