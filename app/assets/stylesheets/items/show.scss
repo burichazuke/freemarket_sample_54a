@@ -384,16 +384,29 @@
   }
   
 
-  .item__comment__content-balloon__seller{
-    position: relative;
-  }
-  .item__comment__content-balloon__seller:before{
-    content: "";
-    position: absolute;
-    left: 102%;
-    margin-top: -55px;
-    border: 15px solid transparent;
-    border-left: 15px solid #eee;
-  }
-      
-}
+      .item__comment__content-balloon__seller{
+        position: relative;
+      }
+      .item__comment__content-balloon__seller:before{
+        content: "";
+        position: absolute;
+        left: 102%;
+        margin-top: -55px;
+        border: 15px solid transparent;
+        border-left: 15px solid #eee;
+      }
+
+      .mypage__content__tab-content__item-list__btn--edit{
+        a {
+          color: #fff;
+          background-color:#ea352b;
+          border: 1px solid #ea352b;
+          &:hover{
+            opacity: 0.5;
+        }
+      }
+    }
+      .mypage-content--choose{
+        text-align: center;
+      }
+    }
