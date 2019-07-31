@@ -1,3 +1,19 @@
+.modal__window{id: comment.id}
+  .modal
+    .modal__top
+      .modal__top__title
+        確認
+      .modal__top__comment
+        = comment.content
+      .modal__top__text
+        本当にこのコメントを削除してよろしいですか？
+    .modal__form
+      .modal__form__btn
+        = link_to "キャンセル"
+      .modal__form__btn
+        = link_to "削除する", item_comment_path(@item,comment), method: :delete
+
+
 - if comment.user_id.to_s == @item.seller_id.to_s
   .item__comment
     .item__comment__content
@@ -8,9 +24,11 @@
         .item__comment__content-comment__seller
           %p
             = comment.content
-          = fa_icon "clock-o", class: "comment-clock"
           %span.comment-clock
             = time_format(comment.created_at)
+          -if @item.seller_id.to_s == current_user&.id.to_s
+            = link_to "/" do
+              = fa_icon "trash-o", class: "delete-icon", "data-id": "#{comment.id}"
         .item__comment__content-balloon__seller
     .item__comment__user
       .item__comment__user-icon
@@ -31,7 +49,9 @@
         .item__comment__content-comment__user
           %p
             = comment.content
-          = fa_icon "clock-o", class: "comment-clock"
           %span.comment-clock
             = time_format(comment.created_at)
+          -if comment.user_id.to_s == current_user&.id.to_s
+            = link_to do
+              = fa_icon "trash-o", class: "delete-icon"
         .item__comment__content-balloon
