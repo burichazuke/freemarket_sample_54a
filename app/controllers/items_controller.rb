@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   # before_action :user_signed_in?, only:[:new, :create, :edit, :update, :destroy]
   before_action :set_item, only:[:show, :edit, :update, :destroy, :buy, :pay]
+  before_action :authenticate, only:[:new, :edit, :done, :buy]
 
   def index
     @items = Item.includes(:images).order("created_at desc").limit(8)
@@ -168,4 +169,7 @@ class ItemsController < ApplicationController
     @grandchild = Category.find(@item.category_id)
   end
 
+  def authenticate  
+    redirect_to new_user_session_path unless user_signed_in?
+  end
 end

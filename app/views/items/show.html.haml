@@ -5,6 +5,9 @@
       = @item.name
     .item__main-content
       .item__photo
+        - if @item.status >= 1
+          .item__photo__soldout
+            %h2 SOLD
         .item__photo__slide
           -@item.images.each do |image|
             =image_tag "#{image.image}", class: "item__photo__slide__img"
@@ -83,12 +86,13 @@
         (税込)
       %span.item__price-box__shipping-fee
         送料込み
-    -if @item.status == 0
-      =link_to items_buy_path, class: "item__buy-btn" do
-        購入画面に進む
-    - else
-      %button.item__buy-btn--sold
-        売り切れです
+    -unless @item.seller_id.to_s == current_user&.id.to_s
+      -if @item.status == 0
+        =link_to items_buy_path, class: "item__buy-btn" do
+          購入画面に進む
+      - else
+        %button.item__buy-btn--sold
+          売り切れです
 
     %section.item__description
       %p.item__description__innner
