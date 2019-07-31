@@ -107,15 +107,13 @@
     .item__detail-message
       .message-container
         .message-content
-          .mypage__content__tab-content__item-list--index
-            .mypage__content__tab-content__item-list--index--edit
+          .mypage__content__tab-content__item-list__btn
+            .mypage__content__tab-content__item-list__btn--edit
               = link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-edit"
-
           .mypage-content--choose
             or
-
-          .mypage__content__tab-content__item-list--index
-            .mypage__content__tab-content__item-list--index--gray
+          .mypage__content__tab-content__item-list__btn
+            .mypage__content__tab-content__item-list__btn--gray
               = link_to "この商品を削除する", item_path(@item), method: :delete, class: "item-delete", data: { confirm: '削除しますか？' }
 
 
