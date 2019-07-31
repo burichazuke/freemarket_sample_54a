@@ -1,0 +1,134 @@
+.sidebar
+  =search_form_for(@keyword, url: items_search_path) do |f|  
+    .search-side__sorts 
+      = f.select( :sorts, { '並び替え': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } , { selected: params[:q][:sorts] }, { onchange: 'this.form.submit()'} )
+    
+    .search-side     
+      %h3.search-side__title
+        詳細検索
+      
+      .search-side__group
+        .single__field.single__field--large
+          .single__field__label
+            .search-side__group__icon
+              = fa_icon "plus"
+            = f.label :name_cont_all, "キーワードを追加する"
+          .single__field__input     
+            = f.search_field :name_cont_all, placeholder: "商品名", id: "search-item-name"
+
+      .search-side__group
+        .single__field.single__field--large.category-select-box
+          .single__field__label
+            .search-side__group__icon
+              = fa_icon "list"
+            = label :size, "カテゴリー"
+          .single__field__select
+            = f.collection_select :name, @parents, :id,:name,{prompt: "---"}, id: "search-parent-form"
+
+        -#  ここでカテゴリーidのvalueを取得
+        .single__field__input     
+          = f.search_field :category_id_eq_any, id: "category-search", value: "", type: "hidden"
+
+      .search-side__group
+        .single__field.single__field--large
+          .single__field__label
+            .search-side__group__icon
+              = fa_icon "expand"
+            = label :size, "サイズ"
+          .single__field__select
+            = f.select :size_eq_any,[["---",""],["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"],["L","L"],["XL(LL)","XL(LL)"],["XXL以上","XXL以上"]], class: "single__field__select"            
+
+      .search-side__group
+        .single__field.single__field--large
+          .single__field__label
+            .search-side__group__icon
+              = fa_icon "database"
+            = f.label :price_gteq, "価格"
+          .single__field__select
+            %select#search-price
+              %option(value="" ) ---
+              %option(value="300,1000") 
+                300 ~ 1000
+              %option(value="1000,5000") 
+                1000 ~ 5000
+              %option(value="5000,10000") 
+                5000 ~ 10000
+              %option(value="10000,30000") 
+                10000 ~ 30000
+              %option(value="30000,50000") 
+                30000 ~ 50000
+              %option(value="50000") 
+                50000 ~                 
+          .search-side__group__price
+            .single__field__input
+              = f.search_field :price_gteq, placeholder: "¥ min", id: "search-price-min"
+            %span.single__field__input ~
+            .single__field__input
+              = f.search_field :price_lteq, placeholder: "¥ max", id: "search-price-max"
+
+      .search-side__group
+        .single__field.single__field--large
+          .single__field__label
+            .search-side__group__icon
+              = fa_icon "star"
+            = f.label "商品の状態"
+          .search-side__group__cheak
+            .search-side__group__cheak__box
+              = f.label "新品/未使用" do
+                = f.check_box :condition_eq_any, { multiple: true }, "新品/未使用", ""
+                %span 新品/未使用
+            .search-side__group__cheak__box
+              = f.label "未使用に近い" do
+                = f.check_box :condition_eq_any, { multiple: true }, "未使用に近い", ""
+                %span 未使用に近い
+            .search-side__group__cheak__box
+              = f.label "目立った傷や汚れなし" do
+                = f.check_box :condition_eq_any, { multiple: true }, "目立った傷や汚れなし", ""
+                %span 目立った傷や汚れなし
+            .search-side__group__cheak__box
+              = f.label "やや傷や汚れあり" do
+                = f.check_box :condition_eq_any, { multiple: true }, "やや傷や汚れあり", ""
+                %span やや傷や汚れあり
+            .search-side__group__cheak__box
+              = f.label "傷や汚れあり" do
+                = f.check_box :condition_eq_any, { multiple: true }, "傷や汚れあり", ""
+                %span 傷や汚れあり
+            .search-side__group__cheak__box
+              = f.label "全体的に状態が悪い" do
+                = f.check_box :condition_eq_any, { multiple: true }, "全体的に状態が悪い", ""
+                %span 全体的に状態が悪い
+
+      .search-side__group
+        .single__field.single__field--large
+          .single__field__label
+            .search-side__group__icon
+              = fa_icon "truck"
+            = f.label "配送料の負担"
+          .search-side__group__cheak
+            .search-side__group__cheak__box
+              = f.label "着払い(購入者負担)" do
+                = f.check_box :shipping_fee_eq_any, { multiple: true }, "着払い(購入者負担)", ""
+                %span 着払い(購入者負担)
+            .search-side__group__cheak__box
+              = f.label "着払い(購入者負担)" do
+                = f.check_box :shipping_fee_eq_any, { multiple: true }, "送料負担(出品者負担)", ""
+                %span 送料負担(出品者負担)
+
+      .search-side__group
+        .single__field.single__field--large
+          .single__field__label
+            .search-side__group__icon
+              = fa_icon "shopping-cart"
+            = f.label "販売状況"
+          .search-side__group__cheak#search-status-box
+            .search-side__group__cheak__box
+              = f.label "販売中" do
+                = f.check_box :status_eq_any, { multiple: true }, 0, ""
+                %span 販売中
+            .search-side__group__cheak__box
+              = f.label "売り切れ" do
+                = f.check_box :status_eq_any, { multiple: true }, 1, ""
+                %span 売り切れ
+
+      .search-side__group
+        = f.submit "検索する", class: "single__form__send-btn"
