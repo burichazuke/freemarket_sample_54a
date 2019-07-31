@@ -49,9 +49,8 @@
           %tr
             %th ブランド
             %td
-              =link_to root_path,class:'aBlue' do
-                エルメス
-                -# ブランドまだ
+              エルメス
+              -# ブランドまだ
           %tr
             %th 商品のサイズ
             %td 
@@ -127,12 +126,12 @@
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev
-      =link_to item_path(@item.id),class:'aBlue' do
+      =link_to item_path(prev_item),class:'aBlue' do
         =fa_icon "angle-left"
-        = @items.sample.name
+        = prev_item.name
     %li.nav-item__link-next
-      =link_to item_path(@item.id),class:'aBlue' do
-        = @items.sample.name
+      =link_to item_path(next_item.id),class:'aBlue' do
+        = next_item.name
         =fa_icon "angle-right"
   
   .item__social-media-box

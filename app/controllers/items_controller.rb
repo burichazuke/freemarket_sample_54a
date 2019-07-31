@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
   def show
     @comments = Comment.where(item_id: @item.id)
     @comment = Comment.new
-    @items = Item.where(params[:id])
+    # @items = Item.where(params[:id])
     @user_items = Item.where(seller_id: @item.seller_id).where.not(id: @item.id).order('created_at DESC').limit(6)
   end
 
@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
       item_params[:image_files].each do |image|
         @item.images.create(image: image)
       end
-      redirect_to item_path(@item)
+      redirect_to root_path
     else
       render :new, layout: "single"
     end
