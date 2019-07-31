@@ -1,5 +1,15 @@
-$(document).on('turbolinks:load',function(){
-  let fileCollection = []
+$(document).on('turbolinks:load',function() {
+  let setFileNumber = 0;
+  let totalFileNumber = 0;
+  let newFileCollection = [];
+  let updateFileCollection = [];
+  let deleteFileCollection = [];
+  
+
+  if (location.pathname.match(/items\/\d+\/edit/)) {
+    setFileNumber += $(".sell-upload__item").length;
+    totalFileNumber += setFileNumber 
+  }
 
   function buildImage(image) {
     let template = `<li class="sell-upload__item">
@@ -14,23 +24,26 @@ $(document).on('turbolinks:load',function(){
     return template;
   }
 
+  function descendingSort(a, b) {
+    return b - a;
+  }
+
   // ファイルの追加→表示
   $('#images').on('change', function(e) {
     let files = e.target.files;
-    let fileNumber = files.length + fileCollection.length;
+    totalFileNumber += files.length;
     
-    if (fileNumber > 10) {
+    if (totalFileNumber > 10) {
       $('.sell-upload__error').show();
+      totalFileNumber -= files.length;
     } else {
-
-      if (fileNumber == 10) {
+      if (totalFileNumber == 10) {
         $('.sell-upload__box').hide();
       }
       $('.sell-upload__error').hide();
       
       $.each(files, function(i, file) {
-        console.log(i);
-        fileCollection.push(file);
+        newFileCollection.push(file);
         let reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = function(e) {
@@ -39,18 +52,27 @@ $(document).on('turbolinks:load',function(){
         }
       });
     }
-    console.log(files);
   });
 
   // ファイルの削除
   $(document).on('click', '.sell-upload__item__footer__btn--remove', function(e) {
     e.preventDefault();
     let index = $('.sell-upload__item__footer__btn--remove').index(this);
-    if (index > 0) {
+    if (index >= 0) {
       $('.sell-upload__item').eq(index).remove();
-      fileCollection.splice(index, 1);
 
-      if (fileCollection.length == 9) {
+      // 元々あったファイルはdeleteFileCollectionに入れて、新しいファイルはnewFileCollectionから削除する
+      if (index < setFileNumber) {
+        let deleteNum = Number($(this).data('image-name').slice(-1));
+        deleteFileCollection.push(deleteNum);
+        setFileNumber -= 1;
+        totalFileNumber -= 1;
+      } else {
+        newFileCollection.splice(index - setFileNumber, 1);
+        totalFileNumber -= 1;
+      }
+      
+      if (totalFileNumber == 9) {
         $('.sell-upload__box').show();
       }
     }
@@ -61,18 +83,41 @@ $(document).on('turbolinks:load',function(){
     e.preventDefault();
     let formData = new FormData(this);
     
-    for (var i = 0; i < fileCollection.length; i++ ) {
-      formData.append('item[image_files][]', fileCollection[i]);  
+    for (var i = 0; i < newFileCollection.length; i++ ) {
+      formData.append('item[image_files][]', newFileCollection[i]);
+    }
+
+    deleteFileCollection.sort(descendingSort);
+    for (var i = 0; i < deleteFileCollection.length; i++ ) {
+      formData.append('item[delete_image_files][]', deleteFileCollection[i]);
+    }
+
+    if (totalFileNumber > 0) {
+      formData.append('item[image_validation]', "ok");
+    }
+    
+    let type;
+    if ($(this).context[1].value == "patch") {
+      type = "PATCH"
+    } else {
+      type = "POST"
     }
     let url = $(this).attr('action');
 
+
     $.ajax({
-      type: "POST",
+      type: type,
       url: url,
       data: formData,
       dataType: "json",
       processData: false,
       contentType: false
+    })
+
+    .done(function(json) {
+      if (json.redirect) {
+        window.location = json.redirect;
+      }
     })
   })
 });

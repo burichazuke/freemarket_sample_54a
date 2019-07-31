@@ -32,19 +32,25 @@
                   %span.item-content__detail-table__face__name
                     10
 
-
           %tr
             %th カテゴリー
             %td
-              =link_to root_path,class:'aBlue' do
-                レディース
-                -# カテゴリーまだ
+              =link_to category_path(@grandchild.parent.parent.id),class:'aBlue' do
+                = @grandchild.parent.parent.name
+              =link_to category_path(@grandchild.id),class:'aBlue' do
+                .item-category-sub
+                  = fa_icon 'chevron-right',class:'item-category__icon'
+                  = @grandchild.parent.name
+              =link_to category_path(@grandchild.id),class:'aBlue' do
+                .item-category-sub-sub
+                  = fa_icon 'chevron-right',class:'item-category__icon'
+                  = @grandchild.name
+                
           %tr
             %th ブランド
             %td
-              =link_to root_path,class:'aBlue' do
-                エルメス
-                -# ブランドまだ
+              エルメス
+              -# ブランドまだ
           %tr
             %th 商品のサイズ
             %td 
@@ -64,8 +70,7 @@
           %tr
             %th 配送元地域
             %td
-              =link_to item_path,class:'aBlue' do
-                = @item.prefecture
+              = @item.prefecture
           %tr
             %th 配達日の目安
             %td
@@ -91,17 +96,15 @@
 
     .item__button-container
       .item__button__left
-        %button.item__button.item__button__like
-          =fa_icon "heart-o"
-          %span いいね!
+        = render "favorites/favorite" #いいね! 部分テンプレート
+    
         %button.item__button.item__button__report
           =fa_icon "flag-o"
           %span 不適切な商品の報告
       .item__button__right
         =link_to "https://www.mercari.com/jp/safe/description/" do
           =fa_icon "lock"
-          %span.aBlue あんしん・あんぜんへの取り組
-
+          %span.aBlue あんしん・あんぜんへの取り組み
 
   -if @item.seller_id.to_s == current_user&.id.to_s
     .item__detail-message
@@ -121,12 +124,13 @@
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev
-      =link_to root_path,class:'aBlue' do
+      -item = prev_item 
+      =link_to item_path(item),class:'aBlue' do
         =fa_icon "angle-left"
-        花柄ワンピース
+        = item.name
     %li.nav-item__link-next
-      =link_to root_path,class:'aBlue' do
-        レインコート
+      =link_to item_path(next_item.id),class:'aBlue' do
+        = next_item.name
         =fa_icon "angle-right"
   
   .item__social-media-box
@@ -141,10 +145,11 @@
         =link_to "http://www.pinterest.com" do
           =fa_icon "pinterest-square", class:"icon-pinterest"
 
-
   .item-other
     %section.item-other__user-items
       %h2.item-other__user-items__head
-        = link_to "testmanさんのその他の出品", item_path, method: :get, class: "link item-link"
-      .item-other__user-items__content
-        = render "other_item"
+        = link_to "#{@item.seller.nickname}さんのその他の出品", item_path, method: :get, class: "link item-link"
+      .item-other__user-items__contents
+        %section{class: "items-box__container"}
+          .items-box__content
+            = render @user_items

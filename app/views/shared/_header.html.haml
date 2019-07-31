@@ -1,3 +1,4 @@
+
 //ヘッダー
 %header.header
   .header-inner
@@ -7,10 +8,10 @@
           = image_tag 'mercari_logo.png', alt: 'mercari', height: '36', width: '134', class: 'header-logo'
                 
       = form_tag('/items/search',class:'header-form', method: :get) do
-        %input.search{name: "keyword", placeholder: '何かお探しですか？', type: "text", value: "", class:'search-txt-field' }/
-        %button.search-icon{title: "検索", type: "submit"}
+        %input.search{name: "keyword", placeholder: '何かお探しですか？', type: "text", value: "#{params[:keyword]}", class:'search-txt-field',id: "search-box" }/
+        %button.search-icon{title: "検索", type: "submit",id: "search-icon"}
           =fa_icon 'search'
-            
+
     .header-bottom
       .header-nav
         %ul.header-nav__left
@@ -33,6 +34,11 @@
             - if user_signed_in?
               %li.header-nav__user
                 %h2
+                  = link_to mypage_like_history_path, class:'header-nav__user__link' do
+                    = fa_icon 'heart-o',class:'header-user-icon'
+                    %span いいね！一覧
+              %li.header-nav__user
+                %h2
                   = link_to '/', class:'header-nav__user__link' do
                     = fa_icon 'bell-o',class:'header-user-icon'
                     %span お知らせ
@@ -41,18 +47,70 @@
                   = link_to '/',class:'header-nav__user__link' do
                     = fa_icon 'check',class:'header-user-icon'
                     %span やることリスト
-              %li.header-nav__user
+              %li.header-nav__user.header-nav__user--mypage
                 %h2
                   = link_to mypage_index_path,class:'header-nav__user__link' do
                     = image_tag 'mercari_icon.png',size:'32x32',class:'header-user-img'
                     %span マイページ
-              
+
+                  = render '/shared/header_mypage'
+
             - else
               %ul.header-user-list
                 %li.header-user-list__new
                   =link_to '新規会員登録',register_user_registration_path
                 %li.header-user-list__login
                   =link_to 'ログイン',new_user_session_path
-                
+%header.sp-header  
+  .sp-header-inner#sp-header-inner
+    .sp-header-top
+      .sp-header-top__wrapper
+        .sp-header-top__wrapper__img
+          = link_to '/',class: 'sp-header-logo-link' do
+            = image_tag 'mercari_logo.png', alt: 'mercari', height: '36', width: '134', class: 'header-logo'
+        %ul.sp-header-nav
+          - if user_signed_in?
+            %li.sp-header-nav__user
+              %h2
+                = link_to '/', class:'sp-header-nav__user__link' do
+                  = fa_icon 'bell-o',class:'sp-header-user-icon'
+            %li.sp-header-nav__user
+              %h2
+                = link_to '/',class:'sp-header-nav__user__link' do
+                  = fa_icon 'check',class:'sp-header-user-icon'
+            %li.sp-header-nav__user
+              %h2
+                = link_to mypage_index_path,class:'sp-header-nav__user__link' do
+                  = image_tag 'mercari_icon.png',size:'32x32',class:'sp-header-user-img'
+            
+          - else
+            %ul.sp-header-user-list
+              %li.sp-header-user-list__new
+                =link_to '新規会員登録',register_user_registration_path
+              %li.sp-header-user-list__login
+                =link_to 'ログイン',new_user_session_path
+
+    .sp-header-middle
+      = form_tag('/items/search',class:'header-form', method: :get) do
+        %input.search{name: "keyword", placeholder: '何かお探しですか？', type: "text", value: "", class:'search-txt-field' }/
+        %button.search-icon{title: "検索", type: "submit"}
+          =fa_icon 'search'
+
+    .sp-header-bottom
+      %ul.sp-header-bottom-box
+        %li.sp-header-bottom-box__nav
+          %h2
+            = link_to categories_path do
+              = fa_icon 'list',class:'sp-header-bottom-box__nav__icon'
+              %span.sp-header-bottom-box__nav__span カテゴリーから探す
+          = render '/shared/category-nav'
+
+        %li.sp-header-bottom-box__nav
+          %h2
+            = link_to '/' do
+              =fa_icon 'tag',class:'sp-header-bottom-box__nav__icon'
+              %span.sp-header-bottom-box__nav__span ブランドから探す 
+            = render '/shared/brand-nav'
+
 - unless current_page?(root_path)
   = render "/shared/header-nav"

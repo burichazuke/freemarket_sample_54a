@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   layout 'single', except: [:update]
   prepend_before_action :check_captcha, only: [:validation]
+  before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -123,7 +124,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
   private
-
   def check_captcha
     unless verify_recaptcha
       self.resource = resource_class.new user_params

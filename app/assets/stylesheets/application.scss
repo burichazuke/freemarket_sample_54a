@@ -3,6 +3,7 @@
 @import 'config/mixin';
 @import 'font-awesome';
 @import 'modules/header';
+@import 'modules/sp-header';
 @import 'modules/footer';
 @import 'modules/single';
 @import 'modules/single-form';
@@ -16,6 +17,7 @@
 @import 'items/index';
 @import 'items/buy';
 @import 'items/show';
+@import 'items/sp-show.scss';
 @import 'items/buy';
 @import 'items/new';
 @import 'categories/index';
@@ -24,5 +26,6 @@
 @import 'slick/slick';
 @import 'items/search';
 @import 'users/show';
-
+@import 'items/modal_comment_delete';
+@import 'modules/header_mypage';
 

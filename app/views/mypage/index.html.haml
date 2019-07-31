@@ -8,6 +8,7 @@
 %main.mypage
   .mypage__container
     .mypage__contents
+    
       .mypage__content
         .mypage__content__head.mypage__content__head--image
           %section.mypage__content__head__user-icon
@@ -24,7 +25,7 @@
                 .mypage__content__head__user-icon__number--display
                   出品数
                   %span.bold
-                    10
+                    = @items.count
 
 
         %section.mypage__content__tab-container
@@ -61,7 +62,6 @@
                 %li.mypage__content__tab-content__item-list--none
                   売却済みの商品はありません
               
-
 
     .mypage__side
       =render "shared/sidebar"
