@@ -63,13 +63,6 @@
         %span.single__field__require 必須
       .single__field__select
         = f.select :size,[["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"],["L","L"],["XL(LL)","XL(LL)"],["FREE SIZE","FREE SIZE"]], class: "single__field__select", prompt: "---"
-    //後の実装にて使用するためコメントアウトしています
-    -# .single__field.single__field--large  
-    -#   .single__field__label
-    -#     = f.label :item_description, "ブランド"
-    -#     %span.single__field__require.single__field__require--gray 任意
-    -#   .single__field__input
-    -#     = f.text_field :brand, placeholder: "例) シャネル"
 
     .single__field.single__field--large
       .single__field__label
