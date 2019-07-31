@@ -34,7 +34,7 @@
         .mypage__nav__review__display
           出品数:
           %span.bold
-            1
+            = current_user.selling_items.count + current_user.sold_items.count
 
 
     .mypage__nav__number
@@ -44,7 +44,7 @@
             .mypage__nav__number__box__title
               売上金
             .mypage__nav__number__box__sales
-              ¥100
+              ¥ 0
             .mypage__nav__number__box__icon
               =fa_icon "angle-right", class: 'icon-chek'
         = link_to mypage_index_path, class: "header-mypage-number" do
@@ -52,7 +52,7 @@
             .mypage__nav__number__box__title
               ポイント
             .mypage__nav__number__box__point
-              P100
+              P 0
             .mypage__nav__number--box__icon
               =fa_icon "angle-right", class: 'icon-chek'
 
