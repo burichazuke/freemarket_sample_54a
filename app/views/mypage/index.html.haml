@@ -1,24 +1,9 @@
 :ruby
   first_titles = ["お知らせ", "やることリスト"]
+  first_path = [notification_mypage_index_path, todo_mypage_index_path]
   second_titles = ["取引中", "過去の取引"]
+  second_path = [purchase_mypage_index_path, purchased_mypage_index_path]
 
-  first_announces = [{
-    Name:"コメントがつきました", url:"#"
-  },{
-    Name:"いいね！！！！がつきました", url:"#"
-  },{
-    Name:"事務局からメッセージ！コメントがつきました！いいねがつきました！確認してください！", url:"#"
-  }]
-
-
-  second_announces =  [{
-    Name:"商品が届いたらお知らせください", url:"#"
-  },{
-    Name:"送金してください", url:"#"
-  },{
-    Name:"商品が届いたら評価しましょう", url:"#"
-  }]
-  
 -breadcrumb :mypages
 %main.mypage
   .mypage__container
@@ -45,10 +30,11 @@
 
         %section.mypage__content__tab-container
           %ul.mypage__content__tabs
-            = render partial: "mypage-tabs", locals: { titles: first_titles } 
+            = render partial: "mypage-tabs", locals: { active: true, title: first_titles[0], path: first_path[0] } 
+            = render partial: "mypage-tabs", locals: { active: false, title: first_titles[1], path: first_path[1] } 
           .mypage__content__tab-content
             %ul.mypage__content__tab-content__item-list.show-mypage-tab
-              = render partial: "mypage-tab-lists", locals: { announces: first_announces }
+              = render partial: "mypage-tab-lists", locals: { announces: [] }
             %ul.mypage__content__tab-content__item-list
               = render partial: "mypage-tab-lists", locals: { announces: [] }
           
@@ -58,12 +44,24 @@
           購入した商品
         %section.mypage__content__tab-container
           %ul.mypage__content__tabs
-            = render partial: "mypage-tabs", locals: { titles: second_titles }
+            = render partial: "mypage-tabs", locals: { active: true, title: second_titles[0], path: second_path[0] }
+            = render partial: "mypage-tabs", locals: { active: false, title: second_titles[1], path: second_path[1] }
           .mypage__content__tab-content
             %ul.mypage__content__tab-content__item-list.show-mypage-tab
-              = render partial: "mypage-tab-lists", locals: { announces: second_announces }
+              - if @purchase_items.exists?
+                - @purchase_items&.each do |item|
+                  = render partial: "mypage_tab_item", locals: {item: item}
+              - else
+                %li.mypage__content__tab-content__item-list--none
+                  取引中の商品はありません
             %ul.mypage__content__tab-content__item-list
-              = render partial: "mypage-tab-lists", locals: { announces: [] }
+              - if @purchased_items.exists?
+                - @purchased_items&.each do |item|
+                  = render partial: "mypage_tab_item", locals: {item: item}
+              - else
+                %li.mypage__content__tab-content__item-list--none
+                  売却済みの商品はありません
+              
 
     .mypage__side
       =render "shared/sidebar"

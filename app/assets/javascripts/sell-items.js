@@ -117,7 +117,15 @@ $(document).on('turbolinks:load',function() {
     .done(function(json) {
       if (json.redirect) {
         window.location = json.redirect;
+      } else {
+        $('.modal__window').fadeIn("slow");
+        console.log(json.id);
+        $('.modal__body__link').attr('href', `/items/${json.id}`)
       }
+    })
+
+    .always(function() {
+      $('#sell-submit').removeAttr('disabled')
     })
   })
 });

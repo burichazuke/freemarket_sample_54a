@@ -1,0 +1,20 @@
+:ruby
+  titles = ["お知らせ", "やることリスト"]
+  path = [notification_mypage_index_path, todo_mypage_index_path]
+
+-breadcrumb :todo
+
+%main.mypage
+  .mypage__container
+    .mypage__content
+      %section.mypage__content__tab-container
+        %ul.mypage__content__tabs
+          = render partial: "mypage-tabs", locals: { active: false, title: titles[0], path: path[0] } 
+          = render partial: "mypage-tabs", locals: { active: true, title: titles[1], path: path[1] } 
+        .mypage__content__tab-content
+          %ul.mypage__content__tab-content__item-list.show-mypage-tab
+            = render partial: "mypage-tab-lists", locals: { announces: [] }
+
+
+    .mypage__side
+      =render "shared/sidebar"
