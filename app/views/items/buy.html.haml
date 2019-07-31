@@ -21,7 +21,7 @@
             支払い金額
             %span 
               ="¥ #{@item.price}"
-          -unless @item.seller_id.to_s == current_user&.id.to_s
+          -unless @item.seller_id == current_user&.id
             -if @card
               -if @item.status == 0
                 =form_for @item, url: {controller: "items", action: "pay"} do |f|

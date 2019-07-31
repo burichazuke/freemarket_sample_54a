@@ -28,6 +28,10 @@ class MypageController < ApplicationController
 
   def profile
   end
+  
+  def like
+    @items = current_user.favorite_items
+  end
 
   def update_profile
     if current_user.update(user_profile_params)
