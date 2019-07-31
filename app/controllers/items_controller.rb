@@ -3,12 +3,21 @@ class ItemsController < ApplicationController
   before_action :set_item, only:[:show, :edit, :update, :destroy, :buy, :pay]
 
   def index
-    @items = Item.includes(:images).order("created_at desc")
+    @items = Item.includes(:images).order("created_at desc").limit(8)
+    ids = Category.find(1).descendant_ids
+    @ladies_items = Item.where(category_id: ids).order("created_at desc").limit(4)
+    ids = Category.find(2).descendant_ids
+    @mens_items = Item.where(category_id: ids).order("created_at desc").limit(4)
+    ids = Category.find(3).descendant_ids
+    @babys_items = Item.where(category_id: ids).order("created_at desc").limit(4)
+    ids = Category.find(7).descendant_ids
+    @cosmetics_items = Item.where(category_id: ids).order("created_at desc").limit(4)
   end
 
   def show
     @comments = Comment.where(item_id: @item.id)
     @comment = Comment.new
+    @items = Item.where(params[:id])
   end
 
   def new
@@ -46,8 +55,24 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.update(item_params)
-    redirect_to root_path
+    respond_to do |format|
+      if @item.update(item_params)
+        
+        item_params[:delete_image_files]&.each do |image_num|
+          @item.images[image_num.to_i].delete
+        end
+
+        item_params[:image_files]&.each do |image|
+          @item.images.create(image: image)
+        end
+        
+        format.html { redirect_to item_path(@item) }
+        format.json { render json: { redirect: item_path(@item) } }
+
+      else
+        render :new, layout: "single"
+      end
+    end
   end
 
   def destroy
@@ -90,6 +115,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     render layout: "single"
   end
+  def destroy
+    if @item.destroy
+      redirect_to action: "index"
+    else
+      flash[:notice] = "削除に失敗しました"
+      redirect_to action: "show"
+    end
+  end
 
   # 出品ページでカテゴリーのセレクトボックス用。jbuilderとroutes.rbと繋がっています
   def category_children
@@ -117,12 +150,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :description, :category_id, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, {image_files: []}).merge(seller_id: current_user.id)
-  end
-
-  # 編集画面で使用？？要らない記述かもしれないです
-  def update_item_params
-    params.require(:item).permit(:name, :description, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, images_attributes: [:image]).merge(seller_id: current_user.id)
+    params.require(:item).permit(:id, :name, :description, :category_id, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :profit, :seller_id, :buyer_id, :image_validation, {image_files: []}, {delete_image_files: []}).merge(seller_id: current_user.id)
   end
 
   def set_item
@@ -131,4 +159,3 @@ class ItemsController < ApplicationController
   end
 
 end
-  

@@ -12,6 +12,8 @@
         = item.name
       .items-box__body__num
         .items-box__body__num__price.font-5
-          = "¥ #{item.price.to_s(:delimited)}"
-        .items-box__body__num__like.font-2
-          = fa_icon "heart-o" 
+          ="¥ #{item.price.to_s(:delimited)}"
+        -if item.favorites.present?
+          .items-box__body__num__like.font-2
+            =fa_icon "heart-o"
+            = item.favorites.count
