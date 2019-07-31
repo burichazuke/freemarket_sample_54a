@@ -86,7 +86,7 @@
         (税込)
       %span.item__price-box__shipping-fee
         = @item.shipping_fee
-    -unless @item.seller_id.to_s == current_user&.id.to_s
+    -unless @item.seller_id == current_user&.id
       -if @item.status == 0
         =link_to items_buy_path, class: "item__buy-btn" do
           購入画面に進む
