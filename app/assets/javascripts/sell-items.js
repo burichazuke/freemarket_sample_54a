@@ -123,5 +123,9 @@ $(document).on('turbolinks:load',function() {
         $('.modal__body__link').attr('href', `/items/${json.id}`)
       }
     })
+
+    .always(function() {
+      $('#sell-submit').removeAttr('disabled')
+    })
   })
 });
