@@ -2,12 +2,13 @@
   @include item-aHover;
 }
 
-.show-container{
-  background: #f5f5f5;
-  padding: 24px 40px 40px;
-  
-}
+
 @media screen and(min-width:770px){
+  .show-container{
+    background: #f5f5f5;
+    padding: 24px 40px 40px;
+  }
+
   .item__box-container{
     width: 700px;
     margin: 0 auto;
@@ -199,8 +200,8 @@
       }
     }
   }
-  
-  
+
+  // 次のアイテム、前のアイテム
   .nav-item__link-prev-next {
     margin: 24px auto 0;
     width: 700px;
@@ -226,9 +227,7 @@
       }
     }
   }
-  
-  
-  
+  // SNSシェアbtn
   .item__social-media-box {
     margin: 70px auto;
     padding: 32px 0 24px 0;
@@ -263,6 +262,7 @@
     @include item-aHover;
   }
   
+  // アイテム詳細テーブルの中の顔アイコン
   .item-content__detail-table__face{
     display: flex;
     span {
@@ -288,150 +288,112 @@
     &::before{
       font-size:7px;
     }
-    
   }
-  
-  
+
   .item-other {
     width: 700px;
     margin: 0 auto;
     padding-bottom: 20px;
     &__user-items {
+
       &__head {
         font-size: 1.4rem;
         font-weight: 600;
-        margin-right: 8px;
+        margin-left: 20px;
         padding-bottom: 8px;
+      }
+    }
+  }
+  .item__comments {
+    width: 700px;
+    margin-top:10px;
+    .item__comment {
+      display: flex;
+      overflow: hidden;
+      padding: 20px 30px;
+      &__user {
+        display: flex;
+        padding-right:4px;
+        &-icon img {
+          border-radius: 50%;
+        }
+        &-seller {
+          background-color:#fbf0e6;;
+          font-size: 11px;
+          padding: 3px;
+          margin-top: 5px;
+          letter-spacing: 0.5px;
+        }
       }
       &__content {
         display: flex;
-        flex-wrap: wrap;
-        max-width: 700px;
-        &__box {
-          background-color: white;
-          margin: 0 0 20px 20px;
-          &:nth-child(3n+1) {
-            margin-left: 0px;
-  
+        width: 91%;
+        &-name {
+          @include item-aHover;
+          font-size: 13px;
+          position: absolute;
+          font-weight: bold;
+          letter-spacing: 1px;
+          width:550px;
+          &:hover{
+            opacity: 0.5;
           }
-          &__body {
-            padding: 16px;
-            height: 110px;
-            width: 220px;
-            color: #000;
-            &__name {
-              font-size: 1rem;
-              line-height: 1.5;
-              height: 3rem;
-              overflow: hidden;
-              white-space: normal;
-            }
+        &__user{
+          padding-left:10px;
+        }
+        &__seller{
+          text-align: right;
+          left:auto;
+          right:56px;
+        }
+        
+        }
+        &-balloon {
+          position: relative;
+        }
+        &-balloon:before {
+          content: "";
+          position: absolute;
+          left: -40px;
+          margin-top: -55px;
+          border: 15px solid transparent;
+          border-right: 15px solid #eee;
           }
-          &__num {
-            margin: 8px 0 0;
-            &__price {
-              float: left;
-              font-weight: 600;
-            }
-            &__likes {
-              float: right;
-              &__num {
-                font-size: 0.9rem;
-                margin-left: 3px;
-              }
-            }
+        &-comment {
+          padding: 15px;
+          border-radius: 14px;
+          letter-spacing: 1px;
+          margin-top:26px;
+          width: 560px;
+          background-color: #eee;
+          p {
+            padding-bottom: 10px;
+          }
+          .comment-clock{
+            font-size: 13px;
+            color: #aaa;
+          }
+          .delete-icon{
+            text-align: right;
+            float: right;
+            color: #aaa; 
           }
         }
       }
     }
   }
   
-        .item__comments {
-          width: 700px;
-          margin-top:10px;
-          .item__comment {
-            display: flex;
-            overflow: hidden;
-            padding: 20px 30px;
-            &__user {
-              display: flex;
-              padding-right:4px;
-              &-icon img {
-                border-radius: 50%;
-              }
-              &-seller {
-                background-color:#fbf0e6;;
-                font-size: 11px;
-                padding: 3px;
-                margin-top: 5px;
-                letter-spacing: 0.5px;
-              }
-            }
-            &__content {
-              display: flex;
-              width: 91%;
-              &-name {
-                @include item-aHover;
-                font-size: 13px;
-                position: absolute;
-                font-weight: bold;
-                letter-spacing: 1px;
-                width:550px;
-                &:hover{
-                  opacity: 0.5;
-                }
-              &__user{
-                padding-left:10px;
-              }
-              &__seller{
-                text-align: right;
 
-              }
-              }
-              &-balloon {
-                position: relative;
-              }
-              &-balloon:before {
-                content: "";
-                position: absolute;
-                left: -40px;
-                margin-top: -55px;
-                border: 15px solid transparent;
-                border-right: 15px solid #eee;
-                }
-              &-comment {
-                padding: 15px;
-                border-radius: 14px;
-                letter-spacing: 1px;
-                margin-top:26px;
-                width: 560px;
-                background-color: #eee;
-                p {
-                  padding-bottom: 10px;
-                }
-                .comment-clock{
-                  font-size: 13px;
-                  color: #aaa;
-                }
-                .delete-icon{
-                  text-align: right;
-                  float: right;
-                  color: #aaa; 
-                }
-              }
-            }
-          }
-        }
-  
-        .item__comment__content-balloon__seller{
-          position: relative;
-        }
-        .item__comment__content-balloon__seller:before{
-          content: "";
-          position: absolute;
-          left: 102%;
-          margin-top: -55px;
-          border: 15px solid transparent;
-          border-left: 15px solid #eee;
-        }
+  .item__comment__content-balloon__seller{
+    position: relative;
+  }
+  .item__comment__content-balloon__seller:before{
+    content: "";
+    position: absolute;
+    left: 102%;
+    margin-top: -55px;
+    border: 15px solid transparent;
+    border-left: 15px solid #eee;
+  }
+      
 }
