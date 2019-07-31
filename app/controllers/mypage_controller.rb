@@ -1,10 +1,31 @@
 class MypageController < ApplicationController
+
   def index
-    @items = Item.where(seller_id: current_user.id)
+    @purchase_items = Item.where(buyer_id: current_user, status: 1)
+    @purchased_items = Item.where(buyer_id: current_user, status: 2)
+  end
+
+  def listing
+    @items = Item.where(seller_id: current_user, status: 0)
+  end
+
+  def in_progress
+    @items = Item.where(seller_id: current_user, status: 1)
+  end
+
+  def completed
+    @items = Item.where(seller_id: current_user, status: 2)
+  end
+
+  def purchase
+    @items = Item.where(buyer_id: current_user, status: 1)
+  end
+
+  def purchased
+    @items = Item.where(buyer_id: current_user, status: 2)
   end
 
   def profile
-    @items = Item.where(seller_id: current_user.id)
   end
 
   def update_profile
@@ -29,11 +50,6 @@ class MypageController < ApplicationController
     else
       render "mypage/identification"
     end
-  end
- 
-  def like
-    @user = User.find(current_user.id)
-    @items = @user.favorite_items
   end
 
   private

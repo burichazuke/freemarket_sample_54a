@@ -1,0 +1,8 @@
+ja:
+  enums:
+    item:
+      status:
+        listing: 出品中
+        in_progress: 取引中
+        completed: 取引完了
+        stopped: 出品停止中

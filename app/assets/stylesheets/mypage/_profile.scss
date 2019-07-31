@@ -41,11 +41,15 @@
         min-height: 216px;
         border: 1px solid #ccc;
       }
+      &__rede{
+        font-size: 12px;
+        color:gray;
+      }
     }
   }
 }
 
-.mypage__content__tab-content__item-list--index--red{
+.mypage__content__tab-content__item-list__btn--red{
   padding-bottom: 24px;
   a {
     color: #fff;

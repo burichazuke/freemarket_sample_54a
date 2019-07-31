@@ -17,7 +17,9 @@ class ItemsController < ApplicationController
   def show
     @comments = Comment.where(item_id: @item.id)
     @comment = Comment.new
-    @items = Item.where(params[:id])
+    # @items = Item.where(params[:id])
+   
+    @user_items = Item.where(seller_id: @item.seller_id).where.not(id: @item.id).order('created_at DESC').limit(6)
   end
 
   def new
@@ -39,14 +41,17 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      item_params[:image_files].each do |image|
-        @item.images.create(image: image)
+    respond_to do |format|
+      @item = Item.new(item_params)
+      if @item.save
+        item_params[:image_files].each do |image|
+          @item.images.create(image: image)
+        end
+        format.html { redirect_to item_path(@item) }
+        format.json
+      else
+        render :new, layout: "single"
       end
-      redirect_to item_path(@item)
-    else
-      render :new, layout: "single"
     end
   end
   

@@ -29,27 +29,29 @@
     },{
       name: "購入した商品-過去の取引",
       url: purchased_mypage_index_path
-    },{
-      name: "ニュース一覧",
-      url: news_mypage_index_path
-    },{
-      name: "評価一覧",
-      url:  mypage_review_history_path
-    },{
-      name: "ガイド",
-      url: help_center_mypage_index_path
-    },{
-      name: "お問い合わせ",
-      url: support_mypage_index_path
     }]
+    # ,{
+    #   name: "ニュース一覧",
+    #   url: news_mypage_index_path
+    # },{
+    #   name: "評価一覧",
+    #   url:  mypage_review_history_path
+    # },{
+    #   name: "ガイド",
+    #   url: help_center_mypage_index_path
+    # },{
+    #   name: "お問い合わせ",
+    #   url: support_mypage_index_path
+    # }
+    
 
-  sidelists2 = [{
-      name: "売上・振込申請",
-      url: sales_mypage_index_path
-    },{
-      name: "ポイント",
-      url: point_mypage_index_path
-    }]
+  # sidelists2 = [{
+  #     name: "売上・振込申請",
+  #     url: sales_mypage_index_path
+  #   },{
+  #     name: "ポイント",
+  #     url: point_mypage_index_path
+  #   }]
 
   sidelists3 = [{
       name: "プロフィール",
@@ -83,15 +85,15 @@
           %p 
             =list[:name]
           =fa_icon "angle-right"
-  %h3.sidebar__head
-    メルペイ
-  %ul.sidebar__lists
-    -sidelists2.each do |list|
-      =link_to list[:url] do
-        %li.sidebar__lists__list
-          %p 
-            =list[:name]
-          =fa_icon "angle-right"
+  -# %h3.sidebar__head
+  -#   メルペイ
+  -# %ul.sidebar__lists
+  -#   -sidelists2.each do |list|
+  -#     =link_to list[:url] do
+  -#       %li.sidebar__lists__list
+  -#         %p 
+  -#           =list[:name]
+  -#         =fa_icon "angle-right"
   %h3.sidebar__head
     設定
   %ul.sidebar__lists

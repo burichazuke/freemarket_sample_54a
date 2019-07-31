@@ -77,8 +77,13 @@ crumb :profile do
   parent :mypages
 end
 
+crumb :address do
+  link "発送元・お届け先住所変更", edit_address_path
+  parent :mypages
+end
+
 crumb :card do
-  link "支払い方法", card_mypage_index_path
+  link "支払い方法", mypage_card_path
   parent :mypages
 end
 
