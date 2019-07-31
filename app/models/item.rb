@@ -15,8 +15,8 @@ class Item < ApplicationRecord
 
   # belongs_to_active_hash :brand
 
-  validates :name, :description, :price, :images, presence: true
-  validates :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, presence: true
+  # validates :name, :description, :price, :images, presence: true
+  # validates :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, presence: true
 
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
