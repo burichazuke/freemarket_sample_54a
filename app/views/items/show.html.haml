@@ -150,4 +150,4 @@
       %h2.item-other__user-items__head
         = link_to "#{@item.seller.nickname}さんのその他の出品", item_path, method: :get, class: "link item-link"
       .item-other__user-items__content
-        = render "other_item"
+        = render partial: "other_item", collection: @items, as: :item
