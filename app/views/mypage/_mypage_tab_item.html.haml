@@ -1,0 +1,21 @@
+%li
+  = link_to item_path(item), class: "mypage__content__tab-content__item-list__link" do
+    .mypage__content__tab-content__item-list__icon
+      = image_tag "#{item.images[0].image}", size: "48x48"
+    .mypage__content__tab-content__item-list__body
+      .mypage__content__tab-content__item-list__body--text
+        = item.name
+      .mypage__content__tab-content__item-list__body__detail
+        - if item.status == 0
+          .mypage__content__tab-content__item-list__body__detail__favorites
+            = fa_icon "heart-o"
+            2
+            -# = item.favorites.count
+          .mypage__content__tab-content__item-list__body__detail__comments
+            = fa_icon 'comments'
+            4
+            -# = item.comments.count
+        = set_item_status(item.status)
+        
+    .mypage__content__tab-content__item-list__right-icon
+      = fa_icon "angle-right", class: 'icon-chek'
