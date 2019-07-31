@@ -49,9 +49,8 @@
           %tr
             %th ブランド
             %td
-              =link_to root_path,class:'aBlue' do
-                エルメス
-                -# ブランドまだ
+              エルメス
+              -# ブランドまだ
           %tr
             %th 商品のサイズ
             %td 
@@ -125,12 +124,13 @@
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev
-      =link_to item_path(@item.id),class:'aBlue' do
+      -item = prev_item 
+      =link_to item_path(item),class:'aBlue' do
         =fa_icon "angle-left"
-        = @items.sample.name
+        = item.name
     %li.nav-item__link-next
-      =link_to item_path(@item.id),class:'aBlue' do
-        = @items.sample.name
+      =link_to item_path(next_item.id),class:'aBlue' do
+        = next_item.name
         =fa_icon "angle-right"
   
   .item__social-media-box
@@ -149,5 +149,7 @@
     %section.item-other__user-items
       %h2.item-other__user-items__head
         = link_to "#{@item.seller.nickname}さんのその他の出品", item_path, method: :get, class: "link item-link"
-      .item-other__user-items__content
-        = render partial: "other_item", collection: @items, as: :item
+      .item-other__user-items__contents
+        %section{class: "items-box__container"}
+          .items-box__content
+            = render @user_items
