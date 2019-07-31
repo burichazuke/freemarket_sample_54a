@@ -1,13 +1,10 @@
 //いいね！を付ける
 $(document).on('click', "#item__button", function(e) {
   e.preventDefault();
-  var id = $(this).data("item-id")
-
+  var url = location.pathname + "/favorites"
   $.ajax({
-    url: '/favorites',
+    url: url,
     type: 'POST',
-    data: { item_id: id},
-    dataType: 'json',
   })
 
   .done(function(data){
@@ -22,13 +19,10 @@ $(document).on('click', "#item__button", function(e) {
 //付けたいいね！を消す
 $(document).on('click', "#favorited-button", function(e) {
   e.preventDefault();
-  var id = $(this).data("item-id")
-  
+  var url = location.pathname + "/favorites"
   $.ajax({
-    url: '/favorites',
+    url: url,
     type: 'DELETE',
-    data: { item_id: id },
-    dataType: 'json',
   })
 
   .done(function(data){
