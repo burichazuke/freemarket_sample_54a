@@ -29,11 +29,6 @@ class MypageController < ApplicationController
       render "mypage/identification"
     end
   end
- 
-  def like
-    @user = User.find(current_user.id)
-    @items = @user.favorite_items
-  end
 
   private
   def identification_params
