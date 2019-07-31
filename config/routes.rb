@@ -63,9 +63,9 @@ Rails.application.routes.draw do
       get 'category_grandchildren', defaults:{format:'json'}
     end
     resources :comments, only:[:create, :destroy]
-    resource :favorites, only: [:create, :destroy]
   end
 
+  resource :favorites, only: [:create, :destroy]
   resources :categories,  only: [:index, :show] 
   resources :brands,  only: [:index, :show]
   resources :cards, only: [:new, :create, :destroy,]

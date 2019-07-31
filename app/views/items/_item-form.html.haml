@@ -62,7 +62,7 @@
         = label :size, "サイズ"
         %span.single__field__require 必須
       .single__field__select
-        = f.select :size,[["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"]], class: "single__field__select", prompt: "---"
+        = f.select :size,[["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"],["L","L"],["XL(LL)","XL(LL)"],["FREE SIZE","FREE SIZE"]], class: "single__field__select", prompt: "---"
     //後の実装にて使用するためコメントアウトしています
     -# .single__field.single__field--large  
     -#   .single__field__label
@@ -79,14 +79,14 @@
         = f.select :condition,[["新品/未使用", "新品/未使用"],["未使用に近い", "未使用に近い"],["目立った傷や汚れなし", "目立った傷や汚れなし"],["やや傷や汚れあり", "やや傷や汚れあり"],["傷や汚れあり", "傷や汚れあり"],["全体的に状態が悪い", "全体的に状態が悪い"]], class: "single__field__select", prompt: "---"
 
 .sell-content.sell-content--flex
-  %h3 配送について
+  %h3.question 配送について
   .sell-form-box
     .single__field.single__field--large
       .single__field__label
         = f.label :shipping_fee, "配送料の負担"
         %span.single__field__require 必須
       .single__field__select
-        = f.select :shipping_fee, [["送料負担(出品者負担)","送料負担(出品者負担)"],["着払い(購入者負担)","着払い(購入者負担)"]], class: "single__field__select", prompt: "---"
+        = f.select :shipping_fee, [["送料負担(出品者負担)","送料込み"],["着払い(購入者負担)","着払い"]], class: "single__field__select", prompt: "---"
     
     .single__field.single__field--large
       .single__field__label
@@ -110,7 +110,7 @@
         = f.select :shipping_date, [["1~2日で発送", "1~2日で発送"], ["2~3日で発送", "2~3日で発送"], ["4~7日で発送", "4~7日で発送"]], class: "single__field__select", prompt: "---"
 
 .sell-content.sell-content--flex
-  %h3 販売価格(300〜9,999,999)
+  %h3.question 販売価格(300〜9,999,999)
   .sell-form-box
     %ul.sell-price
       %li.form-group
