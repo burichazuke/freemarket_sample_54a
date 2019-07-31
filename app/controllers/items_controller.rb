@@ -39,14 +39,17 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      item_params[:image_files].each do |image|
-        @item.images.create(image: image)
+    respond_to do |format|
+      @item = Item.new(item_params)
+      if @item.save
+        item_params[:image_files].each do |image|
+          @item.images.create(image: image)
+        end
+        format.html { redirect_to item_path(@item) }
+        format.json
+      else
+        render :new, layout: "single"
       end
-      redirect_to item_path(@item)
-    else
-      render :new, layout: "single"
     end
   end
   
