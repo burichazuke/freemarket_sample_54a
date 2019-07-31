@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
+    @item = Item.find(params[:id])
+    @user = User.find(params[:id])
+    @items = Item.where(seller_id: current_user.id)
   end
 
   def edit

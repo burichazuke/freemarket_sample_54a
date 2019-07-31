@@ -4,7 +4,6 @@ class MypageController < ApplicationController
   end
 
   def profile
-    @items = Item.where(seller_id: current_user.id)
   end
 
   def update_profile
