@@ -107,7 +107,6 @@
           =fa_icon "lock"
           %span.aBlue あんしん・あんぜんへの取り組み
 
-
   -if @item.seller_id.to_s == current_user&.id.to_s
     .item__detail-message
       .message-container
@@ -146,10 +145,9 @@
         =link_to "http://www.pinterest.com" do
           =fa_icon "pinterest-square", class:"icon-pinterest"
 
-
   .item-other
     %section.item-other__user-items
       %h2.item-other__user-items__head
         = link_to "#{@item.seller.nickname}さんのその他の出品", item_path, method: :get, class: "link item-link"
       .item-other__user-items__content
-      -# 他のアイテムを表示
+        = render "other_item"
