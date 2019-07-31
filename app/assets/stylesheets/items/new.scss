@@ -95,6 +95,12 @@
     font-weight: bold;
     font-size: 14px;
   }
+  h3.question::after {
+    color: $blue;
+    font-family: FontAwesome;
+    content: "\f059";  /*アイコンのコード*/
+    font-size: 16px;
+  }
 
   .sell-form-box {
     width: 400px;

@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   def destroy
     @item = Item.find(params[:item_id])
     @comment = Comment.find(params[:id])
-    if  @comment.destroy
+    if @comment.destroy
       redirect_to item_path(@item)
     else
       flash[:notice] =  "削除に失敗しました"

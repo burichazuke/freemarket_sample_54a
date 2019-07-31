@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, skip: [:registrations], controllers: {
     sessions: 'users/sessions',
-    passwords: 'users/passwords'
+    # passwords: 'users/passwords'
     # ToDo: facebook認証に応じて追加
     # omniauth_callbacks: "users/omniauth_callbacks"
   }
@@ -18,18 +18,15 @@ Rails.application.routes.draw do
     get 'users/sign_up/finish', to: 'users/registrations#finish', as: :finish_user_registration
     post 'users', to: 'users/registrations#create', as: :create_user_registration
     get 'users/:id', to: 'users#show', as: :show_user_plofile
-    # ToDo: マイページに応じて、要追加
-    # get 'users/edit', to: 'users/registrations#edit', as: :edit_user_registration
-    # patch 'users', to: 'users/registrations#update', as: :update_user_registration
-    # delete 'users', to: 'users/registrations#destroy', as: :destroy_user_registration
-    # get 'users/cancel', to: 'users/registrations#cancell', as: :cancel_user_registration
+    # get 'mypage/email_password', to: 'users/registrations#edit', as: :email_password_mypage_index
+    # get 'mypage/email_password/confirmation', to: 'users/registrations#update_confirmation', as: :email_password_confirmation_mypage_index
+    put 'mypage/email_password', to: 'users/registrations#update', as: :update_user_registration
   end
 
   root to: "items#index"
-  resources :users,  only: [:show]
   resources :mypage, only: [:index] do
     collection do
-      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "email_password", "identification", "sms_confirmation", "help_center"
+      get "notification", "todo", "purchase", "purchased", "news", "support", "sales", "point", "profile", "email_password", "confirmation", "identification", "sms_confirmation", "help_center"
     end
   end
 
@@ -61,16 +58,15 @@ Rails.application.routes.draw do
   
   resources :items, except: :new do
     collection do
-      get "category_parent", defaults:{format:'json'} 
-      get 'category_children', defaults:{format:'json'}
-      get 'category_grandchildren', defaults:{format:'json'}
+      get "category_parent", defaults: {format:'json'} 
+      get 'category_children', defaults: {format:'json'}
+      get 'category_grandchildren', defaults: {format:'json'}
     end
-    resources :comments, only:[:create, :destroy]
+    resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
 
   resources :categories,  only: [:index, :show] 
-
   resources :brands,  only: [:index, :show]
   resources :cards, only: [:new, :create, :destroy,]
   as :cards do

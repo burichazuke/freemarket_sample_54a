@@ -1,0 +1,35 @@
+:ruby
+  titles = ["出品中", "取引中", "売却済み"]
+  path = [mypage_listings_listing_path, mypage_listings_in_progress_path, mypage_listings_completed_path]
+
+  announces = [{
+    Name:"aさんの商品を購入！", url:"#"
+  },{
+    Name:"bさんの商品を購入！", url:"#"
+  },{
+    Name:"cさんの商品を購入！", url:"#"
+  }]
+
+
+-breadcrumb :in_progress
+%main.mypage
+  .mypage__container
+    .mypage__content
+      .mypage__content__head.mypage__content__head--text
+        出品した商品
+      %section.mypage__content__tab-container
+        %ul.mypage__content__tabs
+          = render partial: "mypage-tabs", locals: { active: false, title: titles[0], path: path[0] }
+          = render partial: "mypage-tabs", locals: { active: true, title: titles[1], path: path[1] }
+          = render partial: "mypage-tabs", locals: { active: false, title: titles[2], path: path[2] }
+        .mypage__content__tab-content
+          %ul.mypage__content__tab-content__item-list.show-mypage-tab
+            - if @items.exists?
+              - @items&.each do |item|
+                = render partial: "mypage_tab_item", locals: {item: item}
+            - else 
+              %li.mypage__content__tab-content__item-list--none
+                取引中の商品はありません
+
+    .mypage__side
+      =render "shared/sidebar"
