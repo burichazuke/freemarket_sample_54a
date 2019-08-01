@@ -11,6 +11,11 @@
     &--heading{
       display:block;
       width:100%;
+      a{
+        height: 100%;
+        padding: 8px 16px;
+      }
+      
     }
   }
 }

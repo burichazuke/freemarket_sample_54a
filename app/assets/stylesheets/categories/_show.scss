@@ -5,9 +5,11 @@
     background-color: #F5F5F5;
     padding:40px 0;
     margin: 0 auto ;
-    width: 1020px;
+    width: 100%;
     .category-sibling-list{
-      height: 30px;
+      height: auto;
+      width:90%;
+      margin:0 auto;
       a{
         @include item-aHover;
       }
@@ -15,20 +17,23 @@
     .category-show-box{
       
       .cateShow-heading{
-        margin:24px 0 8px 0;
+        margin:24px auto 8px auto;
         height: 30px;
         font-size: 22px;
         font-weight: bold;
+        width:90%;
       }
       .cateShow-container{
-        width: 940px;
+        width: 90%;
+        margin:0 auto;
+        flex-wrap:wrap;
         &::after{
           content:'';
           display: block;
           clear: both;
         }
         .cateShow-content{
-          width: 1020px;
+          width: 100%;
           margin:0 auto;
           display: flex;
           flex-wrap: wrap;
@@ -109,7 +114,8 @@
 
 //show.scss
 .category-discription{
-  margin-top:30px;
+  margin:30px auto 0 ;
+  width:90%;
 
   .category-discription__heading{
     border-top-left-radius: 4px;
@@ -132,8 +138,6 @@
     background-color:white;
     padding:30px;
     font-size:14px;
-    p{
-      line-height: 1.6em;
-    }
+    line-height: 1.8;
   }
 }

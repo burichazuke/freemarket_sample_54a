@@ -4,6 +4,7 @@
   -breadcrumb :category_grandchild
 -else
   -breadcrumb :category_child
+  
 .category-show-wrapper
   .category-show-contents
     .category-sibling-list
@@ -17,6 +18,7 @@
         -@grandchildren.each do |grandchild|
           =link_to category_path(grandchild.id) do
             =grandchild.name
+
     .category-show-box
       .cateShow-heading
         %h1

@@ -31,5 +31,27 @@
                       =link_to category_path(grandchild.id)  do
                         = grandchild.name
 
+    -# スマホサイズのカテゴリーアコーディオン
+    %nav.sp-category-list-box
+      -@parents.each do |parent|
+        %ul.clearfix
+          %li.accordion-parent
+            %h3.accordion-parent-toggle.category-thumb
+              .accordion-parent__name
+                = parent.name
+              = fa_icon 'plus',class:'accordion-plus-icon'
+
+            %ul.accordion-child
+              -parent.children.each do |child|
+                %li.accordion-parent
+                  .accordion-child__name
+                    = child.name
+                  -# = fa_icon 'plus',class:'accordion-plus-icon'
+
+                  %ul.accordion-grandchild
+                    -child.children.each do |grandchild|
+                      %li.accordion-parent
+                        =link_to category_path(grandchild.id),class:'accordion-link' do
+                          .accordion-grandchild-name= grandchild.name
 
 

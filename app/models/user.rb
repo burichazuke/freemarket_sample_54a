@@ -28,6 +28,10 @@ class User < ApplicationRecord
   has_many :favorite_items, through: :favorites, source: :item
   mount_uploader :image, ImageUploader
 
+  has_many :selling_items, -> { where("buyer_id is NULL") }, foreign_key: "seller_id", class_name: "Item"
+  has_many :sold_items, -> { where("buyer_id is not NULL") }, foreign_key: "seller_id", class_name: "Item"
+
+
 # sms認証関連のメソッド定義
   # Phone_numberのvalidおよびverification_codeの発行
   def valid_and_set_verification_code
