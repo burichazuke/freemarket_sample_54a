@@ -8,25 +8,25 @@
     width: 100%;
     .category-sibling-list{
       height: auto;
-      width:90%;
+      width:80%;
       margin:0 auto;
       a{
         @include item-aHover;
       }
     }
     .category-show-box{
-      
       .cateShow-heading{
         margin:24px auto 8px auto;
         height: 30px;
         font-size: 22px;
         font-weight: bold;
-        width:90%;
+        width:80%;
       }
       .cateShow-container{
-        width: 90%;
+        width: 80%;
         margin:0 auto;
         flex-wrap:wrap;
+        
         &::after{
           content:'';
           display: block;
@@ -115,7 +115,7 @@
 //show.scss
 .category-discription{
   margin:30px auto 0 ;
-  width:90%;
+  width:80%;
 
   .category-discription__heading{
     border-top-left-radius: 4px;
@@ -139,5 +139,14 @@
     padding:30px;
     font-size:14px;
     line-height: 1.8;
+  }
+}
+
+// スマホサイズ用サイズ調整
+@media screen and(max-width:697px){
+  .cateItem-box{
+    &:nth-child(even){
+      margin-right:0;
+    }
   }
 }
