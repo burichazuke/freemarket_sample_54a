@@ -98,9 +98,9 @@ ActiveRecord::Schema.define(version: 2019_07_23_051349) do
     t.integer "status", limit: 2, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "seller_id", null: false
-    t.string "buyer_id"
     t.string "category_id", null: false
+    t.integer "seller_id", null: false
+    t.integer "buyer_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
