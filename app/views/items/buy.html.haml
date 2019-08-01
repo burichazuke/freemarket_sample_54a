@@ -22,7 +22,7 @@
             %span 
               ="¥ #{@item.price}"
           -unless @item.seller_id == current_user&.id
-            -if @card
+            -if @card && current_user.address
               -if @item.status == 0
                 =form_for @item, url: {controller: "items", action: "pay"} do |f|
                   = f.text_field :status, value: 1, class: "purchase-form-hidden"
@@ -34,7 +34,7 @@
                   売り切れです
             -else
               %p.purchase-button__notice
-                支払い方法を登録してください
+                支払い方法と配送先を登録してください
               %button.purchase-button--sold
                 購入する
 
@@ -44,11 +44,17 @@
         %section.buy-user-info
           .buy-user-info__address
             %h3 配送先
-            %address
-              〒000-0000
-              %br 東京都渋谷区道玄坂2-2-2
-              メルカリ 太郎
-            =link_to root_path, class: "buy-user-info__fix" do 
+            -if current_user.address
+              %address
+                = "〒#{current_user.address.postal_code}"
+                %br 
+                = current_user.address.prefecture + current_user.address.municipalities + current_user.address.address
+                -if current_user.address.building
+                  = current_user.address.building
+                %br
+                = "#{current_user.address.first_name + current_user.address.last_name}"
+
+            =link_to address_user_registration_path, class: "buy-user-info__fix" do 
               %span
                 変更する
                 =fa_icon "angle-right"
