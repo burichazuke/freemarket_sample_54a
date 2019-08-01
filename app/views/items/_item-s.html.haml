@@ -13,5 +13,8 @@
       .items-box--s__body__num
         .items-box--s__body__num__price.font-5
           ="¥ #{item.price.to_s(:delimited)}"
-        .items-box--s__body__num__like.font-2
-          =fa_icon "heart-o" 
+
+        -if item.favorites.present?
+          .items-box__body__num__like.font-2
+            =fa_icon "heart-o"
+            = item.favorites.count

@@ -9,12 +9,10 @@
         - if item.status == 0
           .mypage__content__tab-content__item-list__body__detail__favorites
             = fa_icon "heart-o"
-            2
-            -# = item.favorites.count
+            = item.favorites.count
           .mypage__content__tab-content__item-list__body__detail__comments
             = fa_icon 'comments'
-            4
-            -# = item.comments.count
+            = item.comments.count
         = set_item_status(item.status)
         
     .mypage__content__tab-content__item-list__right-icon
