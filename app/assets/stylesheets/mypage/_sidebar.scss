@@ -1,8 +1,9 @@
 .sidebar{
   background: $gray;
   width: 280px;
+  margin-right: 40px;
   &__lists{
-    width: 280px;
+    width: 100%;
     background: #ffffff;
     a{
       display: block;
@@ -48,4 +49,10 @@
   }
 }
 
+@media screen and(max-width:1060px){
+  .sidebar{
+    width: 700px;
+    margin-right: 0;
+  }
+}
 

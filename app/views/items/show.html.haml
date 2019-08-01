@@ -38,9 +38,9 @@
           %tr
             %th カテゴリー
             %td
-              =link_to category_path(@grandchild.parent.parent.id),class:'aBlue' do
-                = @grandchild.parent.parent.name
-              =link_to category_path(@grandchild.id),class:'aBlue' do
+              =link_to category_path(@grandchild.root.id),class:'aBlue' do
+                = @grandchild.root.name
+              =link_to category_path(@grandchild.parent.id),class:'aBlue' do
                 .item-category-sub
                   = fa_icon 'chevron-right',class:'item-category__icon'
                   = @grandchild.parent.name
@@ -110,7 +110,7 @@
           =fa_icon "lock"
           %span.aBlue あんしん・あんぜんへの取り組み
 
-  -if @item.seller_id.to_s == current_user&.id.to_s
+  -if @item.seller_id == current_user&.id
     .item__detail-message
       .message-container
         .message-content
@@ -134,15 +134,16 @@
 
   %ul.nav-item__link-prev-next
     %li.nav-item__link-prev
-      -item = prev_item 
-      =link_to item_path(item),class:'aBlue' do
+      -pre_item = ramdom_item
+      =link_to item_path(pre_item),class:'aBlue' do
         =fa_icon "angle-left"
-        = item.name
+        = pre_item.name
     %li.nav-item__link-next
-      =link_to item_path(next_item.id),class:'aBlue' do
+      -next_item = ramdom_item
+      =link_to item_path(next_item),class:'aBlue' do
         = next_item.name
         =fa_icon "angle-right"
-  
+        
   .item__social-media-box
     %ul.item__social-media-box__links
       %li
@@ -158,7 +159,8 @@
   .item-other
     %section.item-other__user-items
       %h2.item-other__user-items__head
-        = link_to "#{@item.seller.nickname}さんのその他の出品", item_path, method: :get, class: "link item-link"
+        = link_to show_user_plofile_path(@item.seller.id), method: :get, class: "link item-link" do
+          ="#{@item.seller.nickname}さんのその他の出品"
       .item-other__user-items__contents
         %section{class: "items-box__container"}
           .items-box__content
