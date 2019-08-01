@@ -3,6 +3,7 @@ class MypageController < ApplicationController
   def index
     @purchase_items = Item.where(buyer_id: current_user, status: 1)
     @purchased_items = Item.where(buyer_id: current_user, status: 2)
+    @items = Item.where(seller_id: current_user)
   end
 
   def listing

@@ -110,7 +110,7 @@
           =fa_icon "lock"
           %span.aBlue あんしん・あんぜんへの取り組み
 
-  -if @item.seller_id.to_s == current_user&.id.to_s
+  -if @item.seller_id == current_user&.id
     .item__detail-message
       .message-container
         .message-content
