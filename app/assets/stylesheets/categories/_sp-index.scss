@@ -1,10 +1,18 @@
 @media screen and(max-width:769px){
+
+  // PCサイズを表示させない
   .category-list-parent{
     display:none;
   }
   .category-list-box{
     display:none;
   }
+
+  .category-list-heading{
+    padding-left:20px;
+  }
+
+  // アコーディオン部品＋親
   .sp-category-list-box{
     margin-top:14px;
     width:100vw;
@@ -44,6 +52,8 @@
       }
     }
   }
+
+  // 子
   .accordion-child{
     &__name{
       overflow: hidden;
@@ -58,6 +68,7 @@
     }
   }
   
+  // 孫
   .accordion-grandchild{
     .accordion-link{
       border-bottom: solid 1px #eee;
@@ -75,6 +86,8 @@
       }
     }
   }
+
+  // アコーディオンの中身
   .accordion-child{
     display:none;
   }

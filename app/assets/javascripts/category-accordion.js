@@ -1,9 +1,11 @@
 $(document).on('turbolinks:load',function(){
+
+  // 子のアコーディオン
   $('.category-thumb').click(function(){
-    console.log(this)
     $(this).next().slideToggle();
   });
-
+  
+  // 孫のアコーディオン
   $('.accordion-child__name').click(function(){
     $(this).next().slideToggle();
   })
