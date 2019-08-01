@@ -1,5 +1,4 @@
 %main.mypage
-
   .mypage__container__show
     .mypage__contents
       .mypage__content__detail
@@ -18,9 +17,8 @@
                 .mypage__content__head__user-icon__number--display
                   出品数
                   %span.bold
-                    = @items.count
+                    = @user_items.count
 
-                    
         .white
           .item-content__detail-table__face--detail
             .item-content__detail-table__face--good
@@ -53,21 +51,9 @@
           .item-other
             %section.item-other__user-items
               %h2.item-other__user-items__head
-                = link_to "この出品者の商品", class: "link item-link"
-              .item-other__user-items__content
-                %section.item-other__user-items__content__box
-                  = link_to class: "link item-link" do
-                    %figure.item-other__user-items__content__box__photo
-                      = image_tag("other-item.png", class: "item-image", size: "220x220")
-                    .item-other__user-items__content__box__body
-                      %h3.item-other__user-items__content__box__body__name
-                        ケーキ
-                      .item-other__user-items__content__box__num
-                        .item-other__user-items__content__box__num__price
-                          ¥ 20,000
-                        .item-other__user-items__content__box__num__likes
-                          =fa_icon "heart-o", class: "like-icon"
-                          %span.item-other__user-items__content__box__num__likes__num
-                          100
-
+                この出品者の商品
+          .item-other__user-items__contents
+            %section{class: "items-box__container"}
+              .items-box__content
+                = render @user_items
 

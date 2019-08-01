@@ -62,12 +62,12 @@ $(document).on('turbolinks:load',function(){
 
     // 子のカテゴリーボックスを作る
   $("#search-parent-form").on("change",function(){
-    var parentValue = document.getElementById("search-parent-form").value;
-    if (parentValue != '---'){
+    var parentId = $("#search-parent-form").val();
+    if (parentId != ''){
       $.ajax({
         url: 'category_children',
         type:'GET',
-        data:{parent_id: parentValue},
+        data:{parent_id: parentId},
         dataType:'json'
       })
       .done(function(children){
@@ -79,16 +79,14 @@ $(document).on('turbolinks:load',function(){
           insertHtml += buildHTML(child);
         });
         appendChildrenBox(insertHtml)
-        console.log('ok')
 
         $.ajax({
           url: 'category_parent',
           type:'GET',
-          data:{parent_id: parentValue},
+          data:{parent_id: parentId},
           dataType:'json'
         })
         .done(function(parent){
-          console.log(parent.descendant_ids)
           var input = '';
           parent.descendant_ids.forEach(function(id){
             input += id + " "
@@ -112,8 +110,8 @@ $(document).on('turbolinks:load',function(){
 
   // 孫のカテゴリーボックスを作る
   $('.category-select-box').on('change','#search-child_category',function(){
-    var childId = $('#search-child_category option:selected').data('category');
-    if (childId != '---'){
+    var childId = $('#search-child_category').val();
+    if (childId != ''){
       $.ajax({
         url: 'category_grandchildren',
         type:'GET',
@@ -124,7 +122,6 @@ $(document).on('turbolinks:load',function(){
         $('#grandchildren_wrapper').remove();
         var insertHtml = '';
         var input = '';
-        console.log('ok')
         grandchildren.forEach(function(grandchild){
           insertHtml += buildHTML(grandchild);
           input += grandchild.id + " "
