@@ -21,21 +21,22 @@
             支払い金額
             %span 
               ="¥ #{@item.price}"
-          -if @card
-            -if @item.status == 0
-              =form_for @item, url: {controller: "items", action: "pay"} do |f|
-                = f.text_field :status, value: 1, class: "purchase-form-hidden"
-                = f.text_field :buyer_id, value: current_user.id, class: "purchase-form-hidden"
-                %button.purchase-button{type: "submit"}
-                  購入する
+          -unless @item.seller_id == current_user&.id
+            -if @card
+              -if @item.status == 0
+                =form_for @item, url: {controller: "items", action: "pay"} do |f|
+                  = f.text_field :status, value: 1, class: "purchase-form-hidden"
+                  = f.text_field :buyer_id, value: current_user.id, class: "purchase-form-hidden"
+                  %button.purchase-button{type: "submit"}
+                    購入する
+              -else
+                %button.purchase-button--sold
+                  売り切れです
             -else
+              %p.purchase-button__notice
+                支払い方法を登録してください
               %button.purchase-button--sold
-                売り切れです
-          -else
-            %p.purchase-button__notice
-              支払い方法を登録してください
-            %button.purchase-button--sold
-              購入する
+                購入する
 
   
       -# ユーザーのデータベースができてから表示

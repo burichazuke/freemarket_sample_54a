@@ -36,7 +36,7 @@
               = fa_icon "expand"
             = label :size, "サイズ"
           .single__field__select
-            = f.select :size_eq_any,[["---",""],["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"],["L","L"],["XL(LL)","XL(LL)"],["XXL以上","XXL以上"]], class: "single__field__select"            
+            = f.select :size_eq_any,[["---",""],["XXS以下","XXS以下"],["XS(SS)", "XS(SS)"],["S", "S"],["M","M"],["L","L"],["XL(LL)","XL(LL)"],["FREE SIZE","FREE SIZE"]], class: "single__field__select"            
 
       .search-side__group
         .single__field.single__field--large
@@ -107,11 +107,11 @@
           .search-side__group__cheak
             .search-side__group__cheak__box
               = f.label "着払い(購入者負担)" do
-                = f.check_box :shipping_fee_eq_any, { multiple: true }, "着払い(購入者負担)", ""
+                = f.check_box :shipping_fee_eq_any, { multiple: true }, "着払い", ""
                 %span 着払い(購入者負担)
             .search-side__group__cheak__box
               = f.label "着払い(購入者負担)" do
-                = f.check_box :shipping_fee_eq_any, { multiple: true }, "送料負担(出品者負担)", ""
+                = f.check_box :shipping_fee_eq_any, { multiple: true }, "送料込み", ""
                 %span 送料負担(出品者負担)
 
       .search-side__group

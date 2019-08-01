@@ -58,11 +58,11 @@ Rails.application.routes.draw do
   
   resources :items, except: :new do
     collection do
-      get "category_parent", defaults:{format:'json'} 
-      get 'category_children', defaults:{format:'json'}
-      get 'category_grandchildren', defaults:{format:'json'}
+      get "category_parent", defaults: {format:'json'} 
+      get 'category_children', defaults: {format:'json'}
+      get 'category_grandchildren', defaults: {format:'json'}
     end
-    resources :comments, only:[:create, :destroy]
+    resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
 
