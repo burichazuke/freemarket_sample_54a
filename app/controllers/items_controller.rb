@@ -101,7 +101,7 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    @item.update(item_params)
+    @item.update(pay_params)
     if @item.save  
       Payjp.api_key = ENV['PAYJP_TEST_SECRET']
       Payjp::Charge.create(
@@ -164,6 +164,10 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:id, :name, :description, :category_id, :size, :condition, :shipping_fee, :shipping_method, :prefecture, :shipping_date, :price, :status, :seller_id, :buyer_id, :image_validation, {image_files: []}, {delete_image_files: []}).merge(seller_id: current_user.id)
   end
 
+  def pay_params
+    params.require(:item).permit(:buyer_id, :status)
+  end
+  
   def set_item
     @item = Item.find(params[:id])
     @grandchild = Category.find(@item.category_id)
