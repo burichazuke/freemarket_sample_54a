@@ -16,39 +16,33 @@
   .sp-category-list-box{
     margin-top:14px;
     width:100vw;
-    .clearfix{
-      content:'';
-      display: block;
-      clear: both;
-      .accordion-parent{
-        position: relative;
-        background: #fff;
+    .accordion-parent{
+      position: relative;
+      background: #fff;
+      border-bottom: solid 1px #eee;
+      .accordion-parent-toggle{
+        font-size: 20px;
+        font-weight: 400;
         border-bottom: solid 1px #eee;
-        .accordion-parent-toggle{
-          position: relative;
-          font-size: 20px;
-          font-weight: 400;
-          border-bottom: solid 1px #eee;
-          .accordion-parent__name{
-            overflow: hidden;
-            width: 83%;
-            height: 46px;
-            line-height: 46px;
-            margin: 0 0 0 15px;
-            padding: 0 0 0 50px;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            font-size:20px;
-          }
+        .accordion-parent__name{
+          overflow: hidden;
+          width: 83%;
+          height: 46px;
+          line-height: 46px;
+          margin: 0 0 0 15px;
+          padding: 0 0 0 50px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size:20px;
         }
-        .accordion-plus-icon{
-          position: absolute;
-          top: 50%;
-          right: 20px;
-          transform: translate(0, -50%);
-          color: #aaa;
-          font-size: 14px;
-        }
+      }
+      .accordion-plus-icon{
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translate(0, -50%);
+        color: #aaa;
+        font-size: 14px;
       }
     }
   }
@@ -57,7 +51,7 @@
   .accordion-child{
     &__name{
       overflow: hidden;
-      width: 70.3125%;
+      width: 70%;
       margin: 0 0 0 50px;
       padding: 0 0 0 15px;
       height: 46px;
@@ -74,9 +68,9 @@
       border-bottom: solid 1px #eee;
       @include item-aHover;
       .accordion-grandchild-name{
-        width: 81.25%;
+        width: 81%;
         margin: 0 0 0 60px;
-        padding: 0 14.0625% 0 15px;
+        padding: 0 14% 0 15px;
         font-size: 14px;
         height: 46px;
         line-height: 46px;
