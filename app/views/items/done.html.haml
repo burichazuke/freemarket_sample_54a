@@ -34,10 +34,15 @@
         %section.buy-user-info
           .buy-user-info__address
             %h3 配送先
-            %address
-              〒000-0000
-              %br 東京都渋谷区道玄坂2-2-2
-              メルカリ 太郎
+            -if current_user.address
+              %address
+                = "〒#{current_user.address.postal_code}"
+                %br 
+                = current_user.address.prefecture + current_user.address.municipalities + current_user.address.address
+                -if current_user.address.building
+                  = current_user.address.building
+                %br
+                = "#{current_user.address.first_name + current_user.address.last_name}"
 
       .purchase-confirmations__container
         -if @card
