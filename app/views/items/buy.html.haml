@@ -54,7 +54,7 @@
                 %br
                 = "#{current_user.address.first_name + current_user.address.last_name}"
 
-            =link_to address_user_registration_path, class: "buy-user-info__fix" do 
+            =link_to edit_address_path, class: "buy-user-info__fix" do 
               %span
                 変更する
                 =fa_icon "angle-right"
