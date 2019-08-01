@@ -36,6 +36,6 @@ class CardsController < ApplicationController
     customer = Payjp::Customer.retrieve(@card.customer_id)
     customer.delete
     @card.destroy
-    redirect_to :card_mypage_index
+    redirect_to :mypage_card
   end
 end
