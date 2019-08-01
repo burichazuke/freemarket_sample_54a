@@ -1,0 +1,92 @@
+@media screen and(max-width:769px){
+
+  // PCサイズを表示させない
+  .category-list-parent{
+    display:none;
+  }
+  .category-list-box{
+    display:none;
+  }
+
+  .category-list-heading{
+    padding-left:20px;
+  }
+
+  // アコーディオン部品＋親
+  .sp-category-list-box{
+    margin-top:14px;
+    width:100vw;
+    .accordion-parent{
+      position: relative;
+      background: #fff;
+      border-bottom: solid 1px #eee;
+      .accordion-parent-toggle{
+        font-size: 20px;
+        font-weight: 400;
+        border-bottom: solid 1px #eee;
+        .accordion-parent__name{
+          overflow: hidden;
+          width: 83%;
+          height: 46px;
+          line-height: 46px;
+          margin: 0 0 0 15px;
+          padding: 0 0 0 50px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size:20px;
+        }
+      }
+      .accordion-plus-icon{
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translate(0, -50%);
+        color: #aaa;
+        font-size: 14px;
+      }
+    }
+  }
+
+  // 子
+  .accordion-child{
+    &__name{
+      overflow: hidden;
+      width: 70%;
+      margin: 0 0 0 50px;
+      padding: 0 0 0 15px;
+      height: 46px;
+      line-height: 46px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size:14px;
+    }
+  }
+  
+  // 孫
+  .accordion-grandchild{
+    .accordion-link{
+      border-bottom: solid 1px #eee;
+      @include item-aHover;
+      .accordion-grandchild-name{
+        width: 81%;
+        margin: 0 0 0 60px;
+        padding: 0 14% 0 15px;
+        font-size: 14px;
+        height: 46px;
+        line-height: 46px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+      }
+    }
+  }
+
+  // アコーディオンの中身
+  .accordion-child{
+    display:none;
+  }
+  .accordion-grandchild{
+    display:none;
+  }
+  
+}
