@@ -17,7 +17,9 @@
                 .mypage__content__head__user-icon__number--display
                   出品数
                   %span.bold
-                    = @user_items.count
+                    = @user.selling_items.count + @user.sold_items.count
+
+
 
         .white
           .item-content__detail-table__face--detail
