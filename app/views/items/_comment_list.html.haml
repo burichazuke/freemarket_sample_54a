@@ -53,5 +53,5 @@
             = time_format(comment.created_at)
           -if comment.user_id == current_user&.id
             = link_to do
-              = fa_icon "trash-o", class: "delete-icon"
+              = fa_icon "trash-o", class: "delete-icon", "data-id": "#{comment.id}"
         .item__comment__content-balloon
